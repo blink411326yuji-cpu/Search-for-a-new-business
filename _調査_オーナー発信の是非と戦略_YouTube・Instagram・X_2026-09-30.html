@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>オーナー発信（YouTube・Instagram・X）の是非と戦略 — 調査報告</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+.src{font-size:13px} .src li{margin:3px 0;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<strong>目次</strong>
+<a href="#s0">0. 要約（1枚）</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a class="s" href="#s4-1">4-1 消費者調査</a>
+<a class="s" href="#s4-2">4-2 経営者発信の事例</a>
+<a class="s" href="#s4-3">4-3 各SNSの仕組み</a>
+<a class="s" href="#s4-4">4-4 伸び方の実態</a>
+<a class="s" href="#s4-5">4-5 転売領域の反応</a>
+<a class="s" href="#s4-6">4-6 紐づけの事例</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較</a>
+<a href="#s7">7. 推奨と理由</a>
+<a href="#s8">8. 数字</a>
+<a href="#s9">9. 次の工程と撤退条件</a>
+<a href="#s10">10. 決めていただく事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+
+<h1>オーナー発信（YouTube・Instagram・X）の是非と戦略 — 調査報告</h1>
+<p class="meta">作成日：2026-09-30　｜　状態：調査報告（案・未承認）　｜　正本：本書が正本（調査レポートのため .md の正本は無い）　｜　作成：Claude（合同会社R.Y.S 向け）　｜　確認日：本文の数字・URL はすべて 2026-09-30 に確認</p>
+<p class="note">読み方：太字の判定語（✓／△／✕）はそのまま結論。「（提案）」「要ご判断」は Claude の提案で、「【未確認】」は一次情報に届かなかった箇所、「推測」は Claude の推論です。数字は出典の表記のまま写しています。</p>
+
+<h2 id="s0">0. 要約（1枚）<small>結論：顔出し・実名の発信は「始める価値がある」。ただしテーマは「転売」ではなく、将来のサービスを全部載せられる「母艦」で始める</small></h2>
+<div class="grid">
+ <div class="kpi"><b>何を調べたか</b><span>経営者の顔出し発信の効果・事例、YouTube／Instagram／X の仕組みと伸ばし方、フォロワーを事業へ紐づける型</span></div>
+ <div class="kpi"><b>件数</b><span>公式一次情報 約60本、消費者調査 10本、日本の事例 40件超、海外の事例 8件（6分野に分けて調査）</span></div>
+ <div class="kpi"><b>結論</b><span>始める価値はある。日本の13〜79歳の 81.5% が YouTube を使い、SNS きっかけの購入経験は 55〜65%。ただし「転売」を看板にすると批判が個人に集中する構造がある</span></div>
+ <div class="kpi"><b>推奨（提案）</b><span>案C「母艦型」＝実名・顔出しで「コレクター市場×小さな会社の実務」を語る。主軸は YouTube（長尺＋ショート）、X を毎日、Instagram はサービス確定後</span></div>
+ <div class="kpi"><b>紐づけ方の答え</b><span>「あとで紐づける」なら最初から「紐づけられるテーマ」で始める。途中のテーマ変更は YouTube 公式が「数週間ではなく数か月」と注意し、成功例は別チャンネルを新設している</span></div>
+ <div class="kpi"><b>次に決めること</b><span>第10章の9項目（始めるか／顔出しの程度／母艦テーマ／主軸SNS／「転売」の呼び方／権利者商材の扱い／体制／開始時期／Gemini レビュー）</span></div>
+</div>
+<div class="card">
+<dl class="scr">
+<dt>状況</dt><dd>サービスの中身では差がつきにくくなり、同じ水準のサービスが並んだときは「誰がやっているか」の信用で選ばれる、というご依頼主の見立てがある。日本では YouTube 81.5%、Instagram 54.8%、X 44.7% が利用（総務省 令和7年度）。20〜40代に限ると YouTube は 9割超、Instagram 7〜8割、X 6〜7割に達する。</dd>
+<dt>課題</dt><dd>①顔出し発信は本当に事業に効くのか、②何を発信すればよいか、③フォロワーの増やし方が分からない、④「先に登録者を集めてから紐づける」やり方は成り立つのか。加えて、当社の本業（新品の寝かせ転売）は世論と権利者の目が厳しい領域で、一番くじの件（2026-07）も抱えている。</dd>
+<dt>分かったこと</dt><dd>①効く根拠はある（SNS きっかけの購入 55〜65%、経営者発信で売上・採用が伸びた日本の事例 20件超）。ただし消費者が最も信頼するのは「一般ユーザーの口コミ」36.6%で「インフルエンサー」は 4.0%——効くのは「影響力」より「人的魅力・透明性・口コミの土台」。②伸びている経営者チャンネルの型は「現場の公開・数字の公開・解説・密着」。③各SNSの公式が明かす伸ばし方は、YouTube＝冒頭数秒で約束を果たす／質の一貫性、Instagram＝視聴時間・いいね・送信（DMで送りたくなる投稿）、X＝リプライ（重み 5.0〜13.5）と会話。④紐づけは、同じ領域の商品なら成功（ヒカル→アパレル、両学長→リベシティ、山澤→ジム）、領域が違うと観客が離れる（Thomas Frank は 100万人が去ったと述べ、別チャンネルを新設）。</dd>
+<dt>未決</dt><dd>始めるか。顔出しの程度。母艦テーマの言葉。主軸SNS。「転売」という語を使うか。一番くじ等の権利者商材を発信に載せるか。編集の外注・AI活用の体制。開始時期（YouTube の収益化条件は 2027-02-01 に厳しくなる）。確定前に Gemini のクロスレビューを回すか。</dd>
+</dl>
+</div>
+
+<h2 id="s1">1. 背景と依頼<small>ご依頼は「始めるべきか・何を発信するか・増やし方・紐づけ方」の4点で、新規事業の審査ではない</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td class="key">ご依頼の言葉（要旨）</td><td>物を売る・サービスを展開するにつれ、オーナーの影響力（YouTube・Instagram の発信力）が必然になる。サービスの差はなくなり、最終的に信用性や影響力で選ばれる。自分が顔出しで発信を始めた方がよいか。始めるべきか、発信内容の戦略、Instagram・X のフォロワーの増やし方・バズり方、最初からサービスに紐づけるか先に登録者を得てから紐づけるか（紐づき方）を、網羅的に調査して報告してほしい。</td></tr>
+<tr><td class="key">条件</td><td>「独立して調べる」＝新規事業探索（S-01／S-02）の審査や要件定義には送らず、調べごととして答える。ご依頼主は外出中のため、確認を挟まず Claude の解釈で進めた（解釈は第2章に明記）。</td></tr>
+<tr><td class="key">当社の前提（記録から）</td><td>合同会社R.Y.S（2025-02 設立、代表社員 坂野勇次）。本業は新品の寝かせ転売（ポケモンカード・ロルカナ・MTG・フィギュア・他社のくじ）。検討中のサービスに転送事業・発送代行（3PL）・買取・ジム・EC ツール等がある。2026-07 にバンダイ／BANDAI SPIRITS から一番くじ関連の通知を受領し、BASE ショップが一時非公開になった経緯がある。</td></tr>
+<tr><td class="key">前の資料との関係</td><td>S-01（スケール売却型）の事業案カタログに「SNS起点ブランド（S-C）」「SNS運用代行（T-B）」があるが、本書はそれらの審査ではない。本書の結論を S-01 に反映するかはご依頼主の判断。</td></tr>
+<tr><td class="key">本書の位置づけ</td><td>調べごとの報告。方針の確定はご依頼主が行う。法令・制度に触れる箇所（第3章）を根拠に方針を確定する前は、Gemini クロスレビュー（第10章⑨）を推奨。</td></tr>
+</table></div>
+
+<h2 id="s2">2. 調査の範囲と方法<small>6分野に分け、各SNSの公式・総務省・消費者庁を一次情報として当たった。届かなかった穴は第5章に列挙</small></h2>
+<div class="tw"><table>
+<tr><th>分野</th><th>探し先</th><th>当たり方</th><th>残っている穴</th></tr>
+<tr><td class="key">①顔出し発信の効果・事例</td><td>消費者調査（アライドアーキテクツ・ホットリンク・NEL・エクスクリエ・電通PRC・Edelman）、各チャンネルの登録者数、報道・本人の公表</td><td>登録者数はチャンネルページの表記をそのまま転記（2026-09-30）。売上は本人・会社の公表値のみ採用</td><td>「代表者が発信していると買いたくなる」を直接測った日本の調査は見つからず（近い数字で代替）</td></tr>
+<tr><td class="key">②YouTube</td><td>YouTube ヘルプ・公式ブログ・Creator Insider・総務省・vidIQ</td><td>おすすめの仕組み、YPP 条件（現行と 2027 改定）、日本の機能、伸び方の統計</td><td>「最初の90日」と期間を区切った公式プログラムは無い。CTR・視聴維持の公開値は無い</td></tr>
+<tr><td class="key">③Instagram・Threads</td><td>about.instagram.com・Instagram ヘルプ・creators ブログ・Mosseri の投稿・総務省</td><td>ランキング要因、事業者機能の日本提供、公式の伸ばし方</td><td>Instagram ヘルプの一部は本文が読めず二次報道で補った。日本の MAU は 2019 年公表が最後</td></tr>
+<tr><td class="key">④X・TikTok</td><td>公開アルゴリズム（GitHub twitter／xai-org）、X ヘルプ、総務省、Buffer・Sprout・Socialinsider の統計、TikTok 公式</td><td>重みの数値はコードから転記。収益化条件はヘルプから</td><td>フォロワー数は x.com が取得不可のため第三者サイトの値。Premium の円価格は報道値</td></tr>
+<tr><td class="key">⑤紐づけの型</td><td>YouTube ヘルプ（方向転換）、海外・日本のクリエイター起点ブランドの公表値、Substack・Kit・Linktree の統計</td><td>発信開始年→商品化年→当時の登録者→売上の順で整理</td><td>買取・倉庫業で「登録者と事業効果」の両方を公表した例は見つからず</td></tr>
+<tr><td class="key">⑥統計・制度・費用</td><td>総務省 令和7年度調査、消費者庁（ステマ・優良誤認・特商法）、法務省（登記）、ランサーズ・ココナラ等の相場、Apple・ソニーの価格</td><td>PDF の該当ページを直接確認</td><td>週あたりの時間コストを測った調査は無い。開設1年以内に更新が止まる割合の一次データは無い</td></tr>
+</table></div>
+<p class="note">Claude の解釈（外出中のため確認せず進めた点）：①「独立して」＝事業性の審査には回さない、②「ツイッター」＝X、③「バズり方」＝各SNSの公式が明かす表示の仕組みと、拡散の研究で分かっている構造を答える（裏技や自動化ツールは対象外）、④ TikTok・Threads は「そこら辺」の補足として短く扱う。</p>
+
+<h2 id="s3">3. 前提・制約<small>利用率・収益化条件・広告表示の法令・登記の公開範囲・権利者の規約が、以降の設計を縛る。設計より先に読む</small></h2>
+<p class="lead2">なぜ先に読むか：<b>発信の中身と時期を決める前に、動かせない事実（誰が見ているか・いつ条件が変わるか・何を書くと法令に触れるか・何が公開されているか）を固めておかないと、あとで設計をやり直すことになる</b>ためです。</p>
+<div class="tw"><table>
+<tr><th>法令・制度・事実</th><th>状態</th><th>当社への当てはめ</th></tr>
+<tr><td class="key">総務省 令和7年度「情報通信メディアの利用時間と情報行動に関する調査」（2026-06-26 公表、13〜79歳 1,800人）</td><td>公表済</td><td>利用率（全年代）：LINE 92.9%、YouTube 81.5%、Instagram 54.8%、X 44.7%、TikTok 36.7%。20〜40代は図1。Instagram は女性 63.4%・男性 46.2%。Threads は調査項目に無い</td></tr>
+<tr><td class="key">YouTube パートナープログラム（YPP）の参加条件</td><td>2027-02-01 改定</td><td>現行：登録者1,000人＋4,000時間（12か月）または ショート1,000万回（90日）。<b>2027-02-01 以降の新規参加は 8,000時間（365日）または 2,000万回（90日）</b>。既存参加者は影響なし。ファンファンディングの閾値（500人＋3,000時間または300万回）は変更なし</td></tr>
+<tr><td class="key">景品表示法・ステルスマーケティング規制（2023-10-01 施行）</td><td>施行中</td><td>規制対象は広告主。<b>代表者が自社チャンネルで自社サービスを語るのは、社名・代表であることが明瞭なら「事業者自身の表示」で問題なし</b>。他人（インフルエンサー・従業員の個人アカウント）に紹介させるときは「広告」「PR」等の明記が必要</td></tr>
+<tr><td class="key">景品表示法・優良誤認／有利誤認（2024-10-01 改正で直罰化）</td><td>施行中</td><td>誤って表示した場合も対象。体験談は「無作為抽出法で相当数のサンプル」が必要で、購入者・自社従業員の体験談は不適切。「個人の感想です」では打消しにならない。<b>「月商○○万円」を語るなら自社の実績に根拠を持ち、他人にも同じ結果が出るかのような表現を避ける</b></td></tr>
+<tr><td class="key">合同会社の登記事項（会社法914条7号）</td><td>公開</td><td>代表社員の氏名・住所は登記事項で、誰でも手数料で取得可。2024-10-01 の住所非表示措置は<b>株式会社のみ</b>が対象。<b>顔出し・実名にしても住所の公開範囲は今と変わらない</b>。特商法の表示は「請求により遅滞なく提供する旨」で住所・電話番号を省略可</td></tr>
+<tr><td class="key">権利者・売り場の転売対策（規約・公式発表）</td><td>強化中</td><td>BANDAI SPIRITS 一番くじONLINE 規約第3条は「営利目的・高額転売目的」の登録を拒否。ポケモンは「転売等の営利を目的とした商品購入を固くお断り」。メルカリは 2025-10-22 から事業者の個人フリマ利用を禁止。<b>発信で「品薄商品を転売目的で買った」と語ると規約違反の自白になりうる</b></td></tr>
+<tr><td class="key">各SNSの AI 生成コンテンツ方針</td><td>施行中</td><td>YouTube：「大幅に改変」「写真のようにリアル」な生成は開示必須、台本・サムネ補助は不要。「量産型のコンテンツ」は収益化不可（2025-07-15）。Instagram：AI 生成人物が主役のプロフィールはラベル必須（2026-08-31）。<b>Claude を台本・サムネ・字幕・要約に使うことは各社とも許容範囲</b></td></tr>
+</table></div>
+<p class="note">補足（出典は第11章）：代表者の個人名義チャンネルを直接扱った設例は運用基準・Q&amp;A に無い【未確認】。ステマ規制の運用基準は「販売や開発に係る役員、管理職、担当チームの一員等」の販促表示を「事業者が自ら行う表示」とし、「事業者自身のSNSのアカウントを通じた表示」は告示の対象外（第3の2(2)カ）。動画では「画面上に常に『広告』と表示するなど」が望ましい（Q&amp;A Q15）。消費者庁は 2025-06-26 に「月50万が当たり前になる」等の表現を断定的判断の提供として注意喚起。登記事項証明書は600円、登記情報提供サービスは330円。任天堂は Switch 2 で国内専用モデル・抽選条件（プレイ50時間＋Online 加入1年）、自民党トレカ議連が 2026-07-23 設立（市場3,384億円）。平日の動画投稿・共有サービス視聴は全年代 54.5分（20代 107.1分）。</p>
+
+<h2 id="s4">4. 分かったこと<small>「効く」根拠はある。ただし効き方は「影響力」より「人的魅力・透明性・口コミの土台」として現れる</small></h2>
+
+<h3 id="s4-1">4-1 消費者調査：SNS きっかけの購入は 55〜65%、最も信頼されるのは「一般ユーザーの口コミ」</h3>
+<p class="lead2">要点：<b>SNS が購買に効くことは複数の調査で一致。ただし「インフルエンサーを最も信頼する」は 4.0% にとどまり、経営者の発信は「口コミを生む土台」「人的魅力」として効く</b>と読むのが数字に忠実です。</p>
+<div class="tw"><table>
+<tr><th>調査（実施時期・母数）</th><th>数字</th><th>読み方</th></tr>
+<tr><td class="key">アライドアーキテクツ（2022-01、n=881、Twitter 利用者）</td><td>SNS きっかけの購入経験 65.5%、来店 62.4%。きっかけは一般ユーザーの投稿 57.8%＞インフルエンサー 49.4%＞企業アカウント 47.8%</td><td>企業アカウントよりも「一般の人の投稿」が購買に効く</td></tr>
+<tr><td class="key">ホットリンク（2024-05、n=1,000、Instagram 利用者）</td><td>Instagram きっかけの購入経験 55.2%</td><td>Instagram 単体でも半数超</td></tr>
+<tr><td class="key">エクスクリエ（2026-07、n=1,200）</td><td>SNS・動画で商品を知り「実際に購入することがある」63.3%</td><td>直近の数字。年代を問わず定着</td></tr>
+<tr><td class="key">ライトアップ（2025-10〜11、n=1,051）</td><td>企業SNSのフォロワーの購入経験 64.1%</td><td>フォローされれば買われる比率は高い</td></tr>
+<tr><td class="key">NEL（2025-06、n=500）</td><td>最も信頼する情報源：一般ユーザーの口コミ 36.6%、インフルエンサー 4.0%</td><td><b>「影響力そのもの」は信頼の源にならない</b></td></tr>
+<tr><td class="key">Edelman Trust Barometer 2026 日本（2025-10〜11、n=1,200）</td><td>信頼：企業 47%、CEO 46%、「自分の雇用主」62%</td><td>CEO 一般への信頼は半分弱。自分が知る会社は高い</td></tr>
+<tr><td class="key">メンバーズ（2025、n=7,246）</td><td>企業SNSの「中の人」発信を「不要」40.7%</td><td>反対の数字。「中の人」を求めない層が4割いる</td></tr>
+<tr><td class="key">電通PRC 魅力度ブランド調査 2025（n=10,000）</td><td>魅力要素「人的魅力」37.1%。魅力を感じた人の 67.7% が行動</td><td>人（社員・経営者）の魅力は購買行動に結びつく</td></tr>
+<tr><td class="key">Sprout Social（米、2018、n=1,013）／Brunswick（13か国、2021、n=11,700）</td><td>CEO が SNS で活動するブランドに「より親近感」70%。従業員の 61% が「SNS を使う CEO をより信頼」</td><td>海外の数字。日本の直接の調査は無い</td></tr>
+<tr><td class="key">Edelman×LinkedIn B2B（2024、n=3,484）</td><td>73% が思想的発信を販促資料より信頼、86% が営業接触に受容的</td><td>法人相手（転送・発送代行・買取の取引先）には発信が効く</td></tr>
+</table></div>
+
+<h3 id="s4-2">4-2 経営者発信の事例：伸びた型は「現場の公開・数字の公開・解説・密着」。買取・倉庫の顔出し社長で10万人超は見つからず</h3>
+<p class="lead2">要点：<b>日本で「代表本人の発信→事業の数字」が公表されている例は 20件超。当社に近い業種（物販EC・トレカ小売・ジム・物流）にも例がある一方、買取業・倉庫業の顔出し社長で登録者10万人超は確認できなかった</b>（確認先は表の下に列挙）。</p>
+<div class="tw"><table>
+<tr><th>事例（業種）</th><th>媒体・規模（2026-09-30）</th><th>公表されている事業効果</th><th>型</th></tr>
+<tr><td class="key">森朝奈（寿商店・魚屋）</td><td>YouTube 41.9万人</td><td>2020年のネット通販売上が 2019年比 10倍、鮮魚ボックス 1日2,000件</td><td>現場の公開（顔出し）</td></tr>
+<tr><td class="key">山澤礼明（FIT PLACE24）</td><td>YouTube 114万人</td><td>24時間ジム 会員20万人（2025-09）、100店舗</td><td>専門解説→自社サービス</td></tr>
+<tr><td class="key">株本祐己（StockSun・年収ch）</td><td>YouTube 28.5万人（毎日投稿・対談と社内密着）</td><td>3期目で売上10億円規模、YouTube 経由の受注数億円。経費75万円で案件7,000万円（2019）</td><td>密着・対談</td></tr>
+<tr><td class="key">クラシコム「北欧、暮らしの道具店」（EC）</td><td>YouTube 109万人／Instagram 170万</td><td>2026年7月期上期 売上28.4億円（+23.8%）、広告宣伝費率 約11%、EC 売上の約8割がアプリ経由</td><td>社員が出る・世界観</td></tr>
+<tr><td class="key">MEGANE店長（広島のトレカ店）</td><td>YouTube 29.7万人</td><td>売上等【未確認】</td><td>店頭の現場（顔出し）</td></tr>
+<tr><td class="key">船原徹雄（物販総合研究所・せどり教育）</td><td>YouTube 19.1万人</td><td>売上等【未確認】</td><td>教える（教育系）</td></tr>
+<tr><td class="key">竹之内教博（りらくる・令和の虎）</td><td>本人 29.4万人／令和の虎 153万人</td><td>りらくる直営600店・売却益270億円（発信前の実績）</td><td>出資審査番組・経営論</td></tr>
+<tr><td class="key">岡野タケシ弁護士（アトム法律事務所）</td><td>総フォロワー 270万人超（YouTube 175万）</td><td>採用につながる等の定性のみ。5〜6名で内製</td><td>専門解説（個人名＋社名）</td></tr>
+<tr><td class="key">ヒロ税理士</td><td>YouTube 42万人（2017年開始）</td><td>事業数字【未確認】</td><td>専門解説</td></tr>
+<tr><td class="key">LifeBank（運送・愛知）</td><td>YouTube「トラックボーイズ」</td><td>求人費 月約70万円→0円、2018・2019年に各20人程採用</td><td>社員が出る（採用目的）</td></tr>
+<tr><td class="key">伊勢通（建材商社）</td><td>YouTube 登録者 137人</td><td>関連部門の売上が前年比40倍（支援業者の事例記事＝二次情報）</td><td>B2B の説明動画</td></tr>
+<tr><td class="key">COHINA（小柄向けアパレル）</td><td>Instagram 22.7万（2024-11）、毎日インスタライブ約6年</td><td>3年で月商1億円超、2024-09 サザビーリーグへ譲渡</td><td>ライブ配信</td></tr>
+<tr><td class="key">foufou（D2C アパレル）</td><td>Instagram 22.5万</td><td>2025年7月期 売上2.28億円。ライブからリールへ転換して急伸</td><td>リール中心</td></tr>
+<tr><td class="key">丸祐運送（物流・採用）</td><td>Instagram／TikTok 各1万人超</td><td>応募が月20〜30名→50〜60名、8割が「SNSを見て」（ベンダー事例）</td><td>社員が出る（採用）</td></tr>
+<tr><td class="key">ハヤカワ五味（EC・下着）</td><td>X</td><td>フォロワー300人時に1万RT、500着が数時間で完売、1年で年商3,000万円（本人 note）</td><td>X 起点の物販</td></tr>
+<tr><td class="key">ゆうこす（KOS）</td><td>YouTube 77万人、総フォロワー100万人（2018-02）</td><td>youange（2018-09）即完売、年間売上20億円突破（2022-01、本人 note）</td><td>観客先行→自社商品</td></tr>
+<tr><td class="key">ヒカル（ReZARD）</td><td>YouTube 499万人</td><td>ReZARD 1年目「25億くらい」（本人談）、3年で70億円突破（2022-11）</td><td>観客先行→自社商品</td></tr>
+<tr><td class="key">両学長（リベ大・リベシティ）</td><td>YouTube 970万人（イラスト・顔出しなし）</td><td>『お金の大学』約200万部。リベシティ会員数は非公表【未確認】</td><td>解説アニメ→コミュニティ</td></tr>
+<tr><td class="key">ゆっくり不動産</td><td>YouTube 74.8万人（合成音声・顔出しなし）</td><td>累計2億再生、物件側に問い合わせ120件超の例</td><td>顔出しなし・現場紹介</td></tr>
+<tr><td class="key">有隣堂（書店）「有隣堂しか知らない世界」</td><td>YouTube 57.8万人</td><td>紹介商品が即完売</td><td>社員が出る</td></tr>
+</table></div>
+<p class="note">買取・物流の確認先（10万人超なし）：「こんどー社長の買取ビジネス塾」322人、「Lionチャンネル＠ブランド時計高額買取」1.15万人、「買取専門店ボア・ソルチ」4.05万人、「-関通HD-公式チャンネル」3.26万人、「フジトランスポート【公式】」7,540人（社員個人「shimijun-trucks」12.3万人）。せどり系は「いとう社長」2.58万人、「BIG神田の中国物販」2.95万人。ヒカルの 2024年の数字は「りんご」単位の自己申告で円と明言されていない。</p>
+
+<h3 id="s4-3">4-3 各SNSの仕組み：公式が明かす「表示される理由」は3社で違う。伸ばし方はそこから逆算できる</h3>
+<div class="tw"><table>
+<tr><th>SNS</th><th>観点</th><th>公式が明かしていること（要点）</th></tr>
+<tr><td class="key">YouTube</td><td>表示の要因</td><td>クリック／視聴時間／満足度アンケート／共有／高評価・低評価。ホームは「パフォーマンス＋視聴履歴」、検索はタイトル・説明・内容の一致。ショートは「見ることを選んだ視聴者の割合・平均視聴時間・平均視聴率」。タグは「重要ではありません」</td></tr>
+<tr><td class="key">YouTube</td><td>伸ばし方</td><td>「高い頻度より一貫した品質」。「最初の数秒で残るか去るかが決まる」「冒頭はサムネイルとタイトルの約束を果たす」。公開時刻の影響は「不明」、休止に罰則なし。ショートは長尺の発見に役立ち、長尺の成績を下げない。関連動画リンクで長尺へ（リンク先の冒頭5〜10秒で即座に報いる）</td></tr>
+<tr><td class="key">Instagram</td><td>表示の要因</td><td>Mosseri（2025-01-21）「最重要の3シグナルは視聴時間・いいね・送信」。見る指標は「平均視聴時間／リーチあたりのいいね／リーチあたりの送信」。いいねはフォロワー向け、送信は非フォロワー向け。全投稿を「小さな層に表示→反応で拡大」（2024-04）</td></tr>
+<tr><td class="key">Instagram</td><td>伸ばし方</td><td>「オリジナルの継続投稿」が最も効果的。リールは強いフック・3分以内・ウォーターマークなし・「DMで友達に送りたくなる投稿」。ハッシュタグは「リーチは増えない」（上限5件）。他人の再投稿中心はおすすめ除外。削除して再投稿は「ノー」</td></tr>
+<tr><td class="key">X</td><td>表示の要因</td><td>スコア＝各行動の予測確率×重み（重みは次の表）。リプライ・引用・共有・フォローが大きく、ネガティブな反応（興味なし・ミュート・報告）は大きなマイナス。New-Author Boost＝インプレッション200未満・フォロワー5万以下・投稿2時間以内の投稿をフィード15〜16位付近へ押し上げる</td></tr>
+<tr><td class="key">X</td><td>伸ばし方</td><td>X 公式：ハッシュタグ1〜2個、会話的で簡潔、他アカウントへの関与、頻繁な投稿、bio に「何をして・なぜフォローすべきか」。Musk：リンクは本文でなくリプライへ（2024-11）、指標は「unregretted user-seconds」（2025-01）。Buffer（1,880万投稿）：一般アカウントのリンク投稿のエンゲージ 0%、テキスト＞動画＞画像、返信で +8%</td></tr>
+<tr><td class="key">TikTok（補足）</td><td>表示の要因</td><td>視聴・いいね・共有・コメント、キャプション・音源・ハッシュタグ、端末設定。「フォロワー数と過去のヒットは直接の要因ではない」（公式 2020-06）</td></tr>
+<tr><td class="key">Threads（補足）</td><td>表示の要因</td><td>「インプレッションの半数以上が返信」、返信を生む投稿が広がる。トピック付き投稿は閲覧数が多い（2025-03）。推奨頻度は資料間で不一致（「週2〜5回」「最低1日1回」）</td></tr>
+</table></div>
+
+<p class="lead2">X の重み（公開コードから転記）：<b>2023年版はリプライがいいねの27倍、2026年版でも10倍。報告・ミュートのマイナスはいいね数百件分に相当する</b>（重みは予測確率に掛かるため「1報告＝468いいね」ではないとコード側に注記あり）。</p>
+<div class="tw"><table>
+<tr><th>行動</th><th class="num">2023年公開版</th><th class="num">2026-08-13 更新版</th></tr>
+<tr><td class="key">いいね</td><td class="num">0.5</td><td class="num">0.5</td></tr>
+<tr><td class="key">リポスト</td><td class="num">1.0</td><td class="num">1.0</td></tr>
+<tr><td class="key">リプライ</td><td class="num">13.5</td><td class="num">5.0（相互フォロー相手なら ＋15.0）</td></tr>
+<tr><td class="key">引用</td><td class="num">—</td><td class="num">5.0</td></tr>
+<tr><td class="key">プロフィールクリック</td><td class="num">12.0</td><td class="num">—</td></tr>
+<tr><td class="key">投稿者が返したリプライ</td><td class="num">75.0</td><td class="num">—</td></tr>
+<tr><td class="key">共有／DM 共有／リンクコピー共有</td><td class="num">—</td><td class="num">2.0／5.0／20.0</td></tr>
+<tr><td class="key">フォロー</td><td class="num">—</td><td class="num">4.0</td></tr>
+<tr><td class="key">興味なし／ミュート／ブロック</td><td class="num">—</td><td class="num">−47.52／−58.8／−31.2</td></tr>
+<tr><td class="key">報告</td><td class="num">−369.0</td><td class="num">−234.0</td></tr>
+</table></div>
+
+<p class="lead2">2025〜2026 の主な変更：<b>3社とも「オリジナル」「小規模アカウントの非フォロワーへのテスト表示」「AI の開示」へ動いている。</b></p>
+<div class="tw"><table>
+<tr><th>日付</th><th>SNS</th><th>変更</th></tr>
+<tr><td class="key">2024-10</td><td>YouTube</td><td>ショート最長3分（正方形以上の縦動画）</td></tr>
+<tr><td class="key">2025-03-31</td><td>YouTube</td><td>ショート視聴回数は再生開始でカウント（旧指標は「Engaged views」）</td></tr>
+<tr><td class="key">2025〜</td><td>YouTube</td><td>Hype：YPP 参加・登録者500〜50万人が対象、公開7日以内の動画、日本で提供、ショートは対象外</td></tr>
+<tr><td class="key">2026-02-19</td><td>YouTube</td><td>ショッピング アフィリエイトで楽天市場が国内初のパートナー</td></tr>
+<tr><td class="key">2026-09-23</td><td>YouTube</td><td>Made on YouTube 2026：Custom Feeds、Shorts Series、動画 A/B テスト最大3カット、アフィリエイト「年内に35か国」＋Amazon 対応。毎日「2,000万本」が投稿</td></tr>
+<tr><td class="key">2027-02-01</td><td>YouTube</td><td>YPP 新規参加は 8,000時間または 2,000万回（第3章）</td></tr>
+<tr><td class="key">2024-08</td><td>Instagram</td><td>閲覧数（Views）を全形式の主要指標に統一</td></tr>
+<tr><td class="key">2024-12</td><td>Instagram</td><td>トライアルリール（非フォロワーに先行表示、72時間で好調なら自動共有）</td></tr>
+<tr><td class="key">2025-07／08</td><td>Instagram</td><td>公開プロアカウントの投稿が Google/Bing に表示（設定でオフ可）／リポスト機能（フォロー外にも表示）</td></tr>
+<tr><td class="key">2026-04／08</td><td>Instagram</td><td>オリジナル保護を写真・カルーセルに拡大（米国はおすすめの75%がオリジナル）／AI 生成人物が主役のプロフィールはラベル必須</td></tr>
+<tr><td class="key">2026-09-24</td><td>Instagram</td><td>Mosseri の4原則＝オリジナリティ／新しさ／小規模アカウントの非フォロワーへのテスト表示／モデル拡大</td></tr>
+<tr><td class="key">2026-01／08</td><td>X</td><td>推薦アルゴリズムを xai-org/x-algorithm として再公開、8月に本番の重みを公開</td></tr>
+<tr><td class="key">2026-08-07／09-08</td><td>X</td><td>Creator Revenue Sharing 終了→ Original Content Rewards へ（Premium 加入・認証フォロワー500・直近90日で認証ユーザーからのホームTL インプレッション50万、非オリジナル除外、2週ごと・最低$30）</td></tr>
+<tr><td class="key">2025-06-30</td><td>TikTok</td><td>TikTok Shop 日本開始。1年で利用者30倍超、GMV の70%超がコンテンツ起点・LIVE 約60%。国内 MAU 4,950万超（2026-05）</td></tr>
+</table></div>
+
+<figure>
+<figcaption>図1　20〜40代は YouTube 9割超・Instagram 7〜8割・X 6〜7割。全年代では YouTube だけが8割を超える<small>出典：総務省 令和7年度「情報通信メディアの利用時間と情報行動に関する調査」概要（2026-06-26 公表）。単位：%（利用率）</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="SNS別・年代別の利用率">
+<line class="ax" x1="60" y1="250" x2="760" y2="250"/>
+<line class="grid" x1="60" y1="150" x2="760" y2="150"/><text class="m" x="55" y="154" text-anchor="end">50%</text>
+<line class="grid" x1="60" y1="50" x2="760" y2="50"/><text class="m" x="55" y="54" text-anchor="end">100%</text>
+<text class="m" x="55" y="254" text-anchor="end">0%</text>
+<!-- YouTube -->
+<rect class="bar" x="90" y="87" width="32" height="163"/><text x="106" y="83" text-anchor="middle" style="font-size:10.5px">81.5</text>
+<rect class="bar2" x="128" y="57.4" width="32" height="192.6"/><text x="144" y="53" text-anchor="middle" style="font-size:10.5px">96.3</text>
+<rect class="bar4" x="166" y="62" width="32" height="188"/><text x="182" y="58" text-anchor="middle" style="font-size:10.5px">94.0</text>
+<rect class="bar3" x="204" y="66.8" width="32" height="183.2"/><text x="220" y="62" text-anchor="middle" style="font-size:10.5px">91.6</text>
+<text x="163" y="272" text-anchor="middle">YouTube</text>
+<!-- Instagram -->
+<rect class="bar" x="260" y="140.4" width="32" height="109.6"/><text x="276" y="136" text-anchor="middle" style="font-size:10.5px">54.8</text>
+<rect class="bar2" x="298" y="84.8" width="32" height="165.2"/><text x="314" y="80" text-anchor="middle" style="font-size:10.5px">82.6</text>
+<rect class="bar4" x="336" y="96.8" width="32" height="153.2"/><text x="352" y="92" text-anchor="middle" style="font-size:10.5px">76.6</text>
+<rect class="bar3" x="374" y="115.8" width="32" height="134.2"/><text x="390" y="111" text-anchor="middle" style="font-size:10.5px">67.1</text>
+<text x="333" y="272" text-anchor="middle">Instagram</text>
+<!-- X -->
+<rect class="bar" x="430" y="160.6" width="32" height="89.4"/><text x="446" y="156" text-anchor="middle" style="font-size:10.5px">44.7</text>
+<rect class="bar2" x="468" y="103.2" width="32" height="146.8"/><text x="484" y="99" text-anchor="middle" style="font-size:10.5px">73.4</text>
+<rect class="bar4" x="506" y="114.6" width="32" height="135.4"/><text x="522" y="110" text-anchor="middle" style="font-size:10.5px">67.7</text>
+<rect class="bar3" x="544" y="136" width="32" height="114"/><text x="560" y="132" text-anchor="middle" style="font-size:10.5px">57.0</text>
+<text x="503" y="272" text-anchor="middle">X</text>
+<!-- TikTok -->
+<rect class="bar" x="600" y="176.6" width="32" height="73.4"/><text x="616" y="172" text-anchor="middle" style="font-size:10.5px">36.7</text>
+<rect class="bar2" x="638" y="127" width="32" height="123"/><text x="654" y="123" text-anchor="middle" style="font-size:10.5px">61.5</text>
+<rect class="bar4" x="676" y="160.6" width="32" height="89.4"/><text x="692" y="156" text-anchor="middle" style="font-size:10.5px">44.7</text>
+<rect class="bar3" x="714" y="164.8" width="32" height="85.2"/><text x="730" y="160" text-anchor="middle" style="font-size:10.5px">42.6</text>
+<text x="673" y="272" text-anchor="middle">TikTok</text>
+<!-- legend -->
+<rect class="bar" x="785" y="70" width="14" height="14"/><text x="805" y="82">全年代</text>
+<rect class="bar2" x="785" y="96" width="14" height="14"/><text x="805" y="108">20代</text>
+<rect class="bar4" x="785" y="122" width="14" height="14"/><text x="805" y="134">30代</text>
+<rect class="bar3" x="785" y="148" width="14" height="14"/><text x="805" y="160">40代</text>
+<text class="m" x="785" y="200">13〜79歳 1,800人</text>
+<text class="m" x="785" y="216">2025-12 調査</text>
+</svg>
+</figure>
+
+<h3 id="s4-4">4-4 伸び方の実態：登録者1,000人に届くのは4割、1万人は8%。頻度は「月12本以上」で成長が4.1倍</h3>
+<div class="tw"><table>
+<tr><th>データ</th><th>数字</th><th>読み方</th></tr>
+<tr><td class="key">vidIQ（2026-07-24、6,118万チャンネル）</td><td>1,000人到達 40.6%、1万人 7.9%、10万人 1.3%、100万人 0.13%。中央値の月間登録者増は 1,000〜9,999人帯で 0.51%（約13人/月）</td><td>1万人は上位8%。伸びは「当たる」か「積む」かで決まる</td></tr>
+<tr><td class="key">vidIQ（2025-06、1,000人到達 530万チャンネル）</td><td>1,000人に到達したチャンネルのうち、10本未満で到達したのは約10%、40本超を要したのが 68%、150本超を要したのが約31%</td><td>1,000人は「40本超」が普通。本数を積む前提で計画する</td></tr>
+<tr><td class="key">vidIQ 投稿頻度調査（1,021万ch、2025-04〜2026-03）</td><td>月12本以上は月1本未満の 4.1倍の視聴成長（中央値 2.18% vs 0.53%）、登録者成長 0.91% vs 0.00%</td><td>公式の「頻度より品質」と矛盾しない。品質を保てる範囲で本数を出す</td></tr>
+<tr><td class="key">日本の経営者系チャンネルの成長速度（開設日→登録者、単純平均）</td><td>両学長 2018-10 開設・970万人（約121万人/年）、ヒカル 2016-03・499万人、令和の虎 2018-12・153万人（総4,197本）、株本（年収ch）2018-04・28.5万人、竹之内 2021-01・29.4万人、StockSun WebマーケティングTV 2019-07・5.98万人（総2,215本）</td><td>100万人超の7chはすべて 2016〜2020年開設。B2B 寄りの StockSun は 2,215本で 5.98万人</td></tr>
+<tr><td class="key">Instagram（Socialinsider 2025、44.7万アカウント）</td><td>年間フォロワー増加率：1〜5千人 22.00%、5千〜1万 20.29%、1万〜5万 17.20%。ER 平均 0.48%</td><td>中立データでは小規模層でも年 +22%。運用会社の「4.2か月で1万人」は成功例の選抜（母数非公開）</td></tr>
+<tr><td class="key">X（Socialinsider・Buffer 2026）</td><td>ER 0.10〜0.12%、月70投稿。形式別 テキスト3.56／画像3.40／動画2.96／リンク2.25%</td><td>X は「量と会話」の場。1投稿の反応率は低く、本数で稼ぐ</td></tr>
+<tr><td class="key">分布の偏り（Bärtl 2018・Pew 2019）</td><td>全視聴の 85% が 3% のチャンネルに集中。登録者25万人以上の 43,770ch のうち週1本以上投稿は 56%</td><td>上位は投稿を続けている</td></tr>
+</table></div>
+
+<figure>
+<figcaption>図2　登録者1,000人に届くチャンネルは4割、1万人は8%、10万人は1.3%<small>出典：vidIQ「YouTube Subscriber Growth Statistics」（2026-07-24、6,118万チャンネル）。単位：%（到達したチャンネルの割合）</small></figcaption>
+<svg viewBox="0 0 900 200" role="img" aria-label="登録者数の到達率">
+<text x="190" y="57" text-anchor="end">1,000人</text><rect class="bar" x="200" y="40" width="243.6" height="26"/><text x="450" y="58">40.6%</text>
+<text x="190" y="97" text-anchor="end">1万人</text><rect class="bar" x="200" y="80" width="47.4" height="26"/><text x="254" y="98">7.9%</text>
+<text x="190" y="137" text-anchor="end">10万人</text><rect class="bar" x="200" y="120" width="7.8" height="26"/><text x="214" y="138">1.3%</text>
+<text x="190" y="177" text-anchor="end">100万人</text><rect class="bar" x="200" y="160" width="2" height="26"/><text x="208" y="178">0.13%</text>
+<line class="ax" x1="200" y1="30" x2="200" y2="190"/>
+<text class="m" x="600" y="98">中央値の月間登録者増（1,000〜9,999人帯）</text>
+<text class="m" x="600" y="116">0.51% ＝ 約13人/月</text>
+</svg>
+</figure>
+
+<h3 id="s4-5">4-5 転売領域の反応：消費者は転売品を買いつつ嫌い、権利者は規約で拒み、転売品を扱った著名 YouTuber は即批判された</h3>
+<div class="tw"><table>
+<tr><th>事実</th><th>内容</th><th>出典の種類</th></tr>
+<tr><td class="key">世論</td><td>定価以上の転売品の購入経験 63.3%、ランダム商法「嫌い」89.9%（Hamaru Strategy、2026-03〜04、n=35,866）。一般消費者の「転売ヤー」印象を直接問う大規模調査は【未確認】。堀江貴文氏は転売を「立派な経済活動」と肯定（2025-10）</td><td>調査・報道</td></tr>
+<tr><td class="key">権利者・売り場</td><td>第3章のとおり（BANDAI SPIRITS・ポケモン・任天堂・メルカリ・LINEヤフー）。自民党トレカ議連が設立（2026-07-23、市場3,384億円）</td><td>規約・公式発表</td></tr>
+<tr><td class="key">インフルエンサーの実例</td><td>ラファエルが転売品の Switch 2 をプレゼント企画にし「転売ヤーから買うやつはクズ」等の批判（2025-06）</td><td>報道</td></tr>
+<tr><td class="key">炎上の構造</td><td>炎上件数 2024年 1,225件。原因の最多は「特定の層を不快にさせる行為」58〜64%（シエンプレ）。炎上に書き込む人は約0.5%（山口真一、一次未確認）。ヒカルは 2025-09 の私生活の宣言で1日12万人減・累計30万人減。林尚弘は違法賭博で社長辞任（2022）、三崎優太は脱税で逮捕（2019）、竹花貴騎は経歴の誇張が発覚（2020）。はじめしゃちょーは自宅特定で転居（2020）</td><td>調査・報道</td></tr>
+<tr><td class="key">事業者側の不安</td><td>中小企業経営者の 72.1% が炎上・風評に不安、74.6% が活用を躊躇（2022、n=104）。SNS 社内ルール「ある」は小規模企業 9.8%（帝国データバンク 2026-05、n=1,355）。担当者の半数近くが「社内リソース不足」（2025-04、n=2,134）</td><td>調査</td></tr>
+<tr><td class="key">せどり・物販教育系の規模</td><td>船原徹雄 19.1万人、いとう社長 2.58万人、BIG神田 2.95万人（いずれも顔出し）。転売を「教える」形は一定の規模で成立している</td><td>チャンネル実測</td></tr>
+</table></div>
+<p class="note">推測：「転売」という語が付くと批判が個人に集中しやすい。正規の仕入れ・権利者規約の遵守・品薄商品を扱わない点を明示できれば通常の EC 発信と同等に受け止められる可能性はあるが、裏付けとなる調査は無い。</p>
+
+<h3 id="s4-6">4-6 紐づけの事例：同じ領域の商品なら成功、領域が違うと観客が離れる。方向転換は「数か月」単位</h3>
+<div class="tw"><table>
+<tr><th>事例</th><th>発信開始→商品化</th><th>商品化時の規模→結果</th><th>紐づけの型</th></tr>
+<tr><td class="key">ヒカル→ReZARD（アパレル）</td><td>2013-06 → 2019-11</td><td>約300万人（2019-03）→ 1年目「25億くらい」、3年で70億円突破</td><td>観客先行・同じ領域（本人の服）</td></tr>
+<tr><td class="key">ゆうこす→youange（コスメ）</td><td>2016-08 KOS 設立 → 2018-09</td><td>総フォロワー100万人（2018-02）→ 即完売、年間売上20億円突破（2022-01）</td><td>観客先行・同じ領域（美容）</td></tr>
+<tr><td class="key">両学長→リベシティ</td><td>2018-10 → 2020-06（2021-07 法人化）</td><td>登録者 850万〜950万人超。会員数は非公表【未確認】</td><td>個人が母艦・サービスは別</td></tr>
+<tr><td class="key">山澤礼明→FIT PLACE24</td><td>フィットネス発信 → ジム運営</td><td>100万人超 → 100店舗・会員20万人（2025-09）</td><td>個人が母艦・同じ領域</td></tr>
+<tr><td class="key">MrBeast→Feastables（菓子）</td><td>2012-02 → 2022-01</td><td>1億人達成 2022-07 → 2024年売上「about $250 million」・利益「more than $20 million」（動画事業は「lost almost $80 million」）</td><td>観客先行・観客の属性に合わせた商品</td></tr>
+<tr><td class="key">Logan Paul／KSI→PRIME（飲料）</td><td>→ 2022-01</td><td>各 23.5M／24M 登録 → 2023年 $1.2B → 2024年 英国48%減・米国42%減、2026-07 豪州で管理手続き</td><td>観客先行・話題先行（「A brand cannot live on hype alone」）</td></tr>
+<tr><td class="key">Thomas Frank→Notion テンプレ</td><td>メイン約3M 登録 → Notion 専用チャンネル新設</td><td>メインは転換せず「a million of those subscribers have just moved on」。テンプレ売上 2022年 $1,000,508</td><td>方向転換せず別チャンネル</td></tr>
+<tr><td class="key">Ali Abdaal→PTYA（講座）</td><td>2017 → 2020-11</td><td>第1期 $294,000、累計「over $4.5M」（2022-07）。第8期でライブ終了（運営負荷）。2024年 視聴 −15%</td><td>観客先行・同じ領域（生産性）</td></tr>
+<tr><td class="key">マコなり社長→UNCOMMON</td><td>→ 2021-01</td><td>91万人（2021-10）→ 個人向けは 2022-01 終了（累計1,000名以上）。div は 2021年に希望退職約100人・整理約130人</td><td>観客先行・高額商品の失速</td></tr>
+<tr><td class="key">QuizKnock→QurioStore（EC）</td><td>2016-10 → 2023</td><td>219万人 → EC 利用1万人超、運営3人</td><td>社名が母艦・同じ領域</td></tr>
+<tr><td class="key">Marques Brownlee→Panels（壁紙アプリ）</td><td>→ 2024-09</td><td>累計約90万DL・消費者支出 $95,000 → 2025-12-31 終了</td><td>観客先行・課金抵抗</td></tr>
+<tr><td class="key">YouTube 公式「Tips for pivoting your content」</td><td colspan="2">段階的に転換、告知動画、「months, not weeks」、別チャンネル新設も選択肢。「登録者数は現在の活動視聴者数を表さない」。幹部（2026-09-20）：観客は「柵を塗るのも見る」型と「登録理由そのもの」型に分かれる</td><td>公式の注意</td></tr>
+</table></div>
+<p class="lead2">要点：<b>「先に一般テーマで集めて、あとで別のサービスに紐づける」が成功した例は、商品が観客の来た理由と同じ領域にあるものだけ</b>でした。領域が違うと（Thomas Frank・Panels）観客は動かず、話題だけで売ると（PRIME）続きません。転換率の公開データは Substack「無料購読者の 5〜10% が有料化、10% が目標」、note「会員938万人／累計購入者438万人」程度で、SNS フォロワー→顧客の公式な比率は【未確認】です。</p>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>サービス別の企画表。</b>転送・発送代行・買取・ジムのどれを先に出すかが未確定のため、サービスごとの動画企画は作っていない（母艦テーマの案までにとどめた）。</li>
+<li><b>有料広告（YouTube 広告・Instagram 広告・X 広告）の出稿。</b>本書は無料の発信（オーガニック）だけを扱う。</li>
+<li><b>裏技・自動化ツール・フォロワー購入。</b>各社の規約で禁止または不利益（Instagram は再投稿中心・非オリジナルをおすすめ除外、X は非オリジナルを報酬除外）のため対象外。</li>
+<li><b>TikTok・Threads の詳細。</b>「そこら辺」の補足として利用率と仕組みの要点だけ。TikTok Shop の出店条件は【未確認】。</li>
+<li><b>ご依頼主自身の適性・話し方・見た目の検証。</b>本書は市場と仕組みの調査で、個人の適性は扱っていない。</li>
+<li><b>数字の裏取りの限界。</b>売上の多くは本人・会社の自己申告（ヒカルの「りんご」単位、朝倉未来の年商30億など）。登録者数はチャンネルページ表記の転記。X のフォロワー数は第三者サイトの値。</li>
+<li><b>見つからなかったもの。</b>「代表者が発信していると買いたくなる」の直接調査（第2章）。買取・倉庫業の顔出し社長で10万人超（4-2）。週あたりの時間コストの調査。開設1年以内に更新が止まる割合の一次データ。日本で「テーマ変更→数字」を本人が公表した例。法人のバーチャルオフィス表記の可否条件。</li>
+</ul>
+
+<h2 id="s6">6. 案の比較<small>「母艦型（案C）」が唯一プラス3。サービス直結（案A）はサービス確定後なら成り立ち、一般テーマ先行（案B）は紐づけとリスクの両方で不利</small></h2>
+<p class="lead2">経緯：<b>ご依頼の「最初から紐づける」「先に登録者を得てから紐づける」に、事例で見えた第3の型（母艦型）と、比較の基準として「顔出しなし」「発信しない」を加えて5案</b>にしました。採点は Claude の提案で、各軸 −1／0／＋1、合計で並べています（要ご判断）。</p>
+<div class="tw"><table>
+<tr><th>案</th><th>判定</th><th class="num">合計</th><th>理由</th></tr>
+<tr><td class="key">案A　サービス直結型<br><span class="note">転送・発送代行など1つのサービスのチャンネル</span></td><td class="st warn">条件付き</td><td class="num">＋1</td><td>紐づけは最短（岡野・ヒロ税理士・森朝奈・LifeBank）。限定テーマは登録者が伸びにくく（伊勢通137人、StockSun は2,215本で5.98万人）、<b>サービスが未確定の今は始められない</b></td></tr>
+<tr><td class="key">案B　一般テーマ先行型<br><span class="note">開封・エンタメ等で先に集め、あとで紐づけ</span></td><td class="st ng">不利</td><td class="num">−2</td><td>当たれば速いが、別領域への転換で観客が離れる（Thomas Frank・Panels）。開封・転売ネタは権利者と世論の的（4-5）。企画・編集の負荷が最大。成功例（ヒカル等）は発信が本業の人</td></tr>
+<tr><td class="key">案C　母艦型<br><span class="note">実名・顔出しで「コレクター市場×小さな会社の実務」を語り、サービスは決まった順に載せる</span></td><td class="st ok">推奨</td><td class="num">＋3</td><td>将来のサービス（転送・発送代行・買取・EC）がすべて「コレクター市場の実務」に収まり、転換なしで紐づく（両学長・山澤・ヒカルの型）。今すぐ始められる。「転売」の語を避ける設計が要る</td></tr>
+<tr><td class="key">案D　顔出しなし型<br><span class="note">アバター・合成音声・声だけ</span></td><td class="st warn">条件付き</td><td class="num">0</td><td>両学長 970万・ゆっくり不動産 74.8万の成功例があるが、解説アニメ型は制作負荷が高い。「顔で信用を得る」というご依頼の狙いとは逆方向</td></tr>
+<tr><td class="key">案E　発信しない（比較の基準）</td><td class="st ng">基準</td><td class="num">0</td><td>時間とリスクはゼロだが、影響力もゼロ。SNS きっかけの購入 55〜65% の層に届かない</td></tr>
+</table></div>
+<p class="lead2">採点の内訳（各軸 −1／0／＋1。Claude の提案）</p>
+<div class="tw"><table>
+<tr><th>案</th><th class="num">到達の速さ</th><th class="num">紐づけやすさ</th><th class="num">炎上・特定リスク</th><th class="num">時間コスト</th><th class="num">事例の裏付け</th><th class="num">今すぐ始められる</th><th class="num">合計</th></tr>
+<tr><td class="key">案A　サービス直結</td><td class="num">−1</td><td class="num">＋1</td><td class="num">＋1</td><td class="num">0</td><td class="num">＋1</td><td class="num">−1</td><td class="num">＋1</td></tr>
+<tr><td class="key">案B　一般テーマ先行</td><td class="num">0</td><td class="num">−1</td><td class="num">−1</td><td class="num">−1</td><td class="num">0</td><td class="num">＋1</td><td class="num">−2</td></tr>
+<tr><td class="key">案C　母艦型</td><td class="num">0</td><td class="num">＋1</td><td class="num">0</td><td class="num">0</td><td class="num">＋1</td><td class="num">＋1</td><td class="num">＋3</td></tr>
+<tr><td class="key">案D　顔出しなし</td><td class="num">0</td><td class="num">0</td><td class="num">＋1</td><td class="num">−1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+<tr><td class="key">案E　発信しない</td><td class="num">−1</td><td class="num">−1</td><td class="num">＋1</td><td class="num">＋1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+</table></div>
+<p class="note">リスクと時間コストは「小さいほど＋」。「今すぐ始められる」は、サービス未確定の現時点で着手できるか。</p>
+
+<figure>
+<figcaption>図3　案C（母艦型）だけが＋3。案B（一般テーマ先行）は紐づけ・リスク・時間の3軸でマイナス<small>採点は Claude の提案（各軸 −1／0／＋1 の合計）。0 を中央に、負は左。</small></figcaption>
+<svg viewBox="0 0 900 272" role="img" aria-label="案比較の横棒図">
+<line class="ax" x1="450" y1="15" x2="450" y2="245"/>
+<line class="grid" x1="330" y1="15" x2="330" y2="245"/><text class="m" x="330" y="262" text-anchor="middle">−3</text>
+<line class="grid" x1="570" y1="15" x2="570" y2="245"/><text class="m" x="570" y="262" text-anchor="middle">＋3</text>
+<text class="m" x="450" y="262" text-anchor="middle">0</text>
+<text x="20" y="53">案A　サービス直結</text><rect class="bar4" x="450" y="35" width="40" height="28"/><text x="496" y="54">＋1</text>
+<text x="20" y="98">案B　一般テーマ先行</text><rect class="bar3" x="370" y="80" width="80" height="28"/><text x="364" y="99" text-anchor="end">−2</text>
+<text x="20" y="143">案C　母艦型（推奨）</text><rect class="bar" x="450" y="125" width="120" height="28"/><text x="576" y="144">＋3</text>
+<text x="20" y="188">案D　顔出しなし</text><rect class="bar3" x="449" y="170" width="2" height="28"/><text x="458" y="189">0</text>
+<text x="20" y="233">案E　発信しない</text><rect class="bar3" x="449" y="215" width="2" height="28"/><text x="458" y="234">0</text>
+</svg>
+</figure>
+
+<h3>6-2 主軸にする SNS の比較（提案）</h3>
+<p class="lead2">経緯：<b>ご依頼に YouTube・Instagram・X（ツイッター）の3つが挙がったため、どれを主軸にするかを利用率・仕組み・当社の観客・時間で比べました。</b></p>
+<div class="tw"><table>
+<tr><th>案</th><th>判定</th><th>数値（根拠）</th><th>理由</th></tr>
+<tr><td class="key">P1　YouTube 主軸＋X を毎日<br><span class="note">Instagram はサービス確定後</span></td><td class="st ok">推奨</td><td>YouTube 利用率 81.5%（20〜40代 9割超）。X 20〜30代 68〜73%。X は小規模アカウントの投稿を2時間以内に押し上げる仕組みがある</td><td>YouTube は検索と関連動画で「あとから見られる資産」になり、長尺で信用を作れる。X は毎日の会話で関係を作り、YouTube 公開の告知先になる</td></tr>
+<tr><td class="key">P2　X 主軸（テキストだけ・動画なし）</td><td class="st warn">条件付き</td><td>ER 0.10〜0.12%、月70投稿が平均。ハヤカワ五味は300人で1万RT</td><td>最も軽く始められるが、顔と声で信用を作る効果は薄い。動画を撮る時間が取れない期間の「つなぎ」には向く</td></tr>
+<tr><td class="key">P3　Instagram 主軸</td><td class="st warn">条件付き</td><td>利用率 54.8%（女性 63.4%・男性 46.2%）。物販の成功例は COHINA・foufou・北欧暮らし（女性向け商材）</td><td>推測：当社の観客（TCG・フィギュアの買い手）は男性比率が高く、利用者構成と合わない可能性。サービスが視覚的（倉庫・梱包・店舗）に決まってから</td></tr>
+<tr><td class="key">P4　全部同時</td><td class="st ng">不利</td><td>事業者の半数近くが「社内リソース不足」</td><td>一人で3媒体を毎日回すと質が落ちる。3社とも「オリジナルの継続」を最重視しており、薄く広くは不利</td></tr>
+</table></div>
+
+<h2 id="s7">7. 推奨と理由<small>「コレクター市場の実務を法人代表が語る」象限は空いている。そこに実名・顔出しで立ち、サービスは決まった順に載せる</small></h2>
+
+<h3>7-1 位置取り：教える系・開封系はいるが、「法人の実務・数字」を語るコレクター市場の発信者はいない</h3>
+<figure>
+<figcaption>図4　「コレクター市場 × 法人の実務・数字」の象限は空白。当社（案C）だけがそこに入る<small>横軸＝語る内容、縦軸＝商品領域。競合は箱、当社だけ塗りつぶし。登録者数は 2026-09-30 のチャンネル表記。空白の確認先：買取店社長ch・トレカ店ch・物流公式ch・せどり教育ch（4-2 の注記）</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="位置取りの2×2図">
+<rect class="lane" x="130" y="15" width="370" height="120" style="stroke:var(--bg);stroke-width:3"/>
+<rect class="lane" x="500" y="15" width="370" height="120" style="stroke:var(--bg);stroke-width:3"/>
+<rect class="lane" x="130" y="135" width="370" height="120" style="stroke:var(--bg);stroke-width:3"/>
+<rect class="lane" x="500" y="135" width="370" height="120" style="stroke:var(--bg);stroke-width:3"/>
+<!-- 左上：個人のプレイ×コレクター -->
+<rect class="cand" x="145" y="35" width="170" height="24" rx="3"/><text x="230" y="52" text-anchor="middle" style="font-size:10.5px">MEGANE店長（トレカ）29.7万</text>
+<rect class="cand" x="325" y="35" width="170" height="24" rx="3"/><text x="410" y="52" text-anchor="middle" style="font-size:10.5px">船原（せどり教育）19.1万</text>
+<rect class="cand" x="145" y="70" width="170" height="24" rx="3"/><text x="230" y="87" text-anchor="middle" style="font-size:10.5px">開封系・せどり系ch 多数</text>
+<!-- 右上：法人の実務×コレクター（当社） -->
+<rect class="us" x="560" y="40" width="250" height="44" rx="4"/>
+<text class="w" x="685" y="58" text-anchor="middle" style="font-size:12px">当社（案C・母艦型）</text>
+<text class="w" x="685" y="75" text-anchor="middle" style="font-size:10.5px">コレクター市場の実務・数字を法人代表が語る</text>
+<text class="m" x="685" y="112" text-anchor="middle" style="font-size:10.5px">調べた範囲で該当なし（買取店・トレカ店・物流の各chを確認）</text>
+<!-- 左下：個人×一般 -->
+<rect class="cand" x="145" y="155" width="170" height="24" rx="3"/><text x="230" y="172" text-anchor="middle" style="font-size:10.5px">両学長（お金の解説）970万</text>
+<rect class="cand" x="325" y="155" width="170" height="24" rx="3"/><text x="410" y="172" text-anchor="middle" style="font-size:10.5px">岡野タケシ弁護士 175万</text>
+<rect class="cand" x="145" y="190" width="170" height="24" rx="3"/><text x="230" y="207" text-anchor="middle" style="font-size:10.5px">ヒロ税理士 42万</text>
+<!-- 右下：法人の実務×一般 -->
+<rect class="cand" x="515" y="155" width="170" height="24" rx="3"/><text x="600" y="172" text-anchor="middle" style="font-size:10.5px">森朝奈（魚屋）41.9万</text>
+<rect class="cand" x="695" y="155" width="170" height="24" rx="3"/><text x="780" y="172" text-anchor="middle" style="font-size:10.5px">北欧暮らしの道具店 109万</text>
+<rect class="cand" x="515" y="190" width="170" height="24" rx="3"/><text x="600" y="207" text-anchor="middle" style="font-size:10.5px">年収ch／StockSun 28.5万</text>
+<rect class="cand" x="695" y="190" width="170" height="24" rx="3"/><text x="780" y="207" text-anchor="middle" style="font-size:10.5px">山澤（ジム）114万</text>
+<!-- 軸ラベル -->
+<text x="10" y="60" style="font-size:11px">ホビー・</text><text x="10" y="76" style="font-size:11px">コレクター市場</text><text class="m" x="10" y="92" style="font-size:10px">TCG・フィギュア・くじ</text>
+<text x="10" y="185" style="font-size:11px">一般ビジネス・</text><text x="10" y="201" style="font-size:11px">他業種</text>
+<text x="315" y="280" text-anchor="middle" style="font-size:11.5px">← 個人のプレイ・教える（開封・せどり手法・査定）</text>
+<text x="685" y="280" text-anchor="middle" style="font-size:11.5px">法人の実務・数字（仕入れ・保管・物流・法令）→</text>
+</svg>
+</figure>
+
+<div class="card">
+<p style="margin:0 0 8px"><b>推奨（提案・要ご判断）：案C「母艦型」＋P1「YouTube 主軸＋X 毎日」で始める。</b></p>
+<ul style="margin:0">
+<li><b>顔出し・実名で始める。</b>合同会社の代表社員は氏名・住所が登記で公開済み（第3章）で、匿名にしても隠せる範囲は小さい。信用は「人的魅力・透明性」で作られる（電通PRC 37.1%、Sprout 70%）。</li>
+<li><b>テーマは「コレクター市場（TCG・フィギュア）を扱う小さな会社の実務と経営」。</b>「転売」の語は使わない。この器なら、転送・発送代行・買取・EC・社内ツールのどれが先に決まっても、テーマ変更なしで載る。</li>
+<li><b>YouTube は長尺（信用の資産）＋ショート（発見）、X は毎日の会話。</b>Instagram はサービスが視覚的に決まってから、ショートをリールに転用する形で足す。</li>
+<li><b>権利者の規約に触れる商材（一番くじ等）は発信に載せない。</b>進行中の件があり、規約が「転売目的」を明示的に拒んでいる。</li>
+</ul>
+</div>
+
+<h3>7-2 反論（自分で書く）と、それにどう答えるか</h3>
+<div class="tw"><table>
+<tr><th>反論</th><th>事実</th><th>答え</th></tr>
+<tr><td class="key">顔出しは要らないのでは（両学長 970万、ゆっくり不動産 74.8万）</td><td>成立している。ただし解説アニメ・合成音声は制作負荷が高く、型が「解説」に偏る</td><td>案Dとして残す。ご依頼の狙い（顔で信用を得る）とは別路線なので、推奨はしないが、途中で切り替える余地は残す</td></tr>
+<tr><td class="key">「インフルエンサーを最も信頼する」は 4.0%。影響力は買われない</td><td>NEL 2025。一方、口コミ 36.6%、人的魅力 37.1%、CEO 活動で親近感 70%</td><td>だから「影響力を売る」発信ではなく、「口コミの土台と透明性を作る」発信（現場と数字の公開）にする。教育系・稼ぎ方系にしない</td></tr>
+<tr><td class="key">小規模のうちは伸びない（中央値 月0.51%、Instagram 年+22%）</td><td>事実。1,000人到達は40本超が普通、1万人は上位8%</td><td>12か月・長尺約50本＋ショート約150本を前提にし、撤退条件を先に置く（第9章）。B2B では登録者137人でも売上40倍の例（伊勢通）があり、取引先向けなら数は要らない</td></tr>
+<tr><td class="key">本業の時間を食う</td><td>10分動画の編集は 3〜8時間（クラウドワークス）。事業者の半数近くが「リソース不足」</td><td>試算 週6〜10時間（第8章）。台本・字幕・サムネ文言・投稿文は Claude で作り、90日後に編集外注（1〜3万円/本）を判断する</td></tr>
+<tr><td class="key">「転売」を語れば批判、語らなければ何を語る</td><td>炎上原因の最多は「特定の層を不快にさせる行為」。ラファエルの例。権利者は規約で拒否</td><td>「保管（温湿度）・真贋・物流・海外仕入れ・価格推移の読み方・法令対応」は「転売」の語なしで語れ、しかも競合が空白（図4）。稼ぎ方は語らない</td></tr>
+<tr><td class="key">「中の人」発信を不要とする人が 40.7% いる</td><td>メンバーズ 2025</td><td>企業公式に「中の人」を求めない層の話で、経営者個人のチャンネルを否定した数字ではない。ただし「会社の告知だけ」の投稿は避ける根拠にはなる</td></tr>
+</table></div>
+
+<h3>7-3 発信内容の設計（提案）：3本の柱を、将来のサービスへの接点で選ぶ</h3>
+<p class="lead2">経緯：<b>伸びた経営者チャンネルの型（4-2）と、空白の象限（図4）、景表法の制約（第3章）から、当社が語れて競合が語っていない内容を3本に絞りました。</b>企画の題名は例で、決めるのはご依頼主です。</p>
+<div class="tw"><table>
+<tr><th>柱</th><th>何を見せるか（例）</th><th>根拠になった型・事例</th><th>将来のサービスとの接点</th></tr>
+<tr><td class="key">①現場と数字の公開</td><td>仕入れ→検品→保管→出荷の裏側。フィギュアの温湿度管理の実際。月次の在庫金額・回転の推移。海外仕入れの手順と費用。失敗した仕入れ</td><td>森朝奈（魚屋の現場・通販10倍）、年収ch（社内密着）、竹花貴騎（財務公開）、クラシコム（社員が出る）</td><td>発送代行・転送・倉庫：「この会社は物を丁寧に扱う」を先に見せる</td></tr>
+<tr><td class="key">②市場の解説</td><td>TCG・フィギュア市場の価格推移の読み方、再販の見方、保管と真贋、海外版と国内版の違い、新作の「寝かせ適性」の考え方（判定の枠組みは公開、個別の断定は避ける）</td><td>両学長（解説型）、MEGANE店長（トレカ）、リベ大→リベシティの型</td><td>買取・EC・寝かせ判定ツール：「相場が読める会社」への信用</td></tr>
+<tr><td class="key">③経営者の判断と失敗</td><td>新規事業の探し方と却下した案、プログラミング未経験の代表が Claude（AI）で社内システムを作る過程、規約・法令を守る運用（一般論として）、外注・採用の判断</td><td>竹之内（経営論）、令和の虎（判断の公開）、株本（受注数億円）</td><td>SaaS・ツール・SNS運用代行・採用：「一緒に仕事をしたい経営者」への信用。B2B は思想的発信を 73% が販促資料より信頼</td></tr>
+</table></div>
+<p class="note">やらないこと（提案）：「稼ぎ方」「月商○○万円の作り方」を売る教育系（景表法の不実証広告・体験談規制に触れやすく、せどり教育系と同じ象限に入る）。進行中の権利者の件を題材にすること。品薄商品を「転売目的で買った」と語ること。</p>
+
+<h3>7-4 増やし方の運用ルール：各SNSの公式が明かす要因から逆算する</h3>
+<div class="tw"><table>
+<tr><th>SNS</th><th>毎回やること</th><th>頻度・形（提案）</th></tr>
+<tr><td class="key">YouTube</td><td>冒頭5〜10秒でサムネイル・タイトルの約束を果たす（ロゴ・挨拶を置かない）。タイトルは検索される言葉で。ショートは長尺の切り抜きにし、関連動画リンクで長尺へ。Audience タブで「新規／リピーター」を追い、タイトル A/B テストを使う</td><td>長尺 週1本（10〜20分）＋ショート 週3本。公開時刻は気にしない。休止しても罰則なし</td></tr>
+<tr><td class="key">X</td><td>問いかけで終える投稿にし、来た返信には必ず返す。リンクは本文に入れずリプライへ。投稿後2時間は自分で会話に参加する。大きなアカウントの話題に引用で乗る。bio に「何をして・なぜフォローすべきか」。ハッシュタグは1〜2個。不快にさせる投稿は数字の上でも損</td><td>1日2〜3回。テキスト中心（反応率はテキスト＞画像＞動画＞リンク）。YouTube 公開日は告知＋要約スレッド</td></tr>
+<tr><td class="key">Instagram（サービス確定後）</td><td>「DMで友達に送りたくなる」実用情報（保管方法・相場の見方）にする。リールは3分以内・冒頭フック・他社ロゴなし。トライアルリールで非フォロワーに試す。ハッシュタグは5個以内。削除→再投稿はしない。プロアカウントにする</td><td>リール 週2〜3本（ショートの転用）＋ストーリーズは日常</td></tr>
+<tr><td class="key">共通</td><td>オリジナルを続ける（3社とも非オリジナルを不利に扱う）。AI は台本・字幕・サムネ文言・要約に使う。毎週の記録：登録者、長尺の平均視聴率、リーチあたりの送信、返信数、否定的反応の件数</td><td>記録は数字だけ Claude に渡して週報化（トークン節約）</td></tr>
+</table></div>
+<p class="note">根拠：YouTube ヘルプ・公式ブログ（4-3）、vidIQ（月12本以上で成長 4.1倍）、X の公開アルゴリズム（リプライ 5.0〜13.5、投稿者の返信 75.0、New-Author Boost、ネガティブ反応 −47.52〜−234）、Musk の発言、Buffer 1,880万投稿、Hootsuite（1日2〜3回）、Mosseri 2025-01-21、creators ブログ（オリジナル・トライアルリール）、第3章（AI 方針）。</p>
+
+<h3>7-5 「バズ」の構造：研究で分かっているのは「高い感情の覚醒」「大アカウントによる放送」「不快にさせる行為が炎上の最多原因」</h3>
+<div class="tw"><table>
+<tr><th>知見</th><th>数字</th><th>発信への当てはめ（提案）</th></tr>
+<tr><td class="key">高覚醒の感情（畏敬・怒り・不安）が共有を増やし、悲しみは減らす（Berger &amp; Milkman 2012）</td><td>—</td><td>「驚きの事実」「意外な数字」で驚きを作る。怒りを煽る型は炎上と表裏なので使わない</td></tr>
+<tr><td class="key">道徳感情語が1語増えるごとに拡散 +20%（Brady 2017）。偽情報は真実より 70% 拡散されやすい（Vosoughi 2018）</td><td>+20%／70%</td><td>拡散は「正しさ」と別に動く。当社は事実と一次情報で驚きを作る（景表法上も安全側）</td></tr>
+<tr><td class="key">人気の大半は大アカウントの「放送型」で、真のウイルス型は稀（Goel 2015）</td><td>—</td><td>「拾われる」設計：引用・返信で大きなアカウントの話題に乗る、コラボ、業界メディアに引用されやすい数字を出す</td></tr>
+<tr><td class="key">炎上の原因の最多は「特定の層を不快にさせる行為」（シエンプレ）。炎上判定は批判投稿100件以上</td><td>58〜64%</td><td>「転売ヤー」を刺激する語・自慢を避ける。否定的反応を週次で数える（第9章）</td></tr>
+</table></div>
+
+<div class="pillars">
+<div class="pillar must"><h4>柱1　「転売」の語を使わず、実務を語る</h4><dl><dt>何をする</dt><dd>「仕入れて保有して売る会社の現場」を、保管・物流・法令・数字で語る</dd><dt>成立する条件</dt><dd>稼ぎ方を売らない。品薄商品の転売目的の購入を語らない</dd><dt>守り方（提案）</dt><dd>絶対死守。公開前に「転売」「限定品を確保」の語を検索して消す</dd></dl></div>
+<div class="pillar must"><h4>柱2　権利者の規約に触れる商材は載せない</h4><dl><dt>何をする</dt><dd>一番くじ等、規約が転売目的を拒む商材と、進行中の件は題材にしない</dd><dt>成立する条件</dt><dd>扱う商材の規約を発信前に確認する</dd><dt>守り方（提案）</dt><dd>絶対死守。商材ごとに「載せる／載せない」の一覧を先に作る</dd></dl></div>
+<div class="pillar cond"><h4>柱3　冒頭で約束を果たし、続ける</h4><dl><dt>何をする</dt><dd>サムネ・タイトルの約束を最初の5〜10秒で果たす。長尺週1＋ショート週3＋X毎日</dd><dt>成立する条件</dt><dd>週6〜10時間を確保できる</dd><dt>守り方（提案）</dt><dd>条件付き。3か月連続で本数が半分未満なら外注化か頻度変更</dd></dl></div>
+<div class="pillar cond"><h4>柱4　毎週、数字で見る</h4><dl><dt>何をする</dt><dd>登録者・平均視聴率・リーチあたり送信・返信数・否定反応を記録し、90日で判定</dd><dt>成立する条件</dt><dd>撤退条件（第9章）を先に決めておく</dd><dt>守り方（提案）</dt><dd>条件付き。数字が条件を割ったら形式を変える（止めるのはご依頼主の判断）</dd></dl></div>
+</div>
+<p class="note">守り方の区分（緑＝絶対死守／橙＝条件付き）は Claude の提案です。</p>
+
+<h2 id="s8">8. 数字<small>到達の目安は「12か月で登録者1,000人」が現実的な線。費用は自前編集なら機材15〜20万円、外注なら月4〜12万円</small></h2>
+
+<h3>8-1 到達の目安（試算）</h3>
+<div class="tw"><table>
+<tr><th>期間</th><th>本数（案C・P1 の前提）</th><th>目安（試算）</th><th>根拠</th></tr>
+<tr><td class="key">90日</td><td>長尺 12本＋ショート 36本＋X 約250投稿</td><td>登録者 200〜500人。B2B の問い合わせが1件でもあれば効いている</td><td>1,000人到達に40本超が普通（vidIQ）。伊勢通は137人で売上40倍</td></tr>
+<tr><td class="key">6か月</td><td>長尺 25本＋ショート 75本</td><td>登録者 500〜1,000人。ファンファンディングの閾値（500人＋3,000時間）は時間の方が壁</td><td>ファンファンディング条件（YouTube ヘルプ）</td></tr>
+<tr><td class="key">12か月</td><td>長尺 約50本＋ショート 約150本</td><td>登録者 1,000〜3,000人。1万人は「当たり」が要る（上位 7.9%）</td><td>vidIQ 到達率。中央値の月成長 0.51% は「積む」だけでは届かないことを示す</td></tr>
+</table></div>
+<p class="note">試算です。登録者数の目安は vidIQ の到達率と経営者チャンネルの成長速度（4-4）から置いた幅で、保証ではありません。当社の目的は収益化ではなく信用なので、判定には「問い合わせ・DM・取引先からの言及」を必ず併せます。</p>
+
+<h3>8-2 収益化・機能の条件（2026-09-30 時点）</h3>
+<div class="tw"><table>
+<tr><th>機能</th><th>条件</th><th>当社への意味</th></tr>
+<tr><td class="key">YouTube 広告収益（YPP）</td><td>現行：1,000人＋4,000時間（12か月）または 1,000人＋ショート1,000万回（90日）。<b>2027-02-01 以降の新規：1,000人＋8,000時間（365日）または 2,000万回（90日）</b>。アクティブ要件（1,000時間 or 100万回 or 90日ごとに長尺2本／ショート5本）新設</td><td>目的ではない。ただし Hype とショッピング アフィリエイトは YPP 参加が条件</td></tr>
+<tr><td class="key">YouTube ファンファンディング（メンバーシップ・Super Thanks 等）</td><td>500人＋直近90日の公開動画3本以上＋3,000時間（12か月）または ショート300万回（90日）。2027 改定でも変更なし</td><td>6〜12か月で射程。有料コミュニティの器になる（両学長→リベシティの型）</td></tr>
+<tr><td class="key">YouTube Hype</td><td>YPP 参加・登録者 500〜50万人・公開7日以内の動画。日本で提供。ショートは対象外</td><td>小規模チャンネルの押し上げ機能。YPP 参加が前提</td></tr>
+<tr><td class="key">YouTube ショッピング アフィリエイト</td><td>YPP 参加＋音楽・子ども向けでない。日本は提供国。楽天市場が国内初のパートナー（2026-02-19）。2026-09-23 発表で「年内に35か国」＋Amazon 対応</td><td>自社商品より他社商品の紹介向き。当社の用途は限定的</td></tr>
+<tr><td class="key">Instagram サブスクリプション／ギフト</td><td>サブスクリプション：プロアカウント＋収益化ポリシー充足（2023-07 日本導入）。ギフト：プロアカウント・18歳以上・フォロワー5,000人以上（2023-11）</td><td>当面は対象外</td></tr>
+<tr><td class="key">X Original Content Rewards</td><td>Premium 加入＋認証フォロワー500＋直近90日で認証ユーザーからのホームTLインプレッション50万。非オリジナル除外。2週ごと・最低$30。Creator Revenue Sharing は 2026-08-07 終了</td><td>目的ではない。Premium+（¥6,080/月）は到達約10倍（Buffer）の費用対効果で判断</td></tr>
+</table></div>
+
+<h3>8-3 費用（公開相場・2024〜2026）</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">価格（円）</th><th>出典</th></tr>
+<tr><td class="key">スマートフォン撮影（iPhone 17）</td><td class="num">159,800〜</td><td>Apple（2026-09-30）</td></tr>
+<tr><td class="key">Vlog カメラ（ソニー ZV-E10 II レンズキット）</td><td class="num">147,510</td><td>ソニーストア・クーポン後</td></tr>
+<tr><td class="key">ワイヤレスマイク（RODE Wireless GO 第3世代／DJI Mic Mini 2TX）</td><td class="num">51,700／14,520</td><td>デジカメ Watch／ヨドバシ（DJI は販売終了表示）</td></tr>
+<tr><td class="key">LED リングライト</td><td class="num">2,370〜約24,000</td><td>ビックカメラ売れ筋</td></tr>
+<tr><td class="key">編集外注（カット・テロップ）1本</td><td class="num">5,000〜30,000</td><td>ランサーズ（2024-10）。エフェクト込み 10,000〜50,000。ココナラ 2,500〜55,000</td></tr>
+<tr><td class="key">サムネイル制作 1枚</td><td class="num">1,000〜10,000</td><td>ランサーズ 3,000〜10,000／制作会社早見表 1,000〜5,000</td></tr>
+<tr><td class="key">制作会社（10分動画）1本</td><td class="num">50,000〜150,000</td><td>制作会社早見表（2026-04）。フリーランス 20,000〜80,000</td></tr>
+<tr><td class="key">X Premium+ 月額</td><td class="num">6,080</td><td>X ヘルプ（2025-02-18〜）。Basic／Premium は報道値 368／980</td></tr>
+<tr><td class="key">試算：自前編集で始める</td><td class="num">初期 約15〜20万</td><td>スマホ＋マイク＋照明。月額 0（Claude は既存契約）</td></tr>
+<tr><td class="key">試算：編集を外注</td><td class="num">月 約4〜12万</td><td>長尺週1本×1〜3万円＋サムネ。ショートは自前</td></tr>
+</table></div>
+
+<h3>8-4 時間（試算）</h3>
+<div class="tw"><table>
+<tr><th>作業</th><th class="num">週あたり（自前編集）</th><th class="num">週あたり（外注）</th><th>根拠</th></tr>
+<tr><td class="key">長尺1本（企画・撮影・編集・サムネ）</td><td class="num">6.5時間</td><td class="num">3.5時間</td><td>10分動画の編集 3〜8時間（クラウドワークス）。企画1h・撮影1h・サムネ0.5h は Claude の見積</td></tr>
+<tr><td class="key">ショート3本（長尺の切り抜き）</td><td class="num">1.5時間</td><td class="num">1.5時間</td><td>Claude の見積</td></tr>
+<tr><td class="key">X 毎日（1日20分）</td><td class="num">2.3時間</td><td class="num">2.3時間</td><td>1日2〜3回（Hootsuite）</td></tr>
+<tr><td class="key">合計</td><td class="num">約10時間</td><td class="num">約7時間</td><td>試算</td></tr>
+</table></div>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>いちばん危ないのは「当社の観客に届いて信用に変わる」という前提。90日の試し運転で数字を取り、条件を割ったら形式を変える</small></h2>
+<div class="tw"><table>
+<tr><th>危ない前提</th><th>確かめ方</th><th>変更・撤退の条件（提案）</th></tr>
+<tr><td class="key">①顔出し・実名の発信が当社の観客（コレクター・将来のサービス利用者・取引先）に届き、信用に変わる</td><td>90日間、毎週：登録者、長尺の平均視聴率、リーチあたりの送信、返信数、問い合わせ・DM・取引先からの言及の件数</td><td>90日で長尺12本＋ショート36本を出しても登録者200人未満かつ平均視聴率30%未満 → 長さ・企画を変える。6か月で1,000人未満かつ問い合わせ0 → 主軸SNS・テーマ・案D／Eを含めて見直す</td></tr>
+<tr><td class="key">②「転売」の語を避け、権利者商材を載せなければ、批判は個人に集中しない</td><td>コメント・引用・返信の否定的反応を毎週数える（炎上の判定基準：批判投稿100件以上）</td><td>否定的反応が継続して2割超、または権利者・売り場から連絡 → 該当テーマを止め、内容を見直す</td></tr>
+<tr><td class="key">③週6〜10時間を12か月続けられる</td><td>作業時間を記録する</td><td>3か月連続で計画本数の半分未満 → 編集を外注する、または頻度を落とす（休止に罰則はない）</td></tr>
+<tr><td class="key">④景表法・ステマ規制に触れない</td><td>実績を語る動画は公開前に「根拠があるか」「他人にも同じ結果が出るように読めないか」を確認。他人に紹介させるときは「広告」「PR」を常時表示</td><td>疑いがあれば公開しない。確定前に Gemini クロスレビュー（第10章⑨）</td></tr>
+</table></div>
+
+<h3>9-2 工程（提案）</h3>
+<div class="tw"><table>
+<tr><th>段</th><th>期間</th><th>やること</th><th>出口</th></tr>
+<tr><td class="key">準備</td><td>2週間</td><td>テーマの言葉・チャンネル名・説明文（「何が見られるか」を書く）・アイコン・機材・「載せる／載せない商材」一覧・週次記録の表</td><td>第10章の9項目が決まっている</td></tr>
+<tr><td class="key">試し運転</td><td>90日</td><td>長尺週1＋ショート週3＋X 毎日。3本柱を順に試す。台本・字幕・投稿文は Claude</td><td>週次の数字が揃う</td></tr>
+<tr><td class="key">中間評価</td><td>2週間</td><td>柱ごとの視聴率・送信・問い合わせを比べ、型を固定。編集外注の可否を判断</td><td>続ける形が決まる／変更条件に該当</td></tr>
+<tr><td class="key">本運用</td><td>4〜12か月</td><td>固定した型で継続。ファンファンディング（500人）到達で有料コミュニティの可否を検討</td><td>登録者1,000人・問い合わせの発生</td></tr>
+<tr><td class="key">サービスの紐づけ</td><td>6か月〜</td><td>決まったサービスを「現場公開」の延長で動画化・告知。サービス名のチャンネルを分けるかは規模で判断（両学長・Thomas Frank の型）</td><td>サービスの初回顧客に SNS 経由が含まれる</td></tr>
+</table></div>
+
+<figure>
+<figcaption>図5　12か月の工程：90日の試し運転で数字を取り、6か月目からサービスを載せる<small>提案。横軸は開始からの月数</small></figcaption>
+<svg viewBox="0 0 960 230" role="img" aria-label="工程のガント図">
+<line class="ax" x1="260" y1="25" x2="260" y2="210"/>
+<line class="grid" x1="430" y1="25" x2="430" y2="210"/><line class="grid" x1="600" y1="25" x2="600" y2="210"/><line class="grid" x1="770" y1="25" x2="770" y2="210"/><line class="grid" x1="940" y1="25" x2="940" y2="210"/>
+<text class="m" x="260" y="18" text-anchor="middle">開始</text><text class="m" x="430" y="18" text-anchor="middle">3か月</text><text class="m" x="600" y="18" text-anchor="middle">6か月</text><text class="m" x="770" y="18" text-anchor="middle">9か月</text><text class="m" x="940" y="18" text-anchor="middle">12か月</text>
+<text x="10" y="56">準備（テーマ・機材・設計）</text><rect class="bar3" x="260" y="40" width="28.3" height="22"/>
+<text x="10" y="91">試し運転90日（長尺・ショート・X）</text><rect class="bar" x="288.3" y="75" width="170" height="22"/>
+<text x="10" y="126">中間評価（登録者・維持率・反応）</text><rect class="bar2" x="458.3" y="110" width="28.3" height="22"/>
+<text x="10" y="161">本運用（型の固定・外注の判断）</text><rect class="bar" x="486.7" y="145" width="453.3" height="22"/>
+<text x="10" y="196">サービスの紐づけ（告知・動画化）</text><rect class="bar4" x="600" y="180" width="340" height="22"/>
+</svg>
+</figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>9項目。「全部推奨どおり」でも確定できる形にした（★＝推奨）</small></h2>
+<div class="tw"><table>
+<tr><th class="num">#</th><th>決めること</th><th>選択肢</th><th>推奨と理由</th></tr>
+<tr><td class="num">1</td><td class="key">発信を始めるか</td><td>始める／始めない（案E）</td><td>★始める。SNS きっかけの購入 55〜65%、経営者発信の事例 20件超、B2B での信頼効果（73%）</td></tr>
+<tr><td class="num">2</td><td class="key">顔出しの程度</td><td>実名・顔出し（案C）／アバター・声のみ（案D）／社員が出る</td><td>★実名・顔出し。登記で氏名・住所は公開済み。信用は人的魅力・透明性で作られる</td></tr>
+<tr><td class="num">3</td><td class="key">母艦テーマの言葉</td><td>「コレクター市場（TCG・フィギュア）を扱う小さな会社の実務と経営」／「物販会社の裏側」／別案</td><td>★前者（仮）。空白の象限（図4）に入り、将来のサービスを全部載せられる。言葉はご依頼主が決める</td></tr>
+<tr><td class="num">4</td><td class="key">主軸にする SNS</td><td>P1 YouTube＋X／P2 X だけ／P3 Instagram／P4 全部</td><td>★P1。利用率と仕組み（6-2）。Instagram はサービス確定後</td></tr>
+<tr><td class="num">5</td><td class="key">「転売」という語を使うか</td><td>使わない／使う</td><td>★使わない。「仕入れて保有して売る」「コレクター市場」に置き換える（4-5）</td></tr>
+<tr><td class="num">6</td><td class="key">権利者の規約に触れる商材（一番くじ等）を発信に載せるか</td><td>載せない／載せる</td><td>★載せない。規約が転売目的を明示的に拒否、進行中の件がある</td></tr>
+<tr><td class="num">7</td><td class="key">制作の体制</td><td>自前編集で開始→90日後に外注判断／最初から外注／制作会社</td><td>★自前で開始。台本・字幕・サムネ文言・投稿文は Claude。外注は 1〜3万円/本の相場で90日後に判断</td></tr>
+<tr><td class="num">8</td><td class="key">開始時期</td><td>決めたらすぐ／サービス確定後</td><td>★決めたらすぐ。YPP の現行条件（2027-01-31 まで）は現実的に間に合わず、時期を収益化条件に縛られる理由がない。早いほど本数が積める</td></tr>
+<tr><td class="num">9</td><td class="key">確定前に Gemini クロスレビューを回すか</td><td>回す／回さない</td><td>★回す。第3章の法令の当てはめ（ステマ規制・景表法・登記・特商法）と、推奨の反証のため。下の文面をそのまま貼れる</td></tr>
+</table></div>
+<div class="card">
+<p style="margin:0 0 6px"><b>Gemini に貼る文面（そのまま貼れる。社名・個人名は入れていない）</b></p>
+<p class="note" style="margin:0 0 6px">貼る前に、Gemini の「アクティビティの保存（学習利用）」設定を確認してください。</p>
+<pre style="white-space:pre-wrap;font:13px/1.6 inherit;margin:0;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px">日本の小規模法人（合同会社）の代表が、実名・顔出しで YouTube と X で発信を始める計画について、批判的にレビューしてください。事実の誤り・見落とし・反証を、根拠（法令名・条文・公式ページ）付きで指摘してください。推測は「推測」と明記してください。
+
+前提：本業は新品を仕入れて保有し、数年後に販売する物販（TCG・フィギュア）。将来、転送・発送代行・買取・EC ツールのサービスを出す予定。発信テーマは「コレクター市場を扱う小さな会社の実務と経営」で、「転売」の語は使わず、権利者の規約が転売目的を拒む商材は題材にしない。
+
+確認してほしい点：
+1. 景品表示法のステルスマーケティング規制（2023-10-01 施行）で、法人代表が自分名義のチャンネルで自社サービスを紹介する行為は「事業者自身のSNSアカウントを通じた表示」として告示の対象外と整理してよいか。代表者個人名義のチャンネルの場合に、社名・代表であることをどこまで明瞭にすべきか。
+2. 自社の実績（在庫金額・売上の推移）を動画で公開するとき、景品表示法の優良誤認・不実証広告規制の観点で避けるべき表現は何か。
+3. 合同会社の代表社員の氏名・住所が登記で公開されているという理解は正しいか。2024-10-01 の代表取締役等住所非表示措置が合同会社に適用されないという理解は正しいか。
+4. 特定商取引法の表示で、法人がバーチャルオフィスの住所を使える条件、「請求により遅滞なく提供する」による住所・電話番号の省略の条件。
+5. YouTube パートナープログラムの参加条件が 2027-02-01 に変わる（新規は 8,000時間または 2,000万回）という理解は正しいか。
+6. 「先に一般テーマで登録者を集めて、あとで別領域のサービスに紐づける」やり方が失敗しやすい、という結論に反証はあるか。
+7. 上記の計画に、見落としている法令・規約・リスクはあるか。</pre>
+</div>
+<p class="note">未確認事項（本書で一次情報に届かなかったもの）：「代表者が発信していると買いたくなる」の直接調査／代表者の個人名義チャンネルを扱ったステマ規制の設例／法人のバーチャルオフィス表記の可否条件／SNS フォロワー→顧客の公式な転換率／週あたりの時間コストの調査／開設1年以内に更新が止まる割合／X Premium の Basic・Premium の円価格（報道値のみ）／リベシティ・PROGRESS の公式会員数／ヒカルの売上の単位。</p>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本。数字・URL の確認日はすべて 2026-09-30</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td class="key">第1版</td><td>2026-09-30</td><td>初版。6分野の調査結果を型Bの章立てで整理。状態＝案・未承認</td></tr>
+</table></div>
+
+<h3>出典（公式・一次情報）</h3>
+<ul class="src">
+<li>総務省「令和7年度情報通信メディアの利用時間と情報行動に関する調査報告書」の公表（2026-06-26）https://www.soumu.go.jp/menu_news/s-news/01iicp01_02000130.html ／概要 https://www.soumu.go.jp/main_content/001079136.pdf ／本編 https://www.soumu.go.jp/main_content/001079141.pdf</li>
+<li>YouTube おすすめの仕組み https://www.youtube.com/howyoutubeworks/product-features/recommendations/ ／ https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/ ／ヘルプ https://support.google.com/youtube/answer/16533387?hl=en ／ https://support.google.com/youtube/answer/141805?hl=ja ／ショート https://support.google.com/youtube/answer/11914225?hl=en&amp;co=YOUTUBE._YTVideoType%3Dshorts</li>
+<li>YouTube YPP 参加条件 https://support.google.com/youtube/answer/72851?hl=ja ／2027 改定 https://support.google.com/youtube/answer/12843009?hl=ja ／ファンファンディング https://support.google.com/youtube/answer/13429240?hl=ja ／Hype https://support.google.com/youtube/answer/15509925?hl=en ／ショッピング アフィリエイト https://support.google.com/youtube/answer/13376398?hl=ja ／楽天提携 https://blog.youtube/intl/ja-jp/news-and-events/youtube-shopping-affiliate-jp-launch/</li>
+<li>YouTube ショート3分 https://blog.youtube/news-and-events/tall-updates-coming-to-shorts/ ／視聴回数の定義 https://support.google.com/youtube/answer/10059070?hl=en ／関連動画ガイド https://blog.youtube/creator-and-artist-stories/youtube-related-videos-traffic-guide/ ／Made on YouTube 2026 https://blog.youtube/news-and-events/innovation-youtube-era-made-on-viewers-creators/ ／方向転換のヒント https://support.google.com/youtube/answer/16541080?hl=en ／ https://support.google.com/youtube/answer/16559651?hl=en</li>
+<li>YouTube AI 開示 https://support.google.com/youtube/answer/14328491?hl=ja ／YPP ポリシー（量産型） https://support.google.com/youtube/answer/1311392?hl=ja ／有料プロモーション https://support.google.com/youtube/answer/154235?hl=ja ／始め方 https://www.youtube.com/creators/get-started/ ／育て方 https://www.youtube.com/creators/grow/overview/</li>
+<li>Instagram ランキングの説明 https://about.instagram.com/ja-jp/blog/announcements/instagram-ranking-explained ／おすすめとオリジナリティ https://creators.instagram.com/blog/recommendations-and-originality ／トライアルリール https://creators.instagram.com/blog/instagram-trial-reels ／Mosseri 3シグナル https://www.instagram.com/p/DFFyRp-pINJ/ ／オリジナル保護拡大 https://creators.instagram.com/blog/rewarding-original-creators-on-instagram ／AI プロフィールラベル https://creators.instagram.com/blog/ai-generated-profile-label ／リポスト https://about.fb.com/ja/news/2025/08/new-instagram-features-help-you-connect/</li>
+<li>Instagram 事業者機能：ショッピング要件 https://help.instagram.com/1627591223954487 ／ブロードキャストチャンネル https://about.fb.com/ja/news/2023/06/broadcastchannel/ ／サブスクリプション https://about.fb.com/ja/news/2023/07/igsubscription/ ／ギフト https://help.instagram.com/523408036294825/ ／プロフィールリンク https://help.instagram.com/362497417173378 ／検索エンジン表示 https://help.instagram.com/147542625391305/ ／タイアップ投稿ラベル https://help.instagram.com/1109894795810258</li>
+<li>Threads 5億 https://about.fb.com/ja/news/2026/06/meta-launching-new-features-500-million-monthly-threads-users/ ／トピック https://about.fb.com/news/2025/03/new-threads-features-more-personalized-experience-you-control/</li>
+<li>X アルゴリズム（2023） https://raw.githubusercontent.com/twitter/the-algorithm-ml/main/projects/home/recap/README.md ／（2026） https://github.com/xai-org/x-algorithm ／重み https://raw.githubusercontent.com/xai-org/x-algorithm/main/home-mixer/params/param.rs ／Original Content Rewards https://help.x.com/en/using-x/original-content-rewards ／Creator Revenue Sharing https://help.x.com/en/using-x/creator-revenue-sharing ／Premium+ 価格 https://help.x.com/en/premium-plus-price-update ／X for Business https://business.x.com/en/basics/get-your-business-started-with-x ／Musk リンク（2025-04-25） https://x.com/elonmusk/status/1915806794393457034</li>
+<li>TikTok おすすめ https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you ／TikTok Shop 日本開始 https://newsroom.tiktok.com/tiktok-shop-launch-japan?lang=ja-JP ／1周年 https://newsroom.tiktok.com/tiktok-shop-japan-1st-year-anniversary?lang=ja-JP</li>
+<li>消費者庁 ステマ規制 https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing ／運用基準 https://www.caa.go.jp/policies/policy/representation/fair_labeling/guideline/assets/representation_cms216_230328_03.pdf ／Q&amp;A https://www.caa.go.jp/policies/policy/representation/fair_labeling/faq/stealth_marketing/ ／優良誤認 https://www.caa.go.jp/policies/policy/representation/fair_labeling/representation_regulation/misleading_representation ／不実証広告 https://www.caa.go.jp/policies/policy/representation/fair_labeling/representation_regulation/misleading_representation/not_demonstrated_ad ／打消し表示 https://www.caa.go.jp/policies/policy/representation/fair_labeling/pdf/fair_labeling_180607_0004.pdf ／2025-06-26 注意喚起 https://www.caa.go.jp/notice/entry/042732/</li>
+<li>会社法（e-Gov） https://laws.e-gov.go.jp/law/417AC0000000086 ／法務省 登記事項証明書 Q&amp;A https://www.moj.go.jp/MINJI/minji69.html ／住所非表示措置 https://www.moj.go.jp/MINJI/minji06_00210.html ／特商法 Q&amp;A https://www.no-trouble.caa.go.jp/qa/advertising.html ／通達 https://www.no-trouble.caa.go.jp/pdf/20220601la03_04.pdf</li>
+<li>権利者・売り場：BANDAI SPIRITS 一番くじONLINE 会員規約 https://on-line.1kuji.com/Page/guide_member.aspx ／ポケモン https://www.pokemon-card.com/info/004048.html ／任天堂 株主総会 Q&amp;A https://www.nintendo.co.jp/ir/pdf/2024/qa2406.pdf ／メルカリ https://jp-news.mercari.com/mercari-shops/info/26232</li>
+</ul>
+<h3>出典（統計・調査・報道・本人の公表）</h3>
+<ul class="src">
+<li>vidIQ 到達率 https://vidiq.com/blog/post/youtube-subscriber-growth-statistics/ ／本数 https://vidiq.com/blog/post/how-many-videos-to-get-1000-subscribers/ ／投稿頻度 https://vidiq.com/research/youtube-upload-frequency-study/ ／Socialinsider https://www.socialinsider.io/social-media-benchmarks ／Buffer リンク https://buffer.com/resources/links-on-x/ ／Buffer 2026 https://buffer.com/resources/state-of-social-media-engagement-2026/ ／Sprout 投稿時間 https://sproutsocial.com/insights/best-times-to-post-on-twitter/</li>
+<li>消費者調査：アライドアーキテクツ https://prtimes.jp/main/html/rd/p/000000125.000058547.html ／ホットリンク https://www.hottolink.co.jp/info/20240701_115906/ ／エクスクリエ https://www.excrie.co.jp/report/sns-purchasing-behavior-survey-202608 ／ライトアップ https://www.biz4.jp/column/sns-survey2025 ／NEL https://www.nel-all.com/news/328/ ／Edelman 日本 2026 https://www.edelman.com/sites/g/files/aatuss191/files/jp/2026-04/2026%20Edelman%20Trust%20Barometer_Japan%20Report.pdf ／メンバーズ https://markezine.jp/news/detail/49660 ／電通PRC https://www.dentsuprc.co.jp/news/20251020/ ／Sprout Social https://sproutsocial.com/insights/data/social-media-connection/ ／Edelman×LinkedIn https://www.edelman.com/sites/g/files/aatuss191/files/2024-02/_2024%20Edelman-LinkedIn%20B2B%20Thought%20Leadership%20Impact%20Report%20Final.pdf ／2025年版小規模企業白書 https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/shokibo/b2_1_1.html</li>
+<li>事例（日本）：森朝奈 https://president.jp/articles/-/49793?page=2 ／山澤礼明 https://prtimes.jp/main/html/rd/p/000000004.000154294.html ／株本祐己 https://news.livedoor.com/article/detail/19520152/ ／クラシコム https://finance.logmi.jp/articles/384029 ／ https://kurashi.com/news/15965 ／MEGANE店長 https://www.youtube.com/@meganetencho ／船原徹雄 https://www.youtube.com/@funahara ／竹之内教博 https://ts-investment.jp/profile/ ／岡野タケシ https://webtan.impress.co.jp/e/2025/08/05/49811 ／ヒロ税理士 https://prtimes.jp/main/html/rd/p/000000003.000171933.html ／LifeBank https://weekly-net.co.jp/news/123780/ ／伊勢通 https://ytbs.jp/jirei/isetsu/ ／COHINA https://www.wwdjapan.com/articles/1961384 ／foufou https://www.fashionsnap.com/article/foufou-marl-kousaka-interview/ ／丸祐運送 https://sns-agency.rc-group.co.jp/case/case.php?id=36 ／ハヤカワ五味 https://note.com/hayakawagomi/n/nb1d866a96296 ／ゆうこす https://note.com/yukosnote/n/nb0efbc4b3fb3 ／ヒカル https://www.appbank.net/2022/11/25/youtubernews/2339719.php ／ https://realsound.jp/tech/2024/12/post-1879559.html ／両学長 https://site.libecity.com/history ／ゆっくり不動産 https://prtimes.jp/main/html/rd/p/000000434.000020127.html ／有隣堂 https://www.yurindo.co.jp/information/33339/ ／QuizKnock https://service.openlogi.com/case-studies/baton/ ／マコなり社長 https://news.livedoor.com/article/detail/23490044/ ／朝倉未来 https://www.tv-tokyo.co.jp/plus/entertainment/entry/2023/027550.html ／東海オンエア https://prtimes.jp/main/html/rd/p/000000904.000008567.html</li>
+<li>事例（海外）：MrBeast／Feastables https://www.bloomberg.com/news/articles/2025-03-10/mrbeast-makes-more-money-from-feastables-chocolate-than-youtube ／PRIME https://fortune.com/2024/04/27/logan-paul-prime-energy-drink-ksi-gen-alpha-rise-fall-sales-lawsuits/ ／ https://www.tubefilter.com/2025/07/22/prime-hydration-sales-decline-year-over-year-creator-product/ ／Emma Chamberlain https://www.forbes.com/sites/alexyork/2024/04/19/the-secret-behind-emma-chamberlains-20-million-coffee-companyand-her-plans-to-return-to-youtube/ ／Ali Abdaal https://news.thepublishpress.com/p/ali-abdaals-400k-day ／ https://aliabdaal.com/newsletter/our-youtube-views-are-down-15-and-thats-okay/ ／Thomas Frank https://nathanbarry.com/073-thomas-frank-six-figures-month-creator/ ／Panels https://techcrunch.com/2025/12/01/mkbhds-wallpaper-app-panels-is-shutting-down/ ／YouTube 幹部の方向転換発言 https://www.socialmediatoday.com/news/youtube-executives-share-strategies-on-channel-pivoting/830850/ ／Substack https://substack.com/going-paid-guide ／1,000 True Fans https://kk.org/thetechnium/1000-true-fans/ ／100 True Fans https://a16z.com/1000-true-fans-try-100/</li>
+<li>転売・炎上：Hamaru Strategy 調査 https://news.mynavi.jp/article/20260416-4347260/ ／任天堂 Switch 2 https://www.itmedia.co.jp/news/article/2504/02/1250402184/ ／ラファエル https://news.livedoor.com/article/detail/28948723/ ／トレカ議連 https://tcgpro.co.jp/btob/toreca-giren/ ／シエンプレ 炎上レポート https://www.siemple.co.jp/isiten/article/enjou_report_202512/ ／ヒカル登録者減 https://smart-flash.jp/entertainment/entertainment-news/391631/ ／林尚弘 https://www.itmedia.co.jp/business/articles/2202/15/news091.html ／竹花貴騎 https://president.jp/articles/-/40267?page=1 ／はじめしゃちょー https://realsound.jp/tech/2020/11/post-650396.html ／経営者の不安 https://prtimes.jp/main/html/rd/p/000000003.000094981.html ／帝国データバンク https://www.tdb.co.jp/report/economic/20260515-sns/ ／リソース不足 https://prtimes.jp/main/html/rd/p/000000155.000071371.html</li>
+<li>拡散の研究：Vosoughi 2018 https://news.mit.edu/2018/study-twitter-false-news-travels-faster-true-stories-0308 ／Berger &amp; Milkman 2012 https://journals.sagepub.com/doi/10.1509/jmr.10.0353 ／Goel 2015 https://pubsonline.informs.org/doi/10.1287/mnsc.2015.2158 ／Bärtl 2018 https://journals.sagepub.com/doi/10.1177/1354856517736979 ／Pew 2019 https://www.pewresearch.org/internet/2019/07/25/a-week-in-the-life-of-popular-youtube-channels/</li>
+<li>費用・時間：ランサーズ https://www.lancers.jp/c/movie/26150/ ／ココナラ https://coconala.com/magazine/30043 ／クラウドワークス https://crowdworks.jp/times/marketing/2348/ ／ https://town.crowdworks.jp/articles/video-editing-takes-too-long ／制作会社早見表 https://smoothiestudio.co.jp/ai-video/column/video-production-delivery-time-guide ／Apple https://www.apple.com/jp/shop/buy-iphone/iphone-17 ／ソニー https://www.sony.jp/vlogcam/store/special/zv-e10m2/ ／RODE https://dc.watch.impress.co.jp/docs/news/2044826.html</li>
+</ul>
+<p class="meta">本書が正本（調査レポートのため .md の正本は無い）。この報告を根拠に方針を確定する前に、第10章⑨の Gemini クロスレビューを推奨します。</p>
+
+</main>
+</div>
+</body>
+</html>

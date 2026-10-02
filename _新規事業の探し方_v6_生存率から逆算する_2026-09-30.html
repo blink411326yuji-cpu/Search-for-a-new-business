@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>新規事業の探し方 v6「生存率から逆算する」— 探し方の提案と EC＋SNS広告（Tシャツ型）の評価</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+td.src{font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a class="s" href="#s4-1">4-1 業種で廃業率が3倍違う</a>
+<a class="s" href="#s4-2">4-2 黒字割合と利益率</a>
+<a class="s" href="#s4-3">4-3 後継者不在率</a>
+<a class="s" href="#s4-4">4-4 500万円は壁ではない</a>
+<a class="s" href="#s4-5">4-5 地域の空白を見る道具</a>
+<a class="s" href="#s4-6">4-6 EC＋SNS広告（Tシャツ型）</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較</a>
+<a href="#s7">7. 推奨と理由</a>
+<a href="#s8">8. 数字</a>
+<a href="#s9">9. 次の工程と撤退条件</a>
+<a href="#s10">10. 決めていただく事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>新規事業の探し方 v6「生存率から逆算する」<br><span style="font-size:17px;font-weight:normal">— 探し方の提案と、EC＋SNS広告（Tシャツ型）の評価</span></h1>
+<p class="meta">作成日：2026-09-30　｜　状態：<b>案（未承認）</b>　｜　置き場所：<code>C:\dev\Search-for-a-new-business\</code>（S-01・S-02 の両方にまたがる前提資料のためルートに置く）　｜　作成：Claude（Cowork）　｜　Gemini クロスレビュー：<b>未実施</b></p>
+
+<h2 id="s0">0. 要約<small>「誰がやっても成功する業態」は統計上存在しないが、業種によって5年後の廃業率は約3倍違う。探す順番を「案→検証」から「生存率→型→地域→案」へ逆転させることを提案する。</small></h2>
+<div class="grid">
+<div class="kpi"><b>何を調べたか</b><span>①腕に関係なく残る業態を測る公的統計 ②地域の空白業種を見つける道具 ③EC＋SNS広告（Tシャツ型）の事業性</span></div>
+<div class="kpi"><b>当たった一次情報</b><span>約30件（日本公庫・TKC・中小企業庁・帝国データバンク・経産省・JFA・e-Stat・RESAS・消費者庁ほか）</span></div>
+<div class="kpi"><b>結論</b><span>開業5年後の累計廃業率は建設業5.2%〜飲食店・宿泊業14.7%。業種の選択が、腕より先に結果を左右する</span></div>
+<div class="kpi"><b>推奨（提案）</b><span>探し方 v6＝4層（業種の足切り→型→地域→案）。層1は無料の公開統計だけで今日できる</span></div>
+<div class="kpi"><b>Tシャツ型の評価</b><span>ご自身の判断軸（資金勝負を避ける・障壁・模倣されにくい）と3点で食い違う。柱にはせず、やるなら上限付きの実験</span></div>
+<div class="kpi"><b>次に決めること</b><span>第10章の8点（柱①型2の扱い／店舗型の扱い／500万円の意味／Tシャツ型の扱い／v6の採用／地域／用語／Gemini）</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>2026-08-26 以降、探し方を4回作り（v4 現場型／SaaS確定版／v5 同梱されない形／型2 空きを探す手順書）、案は200件超出た。しかし判定にかけた案は6件中5件が止まり、柱は決まっていない。</dd>
+<dt>課題</dt><dd>これまでの探し方はすべて「案を出してから事業性を調べる」順番だった。案が生まれる業種そのものが残りやすいかどうかを、最初に見ていなかった。「どう探せば見つかるのか分からない」というご相談は、この順番の問題と一致する。</dd>
+<dt>分かったこと</dt><dd>日本公庫の追跡調査で、2016年開業企業の5年後廃業率は業種で5.2%〜14.7%と約3倍の差がある。TKCの黒字企業割合も建設業58.2%・宿泊飲食36.4%で20pt以上違う。「500万円以上」は開業費用の中央値（600万円）より低く、参入障壁にはならない。EC＋SNS広告は市場は大きい（衣類EC 2.8兆円）が、CVR中央値2.4%・返品24〜26%・CAC上昇（Meta中央値CPAは1年で+38%）という数字が公開されており、ご自身の軸①「資金勝負を避ける」と正面から衝突する。</dd>
+<dt>未決</dt><dd>今日のご要望は柱②（続ける事業）の話か、それとも柱①（型2＝ソフトで作って売る）を撤回するのか。店舗型（S-02）を「先が短い」として下げるのか。これが決まらないと v6 の層1の足切り線が確定できない。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>今日のご要望は、直近3日で決めた方向（型2＋店舗型）と3か所で食い違う。食い違いを先に表に出し、どちらを正とするかを伺う。</small></h2>
+<div class="tw"><table>
+<tr><th>ご依頼の言葉（要旨）</th><th>今回の扱い</th></tr>
+<tr><td>新規事業を探す「画期的な方法」を調査してほしい。何を見て柱を決めればいいか分からない</td><td>第6・7章で「探し方の案」を比較し、v6 を提案</td></tr>
+<tr><td>SaaS・AIで作るサービスは飽和するので、それ以外</td><td>層1の足切りで扱う（情報通信業は廃業率7.7%で低いが、ご指示により対象外）</td></tr>
+<tr><td>固定費がかかり、始めるのに500万円以上かかるものがよい</td><td>4-4節で「500万円は壁になるか」を数字で確認。第10章③で意味を確認</td></tr>
+<tr><td>地域に絞って地域内の会社を全部洗い出すべきか</td><td>4-5節・第6章 案A で評価（洗い出しより特化係数が早い）</td></tr>
+<tr><td>田舎でも都会でも「誰がやっても成功する事業形態」はないか</td><td>4-1〜4-3節。「無い」が答えだが、近い指標（廃業率・黒字割合）はある</td></tr>
+<tr><td>店舗型は先が短く、EC＋広告が一番よいと思う</td><td>4-6節・第8章で一次情報と試算を提示。S-02 との食い違いは下表</td></tr>
+<tr><td>Tシャツを作ってInstagram広告で売る型を評価してほしい</td><td>4-6節（事実）→ 第6章 6-2（判断軸との照合）→ 第8章（試算）</td></tr>
+</table></div>
+<h3>過去の決定・記録との食い違い（records スキル第5節に基づく照合）</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>今回のご要望</th><th class="st">判定</th><th>過去の記録</th><th>どう扱ったか</th></tr>
+<tr><td>1</td><td>SaaS・AIで作るサービス以外</td><td class="warn st">要確認</td><td>R-0657（2026-09-30）：2本柱＝①型2（土台の上に無い1機能を足して数年で売却）＋②続ける事業</td><td>今回は柱②の話と解釈して進めた。柱①を撤回するかは第10章①</td></tr>
+<tr><td>2</td><td>店舗型は先が短い</td><td class="warn st">要確認</td><td>R-0652（2026-09-29）：柱②＝店舗・地域密着型の手堅い事業。S-02 フォルダに調査3本</td><td>S-02 は消さず保留。第10章②</td></tr>
+<tr><td>3</td><td>固定費500万円以上の障壁がよい ⇄ 店舗を持たず固定費が安いECがよい</td><td class="warn st">矛盾</td><td>ご要望の中で両立しない（同じメッセージ内）</td><td>「固定費」ではなく「資本の壁（在庫・設備・車両）」の意味と解釈した。第10章③</td></tr>
+<tr><td>4</td><td>EC＋広告が一番よい</td><td class="warn st">要確認</td><td>選定軸①（2026-08頃）：資金勝負にならない領域を選ぶ。R-0582/0583（09-27）：海外ブランドEC（SELECT.GALLERY）を中止</td><td>広告オークションは資金勝負の典型。4-6節・6-2で照合</td></tr>
+<tr><td>5</td><td>「レディティス」（音声入力とみられる）</td><td class="warn st">聞き取れず</td><td>—</td><td>意味を推測せず、第10章⑦で確認</td></tr>
+</table></div>
+
+<h2 id="s2">2. 調査の範囲と方法<small>公的統計と公式発表だけを使った。国内のMeta広告の実測値だけは根拠のある一次情報が無く、代理店の参考値に頼っている。</small></h2>
+<div class="tw"><table>
+<tr><th>探し先</th><th>何を取ったか</th><th>残っている穴</th></tr>
+<tr><td class="key">日本政策金融公庫</td><td>新規開業パネル調査（2016年開業3,517社を5年追跡）の業種別廃業率／2025年度 新規開業実態調査（2,165社）の開業費用・黒字割合／小企業の経営指標調査の業種別利益率</td><td>パネル調査の最新公表は2021-12（第4コーホート）。以降の追跡は見つからず</td></tr>
+<tr><td class="key">TKC全国会（BAST）</td><td>令和8年版（2025年決算・26万2,244社）の黒字企業割合</td><td>本文に数値があるのは建設・宿泊飲食のみ。美容・不動産の大分類値は掲載なし</td></tr>
+<tr><td class="key">中小企業庁</td><td>2026年版白書の開廃業率、付属統計11表の業種別開廃業率、2017年版の生存率</td><td>業種別の利益率はe-Statの動的表で取得できず【未確認】</td></tr>
+<tr><td class="key">帝国データバンク</td><td>後継者不在率動向調査（2025年、約27万社）の業種別</td><td>—</td></tr>
+<tr><td class="key">経済産業省</td><td>令和6年度 電子商取引市場調査（2025-08-26公表）の衣類EC市場・EC化率</td><td>令和7年度版は未公表（2026-09-30時点）</td></tr>
+<tr><td class="key">JFA・中小企業庁（FC）</td><td>2024年度FC統計、法定開示書面の記載事項と閲覧場所</td><td>FC加盟店の閉店率・廃業率の公的統計は存在が確認できず</td></tr>
+<tr><td class="key">e-Stat・RESAS・jSTAT MAP・社人研</td><td>市区町村別・産業小分類別事業所数の取り方、特化係数の定義、将来推計人口</td><td>経済センサスの最新は2021年調査。2026年調査の結果は2027年5月以降</td></tr>
+<tr><td class="key">Meta広告・EC指標</td><td>海外ツール社の国別CPM、米国業種別ベンチマーク、ファッションEC500社のCVR、返品率、CAC</td><td>国内でサンプル数・期間を明示した公開ベンチマークは見つからず。国内代理店の「相場」は根拠非開示</td></tr>
+<tr><td class="key">POD・EC基盤各社</td><td>SUZURI・Printful・pixivFACTORY・オリジナルプリント.jp の価格と手数料、BASE・STORESの店舗数</td><td>Shopify国内店舗数・アパレルジャンル別店舗数は公表なし</td></tr>
+<tr><td class="key">FASHIONSNAP・WWD・MarkeZine ほか</td><td>Instagram起点アパレルD2Cの終了・譲渡・成長事例</td><td>「広告費高騰が理由」と公表した撤退事例は見つからず。年商1億円未満の売上公表事例も無し</td></tr>
+</table></div>
+
+<h2 id="s3">3. 前提・制約<small>この資料の判断は、ご自身が過去に定めた判断軸8つと、今日追加された条件4つの中でだけ成り立つ。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>判断軸・条件</th><th>出どころ</th><th>この資料での効き方</th></tr>
+<tr><td>①</td><td>資金勝負（マネー勝負）にならない領域を選ぶ</td><td>選定軸（2026-08）</td><td>広告オークション型の評価に直接効く</td></tr>
+<tr><td>②</td><td>大手が参入しない（旨味がない・小さい・面倒）領域</td><td>選定軸（2026-08）</td><td>層1の業種選びで「大手のシェアが低い業種」を優先</td></tr>
+<tr><td>③</td><td>中長期で安定した月次収益。スケールは必須ではない</td><td>選定軸（2026-08）</td><td>廃業率・黒字割合を第一指標にする根拠</td></tr>
+<tr><td>④</td><td>取得に3〜6か月かかる許認可は取らない。すぐ取れるものは取る</td><td>2026-08-26</td><td>層1で医療・福祉、建設業許可が要る工事は注記付きにする</td></tr>
+<tr><td>⑤</td><td>作業も営業も「増えれば雇えばよい」</td><td>2026-08-26／09-02訂正</td><td>B2B・現場型を候補から外さない</td></tr>
+<tr><td>⑥</td><td>粗利率で収益性を判断しない。回転数が多ければ低粗利でもよい</td><td>2026-08-26</td><td>第8章の試算は「1件の利益×件数」で書く</td></tr>
+<tr><td>⑦</td><td>市場の将来性は10年後で見る。「減る」で落とすのは確定情報のときだけ</td><td>2026-08-26</td><td>層3で社人研の2035年推計を使う</td></tr>
+<tr><td>⑧</td><td>集客の見込みは判定に入れず、「需要があるか」で判断する</td><td>2026-08-26</td><td>層1〜3は需要の有無（事業所数・人口）だけを見る</td></tr>
+<tr><td>新①</td><td>SaaS・AIで作るサービス以外</td><td>本日</td><td>情報通信業を層1から除外</td></tr>
+<tr><td>新②</td><td>始めるのに500万円以上かかるもの</td><td>本日</td><td>4-4節で壁になるかを確認。意味は第10章③</td></tr>
+<tr><td>新③</td><td>店舗型は先が短い（と考えている）</td><td>本日</td><td>S-02との食い違い。第10章②</td></tr>
+<tr><td>新④</td><td>EC＋広告で物を売る形が一番よい（と考えている）</td><td>本日</td><td>4-6節・6-2・第8章で一次情報と照合</td></tr>
+</table></div>
+<p class="note">外的要因の注意書き（R-0652 のご指示）：以下のどの業種も、為替（円安）・エネルギーや原材料の供給途絶・金利上昇によって経営が悪化しうる。この資料はそのリスクを排除した事業を探すものではない。</p>
+
+<h2 id="s4">4. 分かったこと<small>業種の選択で廃業率が3倍、黒字割合が20pt変わる。地域の空白は無料の統計で計算できる。EC＋SNS広告の数字は「大きい市場・薄い1件の利益・上がり続ける獲得単価」を示している。</small></h2>
+
+<h3 id="s4-1">4-1 業種で5年後の廃業率が約3倍違う（日本公庫パネル調査）</h3>
+<p class="lead2">要点：<b>2016年に開業した3,517社を5年追跡した結果、廃業率は建設業5.2%・飲食店・宿泊業14.7%。全体は8.9%。</b>これが「腕に関係なく残りやすい業種」を測る、現時点で唯一の公的な追跡データである。</p>
+<figure>
+<figcaption>図1　開業5年後の累計廃業率は、建設5.2%から飲食・宿泊14.7%まで約3倍の開きがある<small>日本政策金融公庫総合研究所「新規開業パネル調査（第4コーホート）」2016年開業企業、2020年末時点の累計廃業率（%）。点線＝全体8.9%</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="業種別5年後廃業率の横棒グラフ">
+<g class="m"><text x="180" y="14">0</text><text x="380" y="14">5%</text><text x="580" y="14">10%</text><text x="780" y="14">15%</text></g>
+<line class="ax" x1="180" y1="18" x2="180" y2="302"/>
+<line class="grid" x1="380" y1="18" x2="380" y2="302"/><line class="grid" x1="580" y1="18" x2="580" y2="302"/><line class="grid" x1="780" y1="18" x2="780" y2="302"/>
+<line x1="536" y1="18" x2="536" y2="302" stroke="var(--c4)" stroke-dasharray="4 3"/><text x="540" y="312" class="m">全体 8.9%</text>
+<g>
+<text x="170" y="36" text-anchor="end">建設業</text><rect class="bar4" x="180" y="24" width="208" height="16"/><text x="394" y="36">5.2</text>
+<text x="170" y="59" text-anchor="end">個人向けサービス業</text><rect class="bar4" x="180" y="47" width="232" height="16"/><text x="418" y="59">5.8</text>
+<text x="170" y="82" text-anchor="end">運輸業</text><rect class="bar4" x="180" y="70" width="264" height="16"/><text x="450" y="82">6.6</text>
+<text x="170" y="105" text-anchor="end">卸売業</text><rect class="bar4" x="180" y="93" width="268" height="16"/><text x="454" y="105">6.7</text>
+<text x="170" y="128" text-anchor="end">事業所向けサービス業</text><rect class="bar4" x="180" y="116" width="280" height="16"/><text x="466" y="128">7.0</text>
+<text x="170" y="151" text-anchor="end">医療・福祉</text><rect class="bar" x="180" y="139" width="288" height="16"/><text x="474" y="151">7.2</text>
+<text x="170" y="174" text-anchor="end">製造業</text><rect class="bar" x="180" y="162" width="304" height="16"/><text x="490" y="174">7.6</text>
+<text x="170" y="197" text-anchor="end">情報通信業</text><rect class="bar" x="180" y="185" width="308" height="16"/><text x="494" y="197">7.7</text>
+<text x="170" y="220" text-anchor="end">教育・学習支援業</text><rect class="bar2" x="180" y="208" width="472" height="16"/><text x="658" y="220">11.8</text>
+<text x="170" y="243" text-anchor="end">不動産業</text><rect class="bar2" x="180" y="231" width="484" height="16"/><text x="670" y="243">12.1</text>
+<text x="170" y="266" text-anchor="end">小売業</text><rect class="bar2" x="180" y="254" width="528" height="16"/><text x="714" y="266">13.2</text>
+<text x="170" y="289" text-anchor="end">飲食店・宿泊業</text><rect class="bar2" x="180" y="277" width="588" height="16"/><text x="774" y="289">14.7</text>
+</g>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>時点</th><th class="num">累計廃業率</th><th class="num">黒字基調の割合</th><th>注</th></tr>
+<tr><td>2017年末（2年目）</td><td class="num">2.2%</td><td class="num">70.7%</td><td></td></tr>
+<tr><td>2018年末（3年目）</td><td class="num">4.7%</td><td class="num">75.0%</td><td></td></tr>
+<tr><td>2019年末（4年目）</td><td class="num">7.0%</td><td class="num">76.1%</td><td></td></tr>
+<tr><td>2020年末（5年目）</td><td class="num">8.9%</td><td class="num">62.8%</td><td>黒字割合の低下はコロナ影響（公庫の記述）</td></tr>
+</table></div>
+<p class="note">読み方の注意：①2016年開業の1コーホートで、コロナ期をまたぐ。②公庫の融資先＝審査を通った企業なので、全開業者より生存率は高めに出る。③「廃業率が低い」は「儲かる」とは別（4-2節）。</p>
+
+<h3 id="s4-2">4-2 黒字割合は建設58.2%・宿泊飲食36.4%。小企業の飲食は平均で赤字</h3>
+<p class="lead2">要点：<b>TKC（2025年決算・26万社）でも公庫（融資先の小企業）でも、飲食・宿泊は最下位で一致。</b>「地域で美味しければ安定」を裏付ける統計は今回も見つからなかった（2026-09-29 の報告と同じ結論）。</p>
+<div class="tw"><table>
+<tr><th>業種</th><th class="num">TKC 黒字企業割合</th><th class="num">公庫 経常利益率（平均）</th><th class="num">同（黒字かつ自己資本プラス企業）</th><th class="num">黒字かつ自己資本プラスの割合</th><th>注</th></tr>
+<tr><td class="key">全産業</td><td class="num">54.8%</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>国税庁統計の黒字申告割合は36.5%</td></tr>
+<tr><td class="key">建設業</td><td class="num">58.2%</td><td class="num">△1.3%</td><td class="num">4.8%</td><td class="num">42.0%</td><td>TKC主要6産業で最高（n=6,838）</td></tr>
+<tr><td class="key">卸売業</td><td class="num">【未確認】</td><td class="num">△0.4%</td><td class="num">3.6%</td><td class="num">46.4%</td><td>TKCはグラフのみ（目視で55〜56%）</td></tr>
+<tr><td class="key">小売業</td><td class="num">【未確認】</td><td class="num">△0.8%</td><td class="num">3.5%</td><td class="num">37.1%</td><td>TKCはグラフのみ（目視で約46%）</td></tr>
+<tr><td class="key">サービス業</td><td class="num">【未確認】</td><td class="num">△0.8%</td><td class="num">7.7%</td><td class="num">46.5%</td><td>黒字企業の利益率は最高（n=4,587）</td></tr>
+<tr><td class="key">美容業</td><td class="num">掲載なし</td><td class="num">△0.5%</td><td class="num">5.5%</td><td class="num">42.9%</td><td>n=555</td></tr>
+<tr><td class="key">飲食店・宿泊業</td><td class="num">36.4%</td><td class="num">△0.4%</td><td class="num">5.3%</td><td class="num">37.9%</td><td>損益分岐点比率104.0%＝平均で赤字。自己資本比率△30.4%</td></tr>
+</table></div>
+<p class="note">TKC BAST の業種細分類（速報版・206業種）で黒字割合が高い例：舗装工事業75.2%／一般電気工事業70.9%／燃料小売業68.1%／自動車（新車）小売業59.3%／薬局56.8%。コンビニは51.5%だが売上高経常利益率0.8%。「黒字かつ自己資本プラスの割合」は公庫公表値（該当企業数÷調査対象数）からの単純計算。</p>
+
+<h3 id="s4-3">4-3 後継者不在率は建設57.3%が最高、製造42.4%が最低</h3>
+<p class="lead2">要点：<b>不在率が高い業種は、今の担い手が減っていく＝需要が残ったまま競合が減る業種。</b>層1で「廃業率が低く、かつ不在率が高い」業種を重ねると、建設業が唯一両方に当たる。</p>
+<div class="tw"><table>
+<tr><th>業種（大分類）</th><th class="num">2023年</th><th class="num">2024年</th><th class="num">2025年</th><th>中分類の例（2025年）</th></tr>
+<tr><td class="key">建設業</td><td class="num">60.5%</td><td class="num">59.3%</td><td class="num">57.3%</td><td>—</td></tr>
+<tr><td class="key">小売業</td><td class="num">57.9%</td><td class="num">56.8%</td><td class="num">55.2%</td><td>自動車・自転車小売 62.3%（中分類で最高）／織物・衣服・身の回り品小売 53.3%</td></tr>
+<tr><td class="key">サービス業</td><td class="num">58.2%</td><td class="num">55.5%</td><td class="num">52.9%</td><td>飲食店 57.1%／医療業 59.0%／専門サービス 58.6%</td></tr>
+<tr><td class="key">不動産業</td><td class="num">54.5%</td><td class="num">52.9%</td><td class="num">51.1%</td><td>—</td></tr>
+<tr><td class="key">卸売業</td><td class="num">50.7%</td><td class="num">48.8%</td><td class="num">46.8%</td><td>—</td></tr>
+<tr><td class="key">運輸・通信業</td><td class="num">49.9%</td><td class="num">47.2%</td><td class="num">45.7%</td><td>—</td></tr>
+<tr><td class="key">製造業</td><td class="num">45.5%</td><td class="num">43.8%</td><td class="num">42.4%</td><td>—</td></tr>
+<tr><td class="key">全体</td><td class="num">—</td><td class="num">52.1%</td><td class="num">50.1%</td><td>7年連続改善・過去最低（約27万社）</td></tr>
+</table></div>
+<p class="note">ご自身の方針（M&Aサイトは情報源として使い、実際の買収はしない）はそのまま前提にしている。不在率は「買う」ためではなく「競合が自然に減る業種」を見るために使う。</p>
+
+<h3 id="s4-4">4-4 「500万円以上」は開業費用の中央値（600万円）より低く、壁にならない</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">数値</th><th>出典・注</th></tr>
+<tr><td class="key">開業費用「250万円未満」</td><td class="num">20.1%</td><td rowspan="5">日本公庫「2025年度 新規開業実態調査」（2025-12-05公表、回答2,165社）</td></tr>
+<tr><td class="key">開業費用「250万〜500万円未満」</td><td class="num">21.7%</td></tr>
+<tr><td class="key">→ 500万円未満の合計</td><td class="num">41.8%</td></tr>
+<tr><td class="key">開業費用の中央値／平均値</td><td class="num">600万円／975万円</td></tr>
+<tr><td class="key">開業1年目の黒字基調</td><td class="num">67.0%</td></tr>
+</table></div>
+<p>公庫融資先の開業者の58.2%は、すでに500万円以上を使って開業している。したがって「500万円以上かかる」は他人を止める壁ではない。壁として働くのは金額そのものではなく、<b>お金を何に変えるか</b>（返品できない設備・在庫・車両・技能者の雇用）である。この解釈が正しいかを第10章③で伺う。</p>
+
+<h3 id="s4-5">4-5 地域の空白業種は、会社を1社ずつ洗い出さなくても無料の統計で計算できる</h3>
+<div class="tw"><table>
+<tr><th>道具</th><th class="st">無料</th><th>何ができるか</th><th>できないこと・注意</th></tr>
+<tr><td class="key">e-Stat 経済センサス-活動調査（2021年）</td><td class="ok st">可</td><td>「9-1A 産業（小分類）別全事業所数」を市区町村単位でCSV取得</td><td>町丁・大字別は中分類まで。2026年調査の結果は2027年5月以降</td></tr>
+<tr><td class="key">特化係数（立地係数）</td><td class="ok st">可</td><td>（市の業種シェア）÷（全国の業種シェア）。1未満＝全国より薄い＝空白の目安。RESAS公式マニュアルに定義あり</td><td>「薄い＝需要がある」ではない。人口構成で説明できる薄さを除く必要</td></tr>
+<tr><td class="key">RESAS「地域ビジネス環境分析」</td><td class="ok st">可</td><td>2026-01-23追加。市区町村を選ぶだけで将来人口・業種別事業所数・住民の消費を一括表示。登録不要</td><td>旧RESAS-APIは2025-03-24終了。自動取得はe-Stat API</td></tr>
+<tr><td class="key">jSTAT MAP</td><td class="ok st">可</td><td>任意の地点から半径○kmの人口・世帯を集計。リッチレポートは無料ID</td><td>事業所数が半径集計に含まれるかは公式で確認できず【未確認】</td></tr>
+<tr><td class="key">社人研 将来推計人口（令和5年推計）</td><td class="ok st">可</td><td>1,883市区町村の2020〜2050年・5歳階級別。客層の10年後が分かる</td><td>—</td></tr>
+<tr><td class="key">JFA 情報開示書面</td><td class="ok st">可</td><td>約50社以上のFC本部の法定開示書面（店舗数の増減・契約解除数・訴訟件数・類似店の収支）を登録なしで閲覧</td><td>加盟しなくても「型の収支」を読む資料として使える。閉店率の統計は無い</td></tr>
+<tr><td class="key">国税庁 法人番号公表サイト</td><td class="ok st">可</td><td>都道府県単位で全法人をCSV取得、市区町村コードで絞れる</td><td><b>業種の項目が無い</b>。数は取れるが「何屋か」は分からない</td></tr>
+<tr><td class="key">NTTタウンページ 業種別件数</td><td class="ng st">有料</td><td>地域×業種の件数を約25年分（見積り制）</td><td>無料はiタウンページ画面で業種×地域を検索して目で数えるだけ</td></tr>
+</table></div>
+<p>つまり「地域内の会社を全部洗い出す」は、業種が分からない法人番号か有料のタウンページに頼ることになり、最終確認にしか向かない。最初に統計で業種を10個に絞り、最後にiタウンページとGoogleマップで実際の店を数える順番が最短である。</p>
+
+<h3 id="s4-6">4-6 EC＋SNS広告（Tシャツ型）：市場は大きいが、1件の利益は薄く、獲得単価は上がり続けている</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">数値</th><th>出典（年）</th><th>注</th></tr>
+<tr><td class="key">衣類・服装雑貨のBtoC-EC市場</td><td class="num">2兆7,980億円</td><td class="src">経産省 令和6年度EC市場調査（2024年）</td><td>前年比+4.74%。EC化率23.38%（物販平均9.78%の2倍超）</td></tr>
+<tr><td class="key">BASE 開設ショップ数</td><td class="num">250万</td><td class="src">BASE株式会社（2025-11-27）</td><td>ファッションが流通額の46%（2021年資料・古い）</td></tr>
+<tr><td class="key">ファッションECのCVR（中央値）</td><td class="num">2.4%</td><td class="src">Centra（2025、500ブランド）</td><td>Women's 3.6%／<b>Men's 0.8%</b>／Accessories 7.4%</td></tr>
+<tr><td class="key">アパレルの返品率</td><td class="num">24〜26%</td><td class="src">Eightx（2026）を Foundry CRO が引用</td><td>小売全体は16.9%（NRF 2024）→15.8%（2025）。<b>国内アパレルEC値は【未確認】</b></td></tr>
+<tr><td class="key">アパレルの顧客獲得単価（CAC・全費用込み）</td><td class="num">$90〜120</td><td class="src">Eightx（2026、米約40ブランド）</td><td>米国値。国内は【未確認】</td></tr>
+<tr><td class="key">Meta広告の中央値CPA（全業種）</td><td class="num">$27.66→$38.19</td><td class="src">Ryze AI（2025→2026、23か国）</td><td>1年で+38%。Apparel & Fashion のCPAは$24.32</td></tr>
+<tr><td class="key">国内のInstagram広告「相場」</td><td class="num">CPM 300〜1,250円／アパレルCPA 1,500〜3,000円</td><td class="src">国内代理店3社（2026）</td><td><b>根拠非開示の参考値</b>。海外ツール社の日本CPMは$6.73〜$11.50で出典間に1.7倍の差</td></tr>
+<tr><td class="key">受注生産Tシャツの原価（SUZURI）</td><td class="num">2,794円〜</td><td class="src">GMOペパボ（2023-02改定）</td><td>＋利益分（トリブン）の10%が手数料。2026年9月の原価表は【未確認】</td></tr>
+<tr><td class="key">同（Printful 日本製造）</td><td class="num">1,224円〜＋送料584円〜</td><td class="src">第三者掲載値（公式円建て表は【未確認】）</td><td>—</td></tr>
+<tr><td class="key">ロット発注のプリント込みTシャツ</td><td class="num">550〜715円〜</td><td class="src">オリジナルプリント.jp（現行表示）</td><td>受注生産ではなく在庫を持つ型。見積で確定</td></tr>
+<tr><td class="key">Instagram起点D2Cの終了</td><td class="num">2件</td><td class="src">FASHIONSNAP（2024・2025）</td><td>NOUNLESS（2026-01終了）／RANDEBOO（2024-03終了）。公表理由は「諸般の事情」か明記なし</td></tr>
+<tr><td class="key">同・譲渡／事業再生</td><td class="num">2件</td><td class="src">MarkeZine（2024）／WWDJAPAN（2023）</td><td>COHINA（2024-09 サザビーリーグへ譲渡）／ANAP（2023-10 事業再生ADR・4期連続赤字）</td></tr>
+<tr><td class="key">Instagram起点の成長例</td><td class="num">yutori 142億円</td><td class="src">ネットショップ担当者フォーラム（2026-05）</td><td>2026年3月期・33ブランドの上場企業。一人法人の参考値ではない</td></tr>
+</table></div>
+<p><b>Meta広告ライブラリ</b>（facebook.com/ads/library）は無料・登録なしで日本の広告主の広告を配信開始日つきで検索できる。代理店の解説では「同じ業界で長期間配信され続けている広告＝成果が出ている可能性が高い」と使われている。これは「今、広告で利益が出ている商品カテゴリ」を見る道具として、v6の層2でも使える。</p>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ。</small></h2>
+<ul>
+<li><b>業種細分類の黒字割合：</b>美容・不動産・整備・葬儀などの大分類・中分類の黒字割合は、TKC本文に無い。速報版206業種の個別確認は未実施</li>
+<li><b>国内Meta広告の実測値：</b>サンプル数・期間を明示した国内の公開データは無い。第8章の試算は国内代理店の参考値を使っており、精度は低い</li>
+<li><b>国内アパレルECの返品率・CAC：</b>ZOZO等の公表値は見つからず。米国値で代用</li>
+<li><b>FC加盟店の閉店率：</b>公的統計が存在しない。JFA統計は純増減だけ</li>
+<li><b>具体の地域での計算：</b>豊橋市・大阪市北区での特化係数はまだ出していない（層3は未実行）</li>
+<li><b>法務：</b>特商法・景表法・家庭用品品質表示法の要点は取ったが、事業を確定する段では legal-crosscheck（Gemini確認）が必要</li>
+<li><b>Geminiクロスレビュー：</b>未実施。探し方 v6 を承認する前に1回入れることを提案（第10章⑧）</li>
+</ul>
+
+<h2 id="s6">6. 案の比較<small>探し方は4案を比べ、v6（生存率から逆算）だけが「腕への依存」「地域の需要」「無料・即日」「過去資料と重複しない」の4つをすべて満たす。Tシャツ型はご自身の判断軸8つのうち3つと衝突する。</small></h2>
+<h3>6-1 探し方の案（4案）</h3>
+<div class="tw"><table>
+<tr><th>案</th><th class="st">判定</th><th class="num">満たす要件数（/4）</th><th>理由</th></tr>
+<tr><td class="key">A　地域内の会社を全部洗い出す（ご提案）</td><td class="warn st">最終確認向き</td><td class="num">1.5</td><td>法人番号に業種が無く、タウンページ統計は有料。腕への依存も10年後の需要も分からない。統計で絞った後の「実際の店数」確認にだけ使う</td></tr>
+<tr><td class="key">B　案を先に出して事業性を調べる（v4／v5／型2手順書の従来型）</td><td class="warn st">併用</td><td class="num">1</td><td>無料・即日だが、案の元になる業種の生存率を見ていない。判定にかけた6案中5案が止まった（PROJECT.md 第6節）</td></tr>
+<tr><td class="key">C　生存率から逆算する v6（提案）</td><td class="ok st">推奨</td><td class="num">4</td><td>層1（業種の廃業率・黒字割合）→層2（FC開示書面・公庫指標で型の収支）→層3（特化係数・将来人口で地域）→層4（案と1件テスト）。すべて無料の公開資料</td></tr>
+<tr><td class="key">D　FC本部の開示書面だけで型を選ぶ</td><td class="warn st">層2に吸収</td><td class="num">2.5</td><td>類似店の収支・契約解除数まで読めるが、地域の需要と加盟店の閉店率は分からない。v6の層2として使う</td></tr>
+</table></div>
+<p class="note">要件4つ＝①腕に依存しない度合いを一次データで測れる ②地域の10年後の需要を測れる ③無料で今すぐ回せる ④過去の資料（v4/v5/確定版/型2手順書）と重複しない。△は0.5で数えた。数え方はClaudeの評価。</p>
+<figure>
+<figcaption>図2　v6 だけが4つの要件をすべて満たす<small>横軸＝満たす要件数（0〜4）。Claude評価</small></figcaption>
+<svg viewBox="0 0 900 200" role="img" aria-label="探し方4案の比較横棒">
+<g class="m"><text x="300" y="14">0</text><text x="440" y="14">1</text><text x="580" y="14">2</text><text x="720" y="14">3</text><text x="860" y="14">4</text></g>
+<line class="ax" x1="300" y1="18" x2="300" y2="180"/>
+<line class="grid" x1="440" y1="18" x2="440" y2="180"/><line class="grid" x1="580" y1="18" x2="580" y2="180"/><line class="grid" x1="720" y1="18" x2="720" y2="180"/><line class="grid" x1="860" y1="18" x2="860" y2="180"/>
+<text x="290" y="46" text-anchor="end">A 全社洗い出し</text><rect class="bar3" x="300" y="32" width="210" height="20"/><text x="516" y="47">1.5</text>
+<text x="290" y="86" text-anchor="end">B 案を先に出す（従来）</text><rect class="bar3" x="300" y="72" width="140" height="20"/><text x="446" y="87">1</text>
+<text x="290" y="126" text-anchor="end">C 生存率から逆算 v6</text><rect class="bar" x="300" y="112" width="560" height="20"/><text x="866" y="127">4</text>
+<text x="290" y="166" text-anchor="end">D FC開示書面だけ</text><rect class="bar3" x="300" y="152" width="350" height="20"/><text x="656" y="167">2.5</text>
+</svg>
+</figure>
+
+<h3>6-2 Tシャツ＋Instagram広告型を、ご自身の判断軸に当てる</h3>
+<div class="tw"><table>
+<tr><th>判断軸</th><th class="st">照合</th><th>事実（4-6節）</th><th>理由</th></tr>
+<tr><td class="key">①資金勝負にならない</td><td class="ng st">衝突</td><td>Meta広告は入札制。中央値CPAは1年で+38%</td><td>同じ枚数を売るには、より多く払える側が表示を取る。LTVが高い大手ほど高く入札できる</td></tr>
+<tr><td class="key">②大手が参入しない</td><td class="ng st">衝突</td><td>衣類EC 2.8兆円・EC化率23%。BASE 250万店の46%がファッション</td><td>大手も個人も既に密集している最大市場</td></tr>
+<tr><td class="key">新② 500万円以上の壁</td><td class="ng st">衝突</td><td>SUZURI等なら初期費用0円で開始可</td><td>ご自身の言葉どおり「誰でも思いつく」＝壁がない</td></tr>
+<tr><td class="key">③中長期の安定収益</td><td class="warn st">条件付き</td><td>Instagram起点D2Cで2024〜26年に終了3件・譲渡1件。成長例は上場企業</td><td>続いている小規模例の売上公表が無く、確認できない</td></tr>
+<tr><td class="key">④許認可が不要</td><td class="ok st">合う</td><td>特商法表示・家庭用品品質表示法・ステマ規制の遵守のみ</td><td>—</td></tr>
+<tr><td class="key">⑤作業は雇えばよい</td><td class="ok st">合う</td><td>—</td><td>—</td></tr>
+<tr><td class="key">⑥粗利率で判断しない（回転数）</td><td class="warn st">条件付き</td><td>Men's fashion CVR 0.8%、返品24〜26%（米）</td><td>回転数を稼ぐ前提のCVRと返品率が、他のEC品目より不利</td></tr>
+<tr><td class="key">⑧需要の有無で判断</td><td class="ok st">合う</td><td>需要は明らかに存在する（2.8兆円）</td><td>需要はあるが、それは競合の多さと同じもの</td></tr>
+</table></div>
+
+<h2 id="s7">7. 推奨と理由<small>狙う場所は「廃業率が低く、資本の壁がある」象限。Tシャツ型・SaaS・飲食はいずれもこの象限に入らない。探す順番を v6 の4層に固定することを提案する。</small></h2>
+<figure>
+<figcaption>図3　当社が狙う象限は「5年廃業率が低い × 参入に資本の壁がある」<small>横軸＝日本公庫パネル調査の5年後廃業率（一次データ）。縦軸＝参入時の資本の壁（Claude評価）。数値は各業種の廃業率</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="2×2の位置取り図">
+<line class="ax" x1="120" y1="20" x2="120" y2="270"/><line class="ax" x1="120" y1="270" x2="880" y2="270"/>
+<line class="grid" x1="500" y1="20" x2="500" y2="270"/><line class="grid" x1="120" y1="145" x2="880" y2="145"/>
+<text x="500" y="295" text-anchor="middle" class="m">← 5年後廃業率が低い（残りやすい）　　　　　　　　　　　　5年後廃業率が高い →</text>
+<text x="110" y="40" text-anchor="end" class="m">資本の壁</text><text x="110" y="56" text-anchor="end" class="m">高い ↑</text>
+<text x="110" y="250" text-anchor="end" class="m">低い ↓</text>
+<rect class="us" x="140" y="34" width="340" height="96" rx="6"/>
+<text x="310" y="60" text-anchor="middle" class="w" style="font-size:13px">当社の狙い：設備・在庫・車両・技能者で稼ぐ型</text>
+<text x="310" y="82" text-anchor="middle" class="w">建設 5.2／運輸 6.6／事業所向けサービス 7.0</text>
+<text x="310" y="102" text-anchor="middle" class="w">製造 7.6／卸売 6.7</text>
+<text x="310" y="121" text-anchor="middle" class="w" style="font-size:11px">※建設業許可・運送許可が要る範囲は軸④で注記</text>
+<rect class="cand" x="520" y="34" width="340" height="96" rx="6"/>
+<text x="690" y="70" text-anchor="middle">飲食店・宿泊 14.7／不動産 12.1</text>
+<text x="690" y="92" text-anchor="middle" class="m">資本は要るが、平均では赤字（4-2節）</text>
+<rect class="cand" x="140" y="160" width="340" height="96" rx="6"/>
+<text x="310" y="196" text-anchor="middle">個人向けサービス 5.8／情報通信（SaaS）7.7</text>
+<text x="310" y="218" text-anchor="middle" class="m">残りやすいが、誰でも入れる（SaaSはご指示で対象外）</text>
+<rect class="cand" x="520" y="160" width="340" height="96" rx="6"/>
+<text x="690" y="196" text-anchor="middle">小売（EC・Tシャツ型を含む）13.2／教育 11.8</text>
+<text x="690" y="218" text-anchor="middle" class="m">最も競合が多く、最も止めやすい</text>
+</svg>
+</figure>
+
+<h3>推奨：探し方 v6「生存率から逆算する」（提案）</h3>
+<figure>
+<figcaption>図4　順番を逆にする：業種を先に決め、案は最後に出す<small>各層で使う資料はすべて無料の公開情報。層1〜3はCoworkで1週間以内に回せる</small></figcaption>
+<svg viewBox="0 0 990 230" role="img" aria-label="v6 の4層の流れ">
+<rect class="lane" x="10" y="20" width="970" height="120" rx="6"/>
+<rect class="box" x="30" y="40" width="200" height="80" rx="6"/><text x="130" y="66" text-anchor="middle" style="font-weight:600">層1　業種の足切り</text><text x="130" y="88" text-anchor="middle" class="m">5年廃業率 ≤7%</text><text x="130" y="106" text-anchor="middle" class="m">黒字割合 ≥50%・不在率</text>
+<path class="ln" d="M232 80 L268 80" marker-end="url(#a)"/>
+<rect class="box" x="270" y="40" width="200" height="80" rx="6"/><text x="370" y="66" text-anchor="middle" style="font-weight:600">層2　型の選定</text><text x="370" y="88" text-anchor="middle" class="m">FC開示書面・公庫指標</text><text x="370" y="106" text-anchor="middle" class="m">M&amp;Aサイト・広告ライブラリ</text>
+<path class="ln" d="M472 80 L508 80" marker-end="url(#a)"/>
+<rect class="box" x="510" y="40" width="200" height="80" rx="6"/><text x="610" y="66" text-anchor="middle" style="font-weight:600">層3　地域の空白</text><text x="610" y="88" text-anchor="middle" class="m">特化係数（経済センサス）</text><text x="610" y="106" text-anchor="middle" class="m">2035年人口・jSTAT MAP</text>
+<path class="ln" d="M712 80 L748 80" marker-end="url(#a)"/>
+<rect class="box" x="750" y="40" width="210" height="80" rx="6"/><text x="855" y="66" text-anchor="middle" style="font-weight:600">層4　案と1件テスト</text><text x="855" y="88" text-anchor="middle" class="m">案は広く出し、選ぶのは坂野様</text><text x="855" y="106" text-anchor="middle" class="m">選んだ案は KASETSU.md へ</text>
+<text x="30" y="170" class="m">層1の足切り線（提案）：日本公庫パネル調査の5年後廃業率7.0%以下 ＋ TKC黒字企業割合50%以上。情報通信業はご指示で除外。</text>
+<text x="30" y="192" class="m">層1を通る候補（一次データのみで機械的に）：建設業・個人向けサービス業・運輸業・卸売業・事業所向けサービス業（黒字割合が【未確認】の業種は注記付きで残す）。</text>
+<text x="30" y="214" class="m">層2で「型」を読むのは、加盟するためではなく「その業種でどんな店・会社が何人で月いくら売っているか」を法定書面で知るため。</text>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted)"/></marker></defs>
+</svg>
+</figure>
+<div class="pillars">
+<div class="pillar must"><h4>層1　業種の足切り</h4><dl><dt>何をする</dt><dd>日本公庫パネル調査・TKC BAST・TDB不在率の3表を1枚に重ね、線を引く</dd><dt>成立する条件</dt><dd>2016年コホートの1回の追跡で判断してよい、と割り切る（次の追跡公表は無い）</dd><dt>守り方（提案）</dt><dd>線は坂野様が決める。Claudeは表を出すだけ</dd></dl></div>
+<div class="pillar must"><h4>層2　型の選定</h4><dl><dt>何をする</dt><dd>JFA開示書面（約50社）で該当業種の本部を読み、類似店の収支・契約解除数を表に。公庫「小企業の経営指標」で業種の利益率の分布を確認</dd><dt>成立する条件</dt><dd>加盟しなくても書面は読める（JFAは登録不要で公開）</dd><dt>守り方（提案）</dt><dd>K-002 に従い、この段で収益計算をしない。「実在する型」を集めるだけ</dd></dl></div>
+<div class="pillar cond"><h4>層3　地域の空白</h4><dl><dt>何をする</dt><dd>豊橋市・大阪市北区（候補）で層1業種の特化係数を出し、1未満かつ2035年に客層が減らない業種を残す</dd><dt>成立する条件</dt><dd>柱②が地域の需要で成り立つ事業であること。全国EC型なら層3は飛ばす</dd><dt>守り方（提案）</dt><dd>統計の後に iタウンページ・Googleマップで実店舗数を目で補正</dd></dl></div>
+<div class="pillar cond"><h4>層4　案と1件テスト</h4><dl><dt>何をする</dt><dd>層1〜3を通った業種×型×地域で案を広く出す（2026-08-26 の方針どおり絞らない）。選んだ案だけ venture-hypothesis の KASETSU.md へ</dd><dt>成立する条件</dt><dd>「賭けてよい上限」を先に坂野様が決める</dd><dt>守り方（提案）</dt><dd>進む／止めるの確定前に Gemini クロスレビュー</dd></dl></div>
+</div>
+<h3>反論（自分で書く）</h3>
+<ul>
+<li><b>「廃業率が低い＝儲かる」ではない。</b>建設業は公庫融資先の平均で経常利益率△1.3%。層1は「残りやすさ」の足切りであり、儲けは層2・層4で別に見る（K-002）</li>
+<li><b>データは2016年開業の1コーホート。</b>コロナ期を含み、次の追跡公表は無い。線を引くには十分だが、業種内の細分類までは語れない</li>
+<li><b>低廃業率の業種はB2B・現場型が多く、営業と技能者が要る。</b>ご方針⑤（雇えばよい）で許容されているが、雇える前提が崩れれば再検討</li>
+<li><b>建設業許可（500万円以上の工事）・貨物自動車運送事業許可は取得に時間がかかる。</b>軸④により、許可の要らない範囲（500万円未満の工事＝軽微な建設工事、軽貨物など）に限って候補に残す</li>
+<li><b>「大手が来ない」保証はない。</b>ただし建設57.3%・自動車小売62.3%という不在率は、担い手が減る側の業種であることを示す</li>
+</ul>
+
+<h2 id="s8">8. 数字<small>Tシャツ型は、受注生産なら1件目で赤字、ロット在庫でも月50万円の利益に月500件・広告費約110万円が要る（仮定つきの試算）。</small></h2>
+<p class="note">以下は<b>試算</b>。売価・CPAは国内代理店の参考値（根拠非開示）を使っており、精度は低い。返品・決済手数料・送料無料化の負担は含めていない。</p>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">受注生産（SUZURI型）</th><th class="num">ロット在庫（自社発注）</th><th>仮定の出どころ</th></tr>
+<tr><td class="key">売価（税込）</td><td class="num">4,400円</td><td class="num">4,400円</td><td>仮定（SUZURI原価＋利益設定の範囲内）</td></tr>
+<tr><td class="key">1枚の原価</td><td class="num">2,794円〜</td><td class="num">715円〜</td><td>SUZURI 2023-02改定値／オリジナルプリント.jp United Athle 5.6oz</td></tr>
+<tr><td class="key">発送・梱包（在庫型のみ）</td><td class="num">—</td><td class="num">約600円</td><td>仮定（Printful送料584円〜を参考）</td></tr>
+<tr><td class="key">1件の粗利（広告前）</td><td class="num">約1,600円</td><td class="num">約3,100円</td><td>計算値</td></tr>
+<tr><td class="key">1件の獲得単価（CPA）</td><td class="num">1,500〜3,000円</td><td class="num">1,500〜3,000円</td><td>国内代理店参考値（アパレルEC）。根拠非開示</td></tr>
+<tr><td class="key">1件の利益（広告後）</td><td class="num ng">△1,400〜＋100円</td><td class="num warn">＋100〜＋1,600円</td><td>計算値</td></tr>
+<tr><td class="key">月50万円の利益に必要な件数</td><td class="num">成立しない</td><td class="num">約310〜5,000件</td><td>CPA 1,500円なら310件、CPA 3,000円なら5,000件</td></tr>
+<tr><td class="key">そのときの月間広告費</td><td class="num">—</td><td class="num">約47万〜1,500万円</td><td>件数×CPA</td></tr>
+<tr><td class="key">在庫の先行投資</td><td class="num">0円</td><td class="num">数十万円〜</td><td>ロット・サイズ・色数で変動【試算外】</td></tr>
+</table></div>
+<p>受注生産型は「壁が無い」代わりに1件の利益が広告費に消える。在庫型は利益が出うるが、月50万円に届く条件（CPA 1,500円台の維持）は<b>広告の入札で勝ち続けること</b>に依存し、これは軸①（資金勝負を避ける）と正面から衝突する。返品率24〜26%（米国値）を織り込めば、1件の利益はさらに2〜3割減る。</p>
+<p>比較のために：層1候補の業種では「1件の利益×件数」の考え方は同じだが、件数を増やす手段が「広告の入札」ではなく「人と設備を増やす」側にある。ご方針⑤（雇えばよい）と噛み合うのはこちらである。</p>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>いちばん危ない前提は「廃業率が低い業種の中に、許認可なし・雇用ありで入れる型がある」こと。層1〜2を1週間・0円で回せば確かめられる。</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td class="key">いちばん危ない前提</td><td>層1を通った業種（建設・運輸・卸売・事業所向けサービス・個人向けサービス）の中に、①3〜6か月の許認可が不要 ②雇用で回せる ③資本の壁がある、を同時に満たす「型」が実在する</td></tr>
+<tr><td class="key">なぜ一番危ないか</td><td>ここが空なら v6 は「良い業種を見つけたが入れない」で終わる。過去の探し方と同じ結末になる</td></tr>
+<tr><td class="key">確かめ方</td><td>JFA開示書面（約50社）と公庫「小企業の経営指標」を業種で絞り、型を10件以上表にする。作らずに公開資料だけで確かめられる</td></tr>
+<tr><td class="key">費用・期限</td><td>0円／第10章の回答から1週間</td></tr>
+<tr><td class="key">合格の線（提案）</td><td>3条件を満たす型が<b>5件以上</b>並ぶ</td></tr>
+<tr><td class="key">不合格なら</td><td>足切り線を「廃業率 ≤9%（全体平均）」に緩めて1回だけ再実行。それでも5件未満なら v6 を止め、従来型（案先行）に戻す</td></tr>
+</table></div>
+<figure>
+<figcaption>図5　層1〜3は4週間以内、費用0円で回せる<small>週単位。第10章の回答が出てから開始。Geminiレビューは v6 承認前の1回（提案）</small></figcaption>
+<svg viewBox="0 0 960 230" role="img" aria-label="工程のガント図">
+<g class="m"><text x="290" y="16">第1週</text><text x="450" y="16">第2週</text><text x="610" y="16">第3週</text><text x="770" y="16">第4週</text></g>
+<line class="grid" x1="410" y1="22" x2="410" y2="205"/><line class="grid" x1="570" y1="22" x2="570" y2="205"/><line class="grid" x1="730" y1="22" x2="730" y2="205"/><line class="grid" x1="890" y1="22" x2="890" y2="205"/>
+<text x="240" y="44" text-anchor="end">① 第10章の8点をご判断</text><rect class="bar2" x="250" y="30" width="60" height="18" rx="3"/>
+<text x="240" y="78" text-anchor="end">② 層1 業種表の確定（線は坂野様）</text><rect class="bar" x="310" y="64" width="100" height="18" rx="3"/>
+<text x="240" y="112" text-anchor="end">③ 層2 型10件（FC書面・公庫指標）</text><rect class="bar" x="410" y="98" width="160" height="18" rx="3"/>
+<text x="240" y="146" text-anchor="end">④ 層3 特化係数（豊橋市・大阪市北区）</text><rect class="bar" x="490" y="132" width="160" height="18" rx="3"/>
+<text x="240" y="180" text-anchor="end">⑤ Geminiレビュー → v6 承認</text><rect class="bar4" x="650" y="166" width="120" height="18" rx="3"/>
+<text x="240" y="205" text-anchor="end" class="m">⑥ 層4 案出し（承認後）</text><rect class="bar3" x="770" y="191" width="120" height="14" rx="3"/>
+</svg>
+</figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>8点。★＝Claudeの推奨。「全部推奨どおり」で確定できる。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢</th><th>推奨と理由</th></tr>
+<tr><td>①</td><td>今日のご要望は柱②（続ける事業）についてか</td><td>A 柱②のみ（柱①型2は維持）／B 柱①も撤回して1本化</td><td>★A。R-0657（本日）で2本柱を決めたばかりで、撤回する新事実は今回の調査に無い</td></tr>
+<tr><td>②</td><td>店舗型（S-02）の扱い</td><td>A 保留（資料は残す）／B 中止／C 「地域＋設備型」に読み替えて継続</td><td>★C。飲食・小売の店舗は統計上不利だが、地域で成立する整備・卸・事業所向けサービスは層1を通る。「店舗＝飲食・小売」と限らなければ矛盾しない</td></tr>
+<tr><td>③</td><td>「500万円以上」の意味</td><td>A 毎月の固定費／B 参入時の資本の壁（設備・在庫・車両）</td><td>★B。4-4節のとおり金額自体は壁にならない。何に変えるかで壁になる</td></tr>
+<tr><td>④</td><td>Tシャツ＋Instagram広告型の扱い</td><td>A 柱にしない／B 上限を決めて実験（venture-hypothesis）／C 柱として進める</td><td>★A。判断軸①②新②と衝突。Bなら「賭けてよい上限」を先に伺う</td></tr>
+<tr><td>⑤</td><td>探し方 v6 の採用と層1の足切り線</td><td>A 採用（廃業率 ≤7%・黒字割合 ≥50%）／B 線を変えて採用／C 不採用</td><td>★A。線の数値は坂野様が変えてよい。Claudeは表を出す役</td></tr>
+<tr><td>⑥</td><td>層3の地域</td><td>A 豊橋市／B 大阪市北区／C 両方／D 層3は飛ばす（全国型）</td><td>★C。両方とも無料・1日で出せる。柱②が地域型でないならD</td></tr>
+<tr><td>⑦</td><td>「レディティス」の意味</td><td>—</td><td>聞き取れなかったため推測していない。教えていただければ該当箇所を直す</td></tr>
+<tr><td>⑧</td><td>Geminiクロスレビューの時期</td><td>A v6承認前に1回／B 層4の案を選んだ後／C 不要</td><td>★A。探し方そのものの誤りは、後で見つかるほど手戻りが大きい（v1の前提誤りの再発防止）</td></tr>
+</table></div>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本（対応する DECISIONS.md の決定はまだ無い）。承認後に D-番号を採り、本書と食い違ったら DECISIONS.md を正とする。</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>v6 初版</td><td>2026-09-30</td><td>新規作成（案・未承認）。Gemini未実施</td></tr>
+</table></div>
+<h3>出典（一次情報）</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>資料</th><th>URL</th></tr>
+<tr><td>1</td><td>日本公庫「2016年に開業した企業の5年間の動向（新規開業パネル調査 第4コーホート）」日本公庫論集 2022-02</td><td class="src">https://www.jfc.go.jp/n/findings/pdf/ronbun2202_01.pdf</td></tr>
+<tr><td>2</td><td>日本公庫「2025年度 新規開業実態調査」2025-12-05</td><td class="src">https://www.jfc.go.jp/n/findings/pdf/kaigyo_251205_1.pdf</td></tr>
+<tr><td>3</td><td>日本公庫「小企業の経営指標調査」（建設・卸小売・飲食宿泊・サービス）</td><td class="src">https://www.jfc.go.jp/n/findings/shihyou_kekka_m_index.html</td></tr>
+<tr><td>4</td><td>TKC全国会「TKC経営指標（BAST）令和8年版」2026-06-08／速報版</td><td class="src">https://www.tkc.jp/news/2026/20260608/ ／ https://www.tkc.jp/tkcnf/bast/sample/</td></tr>
+<tr><td>5</td><td>中小企業庁「2026年版 中小企業白書」第1部第1章第7節／付属統計資料11表／2017年版 第2部第1章（生存率）</td><td class="src">https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/chusho/b1_1_7.html</td></tr>
+<tr><td>6</td><td>帝国データバンク「全国『後継者不在率』動向調査（2025年）」2025-11-21</td><td class="src">https://www.tdb.co.jp/report/economic/20251121-successor25y/</td></tr>
+<tr><td>7</td><td>経済産業省「令和6年度 電子商取引に関する市場調査」2025-08-26</td><td class="src">https://www.meti.go.jp/policy/it_policy/statistics/outlook/250826_kohyoshiryo.pdf</td></tr>
+<tr><td>8</td><td>日本フランチャイズチェーン協会「2024年度 JFAフランチャイズチェーン統計調査」／情報開示書面</td><td class="src">https://www.jfa-fc.or.jp/particle/29.html ／ https://www.jfa-fc.or.jp/particle/3614.html</td></tr>
+<tr><td>9</td><td>中小企業庁「フランチャイズ事業を始めるにあたって（法定開示書面の手引き）」</td><td class="src">https://www.chusho.meti.go.jp/shogyo/shogyo/2021/download/r3fy-FC-all.pdf</td></tr>
+<tr><td>10</td><td>経産省プレス「RESAS 地域ビジネス環境分析」2026-01-23／RESAS 特化係数マニュアル</td><td class="src">https://www.meti.go.jp/press/2025/01/20260123002/20260123002.html</td></tr>
+<tr><td>11</td><td>e-Stat 令和3年経済センサス-活動調査「9-1A 産業(小分類)別全事業所数」／2026年調査の概要</td><td class="src">https://www.e-stat.go.jp/stat-search/files?tstat=000001145590 ／ https://www.stat.go.jp/data/e-census/2026/gaiyo.html</td></tr>
+<tr><td>12</td><td>jSTAT MAP（e-Stat）／社人研「日本の地域別将来推計人口（令和5年推計）」</td><td class="src">https://www.e-stat.go.jp/help/view-on/map/about_gis ／ https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/t-page.asp</td></tr>
+<tr><td>13</td><td>国税庁 法人番号公表サイト（全件ダウンロード・リソース定義書）</td><td class="src">https://www.houjin-bangou.nta.go.jp/download/index.html</td></tr>
+<tr><td>14a</td><td>Centra「Conversion rate fashion ecommerce benchmarks」2025-02</td><td class="src">https://centra.com/news/conversion-rate-fashion-ecommerce-benchmarks</td></tr>
+<tr><td>14b</td><td>Ryze AI「Meta Ads benchmarks 2026」2026-04</td><td class="src">https://www.get-ryze.ai/ja/blog/meta-ads-cost-benchmarks-by-industry-2026</td></tr>
+<tr><td>14c</td><td>Eightx「Average CAC by vertical」2026-03／NRF×Happy Returns 2024-12</td><td class="src">https://eightx.co/blog/average-cac-ecommerce-vertical ／ https://nrf.com/media-center/press-releases/nrf-and-happy-returns-report-2024-retail-returns-total-890-billion</td></tr>
+<tr><td>15</td><td>国内代理店の参考値（根拠非開示）：curumi 2026-04／マーケティングワン 2026／latrus</td><td class="src">https://curumi.co.jp/blog/instagram-ads-2 ／ https://marketingone.co.jp/meta-ads-cpm-reduction-guide-2026-strategies/</td></tr>
+<tr><td>16</td><td>SUZURIヘルプ（トリブン・手数料）／価格改定 2023-02-27／オリジナルプリント.jp Tシャツ価格／pixivFACTORY tips</td><td class="src">https://help.suzuri.jp/hc/ja/articles/47325201727251 ／ https://suzuri.jp/media/journal_price-revision-20230227/ ／ https://originalprint.jp/tshirts</td></tr>
+<tr><td>17</td><td>BASE「250万ショップ突破」2025-11-27</td><td class="src">https://prtimes.jp/main/html/rd/p/000000271.000030814.html</td></tr>
+<tr><td>18a</td><td>FASHIONSNAP：NOUNLESS 2025-12-04／RANDEBOO 2024-03-05</td><td class="src">https://www.fashionsnap.com/article/2025-12-04/nounless-close/ ／ https://www.fashionsnap.com/article/2024-03-05/randeboo-close/</td></tr>
+<tr><td>18b</td><td>MarkeZine：COHINA 2024-08-26／WWDJAPAN：ANAP 事業再生ADR</td><td class="src">https://markezine.jp/news/detail/74295 ／ https://www.wwdjapan.com/articles/1668638</td></tr>
+<tr><td>18c</td><td>ネットショップ担当者フォーラム：yutori 2026年3月期決算 2026-05-18</td><td class="src">https://netshop.impress.co.jp/n/2026/05/18/16084</td></tr>
+<tr><td>19</td><td>消費者庁：ステルスマーケティング規制（2023-10-01施行）／特商法 通信販売の広告表示／家庭用品品質表示法 繊維製品</td><td class="src">https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing ／ https://www.no-trouble.caa.go.jp/what/mailorder/advertising.html ／ https://www.caa.go.jp/policies/policy/representation/household_goods/guide/fiber/fiber_show.html</td></tr>
+<tr><td>20</td><td>Meta広告ライブラリ</td><td class="src">https://www.facebook.com/ads/library/</td></tr>
+</table></div>
+<p class="note">台帳との関係：本書は「探し方の案」であり、DECISIONS.md への記帳は坂野様の承認後に行う。過去の探し方（v4 2026-08-26／SaaS確定版 2026-08-28／v5 2026-08-28／型2手順書 2026-09-30）は削除せず残置し、v6 承認後に PROJECT.md から最新版だけを参照する。</p>
+</main></div></body></html>

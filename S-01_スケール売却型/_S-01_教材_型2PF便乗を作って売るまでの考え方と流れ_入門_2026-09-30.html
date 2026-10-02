@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教材：型2 プラットフォーム便乗のサービスを作って売るまでの考え方と流れ（入門）</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+.tw.fit td{min-width:0}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">要約（1枚）</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. この教材の範囲と学び方</a>
+<a href="#s3">3. 先に覚える用語と前提</a>
+<a href="#s4">4. 型2の流れと参考例（図1・図2）</a>
+<a href="#s5">5. この教材で扱わないこと</a>
+<a href="#s6">6. 出口（売り先）の比較（図3）</a>
+<a href="#s7">7. 判断の型（図4）</a>
+<a href="#s8">8. 数字（値付け・到達の目安）</a>
+<a href="#s9">9. 学習の進め方と次の工程</a>
+<a href="#s10">10. 決めていただく事項・未確認事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>教材：型2「プラットフォーム便乗」のサービスを作って売るまでの考え方と流れ（入門）</h1>
+<p class="meta">作成日：2026-09-30／状態：第1版（学習用）／原本：S-01 の v1（事例台帳）・v2（Gemini対応と海外比較）・事業案カタログv1・型2 空きを探す手順書v1。数値・事例はすべて原本から引き、本書で新しく調べた数値は無い。食い違ったら原本を正とする。</p>
+
+<h2 id="s0">要約（1枚）<small>型2は「他人の土台の上に、出店者が困っている1機能を作り、土台の周辺企業に2〜3年で売る」型。勝負は作る前の「空き探し」と、最初から「誰が買うか」を決めておくことで決まる</small></h2>
+<div class="grid">
+<div class="kpi"><b>型2とは</b><span>Shopify・LINE・Notion・Xなど既にある土台（PF）の上で、利用者が「できない」と困る1機能を作る事業</span></div>
+<div class="kpi"><b>誰に売るか</b><span>土台そのものではなく、土台の「周辺企業」（例：Notion本体ではなくペライチ、LINE本体ではなくINFLU）</span></div>
+<div class="kpi"><b>参考例の期間</b><span>最短1か月（Peing）〜最長7年（Plug in Useful）。多くは8か月〜3年で売っている</span></div>
+<div class="kpi"><b>参考例の金額</b><span>国内は非公表〜10億円（Skeb）。米国の少人数アプリは「7桁ドル」（1億円台〜）が相場</span></div>
+<div class="kpi"><b>値付けの目安</b><span>実態営業利益×2〜4倍。海外の少人数SaaS中央値3.9倍。売却＝「利益2〜4年分の前借り」</span></div>
+<div class="kpi"><b>型3・型4の位置づけ</b><span>やらないのではなく優先度が低いだけ。儲かる話があればやる（第5章）</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>新規事業の2本柱を「①型2で作って売る」「②続ける事業」と決め、まず①を1つ作る。ただし、型2の「作る→売る」の全体像を知る材料がまだ無い。</dd>
+<dt>課題</dt><dd>事例を読んでも「なぜ売れたのか」「自分が同じことをするなら何から始めるか」がつながらない。プログラミングの知識も少ないため、どこまでを自分で判断し、どこをCoworkに任せるかが見えない。</dd>
+<dt>分かったこと</dt><dd>型2の成功例は、共通して6つの段（土台を選ぶ→空きを探す→作らずに確かめる→1機能を作る→有料化して積む→売る）を通っている。差が付くのは「作る」ではなく、その前の2段と、最初から出口を決めているかどうか。売った人の多くは「1人の限界」か「土台依存の怖さ」を理由に2〜3年目に売っている。</dd>
+<dt>未決</dt><dd>本書の承認／学習の進め方（第9章の週割り）を採るか／最初に深掘りする参考例を1つ選ぶか。第10章。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>「知識が少なすぎる」ので、まず全体像と考え方を1冊にまとめる依頼</small></h2>
+<div class="tw"><table>
+<tr><th>日付</th><th>ご依頼・決定</th><th>本書での扱い</th></tr>
+<tr><td>2026-09-29</td><td>売却型の事例を広く調べ、4つの型（買い手先行／PF便乗／成長資本／ロールアップ）と29案に整理した</td><td>本書は型2だけを深掘りする。他の型は第5章で位置づけのみ</td></tr>
+<tr><td>2026-09-30</td><td>2本柱（型2で売る＋続ける事業）とし、まず型2を1つ作る。優先はA新規性→B買い手</td><td>第7章の判断の型に反映</td></tr>
+<tr><td>2026-09-30</td><td>型2の「空き」を探す手順書を作成（7つの探し先）</td><td>第4章の第2段で参照。手順そのものは手順書に任せる</td></tr>
+<tr><td>2026-09-30</td><td><b>知識レベルを上げる教材を1つ。型2を作って売るまでの考え方・流れ・参考例を入れる</b></td><td>本書</td></tr>
+<tr><td>2026-09-30</td><td><b>型3・型4は「やらない」ではない。優先度が低いだけで、儲かる話があればやる</b></td><td>要約・第5章・第7章に明記。今後の資料もこの表現に統一する</td></tr>
+</table></div>
+
+<h2 id="s2">2. この教材の範囲と学び方<small>新しい調査はしていない。既にある4本の資料の中身を「学ぶ順番」に並べ替えたもの</small></h2>
+<div class="tw"><table>
+<tr><th>学ぶこと</th><th>出どころ（原本）</th><th>本書での深さ</th><th>残っている穴</th></tr>
+<tr><td class="key">型2の全体の流れ</td><td>v1 事例台帳（国内約100件・米国25件）</td><td>6段に整理し、各段の「考え方・やること・つまずき」を書く</td><td>各段の実作業の手順は書かない（作るときに別途）</td></tr>
+<tr><td class="key">参考例</td><td>v1・v2の型2事例</td><td>国内5件・海外5件を1行1事例で。本人の言葉を引用</td><td>Leaの売却日・金額は原本でも非公表</td></tr>
+<tr><td class="key">空きの探し方</td><td>手順書v1</td><td>要点だけ。7つの探し先の名前と考え方</td><td>手順の実行は手順書に従う</td></tr>
+<tr><td class="key">値付け・出口</td><td>v2 3章・カタログ6章</td><td>倍率と買い手の種類。1億円に必要な利益</td><td>個別の買い手の買収基準は交渉時に確認</td></tr>
+<tr><td class="key">法務・規約</td><td>—</td><td>「土台の規約を最初に読む」という原則のみ</td><td>個別の規約・法令は案が決まってから legal-crosscheck</td></tr>
+</table></div>
+<p class="note">読み方（提案）：初回は要約→第4章→第7章の順で読む。第3章の用語は分からない言葉が出たときに戻る。第8章の数字は「自分の案に当てはめる」ときに使う。</p>
+
+<h2 id="s3">3. 先に覚える用語と前提<small>用語は10個だけ。これが分かれば事例が読める</small></h2>
+<div class="tw"><table>
+<tr><th>用語</th><th>意味（初心者向け）</th><th>事例での例</th></tr>
+<tr><td class="key">土台（プラットフォーム、PF）</td><td>多くの人が既に使っている場所。出店者・利用者が集まっている</td><td>Shopify、楽天RMS、LINE、Notion、X（旧Twitter）、Chrome、Claude／ChatGPTのコネクタ</td></tr>
+<tr><td class="key">便乗・相乗り</td><td>土台の集客に乗り、土台に「無い1機能」だけを足す。自分で客を集めない</td><td>Wraptas＝Notionの文書をWebサイトにする</td></tr>
+<tr><td class="key">空き</td><td>需要（困っている人）はあるのに、まだ誰も作っていない機能</td><td>Peing＝Xで匿名質問を受けたい人がいたが箱が無かった</td></tr>
+<tr><td class="key">周辺企業</td><td>土台の上で商売している会社。土台本体ではない。型2の主な買い手</td><td>ペライチ（HP作成）、INFLU（LINEマーケ）、ジラフ、Shop Circle</td></tr>
+<tr><td class="key">MRR</td><td>月に決まって入る売上（月額課金の合計）。買い手が最初に見る数字</td><td>Order Tagger＝ARR（年間）の3〜4倍で売却</td></tr>
+<tr><td class="key">実態営業利益</td><td>売上から実際の費用を引き、社長の私的な出費などを戻した「本当の利益」。値付けの元</td><td>1億円で売るには実態営業利益2,500万〜5,000万円（×2〜4倍）</td></tr>
+<tr><td class="key">倍率（マルチプル）</td><td>売却額÷年間利益（または年商）。何年分の前借りかを表す</td><td>TRANBI中央値1.9年、Acquire.com 3.9倍、Flippa 2.7倍</td></tr>
+<tr><td class="key">土台依存（PFリスク）</td><td>土台の規約・APIが変わると一夜で価値が消える性質</td><td>Reddit API有料化でApollo閉鎖、Amazon PA-API廃止</td></tr>
+<tr><td class="key">属人性（SPOF）</td><td>社長1人が抜けると回らない状態。買い手が最も嫌う</td><td>ReferralHero「売却前にサポート要員を採用し創業者依存を下げた」</td></tr>
+<tr><td class="key">渡せる資産</td><td>買い手がそのまま引き継げるもの：MRR・利用者リスト・運用マニュアル・コード</td><td>Storemapper「売りたくなる前から、売れる形で経営せよ」</td></tr>
+</table></div>
+<p><b>前提（本書を通して固定）</b>：①当社は一人法人で、開発はCoworkを中心に行う。②型2は「2〜3年で売る」短期回転型であり、長く持つ資産にはしない（v2 9章）。③選び方はA新規性（既存が×か○）→B買い手の厚み（買い手候補1社以上）の順（カタログ7章）。</p>
+
+<h2 id="s4">4. 型2の流れと参考例<small>成功例は6つの段を通っている。差が付くのは「作る」より前の2段と、最初から出口を決めているか</small></h2>
+<figure>
+<figcaption>図1　型2の6段：作る前の「空き探し」と「作らずに確かめる」に時間を使い、作るのは1機能だけ<small>上段＝当社がやること、下段＝相手の動き。段の下の数字は時間配分の目安（Claudeの提案）。実例は第4-2節の参考例</small></figcaption>
+<svg viewBox="0 0 990 250" role="img" aria-label="型2の6段の流れ">
+<rect class="lane" x="60" y="20" width="920" height="95" rx="6"/><rect class="lane" x="60" y="130" width="920" height="95" rx="6"/>
+<text x="10" y="72" class="m">当社</text><text x="10" y="182" class="m">相手</text>
+<rect class="box" x="75" y="45" width="130" height="46" rx="4"/><text x="140" y="64" text-anchor="middle">① 土台を選ぶ</text><text x="140" y="80" text-anchor="middle" class="m">第三者OK・買い手あり</text>
+<rect class="box" x="225" y="45" width="130" height="46" rx="4"/><text x="290" y="64" text-anchor="middle">② 空きを探す</text><text x="290" y="80" text-anchor="middle" class="m">7つの探し先（手順書）</text>
+<rect class="box" x="375" y="45" width="130" height="46" rx="4"/><text x="440" y="64" text-anchor="middle">③ 作らず確かめる</text><text x="440" y="80" text-anchor="middle" class="m">事前登録・仮の申込</text>
+<rect class="box" x="525" y="45" width="130" height="46" rx="4"/><text x="590" y="64" text-anchor="middle">④ 1機能を作る</text><text x="590" y="80" text-anchor="middle" class="m">API／アプリ／拡張</text>
+<rect class="box" x="675" y="45" width="130" height="46" rx="4"/><text x="740" y="64" text-anchor="middle">⑤ 有料化して積む</text><text x="740" y="80" text-anchor="middle" class="m">MRR・リスト・手順書</text>
+<rect class="us" x="825" y="45" width="140" height="46" rx="4"/><text class="w" x="895" y="64" text-anchor="middle">⑥ 売る</text><text class="w" x="895" y="80" text-anchor="middle" style="font-size:11px">2〜3年目・急増時</text>
+<line class="ln" x1="205" y1="68" x2="225" y2="68"/><line class="ln" x1="355" y1="68" x2="375" y2="68"/><line class="ln" x1="505" y1="68" x2="525" y2="68"/><line class="ln" x1="655" y1="68" x2="675" y2="68"/><line class="ln" x1="805" y1="68" x2="825" y2="68"/>
+<text x="140" y="108" text-anchor="middle" class="m">1週</text><text x="290" y="108" text-anchor="middle" class="m">1〜2か月</text><text x="440" y="108" text-anchor="middle" class="m">2〜4週</text><text x="590" y="108" text-anchor="middle" class="m">1〜3か月</text><text x="740" y="108" text-anchor="middle" class="m">12〜30か月</text><text x="895" y="108" text-anchor="middle" class="m">3〜6か月</text>
+<rect class="box" x="75" y="155" width="130" height="46" rx="4"/><text x="140" y="174" text-anchor="middle">土台（PF）</text><text x="140" y="190" text-anchor="middle" class="m">規約・APIを公開</text>
+<rect class="box" x="225" y="155" width="130" height="46" rx="4"/><text x="290" y="174" text-anchor="middle">出店者・利用者</text><text x="290" y="190" text-anchor="middle" class="m">「できない」と書く</text>
+<rect class="box" x="375" y="155" width="130" height="46" rx="4"/><text x="440" y="174" text-anchor="middle">見込み客</text><text x="440" y="190" text-anchor="middle" class="m">登録する・しない</text>
+<rect class="box" x="525" y="155" width="130" height="46" rx="4"/><text x="590" y="174" text-anchor="middle">土台の審査</text><text x="590" y="190" text-anchor="middle" class="m">アプリ掲載の可否</text>
+<rect class="box" x="675" y="155" width="130" height="46" rx="4"/><text x="740" y="174" text-anchor="middle">利用者が払う</text><text x="740" y="190" text-anchor="middle" class="m">月額・買い切り</text>
+<rect class="box" x="825" y="155" width="140" height="46" rx="4"/><text x="895" y="174" text-anchor="middle">周辺企業が買う</text><text x="895" y="190" text-anchor="middle" class="m">クロスセル目的</text>
+</svg></figure>
+
+<h3>4-1. 各段の考え方・やること・つまずき</h3>
+<div class="tw"><table>
+<tr><th>段</th><th>考え方（なぜ）</th><th>やること（何を）</th><th>よくあるつまずき</th></tr>
+<tr><td class="key">① 土台を選ぶ</td><td>空きがあっても、土台が第三者アプリを許さなければ作れない。買い手（周辺企業）が既にいる土台ほど売りやすい</td><td>開発者向けページで「第三者が作って配れるか」を確認。周辺企業を3社挙げる</td><td>大きい土台＝良い、と思う。混んでいる土台は新規性が取れない（図4）</td></tr>
+<tr><td class="key">② 空きを探す</td><td>成功者は自分が使っていた土台の不便を偶然見つけた。偶然を手順に置き換える</td><td>手順書v1の7つの探し先（アプリ一覧の差分／未解決の要望／低評価レビュー／新しい土台／法改正／買い手の動き／自社の手作業）を月1回回す</td><td>「無い＝需要が無い」の可能性。要望・レビューで裏を取る</td></tr>
+<tr><td class="key">③ 作らずに確かめる</td><td>作る前に「月額を払う人が○人いる」を確かめる方が、作ってから知るより安い</td><td>1枚の説明ページ＋事前登録（または仮の申込）。KASETSU.md に「死ぬ条件3つ」を書く</td><td>知り合いの「いいね」を需要と数える。払う意思だけを数える</td></tr>
+<tr><td class="key">④ 1機能を作る</td><td>機能を増やすほど属人性と保守が増え、買い手が引き継ぎにくい。1機能で十分</td><td>Coworkで最小の形を作る。土台の審査に通す。規約に触れる箇所を先に洗う</td><td>多機能にして「何の製品か」が説明できなくなる</td></tr>
+<tr><td class="key">⑤ 有料化して積む</td><td>買い手は「利益が出ており低コストで自動運営できる」（ジラフがPeingを買った理由）を見る</td><td>月額課金→MRRを毎月記録。利用者リスト・運用マニュアル（SOP）を買い手に渡せる形で積む</td><td>無料のまま利用者だけ増やす。売るときに数字が無い</td></tr>
+<tr><td class="key">⑥ 売る</td><td>土台依存は一夜で価値が消える。急増した2〜3年目が最も高く売れ、最も安全</td><td>①で挙げた周辺企業に、MRR・リスト・SOPを添えて持ち込む。仲介（TRANBI・BATONZ、海外はAcquire.com）も併用</td><td>「もう少し伸びるはず」と持ち続け、規約変更で価値が消える（Tweet Hunterの警告）</td></tr>
+</table></div>
+
+<h3>4-2. 参考例（国内5件・海外5件）</h3>
+<p class="lead2">要点：<b>「土台の利用者が困っていた1機能」を1人〜少人数で作り、土台の周辺企業に売った</b>という筋は10件とも同じ。期間・金額だけが違う。</p>
+<div class="tw fit"><table>
+<tr><th>事例</th><th>土台</th><th>作ったもの</th><th>期間</th><th>売却額</th><th>買い手</th><th>売った理由（本人の言葉）</th></tr>
+<tr><td class="key">Peing 質問箱</td><td>X（Twitter）</td><td>匿名で質問を受ける箱</td><td class="num">1か月</td><td class="num">非公表</td><td>ジラフ</td><td>公開6日で40万PV/日、サーバー負荷。買い手「利益が出ており低コストで自動運営できる」</td></tr>
+<tr><td class="key">Wraptas</td><td>Notion</td><td>NotionページをWebサイト化</td><td class="num">8か月</td><td class="num">非公表</td><td>ペライチ</td><td>「組織化する必要性」。相場観は「年商×2年分」</td></tr>
+<tr><td class="key">MENTA</td><td>エンジニアの学習</td><td>メンター探しの場</td><td class="num">約2年</td><td class="num">2.26億円</td><td>ランサーズ</td><td>「ほぼ僕一人の体制では次のステージに限界」「初めから売却を決めていたわけではない」</td></tr>
+<tr><td class="key">Skeb</td><td>Xのイラスト文化</td><td>有償リクエストの決済</td><td class="num">2年3か月</td><td class="num">10億円</td><td>実業之日本社</td><td>月間取引高2億円・登録100万人。「1人で不正送金対応や億単位の金額を扱う不安」</td></tr>
+<tr><td class="key">Lea</td><td>LINE</td><td>LINE上でECを作れる</td><td class="num">非公表</td><td class="num">非公表</td><td>INFLU</td><td>「LINE×〇〇」で複数作って当たった1本</td></tr>
+<tr><td class="key">Headlime（米）</td><td>GPT-3（公開直後）</td><td>AI文章作成</td><td class="num">9か月</td><td class="num">7桁ドル</td><td>Conversion.ai</td><td>新しい土台の初期に入った例</td></tr>
+<tr><td class="key">Order Tagger（米）</td><td>Shopify</td><td>注文に自動でタグ付け</td><td class="num">4年</td><td class="num">7桁ドル</td><td>Shop Circle</td><td>2,000ブランドが利用。ARRの3〜4倍</td></tr>
+<tr><td class="key">Tweet Hunter（仏）</td><td>X（Twitter）</td><td>投稿の作成・予約</td><td class="num">1.5年</td><td class="num">前払$2M＋追加</td><td>lempire</td><td>「いつ殺されてもおかしくなかった」（土台依存の怖さ）</td></tr>
+<tr><td class="key">Plug in Useful（米）</td><td>Shopify</td><td>Shopifyアプリ群</td><td class="num">7年</td><td class="num">7桁ドル</td><td>SureSwift</td><td>「表は売れと言わないが直感が売れと言った」</td></tr>
+<tr><td class="key">Storemapper（米）</td><td>EC各社</td><td>店舗地図の埋め込み</td><td class="num">数年</td><td class="num">非公表</td><td>個人買い手</td><td>「売りたくなる前から、売れる形で経営せよ」。顧客の依頼を製品化</td></tr>
+</table></div>
+<p class="note">期間・金額は原本（v1・v2）の記載どおり。「7桁ドル」は100万〜999万ドル（約1.5億〜15億円）を指す。Storemapperの期間は原本に年数の明記が無いため「数年」とした。</p>
+
+<figure>
+<figcaption>図2　売るまでの期間はばらつくが、国内の1人開発は「1か月〜2年3か月」に集まる<small>横軸＝公開から売却までの月数。原本に期間が無いLea・Storemapperは除く。MENTAは「2018→2020/10」を約24か月と置いた</small></figcaption>
+<svg viewBox="0 0 900 330" role="img" aria-label="参考例の期間">
+<g class="grid"><line x1="260" y1="20" x2="260" y2="290"/><line x1="346" y1="20" x2="346" y2="290"/><line x1="431" y1="20" x2="431" y2="290"/><line x1="517" y1="20" x2="517" y2="290"/><line x1="603" y1="20" x2="603" y2="290"/><line x1="689" y1="20" x2="689" y2="290"/><line x1="774" y1="20" x2="774" y2="290"/><line x1="860" y1="20" x2="860" y2="290"/></g>
+<text x="250" y="42" text-anchor="end">Peing（国内）</text><rect class="bar" x="260" y="32" width="7" height="14"/><text class="m" x="273" y="43">1か月</text>
+<text x="250" y="74" text-anchor="end">Wraptas（国内）</text><rect class="bar" x="260" y="64" width="57" height="14"/><text class="m" x="323" y="75">8か月</text>
+<text x="250" y="106" text-anchor="end">Headlime（米）</text><rect class="bar2" x="260" y="96" width="64" height="14"/><text class="m" x="330" y="107">9か月</text>
+<text x="250" y="138" text-anchor="end">Tweet Hunter（仏）</text><rect class="bar2" x="260" y="128" width="129" height="14"/><text class="m" x="395" y="139">18か月</text>
+<text x="250" y="170" text-anchor="end">MENTA（国内）</text><rect class="bar" x="260" y="160" width="171" height="14"/><text class="m" x="437" y="171">約24か月</text>
+<text x="250" y="202" text-anchor="end">Skeb（国内）</text><rect class="bar" x="260" y="192" width="193" height="14"/><text class="m" x="459" y="203">27か月</text>
+<text x="250" y="234" text-anchor="end">Order Tagger（米）</text><rect class="bar2" x="260" y="224" width="343" height="14"/><text class="m" x="609" y="235">48か月</text>
+<text x="250" y="266" text-anchor="end">Plug in Useful（米）</text><rect class="bar2" x="260" y="256" width="600" height="14"/>
+<text class="m" x="260" y="308" text-anchor="middle">0</text><text class="m" x="346" y="308" text-anchor="middle">12</text><text class="m" x="431" y="308" text-anchor="middle">24</text><text class="m" x="517" y="308" text-anchor="middle">36</text><text class="m" x="603" y="308" text-anchor="middle">48</text><text class="m" x="689" y="308" text-anchor="middle">60</text><text class="m" x="774" y="308" text-anchor="middle">72</text><text class="m" x="860" y="308" text-anchor="middle">84か月</text>
+<rect class="bar" x="700" y="30" width="14" height="9"/><text class="m" x="720" y="39">国内</text>
+<rect class="bar2" x="700" y="46" width="14" height="9"/><text class="m" x="720" y="55">海外</text>
+</svg></figure>
+
+<h3>4-3. 売った人の理由は2つに集まる</h3>
+<div class="tw"><table>
+<tr><th>理由</th><th>判定</th><th class="num">該当</th><th>事例と言葉</th><th>当社への意味</th></tr>
+<tr><td class="key">1人体制の限界</td><td class="st ok">最多</td><td class="num">4件</td><td>Peing（サーバー負荷）、Skeb（億単位の資金を1人で扱う不安）、MENTA（次のステージに限界）、Wraptas（組織化の必要）</td><td>一人法人の当社にも同じ限界が来る。限界が来る前に売る形にしておく</td></tr>
+<tr><td class="key">土台依存の怖さ</td><td class="st ok">明確</td><td class="num">1件</td><td>Tweet Hunter「いつ殺されてもおかしくなかった」</td><td>規約変更が来る前、伸びている間に売る。持ち続けない</td></tr>
+<tr><td class="key">買い手の理由（相手側）</td><td class="st warn">参考</td><td class="num">14件</td><td>クロスセル・既存事業との組み合わせ11件（ランサーズ×MENTA、INFLU×Lea等）、理念の一致3件（実業之日本社×Skeb等）</td><td>「買い手の既存事業の隣に置ける機能」を作ると売れる</td></tr>
+</table></div>
+<p class="note">「該当」件数は v1 事例台帳の型2事例（国内）と v2 の海外事例のうち、本人の言葉が原本にあるものだけを数えた。</p>
+
+<h2 id="s5">5. この教材で扱わないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>型3（成長資本）・型4（ロールアップ）の進め方。</b>ただし<b>「やらない」ではない</b>。優先度が型2より低いだけで、儲かる話が見つかればやる。今後の資料も「優先度が低い」と書き、「対象外」「やらない」とは書かない。</li>
+<li><b>続ける事業（2本柱の②）の探し方。</b>S-02（地域密着型）か型4の買い手が厚い業態で別に扱う。</li>
+<li><b>各段の実作業の手順</b>（土台の開発者登録、アプリ審査、決済の実装）。案が1つ決まってから作業手順書として別に作る。</li>
+<li><b>個別の法令・規約の当てはめ。</b>案が決まってから legal-crosscheck と cross-review で確定する。</li>
+<li><b>新しい調査。</b>本書の数値・事例はすべて原本からで、本書で新たに調べたものは無い。</li>
+</ul>
+
+<h2 id="s6">6. 出口（売り先）の比較<small>型2の買い手は4種類。倍率は「周辺の事業会社」と「アプリ買い取り専門」が同じ2〜4倍。上振れの可能性は周辺企業、確実さは買い取り専門。最初から両方を候補に持つ</small></h2>
+<div class="tw"><table>
+<tr><th>売り先</th><th>判定</th><th class="num">倍率の目安</th><th>理由</th><th>事例</th></tr>
+<tr><td class="key">周辺の事業会社</td><td class="st ok">本命</td><td class="num">2〜4倍・例外で桁違い</td><td>クロスセルできるので利益以外（利用者基盤・成長）に払う。Skebの10億はこの型の例外</td><td>ジラフ、ランサーズ、ペライチ、INFLU、実業之日本社、lempire</td></tr>
+<tr><td class="key">アプリ買い取り専門</td><td class="st ok">併用</td><td class="num">ARR 2〜4倍</td><td>Shopifyアプリ等を専門に集める会社。基準が公開されており持ち込みやすい。国内にはまだ少ない</td><td>Shop Circle、SureSwift、MicroAngel</td></tr>
+<tr><td class="key">個人・小規模の買い手（仲介経由）</td><td class="st warn">保険</td><td class="num">利益×1〜3倍</td><td>TRANBI中央値1.9年、Flippa 2.7倍。金額は低いが買い手の数が多い</td><td>Storemapper、ReferralHero</td></tr>
+<tr><td class="key">土台そのもの</td><td class="st ng">期待しない</td><td class="num">—</td><td>土台が周辺アプリを買う例は原本に無い。「土台に買ってもらう」を前提にしない</td><td>該当なし</td></tr>
+</table></div>
+<figure>
+<figcaption>図3　「周辺の事業会社」と「アプリ買い取り専門」は同じ2〜4倍、「個人の買い手」は1〜3倍。周辺企業だけ例外の上振れ（Skeb）があるが当てにしない<small>横軸＝実態営業利益（またはARR）に対する倍率。範囲の下限〜上限を棒で示す。原本v2 3章・カタログ6章の値</small></figcaption>
+<svg viewBox="0 0 900 200" role="img" aria-label="売り先ごとの倍率">
+<g class="grid"><line x1="260" y1="20" x2="260" y2="160"/><line x1="380" y1="20" x2="380" y2="160"/><line x1="500" y1="20" x2="500" y2="160"/><line x1="620" y1="20" x2="620" y2="160"/><line x1="740" y1="20" x2="740" y2="160"/><line x1="860" y1="20" x2="860" y2="160"/></g>
+<text x="250" y="45" text-anchor="end">周辺の事業会社</text><rect class="bar" x="500" y="35" width="240" height="14"/><text class="m" x="746" y="46">2〜4倍</text>
+<text x="250" y="85" text-anchor="end">アプリ買い取り専門</text><rect class="bar" x="500" y="75" width="240" height="14"/><text class="m" x="746" y="86">ARR 2〜4倍</text>
+<text x="250" y="125" text-anchor="end">個人の買い手（仲介）</text><rect class="bar3" x="380" y="115" width="240" height="14"/><text class="m" x="626" y="126">1〜3倍</text>
+<line class="ax" x1="260" y1="160" x2="860" y2="160"/>
+<text class="m" x="260" y="180" text-anchor="middle">0</text><text class="m" x="380" y="180" text-anchor="middle">1倍</text><text class="m" x="500" y="180" text-anchor="middle">2倍</text><text class="m" x="620" y="180" text-anchor="middle">3倍</text><text class="m" x="740" y="180" text-anchor="middle">4倍</text><text class="m" x="860" y="180" text-anchor="middle">5倍</text>
+</svg></figure>
+
+<h2 id="s7">7. 判断の型<small>「新規性」と「買い手の厚み」は同時に取れない。型2はA新規性を先に取り、Bは「1社以上いる」で足りるとする</small></h2>
+<figure>
+<figcaption>図4　型2が狙うのは右上「新規性が高く、買い手が1社以上見える」象限。左下（混んでいて買い手も無い）は捨てる<small>横軸＝新規性（既存が×か○）、縦軸＝買い手の見え方。配置はClaudeの評価（提案）。塗りつぶし＝型2の狙い</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="新規性と買い手の2×2">
+<rect class="lane" x="130" y="20" width="360" height="125" rx="4"/><rect class="lane" x="500" y="20" width="360" height="125" rx="4"/>
+<rect class="lane" x="130" y="155" width="360" height="125" rx="4"/><rect class="lane" x="500" y="155" width="360" height="125" rx="4"/>
+<text class="m" x="140" y="38">買い手は厚いが、混んでいる（型4の領域）</text>
+<text class="m" x="510" y="38">新規性が高く、買い手が見える（型2の狙い）</text>
+<text class="m" x="140" y="173">混んでいて、買い手も無い（捨てる）</text>
+<text class="m" x="510" y="173">新規性は高いが、買い手が未形成（型2の次の候補）</text>
+<rect class="cand" x="150" y="60" width="150" height="32" rx="4"/><text x="225" y="81" text-anchor="middle">予約・会員アプリ</text>
+<rect class="cand" x="320" y="60" width="150" height="32" rx="4"/><text x="395" y="81" text-anchor="middle">在庫・価格の汎用管理</text>
+<rect class="us" x="520" y="60" width="160" height="32" rx="4"/><text class="w" x="600" y="81" text-anchor="middle">法改正の義務対応</text>
+<rect class="us" x="695" y="60" width="150" height="32" rx="4"/><text class="w" x="770" y="81" text-anchor="middle">英語版のみの日本語化</text>
+<rect class="cand" x="520" y="200" width="160" height="32" rx="4"/><text x="600" y="221" text-anchor="middle">新しい土台（AI連携）</text>
+<rect class="cand" x="695" y="200" width="150" height="32" rx="4"/><text x="770" y="221" text-anchor="middle">新API公開直後の機能</text>
+<text class="m" x="495" y="296" text-anchor="middle">新規性 →（既存が◎多い ｜ 既存が×か○）</text>
+<text class="m" x="60" y="150" text-anchor="middle" transform="rotate(-90 60 150)">買い手の見え方 →（未形成 ｜ 1社以上）</text>
+</svg></figure>
+<p class="note">図4の箱の中身は「機能の種類」であり、具体的な案はカタログv1（K2-1〜K2-7）と手順書の空きマップで決める。「法改正で全員に発生する義務」はカタログで唯一「既存が見当たらず」だったK2-2の種類。</p>
+
+<h3>7-1. 選定9軸を型2向けに読み替える</h3>
+<div class="tw"><table>
+<tr><th>軸（v2）</th><th>型2での読み替え</th><th>確かめ方</th></tr>
+<tr><td class="key">1 買い手が先に見える</td><td>土台の周辺企業を3社、作る前に名前で挙げられる</td><td>PR TIMES・適時開示で買収・提携の実績を見る</td></tr>
+<tr><td class="key">2 PF上の空白</td><td>手順書の7つの探し先で信号3件以上</td><td>要望・低評価レビュー・自社の手作業</td></tr>
+<tr><td class="key">3 狭い縦でNo.1</td><td>1機能で「この用途ならこれ」と言われる</td><td>アプリ一覧のカテゴリで比較対象が数本以下</td></tr>
+<tr><td class="key">4 属人性排除・実態営業利益</td><td>SOPとMRRを毎月積む。社長が触らなくても回る</td><td>1か月放置しても解約が増えないか</td></tr>
+<tr><td class="key">5 移転できる資産</td><td>コード・リスト・SOP・課金基盤が名義変更できる</td><td>土台の規約で譲渡が禁じられていないか</td></tr>
+<tr><td class="key">6 トレンド依存が低い</td><td>型2は土台依存が前提なので「売る時期を早める」で対処</td><td>撤退条件を先に置く（第9章）</td></tr>
+<tr><td class="key">7 自社で作れないもの</td><td>買い手が「自前で作るより買う方が早い」と思う小さな機能</td><td>買い手の開発規模と比べる</td></tr>
+<tr><td class="key">8 SPOF</td><td>土台・決済・当社代表の3つが単一障害点。2つ目の土台に広げる</td><td>Lea「LINE×〇〇を複数」の考え方</td></tr>
+<tr><td class="key">9 買い手を国内に閉じない</td><td>Shopify等の世界土台なら英語UIを最初から用意</td><td>Shop Circle・SureSwiftの買収基準</td></tr>
+</table></div>
+
+<div class="pillars">
+<div class="pillar must"><h4>柱1　誰が買うかを先に決める</h4><dl><dt>何をする</dt><dd>作る前に周辺企業を3社、名前で挙げ、彼らの既存事業の「隣」に置ける機能だけを作る</dd><dt>成立する条件</dt><dd>その3社に買収・提携の実績がある</dd><dt>守り方（提案）</dt><dd>絶対死守。3社挙がらない案は作らない</dd></dl></div>
+<div class="pillar must"><h4>柱2　渡せる資産を積む</h4><dl><dt>何をする</dt><dd>MRR・利用者リスト・SOP・コードを、初月から「買い手に渡す形」で記録する</dd><dt>成立する条件</dt><dd>月額課金で運用している</dd><dt>守り方（提案）</dt><dd>絶対死守。Storemapper「売れる形で経営せよ」</dd></dl></div>
+<div class="pillar cond"><h4>柱3　撤退条件を先に置く</h4><dl><dt>何をする</dt><dd>公開前に KASETSU.md へ「○か月でMRR○万円未達なら止める」「規約変更で改修○時間超なら売却か撤退」を書く</dd><dt>成立する条件</dt><dd>数値はご依頼主が決める（Claudeは提案しない）</dd><dt>守り方（提案）</dt><dd>条件付き。数値は案ごとに置き直す</dd></dl></div>
+</div>
+
+<h2 id="s8">8. 数字（値付け・到達の目安）<small>1億円で売るには実態営業利益2,500万〜5,000万円。型2でこれに届くのは例外で、多くは数千万円台の出口になる</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>数字</th><th>根拠（原本）</th></tr>
+<tr><td class="key">値付けの式</td><td>売却額 ≒ 実態営業利益 × 倍率。倍率は個人・スモール1〜3倍、中小2〜5倍、海外少人数SaaS中央値3.9倍</td><td>TRANBI中央値1.9年、Acquire.com 2025年報、Flippa 2025、Empire Flippers 2026（v2 3章）</td></tr>
+<tr><td class="key">1億円に必要な利益</td><td>実態営業利益2,500万〜5,000万円（×2〜4倍）</td><td>カタログ6章</td></tr>
+<tr><td class="key">例外（利益以外に払う）</td><td>Skeb 10億（月間取引高2億円）、NauNau 約10億（直前期売上100万円）。Web・アプリ系に限られ再現性は低い</td><td>カタログ6章、v1 4章</td></tr>
+<tr><td class="key">国内の相場観（売り手の言葉）</td><td>「年商×2年分」</td><td>Wraptas創業者（v1）</td></tr>
+<tr><td class="key">売却までの期間</td><td>国内1人開発：1か月〜2年3か月。海外：9か月〜7年</td><td>第4-2節の参考例</td></tr>
+<tr><td class="key">空き探しの稼働</td><td>Claude 2〜3時間／月＋ご依頼主30分／月</td><td>手順書v1 8章</td></tr>
+<tr><td class="key">合格の線（案を1つ選ぶ）</td><td>①需要の証拠3件以上 ②既存が×か○ ③土台が第三者を許容 ④買い手候補1社以上</td><td>手順書v1 8章</td></tr>
+</table></div>
+<p class="note">試算の注意：MRR（月額売上）から利益を出すには、土台の手数料・決済手数料・サーバー費・外注費を引く。例として「MRR 100万円・費用率30%」なら年間の実態営業利益は約840万円（100万×12×0.7）で、×2〜4倍なら1,700万〜3,400万円が目安。数値は例であり、案ごとに置き直す。</p>
+
+<h2 id="s9">9. 学習の進め方と次の工程<small>4週間で「事例を自分の言葉で説明できる」状態にし、5週目から手順書の空き探しに入る（提案）</small></h2>
+<div class="tw"><table>
+<tr><th>週</th><th>やること</th><th>できるようになること（確認の仕方）</th><th>Coworkに任せる部分</th></tr>
+<tr><td class="num">1</td><td>本書の要約・第4章・第7章を読む。参考例1件（推奨：Wraptas＝Notion→Web化）を選び、公開情報を読む</td><td>選んだ事例を「土台・空き・買い手・売った理由」の4語で説明できる</td><td>事例の一次情報URLの収集と要約</td></tr>
+<tr><td class="num">2</td><td>自分が使っている土台（BASE・楽天・Amazon・LINE）で「できない」と感じたことを10個書き出す</td><td>手順書の探し先⑦（自社の手作業）の元データになる</td><td>各項目の既存アプリ有無の確認</td></tr>
+<tr><td class="num">3</td><td>Shopify App Store のカテゴリを1つ選び、上位アプリ5本のレビュー（★1〜2）を読む</td><td>「低評価レビューから不満を抜く」ができる（探し先③）</td><td>レビューの収集・分類</td></tr>
+<tr><td class="num">4</td><td>候補1つで KASETSU.md を書く（賭けてよい上限→代替手段→死ぬ条件3つ→いちばん危ない前提→作らずに確かめる方法）</td><td>「作らずに確かめる」を設計できる</td><td>KASETSU.md の下書きと反論</td></tr>
+<tr><td class="num">5〜</td><td>手順書v1の第1段（土台の開放度の確認）から空き探しを回す</td><td>初回の空きマップが出る</td><td>収集・集計・表化（判断はご依頼主）</td></tr>
+</table></div>
+<h3>9-1. いちばん危ない前提と撤退条件</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td class="key">いちばん危ない前提</td><td>「空きが見つかれば売れる」。実際は<b>買い手が周辺にいない土台では、空きを埋めても出口が無い</b>（図4の右下）。空きと買い手を同時に確認する</td></tr>
+<tr><td class="key">確かめ方</td><td>候補が出た時点で、周辺企業3社の買収・提携の実績を PR TIMES・適時開示で確認する（手順書の探し先⑥）</td></tr>
+<tr><td class="key">撤退条件（枠だけ）</td><td>「公開○か月でMRR○万円未達」「規約変更で改修○時間超」「有料転換率○%未満」。数値はご依頼主が案ごとに決める</td></tr>
+<tr><td class="key">見直しの合図</td><td>土台の規約・API変更の告知／周辺企業の買収リリース／自社の手作業が無くなった（需要の消滅）</td></tr>
+</table></div>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>本書の承認と、最初に深掘りする参考例</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>事項</th><th>選択肢（★＝推奨）</th></tr>
+<tr><td>1</td><td class="key">本書を教材として採用するか</td><td>★採用／章を足す・削る（指定）／作り直し</td></tr>
+<tr><td>2</td><td class="key">第9章の週割りで学ぶか</td><td>★4週＋5週目から空き探し／期間を変える／週割りは不要で手順書に直行</td></tr>
+<tr><td>3</td><td class="key">最初に深掘りする参考例</td><td>★Wraptas（Notion→Web化、1人・8か月）／Peing／Order Tagger（Shopify）／その他</td></tr>
+<tr><td>4</td><td class="key">型3・型4の書き方</td><td>★今後の資料は「優先度が低い（儲かる話があればやる）」と統一／別の表現（指定）</td></tr>
+<tr><td>5</td><td class="key">続ける事業（②）の教材</td><td>本書とは別に作る／S-02の資料で足りる／保留</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>未確認事項</th><th>状態</th></tr>
+<tr><td>Leaの売却時期・金額</td><td>【未確認】原本でも非公表</td></tr>
+<tr><td>Storemapperの創業〜売却の年数</td><td>【未確認】原本に明記なし。「数年」と記載</td></tr>
+<tr><td>BASEが第三者アプリの配布を許すか</td><td>【未確認】手順書v1の第1段で確定させる</td></tr>
+</table></div>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書は学習用の読み物であり、数値の正本は原本4本にある</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>変更</th></tr>
+<tr><td>1.0</td><td>2026-09-30</td><td>初版。型2の6段・参考例10件・出口4種・判断の型・学習の週割りを作成</td></tr>
+</table></div>
+<p><b>出典（原本）</b>：S-01「直近10年の売却事例と事業提案」v1（2026-09-29）／S-01「最終提案v2 Gemini対応と海外比較」（2026-09-29）／S-01「事業案カタログv1 4つの型と29案」（2026-09-30）／S-01「型2 空きを探す手順書v1」（2026-09-30）。一次情報のURL（Acquire.com 2025年報、Flippa 2025、Empire Flippers 2026、TRANBI、各社プレスリリース）は v1・v2 の末尾に記載。</p>
+<p class="note">本書と原本が食い違ったら原本を正とする。本書で新たに調べた数値は無い。</p>
+</main></div></body></html>

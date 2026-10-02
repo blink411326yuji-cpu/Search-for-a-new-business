@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サモエドカフェmoffuと動物カフェ業界の調査</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1f1f1f;--muted:#5c5c5c;--line:#d9d5cc;--card:#ffffff;--accent:#8a5a2b;--warn:#a33;--ok:#2f6b3a;--note:#f3efe6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#d9a86c;--warn:#e07a7a;--ok:#7fc48e;--note:#26272b}}
+:root[data-theme="dark"]{--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#d9a86c;--warn:#e07a7a;--ok:#7fc48e;--note:#26272b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;line-height:1.75;font-size:15px}
+main{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0 0 4px;border-left:6px solid var(--accent);padding-left:12px}
+h2{font-size:1.2rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:1.02rem;margin:22px 0 8px;color:var(--accent)}
+p{margin:8px 0}
+.meta{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:16px 0}
+.toc a{display:block;color:var(--fg);text-decoration:none;padding:2px 0}
+.toc a:hover{color:var(--accent)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.box.note{background:var(--note)}
+.box.warn{border-left:5px solid var(--warn)}
+.box.ok{border-left:5px solid var(--ok)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--note);white-space:nowrap}
+.tag{display:inline-block;font-size:.78rem;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:var(--muted);margin-right:4px}
+.tag.un{border-color:var(--warn);color:var(--warn)}
+.tag.est{border-color:var(--accent);color:var(--accent)}
+small,.src{color:var(--muted);font-size:.85rem}
+a{color:var(--accent);word-break:break-all}
+ul{padding-left:1.3em}
+</style>
+</head>
+<body>
+<main>
+<h1>サモエドカフェmoffu と 動物カフェ業界の調査</h1>
+<p class="meta">作成日 2026-09-29 ／ 作成：Claude（Cowork）／ 状態：調査報告（判断はご依頼主）／ 出典の確認日はすべて 2026-09-29</p>
+
+<div class="toc">
+<strong>目次</strong>
+<a href="#s0">0. 結論（先に読む）</a>
+<a href="#s1">1. 背景 ― なぜこの調査か・どう調べたか</a>
+<a href="#s2">2. サモエドカフェmoffu の実態</a>
+<a href="#s3">3. 動物カフェ業界の構造（市場・規制・競合）</a>
+<a href="#s4">4. 収益構造 ― moffu型を数字で置いてみる</a>
+<a href="#s5">5. 成功例と失敗例から読める型</a>
+<a href="#s6">6. 業界構造分析（3C／5つの力）</a>
+<a href="#s7">7. ご依頼主の条件との照合</a>
+<a href="#s8">8. 未確認事項・この調査で分からないこと</a>
+<a href="#s9">9. 次に進むなら（選択肢）</a>
+<a href="#s10">10. 出典一覧</a>
+</div>
+
+<h2 id="s0">0. 結論（先に読む）</h2>
+<div class="box warn">
+<p><strong>事実として分かったこと（要点5つ）</strong></p>
+<ul>
+<li>moffu は 2024年5月に原宿で開業し、2年で3店舗（原宿・竹下通り・大阪心斎橋）。創業した会社（株式会社ONeOFF Group、代表 薫田光洋・当時29歳）は <strong>2026年6月に投資会社ネクサイトキャピタル（代表 中井宏樹）へ株式を譲渡</strong>している。ご提示の「代表取締役 中井宏樹」は買収後の体制。</li>
+<li>料金は <strong>1時間 3,995円（平日）／4,665円（土日祝）</strong>、犬は原宿10頭・竹下通り15頭・心斎橋12頭。動物カフェの相場（猫カフェ 1時間1,000〜1,500円）の約3倍の価格帯で、これを原宿・心斎橋という<strong>訪日客の多い一等地＋Instagram 8.8万フォロワー＋テレビ露出（6番組以上）＋駅ビジョン広告</strong>で埋めている。</li>
+<li>低評価レビューの中身は「犬が疲れている」「客対犬が3:1以上」「おやつ課金がないと寄ってこない」。<strong>売上を上げる（客を詰める）ほど犬の福祉と満足度が落ちる</strong>構造的なトレードオフが顧客側から見えている。</li>
+<li>規制は強化の方向。2021年省令で職員1人あたり犬20頭上限・6時間連続展示ごとの休息が明文化。犬は<strong>20時までしか展示できない</strong>（猫の22時特例は犬には無い）。2025年10月 WWFジャパンが東京・大阪の動物カフェ25施設を調査し法改正を提言。韓国は動物園以外の野生動物展示を禁止（2027年まで猶予）。</li>
+<li>動物カフェ全体としては「猫カフェの約90%は赤字」「コンセプト型は飽きられて乱立→倒産を繰り返す」と運営者・評論家が語っており、閉店理由は コロナ（訪日客消失）／動物の高齢化・病気／賃貸契約／採算 の4つに集中する。</li>
+</ul>
+</div>
+<div class="box ok">
+<p><strong>Claudeの見方（ここからは所感。事実と分けて読んでください）</strong></p>
+<ul>
+<li><strong>サモエドカフェそのものの模倣は勧めない。</strong>成立要因が「原宿・心斎橋という訪日客の一等地」「先行者としてのSNS・テレビ露出」「大型犬10頭以上を飼う資本」の3点に集中しており、いずれも後発・別の都市で再現しにくい。moffu自身が5億円上乗せの提示を断って投資会社に売却したことは、創業者が「これ以上は資本力の勝負」と見た可能性を示す（理由は譲渡側の公式コメントで「医療・環境充実のための資本力確保」）。</li>
+<li><strong>ご依頼主が昨日出された条件（20〜30年生き残ってきた業態／物価高・為替・資源途絶に強い）に、動物カフェ業態は合わない。</strong>猫カフェは2005年発祥で約20年、犬ふれあいカフェは2023年以降の新業態。餌・光熱費は物価の直撃を受け、客の中心が訪日客なら為替と国際情勢に業績が振れる（コロナで全国のフクロウカフェが「存続の危機」になった前例がある）。</li>
+<li>「他の動物のカフェにするか」についても同じ理由で見方は変わらない。動物を変えても「一等地×SNS×生体の飼育費」という型は同じで、むしろ野生動物・エキゾチック種ほど規制強化の対象になっている。</li>
+<li><strong>進む／止めるを決めるのはご依頼主です。</strong>もし「それでも検討したい」なら、venture-hypothesis の型で「賭けてよい上限」を先に決め、いちばん危ない前提（＝候補地で1時間3,000円台を払う客が十分いるか）を作らずに確かめる手順を組みます。</li>
+</ul>
+</div>
+
+<h2 id="s1">1. 背景 ― なぜこの調査か・どう調べたか</h2>
+<p>2026-09-28〜29 に「ECは全国が競合になるが店舗型なら周辺だけが競合になる」という考えから店舗型の新規事業を探し始め、条件として「20〜30年以上生き残ってきた業態で、他社が参入しようと思わない繁盛店をつくる」「物価高・為替・資源の供給途絶に影響されにくい業種」を挙げられました。その中で Google 広告（大阪向け P-MAX）経由でサモエドカフェmoffu が目に留まり、この事業と類する事業を「やるべきか・やらないべきか」を含めて調べる依頼です。</p>
+<p>ご依頼の「業界再生団の調査方法」は音声入力の揺れと判断し、<strong>業界構造分析（3C＝顧客・競合・自社、5つの力＝新規参入・代替品・買い手・売り手・競争）</strong>で整理しました。別の手法を指していた場合は指示をください。</p>
+<p>調べ方は、公式サイト（Studio製で本文が取れないため FAQ の構造化データと CMS API を直接取得）、TableCheck の予約 API（料金）、PR TIMES、法人番号公表サイト、大阪市の動物取扱業登録簿、環境省・都道府県の法令解説、M&amp;A仲介会社の成約事例、TripAdvisor 等の口コミ、運営者のブログ・インタビューです。Instagram・X・山陽新聞など本文が取れなかったものは見出しのみで使い、その旨を記しています。</p>
+
+<h2 id="s2">2. サモエドカフェmoffu の実態</h2>
+<h3>2-1. 店舗・料金・頭数</h3>
+<table>
+<tr><th>店舗</th><th>所在地</th><th>開業</th><th>料金（税込・事前決済）</th><th>犬</th><th>登録</th></tr>
+<tr><td>原宿店</td><td>渋谷区神宮前3-21-21 Aristo原宿 B1</td><td>2024-05-01（9月に現名称へ）</td><td>1時間＋飲み放題 平日3,995円／土日祝4,665円。抱っこ撮影＋おやつ 1,600円</td><td>10頭</td><td>展示 008136号（ONeOFF名義、R6.4.5〜R11.4.4）</td></tr>
+<tr><td>竹下通り店</td><td>神宮前1-6-9 Om169ビル</td><td>2024-12-10</td><td>30分 3,800円（法被貸出・飲み放題込。餌・抱っこ別）</td><td>15〜16頭</td><td>展示 008438号（R6.12.11〜R11.12.10）</td></tr>
+<tr><td>大阪心斎橋店</td><td>大阪市中央区西心斎橋1-15-13 2F</td><td>2025-10-01</td><td>1時間 平日3,600円／土日祝3,800円。オプション1,400〜1,800円。※2026-09-17からドリンクバー利用不可と掲示</td><td>10→12頭</td><td>展示 250081E（新会社名義、2025-08-13〜2030-08-12、犬12）</td></tr>
+</table>
+<p>共通：営業 平日11〜20時・休日10〜20時（最終入店19時）、入退店込みの1時間制で延長なし、返金不可、個室プラン＋10,000円、誕生日プラン＋15,000円、貸切10万円（平日）／15万円（休日）、中学生以下のみの入店不可。席数・1回の入場上限は公表資料に見つからず。</p>
+<p class="src">ご提示の「009062号・令和8年4月27日」は公式FAQ・大阪市登録簿では確認できませんでした（公式FAQは ONeOFF 名義の旧番号を掲載）。新会社名義での再登録の可能性はありますが未確認です。</p>
+
+<h3>2-2. 会社の経緯（ここが最重要）</h3>
+<table>
+<tr><th>時期</th><th>出来事</th></tr>
+<tr><td>2017-09</td><td>株式会社ONeOFF Group 設立（旧商号「株式会社ホワイトニングlounge」、2022-02 商号変更。資本金300万円、代表 薫田光洋）</td></tr>
+<tr><td>2024-05</td><td>ONeOFF が原宿店を開業（当初「Samoyed Lounge moffu」）。同年12月に竹下通り店</td></tr>
+<tr><td>2025-01-31</td><td>株式会社サモエドカフェmoffu 設立（資本金100万円、渋谷スクランブルスクエア39F＝シェアオフィス階）。事業を新会社へ移管</td></tr>
+<tr><td>2025-10-01</td><td>大阪心斎橋店 開業（新会社名義で登録）</td></tr>
+<tr><td>2026-06</td><td><strong>ネクサイトキャピタル株式会社（港区港南、資本金2,000万円、代表 中井宏樹、投資事業組合の組成・運営）へ株式譲渡。</strong>仲介はスピカコンサルティング。譲渡理由（譲渡側コメント）：①動物の医療・環境充実のための資本力確保 ②事業規模拡大 ③若い社員の成長機会。「他社から成約額より5億円ほど高い条件の提示があった」と記載。成約額・売上は非公表</td></tr>
+<tr><td>2025-11〜</td><td>ネクサイト側の記載で、原宿に「カピバラカフェmoffu」を開業予定（capybaracafemoffu.com が存在）</td></tr>
+</table>
+
+<h3>2-3. 集客の仕組み</h3>
+<ul>
+<li>Instagram 8.8万フォロワー（2026-09-29 時点）。TripAdvisor 原宿店 4.7／125件、じゃらん 4.7／11件。</li>
+<li>テレビ露出：噂の東京マガジン（2024-11）、ヒルナンデス（2025-04）、ラヴィット（2025-05）、あのちゃんねる（2025-10）、Live News イット（2026-03）、ぽかぽか（2026-05）ほか。</li>
+<li>広告：Google広告タグ・広告用LP（/google_cpc, /paper, /ins）、東急田園都市線渋谷駅の大型OOH（2025-10）、17LIVEコラボの渋谷センター街ビジョン（2026-02〜03）。<strong>「原宿の犬カフェ」がこれだけ広告を打っている＝SNSの自然拡散だけでは埋まっていない</strong>ことの示唆（これは推測）。</li>
+<li>日経（2025-05）「原宿・竹下通りは『動物カフェ』通り ブタにサモエド、訪日客夢中」、FNN「“客全員が外国人”の店も」（いずれも見出しのみ確認）。</li>
+</ul>
+
+<h3>2-4. 体制・人件費（求人情報から）</h3>
+<p>アルバイト 時給1,226〜1,500円、トリマー 1,400〜1,800円、店長候補 月給20〜35万円、トレーナー・愛玩動物看護師 25〜35万円、マーケ・広報 30〜40万円。求人は「株式会社ONeOFF Group（株式会社サモエドカフェmoffu）」名義。</p>
+
+<h3>2-5. 低評価レビューに書かれていること（顧客自身の言葉）</h3>
+<ul>
+<li>★1（2024-08）「犬がおやつなしでは寄ってこない。1頭が気性が荒く喧嘩」「$25/1時間は高い」</li>
+<li>★1（2024-08）「16時訪問で犬が疲弊、客対犬が3:1以上、休憩時間がない、15分で退出」</li>
+<li>★1（2024-11）「過剰刺激で人を拒む、犬に逃げ場がない。高評価はGoogle特典による操作の疑い」</li>
+<li>★3（2026-07）「5,500円でおやつ3個程度、夜は犬の関心が低い、スタッフの個別対応不足」</li>
+<li>竹下通り店 ★4「膝乗せの追加課金を勧められる、スペースが狭い、倫理面の懸念」</li>
+</ul>
+<p>共通点は「犬の疲労」と「追加課金」。<strong>回転率を上げると犬が疲れ、犬が疲れると満足度が落ちる</strong>という構造が、開業3か月目から2年後まで一貫して指摘されています。</p>
+
+<h2 id="s3">3. 動物カフェ業界の構造（市場・規制・競合）</h2>
+<h3>3-1. 市場規模・店舗数</h3>
+<ul>
+<li>動物カフェ単独の公的統計は存在しない。環境省の第一種動物取扱業「展示」登録数（動物園・ふれあい施設等を含む）は 2006年1,267 → 2020年4,073 → 2022年4,051（コロナで唯一減少）→ 2024年4,352 で増加基調。</li>
+<li>猫カフェは 2005年3店 → 2015年末 約300店（環境省審議会資料）。犬カフェの店舗数統計は見つからず。</li>
+<li>猫カフェの利用経験率 9.4%（2024年、中小機構 J-Net21、n=1,000。2010年は3%）。客単価は1,000〜1,500円未満が最多（28.7%）。非利用者の最大の懸念は衛生面（35.0%）。</li>
+</ul>
+
+<h3>3-2. 法規制（動物の愛護及び管理に関する法律）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>登録</td><td>第一種動物取扱業「展示」を都道府県・政令市に登録。事業所ごと。5年更新。手数料は自治体条例（東京都 1業種15,000円）。無登録営業は100万円以下の罰金</td></tr>
+<tr><td>動物取扱責任者</td><td>事業所ごとに常勤専属1名以上。要件：獣医師／愛玩動物看護師／半年以上の実務経験＋1年以上の教育機関卒／半年以上の実務経験＋所定資格。<strong>単なるペット飼育歴は実務経験にならない。</strong>年1回の研修義務</td></tr>
+<tr><td>飼養管理基準（令和3年環境省令第7号、2021-06-01 施行、2024-06-01 完全適用）</td><td>従業員1人あたり上限 犬20頭・猫30頭（展示にも適用）。ケージの寸法基準、金網床禁止。<strong>連続展示6時間を超えるごとに展示しない時間を設ける</strong></td></tr>
+<tr><td>夜間展示規制（2012-06-01 施行）</td><td>犬猫の展示は<strong>8時〜20時</strong>。生後1年以上の猫のみ条件付き（休息設備・1日12時間以内）で22時まで可。<strong>犬には22時特例なし。</strong>1日合計時間の上限は犬には無し（連続6時間ごとの休息のみ）。※現行の条番号は e-Gov が取得不可で <span class="tag un">未確認</span></td></tr>
+</table>
+<p>ご依頼主が動物取扱責任者になるには「半年以上の実務経験」が必要で、これは飼育経験では代替できません。<strong>雇うか、自分がどこかで半年働くか</strong>のどちらかになります（許認可の取得に時間をかけたくない、という方針とぶつかる点）。</p>
+
+<h3>3-3. 強まっている外圧</h3>
+<ul>
+<li>WWFジャパン（2025-10-03）：東京・大阪25施設に205分類群1,702個体、64%がワシントン条約対象、法定掲示不備52%、腸管出血性大腸菌16%・サルモネラ8%・薬剤耐性菌28%を検出。常時立会義務・トレーサビリティの法改正を提言。</li>
+<li>京都大学（2023）：エキゾチックアニマルカフェ142件・絶滅危惧52種403個体。</li>
+<li>韓国：動物園・水族館以外での野生動物展示を禁止（既存は2027年12月まで猶予）。オランダ：2024年7月からホワイトリスト制。</li>
+<li>行政処分の前例：東京都が墨田区の猫カフェに全国初の業務停止1か月（2016、6畳に62匹・7割が病気）。猫カフェMOCHA立川店で猫パルボ死亡7匹→関東全店臨時休業（2018）。</li>
+</ul>
+<p>犬（愛玩動物）は野生動物ほど直接の対象ではありませんが、「動物カフェ」というカテゴリ全体に規制の視線が向いていることは事実です。</p>
+
+<h3>3-4. 主な競合と業態</h3>
+<table>
+<tr><th>運営</th><th>業態</th><th>規模</th><th>料金の目安</th></tr>
+<tr><td>リポット（猫カフェMOCHA）</td><td>猫、駅前、予約不可、ドリンクバー</td><td>約40店以上、2024年韓国進出、イオンモール出店</td><td>10分297〜385円、上限3,960〜4,620円。Google口コミの51.8%が外国語</td></tr>
+<tr><td>空陸家</td><td>猫</td><td>61店（訪日ラボ調べ）</td><td>―</td></tr>
+<tr><td>SaLaDa（mipig cafe）</td><td>マイクロブタ</td><td>19店、イオンモール多数、農場3・販売1,000頭超</td><td>―（カフェ→販売→月8,800円サポートアプリの継続収入）</td></tr>
+<tr><td>ヴェルデ／オウル</td><td>豆柴カフェ・フクロウの森・ヒョウ猫の森</td><td>18施設以上（浅草・原宿・鎌倉・京都・大阪・倉敷・湯布院）</td><td>豆柴カフェ大阪 大人1,300円</td></tr>
+<tr><td>GAUDI（HARRY）</td><td>ハリネズミ→カワウソ等へ多種化</td><td>6店（原宿4）</td><td>―</td></tr>
+<tr><td>ネコリパブリック</td><td>保護猫（EC・物販・FC・出版で収益）</td><td>約20拠点</td><td>―</td></tr>
+<tr><td>サモエド・大型犬（moffu以外）</td><td>Samoyed cafe AL 駒沢（6頭、14〜15時は犬の休憩で入店不可）、ほっとひと犬、HUSKY CAFE TOKYO、PawsFan千葉、GRAND MOU木更津、犬席屋（表参道、2025-11、超大型犬18頭、獣医連携）、コーギーワールド（名古屋栄、2026-03 に2号店）</td><td>大阪にサモエドカフェ5店（inucoto）</td><td>1時間2,200〜3,800円、木更津は2.5時間8,500円</td></tr>
+</table>
+<p>公式サイト上で FC 募集を掲げている大手は確認できず（調べた先：MOCHA・mipig・HARRY・オウル）。多店舗化しているのはいずれも <strong>直営で駅前・観光地・イオンモール</strong>に出ている会社です。</p>
+
+<h2 id="s4">4. 収益構造 ― moffu型を数字で置いてみる</h2>
+<p><span class="tag est">試算</span> moffu の売上・利益は非公表です。以下は公開情報から組んだ<strong>Claudeの試算</strong>で、事実ではありません。前提を変えれば結果は変わります。</p>
+<table>
+<tr><th>前提（原宿店を想定）</th><th>値</th><th>根拠</th></tr>
+<tr><td>営業時間</td><td>9時間（最終入店19時、1時間枠×9回）</td><td>公式FAQ</td></tr>
+<tr><td>1枠の入場数</td><td>10〜15人（犬10頭に対し「客対犬3:1以上」の不満が出る水準が30人）</td><td>レビューから逆算（推測）</td></tr>
+<tr><td>稼働率</td><td>平日50%／休日90%</td><td>推測</td></tr>
+<tr><td>単価</td><td>平日3,995円／休日4,665円＋オプション平均500円</td><td>TableCheck</td></tr>
+</table>
+<p>この前提だと月商は <strong>約800万〜1,200万円</strong>（1枠10人で約780万、1枠15人で約1,170万。計算：平日22日×9枠×人数×稼働50%×3,995円＋休日8日×9枠×人数×稼働90%×4,665円＋オプション500円×来客数）。ここから、賃料（原宿神宮前B1・推測で月100〜200万円）、人件費（犬10頭に対し法令上は1人で足りるが、受付・ハンドラー・トリマー・店長で常時4〜5人、月200〜300万円）、犬の飼育費（大型犬は年32〜57万円／頭×10頭＝年320〜570万円＝月27〜48万円、これに疾病時の医療費が上乗せ）、広告費（OOH・Google広告・テレビ対応。金額不明）、決済手数料・予約システム費を引いた形になります。</p>
+<div class="box note">
+<p><strong>試算から読めること（所感）</strong>：一等地で稼働率が取れれば単店で月商1,000万円級になり得るが、①賃料と人件費が固定で重く、②犬の疲労が回転率の上限を決め、③集客に広告費を継続投下している。moffu が「資本力確保」を理由に売却したのは、この③（広告・多店舗展開・動物医療）が自前資本では回らなくなった可能性を示す。<span class="tag un">推測</span></p>
+<p>初期投資は、猫カフェで600万〜1,500万円（物件・内装・動物用設備・カフェ設備）がマネーフォワードの目安。サモエド子犬は平均約32万円（28.5万〜80万円）で10頭なら320万円以上、生後すぐは展示に使えないため<strong>開業前に半年〜1年の育成期間と費用</strong>が乗ります。</p>
+</div>
+
+<h2 id="s5">5. 成功例と失敗例から読める型</h2>
+<h3>5-1. 続いている店・多店舗化した店に共通すること</h3>
+<ul>
+<li><strong>立地が「訪日客の導線」か「イオンモール」か「住宅街の家族層」のどれかに明確。</strong>MOCHA は駅前＋口コミの半分が外国語、mipig は目黒の住宅街で「目的を持った家族層」を狙い一過性ブームを回避（創業者の言葉）。</li>
+<li><strong>入場料以外の収益がある。</strong>mipig はカフェ→ブタの販売→月8,800円のサポートアプリ。ネコリパブリックは EC・物販・FC・出版。運営者ブログでは「生き残る店は物販・EC、SNS 20万フォロワー、家賃ゼロ、ボランティア」。</li>
+<li><strong>動物の種類を増やして飽きに対応。</strong>HARRY はハリネズミ→カワウソ・ミーアキャット、オウルは豆柴→フクロウ→ヒョウ猫、moffu もカピバラへ。</li>
+<li>すべて<strong>直営</strong>。「猫は品質を揃えられずFCが成立しない」という業界側の指摘あり。</li>
+</ul>
+
+<h3>5-2. 閉店理由の分布（14件）</h3>
+<table>
+<tr><th>理由</th><th>件数</th><th>例</th></tr>
+<tr><td>コロナ・訪日客消失</td><td>4</td><td>猫カフェブラン（横浜）、倉敷豆柴カフェ（一時閉店）、福島市の猫カフェ、フクロウカフェ全国（大阪で複数閉店）</td></tr>
+<tr><td>動物の高齢化・病気</td><td>2</td><td>ねこびやか（姫路、満席続きでも黒猫の高齢化で閉店）、calico+むさしの（FIPで2匹死亡、2か月で閉店）</td></tr>
+<tr><td>賃貸契約・物件</td><td>3</td><td>ネコリパブリック中野、ハッピー猫ちゃん（頭数超過で契約違反）、Meow Land（老朽化・修繕費なし）</td></tr>
+<tr><td>採算・運営力不足</td><td>2</td><td>calico+（入場料では採算不可）、ウサギノカフェ朝霞（飲食事業の経験不足、7か月）</td></tr>
+<tr><td>非公表・その他</td><td>3</td><td>ペンギンのいるBAR、フクロウギャラリーTOKYO（2026-05）、猫見家（2026-01）</td></tr>
+</table>
+<p>倒産集計は帝国データバンク・東京商工リサーチとも「動物カフェ」単独では存在せず。運営者の言葉として「保護猫カフェの約90%は赤字」「月商50万・手残り15万、3年目から赤字」「医療費が月5千〜20万円超で読めない」。評論では「コンセプト型はすぐ飽きられると分かって乱立→倒産を繰り返す」（PRESIDENT 2025-06）。</p>
+
+<h3>5-3. 犬カフェ特有の難しさ（記事に書かれていた事実）</h3>
+<ul>
+<li>吠え声・排泄臭・抜け毛（サモエドは特に多い）で近隣・テナント条件が厳しい。犬は疲れても遊び続けるため常時監視が要る。多頭・他犬種の同居が難しい。毎日の散歩・トリミング・しつけ。</li>
+<li>大型犬の年間費用は小型犬の3〜5倍（32〜57万円／頭）。</li>
+<li>AL駒沢は6頭で毎日14〜15時を犬の休憩で閉め、夏は散歩を19時以降に限定。<strong>犬の側の稼働上限が売上の上限</strong>になる。</li>
+<li>犬は20時まで。夜の客（会社帰り・インバウンドの夕食後）を取れない。猫カフェにはある22時特例が無い。</li>
+</ul>
+
+<h2 id="s6">6. 業界構造分析（3C／5つの力）</h2>
+<h3>6-1. 3C</h3>
+<table>
+<tr><th>視点</th><th>事実</th><th>含意（所感）</th></tr>
+<tr><td>顧客（Customer）</td><td>猫カフェ利用経験率9.4%。moffu の客層は訪日客と20〜30代女性が中心（見出し・レビュー言語から）。単価3,995円は猫カフェの約3倍</td><td>3,000円台を払うのは「旅行中の体験消費」「推し活的な熱量」。豊橋・大阪郊外の日常圏にこの需要が同じ密度であるかは未確認</td></tr>
+<tr><td>競合（Competitor）</td><td>大阪にサモエドカフェ5店、名古屋にコーギー、東京に大型犬各種。多店舗化した大手は駅前・観光地・イオンモール直営</td><td>「まだ誰もやっていない都市」は、需要が薄いか、犬の飼育条件（物件）が取れないか、どちらかの理由がある可能性</td></tr>
+<tr><td>自社（Company）</td><td>R.Y.S は動物取扱の実務経験者・獣医・トリマーを持たない。店舗運営の経験も無い。強みはEC・システム化・広告運用</td><td>動物取扱責任者・トレーナーを雇う前提になる。自社の強み（EC・自動化）がこの業態の成否にほぼ効かない</td></tr>
+</table>
+
+<h3>6-2. 5つの力</h3>
+<table>
+<tr><th>力</th><th>強さ</th><th>根拠</th></tr>
+<tr><td>新規参入の脅威</td><td>高い</td><td>登録は自治体への届出型で許可制ではない。資本600〜1,500万円で入れる。原宿では2年で犬カフェが複数開業</td></tr>
+<tr><td>代替品の脅威</td><td>高い</td><td>他の動物カフェ・体験施設・観光コンテンツ全般と可処分時間を奪い合う。「飽き」が最大の代替</td></tr>
+<tr><td>買い手の交渉力</td><td>中〜高</td><td>1回きりの体験消費で口コミ依存。低評価が直接刺さる。予約サイト（TableCheck・Japanticket）の手数料</td></tr>
+<tr><td>売り手の交渉力</td><td>高い</td><td>生体（ブリーダー）、獣医、物件（動物可・B1・換気）、有資格者（動物取扱責任者・愛玩動物看護師）はいずれも希少</td></tr>
+<tr><td>既存企業間の競争</td><td>中</td><td>都市の一等地では直接競合が増加中。地方では競合は少ないが需要も薄い</td></tr>
+</table>
+<p>5つの力がほぼ全て「不利」側に出る業界で、参入障壁が「立地」と「先行者のSNS」にしかない、というのが構造上の読みです。</p>
+
+<h2 id="s7">7. ご依頼主の条件との照合</h2>
+<table>
+<tr><th>ご条件（2026-09-28〜29）</th><th>動物カフェ／サモエドカフェ</th><th>判定</th></tr>
+<tr><td>20〜30年以上生き残ってきた業態</td><td>猫カフェ2005年発祥（約20年）。犬ふれあい型は2023年以降。moffu は2年</td><td>合わない</td></tr>
+<tr><td>他社が参入しようと思わない繁盛店</td><td>原宿は2年で犬カフェ複数開業、大阪にサモエド5店。参入障壁は届出型で低い</td><td>合わない</td></tr>
+<tr><td>物価高の影響を受けにくい</td><td>餌・光熱費・人件費（有資格者）が主要コスト。医療費は読めない</td><td>合わない</td></tr>
+<tr><td>為替（円安）の影響を受けにくい</td><td>都市型は客の中心が訪日客。円安は追い風だが逆回転もする。コロナで全国のフクロウカフェが存続危機</td><td>依存が強い</td></tr>
+<tr><td>資源の供給途絶に強い</td><td>直接の輸入資源依存は小さい（餌は国産で代替可）</td><td>影響は小</td></tr>
+<tr><td>許認可に3か月〜半年かけたくない</td><td>登録自体は早いが、責任者要件の「半年以上の実務経験」は自分では即座に満たせない（雇用で回避可）</td><td>条件付き</td></tr>
+<tr><td>大手が来ない領域</td><td>M&amp;Aで投資会社が入り、イオンモール型の全国チェーンが既に存在</td><td>合わない</td></tr>
+</table>
+
+<h2 id="s8">8. 未確認事項・この調査で分からないこと</h2>
+<ul>
+<li>moffu の売上・利益・成約額（すべて非公表）。第4章の数字は試算。</li>
+<li>ご提示の登録番号 009062号（R8.4.27）の名義・店舗。公式FAQは旧番号のまま。</li>
+<li>夜間展示規制の現行の条番号（e-Gov 法令検索が取得不可）。内容自体は複数の自治体ページで一致。</li>
+<li>訪日客比率・TikTok起点集客の定量データ（見出しと口コミ言語比率のみ）。</li>
+<li>P-MAX 大阪向け広告の中身と月額（Google広告透明性センター取得不可）。</li>
+<li>Googleマップの評価点（JS描画で取得不可。TripAdvisor・じゃらん・食べログで代替）。</li>
+<li>犬カフェのテナント審査・近隣トラブルを運営者が語った記事は見つからず（調べた語：犬カフェ テナント 断られる／サモエドカフェ インタビュー 抜け毛 等）。</li>
+</ul>
+<p>法令に関わる部分（3-2）と業界構造の読み（6章）を根拠に<strong>お金や時間を使う判断をする場合</strong>は、cross-review の手順で Gemini に確認してから確定してください。今回は調査報告の段階なので依頼文は作っていません。</p>
+
+<h2 id="s9">9. 次に進むなら（選択肢）</h2>
+<p>決めるのはご依頼主です。3つの道を並べます。おすすめは A です。</p>
+<table>
+<tr><th>案</th><th>内容</th><th>Claudeの見方</th></tr>
+<tr><td><strong>A. 動物カフェは見送り、店舗型の探索を条件に沿って続ける</strong></td><td>「20〜30年生き残っている」「物価・為替・資源に強い」を満たす業態の一覧を作り、その中で豊橋・大阪周辺で「他社が参入しない繁盛店」を作れる型を探す</td><td><strong>おすすめ。</strong>今回の調査結果がそのままご条件との不一致を示しているため。動物カフェは「調べた結果、条件に合わなかった案」として記録に残す</td></tr>
+<tr><td>B. それでもサモエド／動物カフェを検討する</td><td>venture-hypothesis の型：①賭けてよい上限（金額・期間）を決める → ②いちばん危ない前提「候補地の日常圏で1時間3,000円台を払う客が十分いるか」を、店を作らずに確かめる（既存店の来客観察、候補地での予約テスト等）</td><td>上限を先に決めないと始めない。上限の額は Claude は提案しない（資金状況を知り得ないため）</td></tr>
+<tr><td>C. 動物カフェの周辺（動物を飼わない型）を調べる</td><td>ペット同伴カフェ・ドッグラン・ペットホテル／トリミング・老犬ホームなど、生体を「展示」しない型。ペット関連は20年以上続く業態が多い</td><td>ご条件①には合う可能性がある。ただし別の調べごとになるので、指示があれば調べる</td></tr>
+</table>
+
+<h2 id="s10">10. 出典一覧（主要なもの）</h2>
+<ul class="src">
+<li>moffu 公式 FAQ https://samoyedmoffu.com/qa/ ／ お知らせ https://samoyedmoffu.com/posts/news022 ／ 電子公告 https://samoyedmoffu.com/public-notice/</li>
+<li>TableCheck 予約 https://www.tablecheck.com/shops/samoyed-lounge-moffu/reserve ／ Japanticket 竹下通り店 https://e.japanticket.com/shops/takeshita/products/10841/</li>
+<li>PR TIMES 原宿店改称 https://prtimes.jp/main/html/rd/p/000000005.000141933.html ／ 竹下通り店 https://prtimes.jp/main/html/rd/p/000000006.000141933.html</li>
+<li>スピカコンサルティング 成約事例 https://spicon.co.jp/case/food/nksvuz0kw5e/ ／ ネクサイトキャピタル https://nexightcapital.com/</li>
+<li>Compalyze 会社情報 https://compalyze.co.jp/company/8011001167605 ／ 大阪市 第一種動物取扱業者登録簿 https://www.city.osaka.lg.jp/kenko/page/0000476234.html</li>
+<li>求人 engage https://en-gage.net/samoyedcafe_moffu_career/ ／ Indeed https://jp.indeed.com/q-サモエドカフェ-求人.html</li>
+<li>TripAdvisor 原宿店 https://www.tripadvisor.com/Attraction_Review-g1066456-d28027625 ／ inucoto https://inucoto.com/article/contents/samoyed-lounge-moff ／ じゃらんニュース 2026-05-27 https://www.jalan.net/news/article/847978/</li>
+<li>環境省 動物取扱業者の登録状況 https://www.env.go.jp/nature/dobutsu/aigo/2_data/statistics/work.html ／ 第一種動物取扱業 https://www.env.go.jp/nature/dobutsu/aigo/1_law/trader.html ／ 基準省令の解説 https://www.env.go.jp/nature/dobutsu/aigo/2_data/pamph/r0305a.html</li>
+<li>東京都 飼養管理基準 https://www.hokeniryo.metro.tokyo.lg.jp/shisetsu/jigyosyo/douso/kaisei/shiyou_kanri_kijun ／ 大阪府 動物取扱責任者 https://www.pref.osaka.lg.jp/doaicenter/doaicenter/sekininsha.html ／ 富山県 夜間展示 https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/toriatukai/yakan.html ／ 三重県 https://www.pref.mie.lg.jp/SHOKUSEI/HP/72631044507.htm</li>
+<li>環境省 審議会資料（猫カフェ店舗数） https://www.env.go.jp/council/14animal/y140-42/900435214.pdf ／ J-Net21 猫カフェ2024 https://j-net21.smrj.go.jp/report/research/service/cons-catcafe2.html</li>
+<li>WWFジャパン 2025-10-03 https://www.wwf.or.jp/activities/lib/6068.html ／ 京都大学 2023 https://www.kyoto-u.ac.jp/ja/research-news/2023-03-30-5</li>
+<li>マネーフォワード 猫カフェ開業費用 https://biz.moneyforward.com/establish/basic/79642/ ／ みんなのブリーダー サモエド価格 https://www.min-breeder.com/magazine/16713 ／ アニコム 2024 https://www.anicom-sompo.co.jp/news-release/2024/20250311/ ／ ほっとひと犬 大型犬費用 https://www.hottooneone.com/</li>
+<li>MOCHA https://catmocha.jp/ ／ mipig https://mipig.cafe/locations/ ／ 弥生 mipig インタビュー https://www.yayoi-kk.co.jp/kigyo/interview/detail34/ ／ オウル https://owls-cats-forest.com/free/company ／ HARRY https://harinezumi-cafe.com/store/ ／ ネコリパブリック https://www.neco-republic.jp/about/ ／ 訪日ラボ 猫カフェ口コミ https://honichi.com/news/2025/04/18/202504_nekocafe/</li>
+<li>閉店事例：猫カフェブラン https://www.value-press.com/pressrelease/248218 ／ ねこびやか https://nekobiyaka.jugem.jp/?eid=2579 ／ calico+ https://www.musashinoneko.com/calico/ ／ ハッピー猫ちゃん https://readyfor.jp/projects/happynekochan2021 ／ ウサギノカフェ https://usaginocafe.com/2024/05/10/close-asaka-store/ ／ フクロウギャラリーTOKYO https://owl-gallery-tokyo.jp/news/information/105/ ／ まいどなニュース（フクロウカフェ） https://maidonanews.jp/article/13759883</li>
+<li>運営者の言葉：きぶん屋 https://nekocafekibunya.com/blog/1739/ ／ そらまめの家 https://note.com/soramameno_ie/n/neda58ae84718 ／ わんちゃんホンポ https://wanchan.jp/living/detail/4358 ／ PRESIDENT https://president.jp/articles/-/96767 ／ ねとらぼ 業務停止 https://www.j-cast.com/2016/04/22264985.html</li>
+</ul>
+</main>
+</body>
+</html>

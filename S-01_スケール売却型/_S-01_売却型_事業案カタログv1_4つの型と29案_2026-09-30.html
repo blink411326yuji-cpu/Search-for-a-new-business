@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>売却型 事業案カタログ v1（4つの型と29案）</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav a:hover{color:var(--accent)} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px;margin:0 0 4px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg);margin-top:2px} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+.tw.fit td{min-width:0}
+</style></head><body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">要約（1枚）</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s3" class="s">売却を目指すのは正しいか</a>
+<a href="#s4">4. 4つの型の特徴と成功事例（図1）</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 事業案カタログ 29案（図2）</a>
+<a href="#s6" class="s">型1／型2／型3／型4</a>
+<a href="#s7">7. 選び方の提案（図3）</a>
+<a href="#s8">8. 数字（値付け・到達の目安）</a>
+<a href="#s9">9. 次の工程</a>
+<a href="#s10">10. 決めていただく事項・未確認事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>売却型 事業案カタログ v1 ── 4つの型の特徴と成功事例から、29の案を広く出す</h1>
+<p class="meta">合同会社R.Y.S／新規事業探索 S-01／作成 2026-09-30／状態：<span class="tag warn">案・未承認</span>（どの案を深掘りするかはご依頼主が選ぶ。Claudeは絞らない）／元データ：`_S-01_スケール売却型_直近10年の売却事例と事業提案_2026-09-29.html`（v1）、`_S-01_スケール売却型_最終提案v2_Gemini対応と海外比較_2026-09-29.html`（v2）／保存先：C:\dev\Search-for-a-new-business\S-01_スケール売却型／確認日はすべて 2026-09-30<br>
+表記：「既存の有無」は ◎既存あり（ほぼ同じ）／○類似あり（一部重なる）／×見当たらず（調べた検索語の範囲）。「買い手の厚み」は直近3年に小規模事業者を買った上場企業・PFの有無。「（提案）」＝Claudeの見方で事実ではない。</p>
+
+<h2 id="s0">要約（1枚）<small>新規性が高い案ほど買い手が見えにくく、買い手が厚い型ほど既存がある。両方は同時に取れないので、どちらを取るかをご依頼主が選ぶ</small></h2>
+<div class="grid">
+<div class="kpi"><b>出した案</b><span>29案（型1：8／型2：8／型3：6／型4：7）</span></div>
+<div class="kpi"><b>既存サービスが「見当たらず」</b><span>型1・型2の16案中 1案（他10案は類似あり、5案は既存あり）</span></div>
+<div class="kpi"><b>買い手が厚い業態</b><span>買取店（バイセル6件）、SES・受託開発（15件超）、SNS運用（メディア資産型）</span></div>
+<div class="kpi"><b>売却を目指す方向は正しいか</b><span>条件付きで正しい。「売れる形で作る」は継続経営にも効く。ただし売却は利益2〜4年分の前借り</span></div>
+<div class="kpi"><b>Claudeが絞らないこと</b><span>本命は置かない。選び方の軸と2×2だけ示す</span></div>
+<div class="kpi"><b>次に決めること</b><span>深掘りする案を3〜5個選ぶ→1案ずつ KASETSU.md</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>v1・v2では私が候補を3案＋3案に絞り、業態まで指定した。ご依頼主から「なぜそれに決まったのか見えない」と指摘があり、以前の方針（案は広く出し、選ぶのは自分）に戻すことになった。</dd>
+<dt>課題</dt><dd>4つの型（買い手先行・プラットフォーム便乗・成長資本・ロールアップ）それぞれの特徴と成功事例を土台に、まだ無いサービスを含めて案を広く出す必要がある。あわせて「売却を目指すのは儲ける上で正しい方向か」に答える。</dd>
+<dt>分かったこと</dt><dd>16案の既存確認で「見当たらず」は1案（K2-2）だけで、大半は部分的に重なる既存がある。逆に買い手が厚い業態（買取・SES）は既存が多い業態そのもの。売却は利益の2〜4年分を一括で受け取る取引であり、儲けを増やす手段ではなく現金化の手段。</dd>
+<dt>未決</dt><dd>新規性と買い手の厚みのどちらを優先するか／深掘りする案の選択／売却と継続のどちらを主目的にするか（第10章）。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>「案は広く、選ぶのは自分」に戻す。4つの型ごとに、現状ないサービスを提案する</small></h2>
+<div class="tw"><table>
+<tr><th>日付</th><th>出来事</th><th>記録</th></tr>
+<tr><td>2026-08-26</td><td>新規事業探索の方針：「絞り込み」ではなく「案出し」。Claudeが落としてよいのは絶対に無理なものだけ</td><td>LOG</td></tr>
+<tr><td>2026-09-29</td><td>売却事例約130件（国内・海外）を調査。v1で3案＋3案、v2で本命S-D・並走S-A′・T-Aに絞った</td><td>R-0653／R-0654</td></tr>
+<tr><td>2026-09-30</td><td>「S-A・S-D・T-Aはもう決まったのか」との確認。決まっていないこと、私の絞り方が方針と合っていなかったことを説明</td><td>本チャット</td></tr>
+<tr><td>2026-09-30</td><td>ご依頼：4つの型の特徴と成功事例に基づき、現状ないサービスをいくつか提案する。あわせて「売却を目指すのは儲ける上で正しいか」</td><td>本書</td></tr>
+</table></div>
+
+<h2 id="s2">2. 調査の範囲と方法<small>29案のうち型1・型2の16案は既存サービスの有無を、型3・型4の13案は買い手の実在を、それぞれ検索で確認した</small></h2>
+<div class="tw"><table>
+<tr><th>対象</th><th>当たり方</th><th>残っている穴</th></tr>
+<tr><td class="key">型1・型2の16案（既存の有無）</td><td>案ごとに検索語2つ以上でWeb検索し、見つかった既存サービスを最大3つ、URL付きで記録。買い手候補の直近3年の買収実績も1件</td><td>日本のニッチSaaSは検索で取りこぼす可能性がある。「見当たらず」は検索語の範囲での結果</td></tr>
+<tr><td class="key">型3・型4の13案（買い手の実在）</td><td>業態ごとに、2023〜2026年に小規模事業者を買った上場企業・PFを最大3件、IRの対象領域の文言、1人〜数人で始めて売った事例</td><td>買収先の創業経緯は非公表が多く「1人で始めて売った」例は全業態で確認できず</td></tr>
+<tr><td class="key">成功事例</td><td>v1・v2で集めた約130件から型ごとに代表例を再掲</td><td>新規の事例収集は行っていない</td></tr>
+</table></div>
+
+<h2 id="s3">3. 前提・制約<small>売却は「利益2〜4年分の前借り」。儲けを増やすのではなく現金化する取引で、正しいかは目的次第</small></h2>
+<p class="lead2"><b>なぜ先に読むか：</b>「売却を目指すのは正しいか」という問いへの答えが、どの型・どの案を選ぶかを縛るため。</p>
+<h3>3-1. 事実</h3>
+<div class="tw"><table>
+<tr><th>論点</th><th>事実</th><th>出典</th></tr>
+<tr><td class="key">売却額の中心</td><td>国内の個人・スモールは実態営業利益×1〜3年（中央値1.9年）、中小は×2〜5年、海外の少人数SaaSは利益3.9倍（中央値）。つまり<b>利益の2〜4年分を一括で受け取る</b>取引</td><td>TRANBI／BATONZ／Acquire.com</td></tr>
+<tr><td class="key">例外</td><td>利益ではなく「売上・成長率・ユーザー基盤・自社で作れないもの」に払われる例がある（Skeb 10億：月間取引高2億円、NauNau 約10億：直前期売上100万円、トリコ38億：赤字・PSR3倍）。ただしWeb・アプリ系に限られ、再現性は低い</td><td>v1 4章</td></tr>
+<tr><td class="key">売却の費用・条件</td><td>大手仲介の最低手数料1,000万〜2,500万円、ロックアップ1〜3年、表明保証違反での返金請求例、個人の株式譲渡益は20.315%課税</td><td>v1 6章</td></tr>
+<tr><td class="key">継続との比較</td><td>年間利益2,500万円の事業を1億円（4倍）で売ると、4年分を今受け取り、5年目以降は無い。続ければ5年で1.25億円（変動なしの場合）。売ったほうが得なのは「事業の先行きが下がる」「その現金で次に大きく回せる」「経営から降りたい」のどれかがあるとき</td><td>Claudeの整理（算数）</td></tr>
+<tr><td class="key">売る人の言葉</td><td>Storemapper「売りたくなる前から、売れる形で経営せよ」／Baremetrics「自分は始める人で、伸ばす人ではない」／正田圭「成長の角度が鈍ったら売り時」</td><td>v2 4-3</td></tr>
+<tr><td class="key">ご依頼主の過去の言葉</td><td>「月50万円が5年10年入り続ける形がほしい。成長・売却ではない」（2026-08-26）／「数年後の売却を考慮して新規事業を選びたい」（2026-09-29）</td><td>LOG</td></tr>
+</table></div>
+<h3>3-2. 「売却を目指すのは正しい方向か」への答え（所感。決めるのはご依頼主）</h3>
+<div class="card">
+<p><b>条件付きで正しい。</b>理由は3つに分かれます。</p>
+<ul>
+<li><b>「売れる形で作る」こと自体は、売らなくても正しい。</b>社長がいなくても回る・利益が再現する・帳簿が透明・1顧客に依存しない、という売れる条件は、そのまま「続けても楽に儲かる事業」の条件と同じです。Storemapperの創業者が「売りたくなる前から売れる形で経営せよ」と言っているのはこの意味です。</li>
+<li><b>「売ること」は儲けを増やす手段ではなく、現金化と危険の切り離しの手段。</b>相場は利益の2〜4年分なので、順調な事業を売ると長期の合計収入は減ります。得になるのは、先行きが下がると読めるとき、次の事業に大きな元手が要るとき、経営から降りたいとき、の3つです。ご依頼主が8月に言われた「月50万円が5年10年」と、9月の「数年後に売却」は、この点で方向が逆になっています。</li>
+<li><b>したがって、おすすめの置き方は「売れる形で作り、売るかどうかは3年目に決める」。</b>最初から「売る」だけを目的にすると、買い手の意向に合わせた事業を作ることになり、Geminiが指摘したような外部依存（規約・アルゴリズム）の事業に寄りやすい。逆に「続ける」だけを目的にすると属人化して売れなくなる。両方を満たす条件（軸4〜8）で作れば、どちらにも進めます。</li>
+</ul>
+<p class="note">反論も書きます。Web・アプリ系では「利益ゼロでも数億円」の売却が実在し（Skeb・NauNau・トリコ）、これは継続では得られない収入です。ただし約130件中で1人がそこに到達した例は数件で、狙って再現できる型ではありません。</p>
+</div>
+
+<h2 id="s4">4. 4つの型の特徴と成功事例<small>型が違うと「始め方・引き金・買い手・1人との相性」が全部違う。案は型を決めてから出している</small></h2>
+<div class="tw"><table>
+<tr><th>型</th><th>始め方</th><th>売却の引き金</th><th>買い手</th><th>1人との相性</th></tr>
+<tr><td class="key">型1 買い手先行</td><td>最初に「誰が買うか」を決め、その買い手が欲しい形（送客数・マニュアル・再現性）で作る</td><td>成長の角度が鈍る前</td><td>その領域のリード・メディア・人材を買う上場企業</td><td class="st ok">高い</td></tr>
+<tr><td class="key">型2 PF便乗</td><td>既存PF（Twitter・LINE・Notion・Shopify・Amazon）の上に「無い単機能」を1人で作る</td><td>ユーザー急増→1人体制の限界</td><td>そのPF周辺のIT企業（理由は「クロスセル」）</td><td class="st ok">最も高い</td></tr>
+<tr><td class="key">型3 成長資本</td><td>普通に伸ばし、数十名・売上数億で「次の成長に大手の資本が要る」と判断</td><td>上場企業の打診、資金需要</td><td>同業・隣接の上場企業</td><td class="st warn">低い（雇う前提）</td></tr>
+<tr><td class="key">型4 ロールアップ</td><td>上場企業が「連続買収の対象」と公表する業種で、標準化した店舗・人員を積む</td><td>買い手側の買収サイクル</td><td>BuySell・SHIFT・AB&amp;C・ベクトル等</td><td class="st warn">低〜中（人と店）</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>型</th><th>成功事例（創業→売却／額）</th></tr>
+<tr><td class="key">型1 買い手先行</td><td>ファクログ（1年3か月／約2億【本人談】）、Founder（3年／6.2億【本人談】）、BOXIL（5年／約20億）、ドラピタ（6年／じげん）</td></tr>
+<tr><td class="key">型2 PF便乗</td><td>Peing（1か月）、Skeb（2年3か月／10億）、MENTA（2年／2.26億）、Wraptas（8か月）、Lea、Headlime（米・9か月／7桁ドル）、Order Tagger（米・Shopify／7桁ドル）</td></tr>
+<tr><td class="key">型3 成長資本</td><td>NAVICUS（5年／52名）、gracemode（7年／14.92億）、インフラトップ（4年／数億）、エッセンス（3年・1人＋業務委託）</td></tr>
+<tr><td class="key">型4 ロールアップ</td><td>フォーナイン（買取171店／バイセル）、KESHIKI（美容FC42店／3.0億）、FAM（SES／1.37億で80%）、DelightZ（買取14店／21億）</td></tr>
+</table></div>
+<figure><figcaption>図1　型2は1人で始めて億に届いた例が最も多く、型4は値付けが公表されていて読みやすい<small>型ごとの成功事例の売却額の帯（公表分・本人談を含む、対数軸）。太い箱は1人〜少人数で始めた例の範囲</small></figcaption>
+<svg viewBox="0 0 900 230" role="img" aria-label="型別の売却額の帯">
+<line class="ax" x1="200" y1="20" x2="200" y2="185"/>
+<g class="grid"><line x1="340" y1="20" x2="340" y2="185"/><line x1="480" y1="20" x2="480" y2="185"/><line x1="620" y1="20" x2="620" y2="185"/><line x1="760" y1="20" x2="760" y2="185"/></g>
+<text class="m" x="200" y="205" text-anchor="middle">100万</text><text class="m" x="340" y="205" text-anchor="middle">1,000万</text><text class="m" x="480" y="205" text-anchor="middle">1億</text><text class="m" x="620" y="205" text-anchor="middle">10億</text><text class="m" x="760" y="205" text-anchor="middle">100億</text>
+<text x="192" y="44" text-anchor="end">型1 買い手先行</text><rect class="bar" x="522" y="32" width="150" height="18"/><text x="680" y="46">2億（ファクログ）〜48億</text>
+<text x="192" y="84" text-anchor="end">型2 PF便乗</text><rect class="bar" x="410" y="72" width="210" height="18"/><text x="628" y="86">3,000万（Snapmart）〜10億（Skeb）</text>
+<text x="192" y="124" text-anchor="end">型3 成長資本</text><rect class="bar3" x="500" y="112" width="130" height="18"/><text x="638" y="126">数億（インフラトップ）〜14.9億（gracemode）</text>
+<text x="192" y="164" text-anchor="end">型4 ロールアップ</text><rect class="bar4" x="498" y="152" width="150" height="18"/><text x="656" y="166">1.37億（SES FAM）〜21億（買取DelightZ）</text>
+</svg></figure>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>各案の需要：</b>お客さまが払うかは調べていない（選んだ案だけ KASETSU.md で確かめる）</li>
+<li><b>各案の収支：</b>費用・単価・必要な件数は未計算</li>
+<li><b>法規制：</b>K1-2・K1-3・K2-2・K3-2 は製品安全4法・薬機法・食品表示法に触れる。確定前に legal-crosscheck が必要</li>
+<li><b>既存確認の網羅性：</b>日本語のニッチSaaSは検索で取りこぼす可能性。案を選んだあとに再確認する</li>
+</ul>
+
+<h2 id="s6">6. 事業案カタログ 29案<small>「見当たらず」は1案だけ。大半は既存と一部重なるので、勝つには「縦（業界×用途）」の切り方で差をつける</small></h2>
+<p class="lead2"><b>読み方：</b>既存の有無（◎○×）と買い手の厚みは第2章の方法で確認した事実。「1人で可」と「元になった型・事例」はClaudeの当てはめ（提案）。</p>
+<figure><figcaption>図2　型1・型2の16案のうち「見当たらず」は1案。新規性は型2に少しだけ残っている<small>既存確認の結果の内訳（型1：8案、型2：8案）</small></figcaption>
+<svg viewBox="0 0 900 150" role="img" aria-label="既存確認の内訳">
+<text x="150" y="52" text-anchor="end">型1 買い手先行（8案）</text>
+<rect class="bar3" x="160" y="38" width="180" height="20"/><text class="w" x="250" y="53" text-anchor="middle">◎既存あり 2</text>
+<rect class="bar" x="340" y="38" width="540" height="20"/><text class="w" x="610" y="53" text-anchor="middle">○類似あり 6</text>
+<text x="150" y="102" text-anchor="end">型2 PF便乗（8案）</text>
+<rect class="bar3" x="160" y="88" width="270" height="20"/><text class="w" x="295" y="103" text-anchor="middle">◎既存あり 3</text>
+<rect class="bar" x="430" y="88" width="360" height="20"/><text class="w" x="610" y="103" text-anchor="middle">○類似あり 4</text>
+<rect class="bar4" x="790" y="88" width="90" height="20"/><text class="w" x="835" y="103" text-anchor="middle">×なし 1</text>
+<text class="m" x="160" y="135">◎＝ほぼ同じものがある　○＝一部重なる（縦の切り方で差をつけられる）　×＝見当たらず</text>
+</svg></figure>
+
+<h3>型1 買い手先行型（送客・比較・業務ツール）── 8案</h3>
+<div class="tw"><table>
+<tr><th>ID</th><th>案</th><th>既存</th><th>買い手候補（実績）</th><th>1人で可</th><th>元になった事例</th></tr>
+<tr><td>K1-1</td><td class="key">事業用・マンション向けEV充電設備の設置業者を中立に比較・一括見積するメディア</td><td class="st warn">○類似</td><td>じげん（2025 人材派遣買収）、ENECHANGE（2026-07 子会社化）。既存のミツモアは個人宅中心</td><td class="st ok">可</td><td>ファクログ・BOXIL（比較→送客）</td></tr>
+<tr><td>K1-2</td><td class="key">輸入セラー向け「改正製品安全4法（2025-12-25施行）」セルフチェック＋事業者表示ラベル自動生成</td><td class="st warn">○類似</td><td>国内管理人の受託会社（SKアドバイザリー等）は複数、Webツールは無し。買い手の買収実績は未確認</td><td class="st ok">可</td><td>formrun（誰もが要る1機能）</td></tr>
+<tr><td>K1-3</td><td class="key">海外セラー向け英語版「日本で売るための法規制ナビ」（PSE・食品表示・薬機法・製品安全4法を横断）</td><td class="st warn">○類似</td><td>個社の営業コンテンツは多数、中立の横断ナビは無し。オープンロジは調達のみで買収実績なし</td><td class="st ok">可</td><td>ファクログ（縦で No.1）、軸9（海外の買い手）</td></tr>
+<tr><td>K1-4</td><td class="key">無人店舗（レンタルスペース・セルフサロン・貸会議室）専門の売買・査定メディア</td><td class="st warn">○類似</td><td>スペースマーケット（2025-04 運営3社を子会社化）、BATONZ・TRANBI（カテゴリとして流通済み）</td><td class="st ok">可</td><td>ドラピタ（業界特化）</td></tr>
+<tr><td>K1-5</td><td class="key">法人向け産廃・不用品回収業者の比較（許可番号で照合）</td><td class="st ng">◎既存</td><td>比較ビズ・リサイクルハブが一括見積を提供。公的DBで許可照合可</td><td class="st ok">可</td><td>―（差が小さい）</td></tr>
+<tr><td>K1-6</td><td class="key">事業承継の「売り手」向け：実態営業利益の計算＋企業概要書（IM）の自動生成</td><td class="st warn">○類似</td><td>公庫・支援機関の簡易株価ツールはあるがIM自動生成は無し。BATONZ×TRANBI（2024 連携協定）</td><td class="st ok">可</td><td>MENTA→ランサーズ（PFの隣の機能）</td></tr>
+<tr><td>K1-7</td><td class="key">動物取扱業・美容所・古物商の許認可更新期限管理＋行政書士送客</td><td class="st ng">◎既存</td><td>マルットが4業種（建設・宅建・建築士・産廃）で実装済み。動物・美容・古物は未対応。freee・マネフォ（2025 子会社化）</td><td class="st ok">可</td><td>未対応業種に縦を切れば○になる</td></tr>
+<tr><td>K1-8</td><td class="key">補助金採択後の「実績報告・経費証憑」代行の専門仲介</td><td class="st warn">○類似</td><td>代行業者は多数、ランサーズで仲介可。専門サイトは無し。ライトアップ（2023-12 子会社化）</td><td class="st ok">可</td><td>ファクログ（高単価の送客）</td></tr>
+</table></div>
+
+<h3>型2 プラットフォーム便乗型（既存PFの上の単機能）── 8案</h3>
+<div class="tw"><table>
+<tr><th>ID</th><th>案</th><th>既存</th><th>買い手候補（実績）</th><th>1人で可</th><th>元になった事例</th></tr>
+<tr><td>K2-1</td><td class="key">TikTok Shop（2025-06 日本開始）セラー向け在庫・受注・発送連携</td><td class="st ng">◎既存</td><td>ネクストエンジン・LOGILESS・futureshopが対応済み。AnyMind（2025 子会社化）</td><td class="st ok">可</td><td>Order Tagger（新PFの初期）── ただし出遅れ</td></tr>
+<tr><td>K2-2</td><td class="key">BASE／Shopify向け：製品安全4法の事業者表示・PSE表示を商品ページへ自動挿入するアプリ</td><td class="st ok">×なし</td><td>特化アプリなし（特商法ページ生成・汎用メタフィールドで代替は可）。買い手は未特定</td><td class="st ok">可</td><td>Wraptas・Lea（PFの穴を1機能で）</td></tr>
+<tr><td>K2-3</td><td class="key">LINEミニアプリで無人店舗の予約→決済→スマートロック解錠</td><td class="st ng">◎既存</td><td>STORES予約×LINE、Lメンバーズカード×RemoteLOCK が実装済み</td><td class="st ok">可</td><td>―</td></tr>
+<tr><td>K2-4</td><td class="key">転売・寝かせ販売者向け「発売日・再販・プレ値推移」一体アラート（Amazon・メルカリ実売）</td><td class="st warn">○類似</td><td>オークファン（検索アラート）、カカクロ（価格追跡）はあるが一体型は無し。オークファンの買収は2022年が最後</td><td class="st ok">可</td><td>自社の寝かせ在庫管理の外販</td></tr>
+<tr><td>K2-5</td><td class="key">楽天RMS・Yahoo!等のMCPサーバー化（AIから在庫・価格・注文を操作）</td><td class="st warn">○類似</td><td>Amazonは公式コネクター（Claude・β）あり。楽天RMSは個人の自作例のみ。買い手候補はAI導入企業・EC支援</td><td class="st ok">可</td><td>Peing（新しい土台の初期）</td></tr>
+<tr><td>K2-6</td><td class="key">レンタルスペース（時間貸し）の清掃を予約カレンダー連動で外部業者へ自動発注</td><td class="st warn">○類似</td><td>民泊向け（ヤドツギ・AssistBnB）は存在、時間貸し特化は無し。スペースマーケット（2025 買収実績）</td><td class="st ok">可</td><td>bosyu（PF周辺の運用の穴）</td></tr>
+<tr><td>K2-7</td><td class="key">X／Discordの会員資格を条件にした限定商品の抽選販売（BASE等と連携）</td><td class="st warn">○類似</td><td>BASE公式「抽選販売App」あり。コミュニティ資格連携は無し。買い手は未特定</td><td class="st ok">可</td><td>Skeb（コミュニティ×決済）</td></tr>
+<tr><td>K2-8</td><td class="key">Chrome拡張：Amazon商品ページに「過去のプレ値実績・寝かせ適性」を重ね表示</td><td class="st warn">○類似</td><td>SedoriAI・Keepa・プライスターは「今の利益」判定。寝かせ適性の指標は無し。買い手は未特定</td><td class="st ok">可</td><td>OctoShop（Chrome拡張→7桁ドル）、自社の寝かせ適性判定</td></tr>
+</table></div>
+
+<h3>型3 成長資本型（数十名まで育てて上場企業へ）── 6案</h3>
+<div class="tw fit"><table>
+<tr><th>ID</th><th>案</th><th>買い手の厚み</th><th>買い手（直近）</th><th>1人で可</th><th>元になった事例</th></tr>
+<tr><td>K3-1</td><td class="key">無人店舗オーナー向けの遠隔運営代行（予約・清掃手配・トラブル対応のBPO）</td><td class="st warn">少ない</td><td>スペースマーケット（2025-04 運営3社、2021 運営代行スペースモール）</td><td class="st warn">初期は可</td><td>NAVICUS（運用代行→上場へ）</td></tr>
+<tr><td>K3-2</td><td class="key">ECセラー向け法規制対応代行（製品安全4法・PSE・食品表示・薬機法の表示チェックと届出）</td><td class="st ng">見当たらず</td><td>伊藤忠→コアメッド（製薬向け承認申請コンサル、2026）は周辺。EC向けの買収例なし</td><td class="st warn">初期は可</td><td>―（買い手が未形成）</td></tr>
+<tr><td>K3-3</td><td class="key">中小EC向けAI導入・業務自動化の受託</td><td class="st warn">少ない</td><td>受託開発一般はSun Asterisk→MIXENSE 9億（2025）等多数。「EC向けAI」では未確認</td><td class="st warn">初期は可</td><td>LangCore（16か月／4.05億）、ライフハック（3年）</td></tr>
+<tr><td>K3-4</td><td class="key">訪日客向け「買った荷物を帰国先へ発送」受付（空港外の店舗・提携店）</td><td class="st ng">見当たらず</td><td>Airporterは出資のみ。買収例なし</td><td class="st warn">初期は可</td><td>転送事業の知見</td></tr>
+<tr><td>K3-5</td><td class="key">SNS運用代行・ショート動画制作</td><td class="st ok">厚い</td><td>SBI・ソウルドアウト・AViC（2025-12〜2026-01、Spicaは15億）。買われるのはフォロワー資産型</td><td class="st warn">初期は可</td><td>gracemode・AILES・エッセンス</td></tr>
+<tr><td>K3-6</td><td class="key">越境EC事業者向け多言語カスタマーサポート代行</td><td class="st ng">見当たらず</td><td>LINEヤフー→BEENOS TOB（2024）は規模が別。BPOの買収例なし</td><td class="st warn">初期は可</td><td>―</td></tr>
+</table></div>
+
+<h3>型4 ロールアップに乗る型（上場企業が連続買収している業態）── 7案</h3>
+<div class="tw"><table>
+<tr><th>ID</th><th>案</th><th>買い手の厚み</th><th>買い手（直近）</th><th>1人で可</th><th>元になった事例</th></tr>
+<tr><td>K4-1</td><td class="key">ブランド品・貴金属の買取店（複数店・FC）</td><td class="st ok">厚い</td><td>BuySell→むすび45店（2024）、DelightZ 14店 21億、HKS 20店 5.25億（2026）。IR「リユース領域を最優先」</td><td class="st ng">不可（3〜4人）</td><td>フォーナイン（171店→バイセル）</td></tr>
+<tr><td>K4-2</td><td class="key">トランクルーム（屋内型・複数拠点）</td><td class="st warn">少ない</td><td>エリアリンク→LIFULL SPACE（2024）、ストレージ王TOB（2026）。数拠点規模の買収例は未確認</td><td class="st warn">可（無人）</td><td>レンタルスペース11拠点→個人へ（S-D型）</td></tr>
+<tr><td>K4-3</td><td class="key">自動車整備の認証工場（複数拠点）</td><td class="st warn">少ない</td><td>レダックス→新興自動車 4,312万円（2024）、レント→神奈川石油販売（2025）。年1〜2件で値付けが低い</td><td class="st ng">不可（整備士）</td><td>―</td></tr>
+<tr><td>K4-4</td><td class="key">小規模SES・受託開発（数十名）</td><td class="st ok">厚い</td><td>TWOSTONE→FAM 1.37億（2025）、情報戦略テクノロジー 7.99億（2025）、fonfun 6億（2024）。2024〜25年で15件超</td><td class="st ng">不可（3〜4人）</td><td>TSR 3.21億、フレームキャリア（3年）</td></tr>
+<tr><td>K4-5</td><td class="key">学習塾（複数教室・FC）</td><td class="st warn">少ない</td><td>成学社→一会塾（2教室・医学部特化、2024）、京進→リンクハート6施設（2025）。汎用の小規模塾は個人買い手</td><td class="st warn">初期は可</td><td>Aslab（1人→地域塾）、キラメックス</td></tr>
+<tr><td>K4-6</td><td class="key">家族葬ホール（1〜3館）</td><td class="st warn">少ない</td><td>こころネット→喜月堂 3施設（2023）、ティア→東海典礼22施設（2023）。直近は上場同士の再編が中心</td><td class="st ng">不可（24時間体制）</td><td>S-02 前資料の第一候補</td></tr>
+<tr><td>K4-7</td><td class="key">コインランドリー（複数店）</td><td class="st ng">見当たらず</td><td>上場企業の買収は2021年が最後。売り案件はBATONZ 524件で買い手は個人中心</td><td class="st warn">可（無人）</td><td>―（売り手過多）</td></tr>
+</table></div>
+
+<h2 id="s7">7. 選び方の提案<small>「新規性」と「買い手の厚み」は同時に取れない。どちらを優先するかを先に決めると、29案は自然に絞れる</small></h2>
+<figure><figcaption>図3　右上（新規性が高く買い手も厚い）は空いている。29案はどちらか一方に寄る<small>横軸＝既存サービスの少なさ（◎→○→×）、縦軸＝買い手の厚み（見当たらず→少ない→厚い）。配置はClaudeの提案。塗りつぶしは「1人で可」かつ「○以上」の案</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="29案の位置取り">
+<rect class="lane" x="120" y="20" width="370" height="130"/><rect class="lane" x="500" y="20" width="370" height="130"/><rect class="lane" x="120" y="160" width="370" height="130"/><rect class="lane" x="500" y="160" width="370" height="130"/>
+<text class="m" x="130" y="36">買い手は厚いが、既存がある（型4・型3の一部）</text><text class="m" x="510" y="36">買い手が厚く、既存が少ない（空白）</text>
+<text class="m" x="130" y="176">買い手が薄く、既存もある</text><text class="m" x="510" y="176">既存は少ないが、買い手が薄い（型1・型2の大半）</text>
+<rect class="cand" x="140" y="50" width="120" height="30" rx="4"/><text x="200" y="70" text-anchor="middle">K4-1 買取店</text>
+<rect class="cand" x="270" y="50" width="120" height="30" rx="4"/><text x="330" y="70" text-anchor="middle">K4-4 SES</text>
+<rect class="cand" x="140" y="95" width="120" height="30" rx="4"/><text x="200" y="115" text-anchor="middle">K3-5 SNS運用</text>
+<rect class="us" x="330" y="200" width="150" height="30" rx="4"/><text class="w" x="405" y="220" text-anchor="middle">K1-4 無人店舗の売買</text>
+<rect class="us" x="330" y="240" width="150" height="30" rx="4"/><text class="w" x="405" y="260" text-anchor="middle">K2-6 清掃自動発注</text>
+<rect class="cand" x="140" y="200" width="120" height="30" rx="4"/><text x="200" y="220" text-anchor="middle">K4-2 K4-3 K4-5</text>
+<rect class="cand" x="140" y="240" width="120" height="30" rx="4"/><text x="200" y="260" text-anchor="middle">K1-5 K1-7 K2-1 K2-3</text>
+<rect class="us" x="520" y="200" width="160" height="30" rx="4"/><text class="w" x="600" y="220" text-anchor="middle">K1-2 K1-3 K2-2 法規制系</text>
+<rect class="us" x="700" y="200" width="160" height="30" rx="4"/><text class="w" x="780" y="220" text-anchor="middle">K2-4 K2-8 寝かせ系</text>
+<rect class="us" x="520" y="240" width="160" height="30" rx="4"/><text class="w" x="600" y="260" text-anchor="middle">K1-1 K1-6 K1-8 送客系</text>
+<rect class="cand" x="700" y="240" width="160" height="30" rx="4"/><text x="780" y="260" text-anchor="middle">K2-5 K2-7 K3-2 K3-4 K3-6</text>
+<line class="ax" x1="120" y1="300" x2="870" y2="300"/><text class="m" x="495" y="316" text-anchor="middle">既存サービスの少なさ →（◎多い｜×無い）</text>
+<line class="ax" x1="110" y1="20" x2="110" y2="290"/><text class="m" x="20" y="160" transform="rotate(-90 20 160)" text-anchor="middle">買い手の厚み →（薄い｜厚い）</text>
+</svg></figure>
+<div class="tw"><table>
+<tr><th>優先するもの</th><th>向く型</th><th>候補になる案</th><th>得るもの</th><th>失うもの</th></tr>
+<tr><td class="key">A. 新規性（現状ないサービス）</td><td>型1・型2</td><td>K2-2、K1-2、K1-3（法規制系）／K2-4、K2-8（寝かせ系）／K1-1、K1-6、K1-8（送客系）／K1-4、K2-6（無人店舗系）</td><td>1人で作れる。競合が薄い。天井は億に届く型</td><td>買い手が事前に見えない。売却は「売れた例がある型」に頼る</td></tr>
+<tr><td class="key">B. 買い手の厚み（売れる確度）</td><td>型4・型3の一部</td><td>K4-1 買取店、K4-4 SES、K3-5 SNS運用</td><td>値付けと買い手が公表されていて読みやすい</td><td>既存が多い業態そのもの。人・店を持つ。1人では不可</td></tr>
+<tr><td class="key">C. 両方を段階で（提案）</td><td>型2→型4</td><td>K2-4／K2-8／K2-6 のような「自社の運用から出る単機能」を先に作り、それを武器に K4-2（トランクルーム）や K1-4 のような無人店舗の実業へ</td><td>Aで作った仕組みをBの実業の属人性排除に転用できる</td><td>2段階になる分、時間がかかる</td></tr>
+</table></div>
+<div class="pillars">
+<div class="pillar must"><h4>ご依頼主の実績が直接使える案（提案）</h4><dl><dt>該当</dt><dd>K2-4・K2-8（寝かせ在庫管理・寝かせ適性判定の外販）、K1-2・K1-3・K2-2（輸入・EC出店・製品安全4法の知見）、K1-4・K2-6・K3-1（無人店舗の運用システム）</dd><dt>なぜ</dt><dd>他の候補者に無い出発点。作る前に「自分が客」として需要を知っている</dd></dl></div>
+<div class="pillar cond"><h4>買い手が公表されている案（事実）</h4><dl><dt>該当</dt><dd>K4-1（BuySell「リユース最優先」）、K4-4（SES 15件超）、K3-5（SBI・ソウルドアウト・AViC）</dd><dt>条件</dt><dd>3〜4人以上。売上数億が買収の下限（BuySellの買収先は売上2.7億〜）</dd></dl></div>
+<div class="pillar cond"><h4>法規制が絡む案（確定前に legal-crosscheck）</h4><dl><dt>該当</dt><dd>K1-2・K1-3・K2-2（製品安全4法・PSE）、K3-2（薬機法・食品表示法）、K1-7（行政書士法：送客の報酬は非弁・非行政書士行為に注意）</dd><dt>条件</dt><dd>法令の解釈をサービスに組み込むため、Gemini確認と専門家確認が要る</dd></dl></div>
+</div>
+
+<h2 id="s8">8. 数字（値付け・到達の目安）<small>案を選ぶ前に置ける数字は「型の相場」まで。案ごとの収支は KASETSU.md で</small></h2>
+<div class="tw"><table>
+<tr><th>型</th><th>値付けの型</th><th class="num">倍率</th><th>到達の目安</th><th>出典</th></tr>
+<tr><td class="key">型1・型2（Web・ツール）</td><td>実態営業利益×倍率、海外は年商×1〜3倍</td><td class="num">2〜4倍</td><td>1億円なら実態利益2,500万〜5,000万円。例外的に利益ゼロで億（Skeb・NauNau）</td><td>Acquire.com／TRANBI</td></tr>
+<tr><td class="key">型3（サービス業・数十名）</td><td>営業利益×年数</td><td class="num">3〜6倍</td><td>gracemode 営業利益2.65億→14.92億（約5.6倍）</td><td>ベクトル開示</td></tr>
+<tr><td class="key">型4 買取店</td><td>EV/EBITDA上限設定（非公表）</td><td class="num">―</td><td>14〜20店・売上23億で5〜21億円</td><td>BuySell開示</td></tr>
+<tr><td class="key">型4 SES</td><td>営業利益×年数</td><td class="num">約5倍</td><td>売上4.89億・営利2,800万→1.37億（80%）。SHIFTはEBITDA5倍</td><td>TWOSTONE開示／SHIFT IR</td></tr>
+</table></div>
+
+<h2 id="s9">9. 次の工程<small>ご依頼主が3〜5案を選ぶ→1案ずつ KASETSU.md で「賭けてよい上限」と「いちばん危ない前提」を決める</small></h2>
+<div class="tw"><table>
+<tr><th>段</th><th>誰が</th><th>何をする</th><th>出るもの</th></tr>
+<tr><td>①</td><td>ご依頼主</td><td>第10章で「新規性か買い手か」を選び、29案から深掘りする案を3〜5個選ぶ（型をまたいでよい）</td><td>選んだIDの一覧</td></tr>
+<tr><td>②</td><td>Claude</td><td>選んだ案ごとに既存確認を再実施（日本語の検索語を増やす）し、既存の有無を更新</td><td>更新した表</td></tr>
+<tr><td>③</td><td>ご依頼主</td><td>案ごとに「賭けてよい上限（金額・期間）」を決める（Claudeは提案しない）</td><td>KASETSU.md の 0 章</td></tr>
+<tr><td>④</td><td>Claude</td><td>案ごとに代替手段・死ぬ条件3つ・いちばん危ない前提1つ・作らずに確かめる方法を書く</td><td>KASETSU.md の 1〜5 章</td></tr>
+<tr><td>⑤</td><td>両者</td><td>法規制が絡む案は legal-crosscheck、進む／止めるの確定前に cross-review（Gemini）</td><td>判定</td></tr>
+</table></div>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>Claudeは本命を置かない。選ぶのはご依頼主</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢</th></tr>
+<tr><td>1</td><td class="key">売却と継続のどちらを主目的にするか</td><td>売却が主／継続が主／「売れる形で作り、売るかは3年目に決める」（第3章の所感）</td></tr>
+<tr><td>2</td><td class="key">新規性と買い手の厚みのどちらを優先するか</td><td>A 新規性／B 買い手の厚み／C 段階で両方（第7章）</td></tr>
+<tr><td>3</td><td class="key">深掘りする案</td><td>29案から3〜5個（IDで指定。型をまたいでよい。ここに無い案の追加も可）</td></tr>
+<tr><td>4</td><td class="key">案を足すか</td><td>この4つの型で追加の案出しを続ける／十分</td></tr>
+<tr><td>5</td><td class="key">3〜4人案（K4-1・K4-4・K3-5）を今回の対象に含めるか</td><td>含める／一人法人案が固まるまで保留</td></tr>
+</table></div>
+<h3>未確認事項</h3>
+<ul>
+<li><b>「見当たらず」の確度：</b>日本語ニッチSaaSは検索で取りこぼす可能性。選んだ案は再確認する</li>
+<li><b>K1-7の法的可否：</b>行政書士への送客と報酬の受け取りは行政書士法・弁護士法との関係を要確認</li>
+<li><b>K1-2・K1-3・K2-2の法令の細部：</b>製品安全4法の国内管理人制度・表示義務の条文は legal-crosscheck で確定</li>
+<li><b>買い手の「対象領域」文言：</b>SHIFT・BuySell・じげん以外は数値付き基準が非公表</li>
+</ul>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本（案カタログ）。選んだ案は KASETSU.md へ移し、そちらを正とする</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>v1</td><td>2026-09-30</td><td>4つの型の特徴・成功事例、29案（既存確認16案・買い手確認13案）、選び方の提案、「売却を目指すのは正しいか」への回答</td></tr>
+</table></div>
+<h3>主要な出典（既存確認・買い手確認）</h3>
+<ul class="note">
+<li>型1：ミツモア EV https://meetsmore.com/services/ev-socket ／ ENECHANGE→ダーウィン https://maonline.jp/news/20260724b ／ SKアドバイザリー https://skadvisory.jp/pse_psc_product_safety_acts/ ／ BATONZ レンタルスペース案件 https://batonz.jp/sell_cases/bk_1800000/bk_1802006/ ／ スペースマーケット3社子会社化 https://www.strike.co.jp/ma_news/detail.html?id=20250207j ／ 比較ビズ 産廃 https://www.biz.ne.jp/list/industrial-waste/ ／ 公庫 譲渡価格算出ツール https://www.jfc.go.jp/n/finance/jigyosyokei/matching/knowledge/tool.html ／ マルット https://marutto.work/ ／ freee→GMOクリエイターズネットワーク https://corp.freee.co.jp/news/20250722freee_gmocn.html ／ ライトアップ→AKARI https://www.nihon-ma.co.jp/news/20231213_6580-10/</li>
+<li>型2：ネクストエンジン TikTok Shop連携 https://base.next-engine.org/apps/6704/detail/ ／ Shopify 特商法アプリ https://apps.shopify.com/shopify-application-507 ／ RemoteLOCK LINE連携まとめ https://remotelock.kke.co.jp/article/reservation-system-with-line/ ／ オークファン メルカリ対応 https://prtimes.jp/main/html/rd/p/000000407.000008833.html ／ Amazon Selling Partner コネクター https://claude.com/ja/marketplace/connectors/amazon-selling-partner ／ BASE 抽選販売App https://apps.thebase.com/detail/88 ／ SedoriAI https://chromewebstore.google.com/detail/jdhmncefcpblcfebjkeipdglfhmcjjhd</li>
+<li>型3：スペースマーケット子会社化 https://www.zenchin.com/news/content-3727.php ／ 伊藤忠→コアメッド https://www.itochu.co.jp/ja/news/news/2026/260227.html ／ Sun Asterisk→MIXENSE https://www.nihon-ma.co.jp/news/20251224_4053-31/ ／ SBI→LuaaZ https://www.nihon-ma.co.jp/news/20251226_8473-135/ ／ ソウルドアウト→JAPAN SELECT https://www.nihon-ma.co.jp/news/20251222_1-2204/ ／ AViC→Spica https://www.nihon-ma.co.jp/news/20260127_9554-16/</li>
+<li>型4：BuySell→DelightZ https://www.nihon-ma.co.jp/news/20260213_7685-29/ ／ →HKS https://maonline.jp/news/20260917f ／ →むすび https://www.nihon-ma.co.jp/news/20240119_7685-3/ ／ BuySell M&amp;A方針 https://buysell-technologies.com/strategy/ma/ ／ コメ兵→RK https://www.nihon-ma.co.jp/news/20240925_2780-7/ ／ エリアリンク→LIFULL SPACE https://www.nihon-ma.co.jp/news/20230922_8914/ ／ ストレージ王TOB https://www.logi-today.com/974981 ／ レダックス→新興自動車 https://www.nihon-ma.co.jp/news/20241009_7602-6/ ／ TWOSTONE→FAM https://www.primary.co.jp/valuation/ ／ 成学社→一会塾 https://reseed.resemom.jp/article/2024/04/22/8624.html ／ こころネット→喜月堂 https://www.nihon-ma.co.jp/news/20230720_6060-9/ ／ ティア https://www.nihon-ma.co.jp/news/20231024_2485/</li>
+<li>成功事例・相場：v1・v2の出典一覧に準拠</li>
+</ul>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。</p>
+</main></div></body></html>

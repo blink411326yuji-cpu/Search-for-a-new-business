@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スケール売却型 事業提案</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1f1f1f;--muted:#5c5c5c;--line:#d9d5cc;--card:#ffffff;--accent:#2d5f8a;--warn:#a33;--ok:#2f6b3a;--note:#eef2f6;--hl:#fff6d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#7fb2e0;--warn:#e07a7a;--ok:#7fc48e;--note:#23272c;--hl:#3a3520}}
+:root[data-theme="dark"]{--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#7fb2e0;--warn:#e07a7a;--ok:#7fc48e;--note:#23272c;--hl:#3a3520}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;line-height:1.75;font-size:15px}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0 0 4px;border-left:6px solid var(--accent);padding-left:12px}
+h2{font-size:1.2rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:1.02rem;margin:22px 0 8px;color:var(--accent)}
+p{margin:8px 0}
+.meta{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:16px 0}
+.toc a{display:block;color:var(--fg);text-decoration:none;padding:2px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.box.note{background:var(--note)}
+.box.warn{border-left:5px solid var(--warn)}
+.box.ok{border-left:5px solid var(--ok)}
+.box.hl{background:var(--hl);border-left:5px solid var(--accent)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--note);white-space:nowrap}
+.tag{display:inline-block;font-size:.78rem;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:var(--muted);margin-right:4px}
+.tag.un{border-color:var(--warn);color:var(--warn)}
+.src{color:var(--muted);font-size:.85rem}
+a{color:var(--accent);word-break:break-all}
+ul{padding-left:1.3em}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;white-space:pre-wrap;font-size:.88rem;line-height:1.6}
+</style>
+</head>
+<body>
+<main>
+<h1>スケール売却型 新規事業の提案 ― 直近10年の売却事例から選定軸を組み、案を出す</h1>
+<p class="meta">作成日 2026-09-29 ／ 作成：Claude（Cowork）／ 状態：<strong>提案（未承認）</strong>。決めるのはご依頼主 ／ 出典の確認日はすべて 2026-09-29 ／ 保存先：C:\dev\Search-for-a-new-business\S-01_スケール売却型 ／ 前の資料：`_新規事業_数年で売却する起業家の実態と地域密着型の安定性の検証_2026-09-29.html`（ルート）</p>
+<p class="src">表記：【本人談】＝売り手本人の公表記事のみが出典。【推定】＝報道推定。【未確認】＝一次情報で確かめられず。「所感」「提案」＝Claudeの見方で事実ではない。事例の年数は「創業（または事業開始）→売却公表」。</p>
+
+<div class="toc">
+<strong>目次</strong>
+<a href="#s0">0. 提案の要旨（先に読む）</a>
+<a href="#s1">1. 前提 ― ご依頼と条件</a>
+<a href="#s2">2. 直近10年の売却事例 ― 全体像（約70件）</a>
+<a href="#s3">3. 事例台帳（領域別）</a>
+<a href="#s4">4. 本人の言葉から読める4つの「型」</a>
+<a href="#s5">5. 買い手はなぜ買うか ― 開示理由の集計と、公表されている買収基準</a>
+<a href="#s6">6. 市場の選び方 ― 事例から組んだ7つの軸</a>
+<a href="#s7">7. 何を作り込むか ― 売却時に見られる数字</a>
+<a href="#s8">8. 「過去の実績領域から出すか、新しい分野か」への答え</a>
+<a href="#s9">9. 事業案 ― 一人法人でやる案（3案）</a>
+<a href="#s10">10. 事業案 ― 3〜4人でやる案（3案）</a>
+<a href="#s11">11. Claudeの推奨と、その理由</a>
+<a href="#s12">12. 注意 ― この提案が外れる条件</a>
+<a href="#s13">13. 未確認事項</a>
+<a href="#s14">14. 決めていただくこと</a>
+<a href="#s15">15. 付録：Gemini クロスレビュー用の依頼文（そのまま貼れる）</a>
+<a href="#s16">16. 出典一覧</a>
+</div>
+
+<h2 id="s0">0. 提案の要旨（先に読む）</h2>
+<div class="box hl">
+<p><strong>結論（提案）：一人法人で始めるなら「ECセラー向けの単機能ツール（既存プラットフォームの上に乗る型）」を第一候補、「業界特化の送客メディア」を第二候補とします。3〜4人が組めるなら「買取店のFC・ロールアップ（上場リユース企業が買う型）」を第一候補にします。</strong></p>
+<p>理由は3つです。①直近10年で<strong>1人で作って売却まで到達した事例はほぼ全て「既存プラットフォーム（Twitter・LINE・Notion・Amazon・Instagram）の上に乗った単機能サービスかメディア」</strong>で、売却理由は「1人体制の限界」（Peing・Skeb・MENTA・Wraptas・formrun）。②買い手は<strong>隣接領域しか買わない</strong>（開示理由の最多は「クロスセル」11/19件）ので、「誰が買うか」が最初から見える領域を選ぶ必要がある。③ご依頼主の実績（EC・Amazon・BASEの出店、転売の相場観、システムをCoworkで作る力）が、そのまま買い手候補（Hamee・ACROVE・EC支援の上場企業）の隣接領域に当たる。</p>
+</div>
+<div class="box warn">
+<p><strong>事実として押さえてほしいこと（5点）</strong></p>
+<ul>
+<li>集めた約70件のうち、<strong>売却額が公表されているのは買い手が上場企業のときだけ</strong>。個人・仲介プラットフォーム経由の小規模案件は非公表が原則。個人開発SaaSで「額と経緯を両方公表した日本事例」は見つからず。</li>
+<li>「最初から売却を想定していた」と<strong>明言した人は約70件中8人</strong>（ファクログ・ワラリー!・formrun・ライフハック・ニコラシステム・川崎氏YouTube・トリコ・インフラトップ）。残りは「打診があった」「1人では回らなくなった」「次の成長に資本が要る」で決めている。</li>
+<li>売却時に<strong>赤字だった事例が複数</strong>（Fablic ▲4.5億、3ミニッツ ▲3.65億、Increments ▲0.8億、トリコ）。買い手は利益ではなく「売上・成長率・ユーザー基盤・自社で作れないもの」に払っている。一方、中小の事業承継型は営業利益×2〜5年で値付けされる。<strong>2つの値付けの世界がある。</strong></li>
+<li>買い手の数値基準で公表されているのは SHIFT「EBITDA 5倍程度・のれん償却後も黒字」、ACROVE「年商1億円以上・固定ファン（メール/LINEリスト）・差別化ストーリー」、forest「数年売れ続ける・トレンド依存が低い・オーガニック流入」、じげん「買収予算10億円〜」。</li>
+<li>海外の少人数SaaS売買（Acquire.com）は<strong>利益の3.9倍・年商の1〜3倍</strong>が中央値で、平均81日で成約。日本の個人サイト売買（ラッコ）は<strong>月利益の17.8か月分</strong>が実績平均。</li>
+</ul>
+</div>
+
+<h2 id="s1">1. 前提 ― ご依頼と条件</h2>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>目的</td><td>数年後の売却を前提に新規事業を選ぶ。まず「スケール売却型」を扱い、地域密着型は別軸（S-02）で後から</td></tr>
+<tr><td>資金</td><td>情報の取りこぼしを避けるため、当面は「ある程度出せる・融資を受ければいける」前提で調査（上限は後で決める）</td></tr>
+<tr><td>体制</td><td>一人法人（ご依頼主が動く）を主。3〜4人のグループが組める場合の案も併記</td></tr>
+<tr><td>調査範囲</td><td>直近10年（2016〜2026年）に売却まで至った企業。考え方・メンタリティ・参入カテゴリ・市場選定・作り込み・買い手の理由を、本人の言葉と公表資料で</td></tr>
+<tr><td>既存事業との関係</td><td>転売・寝かせ転売・自社EC（SELECT.ARCHIVE／ヴァンガード本店）・ルートアプリ・海外ブランド正規販売店の検討は継続。相乗効果は必須ではない</td></tr>
+<tr><td>過去の判断軸（記録から）</td><td>資金勝負にならない領域／大手が来ない領域／中長期の安定収益／許認可に3か月〜半年かけない／営業も雇えばよい／「デジタル商品はAIで誰でも作れて淘汰される」という認識（2026-09-02）／「AI×少人数の人件費優位でSaaSに後発参入できる」という切り口（2026-09-15）</td></tr>
+</table>
+
+<h2 id="s2">2. 直近10年の売却事例 ― 全体像（約70件）</h2>
+<p>4つの調査で集めた事例を領域別に並べます。件数は「本人の言葉か買い手の開示のどちらかが取れたもの」だけを数えています。</p>
+<table>
+<tr><th>領域</th><th>件数</th><th>創業→売却の年数（幅）</th><th>公表された売却額の帯</th><th>主な買い手のタイプ</th><th>1人創業で到達した例</th></tr>
+<tr><td>A. Webメディア・比較サイト・アフィリエイト</td><td>9</td><td>1年3か月〜6年</td><td>2億【本人談】〜48億円（60%）</td><td>上場メディア企業（じげん・アイズ・Gunosy・マネーフォワード・チェンジ）</td><td>ファクログ、Founder、トラストバンク</td></tr>
+<tr><td>B. EC・D2C・SNS起点ブランド</td><td>9</td><td>2年2か月〜8年</td><td>3億〜38億【推定】</td><td>アパレル・化粧品の事業会社（ZOZO・ポーラ・クラシコム・サザビー・ジェイフロンティア）、ECロールアップ（ACROVE・forest）</td><td>foufou</td></tr>
+<tr><td>C. 個人開発・少人数のWebサービス／SaaS</td><td>12</td><td><strong>1か月〜3年</strong></td><td>約3,000万（Snapmart）〜10億円（Skeb）</td><td>隣接するIT事業会社（ジラフ・ランサーズ・ペライチ・INFLU・クラスメソッド・実業之日本社）</td><td>Peing、Skeb、Zenn、MENTA、Wraptas、Lea、ワラリー!</td></tr>
+<tr><td>D. AI・SaaS（数人〜数十人）</td><td>7</td><td>1年4か月〜6年</td><td>4.05億（LangCore）〜15億円（CARTUNE）</td><td>上場IT企業（AVILEN・クラウドワークス・DMM・テンダ・メルカリ）</td><td>―</td></tr>
+<tr><td>E. アプリ・C2Cプラットフォーム</td><td>6</td><td>7か月〜4年</td><td>約10億（NauNau）〜93億円（dely 45%）</td><td>大手事業会社（DMM・楽天・ヤフー・メルカリ）</td><td>―（VC調達あり）</td></tr>
+<tr><td>F. SNSマーケ・広告・Web制作支援</td><td>7</td><td>3〜7年</td><td>12.5億〜14.92億円（ベクトル案件）</td><td>上場PR・マーケ会社（ベクトル・PR TIMES・ネオマーケティング・バクリ）</td><td>エッセンスマーケティング（1人＋業務委託）</td></tr>
+<tr><td>G. SES・受託開発・AI導入支援</td><td>4</td><td>1年4か月〜3年</td><td>3.21億（TSR）〜4.05億円</td><td>上場IT（Branding Engineer・ココナラ・AVILEN・サン）</td><td>―</td></tr>
+<tr><td>H. スクール・教育</td><td>4</td><td>2〜6年</td><td>約6億（キラメックス）〜数億【本人談】</td><td>DMM・ユナイテッド・地域塾</td><td>Aslab（学生1人）</td></tr>
+<tr><td>I. 人材紹介・派遣</td><td>3</td><td>5年〜5年半</td><td>非公表</td><td>ウィルグループ・ガイアックス・じげん</td><td>Matka（1人）</td></tr>
+<tr><td>J. 店舗（美容FC・買取FC・ジム・動物カフェ）</td><td>6</td><td>2年1か月〜6年</td><td>3.0億（42店）〜3.05億円（51店）。買取171店は非公表</td><td>上場の同業（AB&amp;Company・BuySell・E-BOND・串カツ田中）</td><td>―</td></tr>
+</table>
+<p class="src">数え方の注意：売れた事例だけが記事になる（生存者バイアス）。ラッコM&amp;Aの成約率34.3%、BATONZ・TRANBIは分母非公表。「1年で1億円超」はA・C・Eの3領域にしか存在しない（前の資料7章）。</p>
+
+<h2 id="s3">3. 事例台帳（領域別）</h2>
+<p>詳細（本人の言葉の原文・URL）は長いため、ここでは1行要約に絞ります。</p>
+<h3>A. Webメディア・比較・送客</h3>
+<table>
+<tr><th>事業</th><th>創業→売却</th><th>額</th><th>買い手</th><th>本人が語った要点</th></tr>
+<tr><td>ファクログ（rimad、正社員0）</td><td>2024/6→2025/9</td><td>約2億【本人談】</td><td>アイズ（上場）</td><td>創業期から売却想定。「No.1が狙える・競合が少ない・上昇トレンド・営業工数が低い・再現性」。マニュアル化・テンプレ化で属人性排除</td></tr>
+<tr><td>Founder（資金調達ポータル）</td><td>運営3年→2018</td><td>6.2億【本人談】</td><td>上場企業</td><td>年利益の4〜5年分。ユーザー起点の設計、上場企業からの被リンク</td></tr>
+<tr><td>Game8</td><td>2014→2015/12</td><td>3億</td><td>Gunosy</td><td>―</td></tr>
+<tr><td>Candle（女性向けまとめ）</td><td>2014/4→2016/10</td><td>12.5億</td><td>クルーズ</td><td>3人創業、インターン採用で拡大。「小さく上場するよりクルーズと大きな挑戦」</td></tr>
+<tr><td>3ミニッツ（動画メディア）</td><td>2014/9→2017/2</td><td>43億（アーンアウト付）</td><td>グリー</td><td>売上12.9億・赤字3.65億で売却</td></tr>
+<tr><td>Increments（Qiita）</td><td>2012→2017/12</td><td>14.46億</td><td>エイチーム</td><td>赤字0.8億で売却。買い手「自社で容易に参入できない事業」</td></tr>
+<tr><td>トラストバンク（ふるさとチョイス）</td><td>2012→2018/11</td><td>48.1億（60%）</td><td>チェンジ</td><td>1人・ワンルーム・資本金50万円で開始。売却時売上60億・営業利益8.8億</td></tr>
+<tr><td>スマートキャンプ（BOXIL）</td><td>2014/6→2019/11</td><td>約20億（72%）</td><td>マネーフォワード</td><td>「IPOとM&amp;Aを比較して価値が高い方に決めただけ」「トップ同士が膝を付き合わせて話せるか」</td></tr>
+<tr><td>オーサムエージェント（運送業求人「ドラピタ」）</td><td>2016/9→2022/11</td><td>非公表</td><td>じげん</td><td>買い手「特定領域に特化することでより業界に根ざした課題解決」（Vertical HR）</td></tr>
+</table>
+<h3>B. EC・D2C・SNS起点</h3>
+<table>
+<tr><th>事業</th><th>創業→売却</th><th>額</th><th>買い手</th><th>要点</th></tr>
+<tr><td>yutori（Instagram「古着女子」→D2C）</td><td>2018/4→2020/7</td><td>非公表（51%）</td><td>ZOZO</td><td>総フォロワー80万。コロナ初期に即決。買い手「0→1のノウハウ」。2023年に上場</td></tr>
+<tr><td>トリコ（FUJIMI）</td><td>2018/4→2021/2</td><td>38億【推定・PSR3倍】</td><td>ポーラ・オルビス</td><td>「学生時代に経験したM&amp;Aの衝撃をもう一度」＝売却への憧れが起点。赤字で売却</td></tr>
+<tr><td>foufou（D2Cアパレル）</td><td>2016→2023/8</td><td>3億</td><td>クラシコム</td><td>1人発。売上約4億、予約販売中心・セールなし。買い手「世界観・顧客コミュニティ・文化の親和性」</td></tr>
+<tr><td>COHINA（小柄女性向けD2C）</td><td>2018→2024/9</td><td>非公表</td><td>サザビーリーグ</td><td>Instagram22万。買い手「100件以上の候補から選りすぐった」</td></tr>
+<tr><td>ECスタジオ（Amazon限定ブランド含む）</td><td>2014/3→2022/7</td><td>12.7億（70%）</td><td>ジェイフロンティア</td><td>売上10.8億。買い手「健康食品・化粧品のポートフォリオ拡充、20代顧客」</td></tr>
+<tr><td>GOOD VIBES ONLY（D2C2ブランド）</td><td>2018→2022</td><td>非公表</td><td>Breathe</td><td>DX事業に集中するため「ゼロ円でもいいから」手放す</td></tr>
+<tr><td>スマービー（子供服EC）</td><td>2014/4→2016/10</td><td>【推定】10億前後</td><td>ストライプ</td><td>会員20万人</td></tr>
+<tr><td>Fablic（フリル）</td><td>2012/4→2016/9</td><td>【推定】数十億</td><td>楽天</td><td>3人創業。「上場とかは深く考えていなかった」。赤字4.5億</td></tr>
+<tr><td>BATONZ事例（婦人服EC4店）</td><td>→2020/5</td><td>非公表</td><td>アパレルメーカー</td><td>送料値上げで利益率低下、「ダメージが少ないうちに早期撤退」</td></tr>
+</table>
+<h3>C. 個人開発・少人数のWebサービス</h3>
+<table>
+<tr><th>事業</th><th>創業→売却</th><th>額</th><th>買い手</th><th>要点</th></tr>
+<tr><td>Peing 質問箱（1人）</td><td>2017/11→2017/12（1か月）</td><td>非公表</td><td>ジラフ</td><td>公開6日で40万PV/日、サーバー負荷。買い手「利益が出ており低コストで自動運営できる」</td></tr>
+<tr><td>Skeb（1人）</td><td>2018/11→2021/2</td><td><strong>10億</strong></td><td>実業之日本社</td><td>月間取引高2億・登録100万人。「1人で不正送金対応や億単位の金額を扱う不安」</td></tr>
+<tr><td>Zenn（1人）</td><td>2020/9→2021/2（4.5か月）</td><td>非公表</td><td>クラスメソッド</td><td>買い手「ビジョンとユーザー体験に共感」</td></tr>
+<tr><td>MENTA（ほぼ1人）</td><td>2018→2020/10</td><td><strong>2.26億</strong>（売上4,400万）</td><td>ランサーズ</td><td>「ほぼ僕一人の体制では次のステージに限界」「初めから売却を決めていたわけではない」</td></tr>
+<tr><td>Wraptas（1人、Notion→Web化）</td><td>2021→2021/10（8か月）</td><td>非公表</td><td>ペライチ</td><td>「組織化する必要性」→入社。相場観「年商×2年分」。2024年にも別サービスを売却</td></tr>
+<tr><td>Lea（1人・学生、LINE上EC）</td><td>→2022/7</td><td>非公表</td><td>INFLU</td><td>「LINE×〇〇」で複数作り当たった1本。売却後「クライアントワークの単価を上げられた」</td></tr>
+<tr><td>ワラリー!（1人）</td><td>2017/10→2020/7</td><td>非公表</td><td>playground</td><td>「開設当初からゆくゆくは企業として運営」。相場観「月利益×24か月」</td></tr>
+<tr><td>formrun（3人）</td><td>2016/1→2017/12</td><td>非公表</td><td>ベーシック</td><td>設立時に「2017年中に売上ラインに届かなければ進退を考える」と終了条件。「エンジニア1人体制のリスク」</td></tr>
+<tr><td>bosyu</td><td>2018/4→2018/8（4か月）</td><td>非公表</td><td>キャスター</td><td>「別の人に委ねてグロースした方がいい」</td></tr>
+<tr><td>Jooto（2人）</td><td>2012/11→2017/9</td><td>非公表</td><td>PR TIMES</td><td>10万ユーザー・有料率1.5%。創業者2人が参画（実質アクハイヤー）</td></tr>
+<tr><td>Snapmart</td><td>2016/6→2016/8（2か月）</td><td>約3,000万</td><td>ピクスタ</td><td>買い手「PIXTAのノウハウで効率的に成長」</td></tr>
+<tr><td>Rist（AI外観検査）</td><td>2016/8→2018/12</td><td>非公表</td><td>京セラCS</td><td>「ローカル最適解でグローバル最適解ではない」、当初は売却想定なし</td></tr>
+</table>
+<h3>D〜E. AI・SaaS・アプリ（数人〜）</h3>
+<table>
+<tr><th>事業</th><th>創業→売却</th><th>額</th><th>買い手</th><th>要点</th></tr>
+<tr><td>LangCore（生成AI開発）</td><td>2023/6→2024/10（16か月）</td><td>4.05億</td><td>AVILEN</td><td>買い手「生成AI技術力の強化・顧客基盤を活用した成長」</td></tr>
+<tr><td>AI tech</td><td>2022/1→2024/3</td><td>非公表、ARR1.9億</td><td>クラウドワークス</td><td>リリース11か月でARR1.9億</td></tr>
+<tr><td>Algoage</td><td>2018/2→2020/1</td><td>非公表（51%）</td><td>DMM</td><td>「DMMは意思決定が早く数回の打ち合わせで基本合意」</td></tr>
+<tr><td>Almondo</td><td>2023→2024/12</td><td>5.1億（51%）</td><td>テンダ</td><td>売却時70〜80人。IPOよりシナジー</td></tr>
+<tr><td>CARTUNE</td><td>2016/12→2018/10</td><td>約15億</td><td>メルカリ</td><td>65万DL・MAU30万。「熱量のあるコミュニティ」</td></tr>
+<tr><td>CASH</td><td>2017/2→2017/11（9か月）</td><td>70億</td><td>DMM</td><td>「競合参入の可能性」。1年後5億で買い戻し</td></tr>
+<tr><td>NauNau</td><td>2022/10→2023/5（7か月）</td><td>約10億</td><td>モバイルファクトリー</td><td>直前期売上100万・赤字。後に表明保証違反で3.9億返金請求</td></tr>
+<tr><td>dely（クラシル）</td><td>2014→2018/7</td><td>約93億（45.6%）</td><td>ヤフー</td><td>「5〜10年という時間を買う」。売却後もIPO目標</td></tr>
+<tr><td>REECH／OMAKASE／Coubic</td><td>4年前後</td><td>非公表</td><td>クロス・マーケ／GMO／hey</td><td>REECHは面談2か月で成約、ロックアップなし</td></tr>
+</table>
+<h3>F〜J. サービス・人材・店舗</h3>
+<table>
+<tr><th>事業</th><th>創業→売却</th><th>額</th><th>買い手</th><th>要点</th></tr>
+<tr><td>gracemode（美容SNSマーケ）</td><td>2018→2025/4</td><td><strong>14.92億</strong></td><td>ベクトル</td><td>売上8.59億・営業利益2.65億（＝約5.6倍）</td></tr>
+<tr><td>AILES（インフルエンサー育成・運用）</td><td>2018/10→2026/4</td><td>12.5億</td><td>ベクトル</td><td>買い手「PR×ショート動画市場への対応力」</td></tr>
+<tr><td>NAVICUS（SNSマーケ、52名）</td><td>2018/7→2023/11</td><td>非公表</td><td>PR TIMES</td><td>売上2.5→5.5億。「非連続成長には違うチャレンジが必要」</td></tr>
+<tr><td>エッセンスマーケティング（1人＋業務委託）</td><td>2023/4→2026/4（3年）</td><td>非公表</td><td>ネオマーケティング（上場）</td><td>BATONZ登録→1週間で10社（上場2社）から打診。代表続投</td></tr>
+<tr><td>ニコラシステム（Webマーケ）</td><td>→2025/5</td><td>非公表</td><td>バクリ</td><td>「1年前からぼんやり考えていた」「WebマーケターでM&amp;A経験者は少ない」</td></tr>
+<tr><td>Bridge（ネット広告代理）</td><td>→2025</td><td>非公表</td><td>マテリアルG</td><td>「VCの満期」「代理店単体の成長鈍化」</td></tr>
+<tr><td>LangCore／ライフハック（SAP、3年）／フレームキャリア（SES、3年）／TSRソリューションズ（SES）</td><td>1〜3年</td><td>TSR 3.21億ほか非公表</td><td>AVILEN／サン／ココナラ／Branding Engineer</td><td>ライフハック「20代のうちの売却をゴールに設定」。フレームキャリア「3年で数十名」</td></tr>
+<tr><td>インフラトップ（WEBCAMP）</td><td>2014/11→2018/11</td><td>数億【本人談】</td><td>DMM</td><td>「上場の調達額5〜10億では物足りない」→M&amp;A。借入1億で「3か月で倒産するかも」を経験。5年半後にMBO</td></tr>
+<tr><td>キラメックス（TechAcademy）</td><td>2009→2016/2</td><td>約6億</td><td>ユナイテッド</td><td>クーポン事業から撤退して転換。受講者7,000名・月商4,000万</td></tr>
+<tr><td>NINJAPAN（就活塾）／Aslab（子どもプログラミング、学生1人）</td><td>2〜4年</td><td>非公表</td><td>ODK／地域塾</td><td>Aslab「M&amp;Aを『諦め』と見ていたが『合理的な戦略』と理解」</td></tr>
+<tr><td>HR CAREER（医療福祉人材）／Matka（派遣会社向け紹介、1人）</td><td>5〜5.5年</td><td>非公表</td><td>ウィルグループ／ガイアックス</td><td>Matka「業界全体の課題に一人では対応できない」＋子育て</td></tr>
+<tr><td>フォーナイン（買取WAKABA、直営19＋FC152）</td><td>2016/4→2022/8</td><td>非公表</td><td>BuySell Technologies</td><td>「10〜15年先に大手と戦うことを考えた」。買い手「店舗数21→192店、仕入れ力強化」</td></tr>
+<tr><td>KESHIKI（美容室Agu FC 42店）／BELLTREE（51店）</td><td>6〜8年</td><td>3.0億／3.05億</td><td>AB&amp;Company</td><td>売上9.2億・営業利益0.09億でも3億。51店・赤字でも3.05億＝店舗数より売上規模</td></tr>
+<tr><td>BIQREA（美容室・アイラッシュ）／REMパーソナルジム／moffu（動物カフェ）</td><td>2〜5年</td><td>非公表</td><td>E-BOND／Gasy／ネクサイトキャピタル</td><td>moffu「5億円高い提示を断り、買い手の質で選んだ」</td></tr>
+</table>
+
+<h2 id="s4">4. 本人の言葉から読める4つの「型」</h2>
+<p>約70件を「なぜ売れたか」で分けると、4つの型に収まります。ご依頼主が選ぶのは<strong>どの型で作るか</strong>です。</p>
+<table>
+<tr><th>型</th><th>誰が</th><th>始め方</th><th>売却の引き金</th><th>買い手</th><th>一人法人との相性</th></tr>
+<tr><td><strong>型1 買い手先行型</strong></td><td>ファクログ、ワラリー!、formrun、ライフハック、ニコラ、川崎氏、トリコ</td><td>最初から「誰が買うか」を決め、その買い手が欲しがる形（送客数・マニュアル・再現性）で作る。ファクログは市場選定5条件、formrunは終了条件を先に設定</td><td>成長の角度が鈍る前。ファクログは11か月目から検討</td><td>その領域のリード・メディア・人材を買っている上場企業</td><td><strong>高い</strong>。1人で完結した例が最多。ただしSEO依存はAI検索の逆風（12章）</td></tr>
+<tr><td><strong>型2 プラットフォーム便乗・急成長型</strong></td><td>Peing、Skeb、Zenn、MENTA、Wraptas、Lea、bosyu、Snapmart</td><td>既存のプラットフォーム（Twitter・LINE・Notion・エンジニア／オタクのコミュニティ）の上に「無い単機能」を1人で作る。Leaは「LINE×〇〇」で複数作って当たった1本</td><td>ユーザーが急増し「1人体制の限界」（サーバー負荷・不正対応・エンジニア1人のリスク）</td><td>そのプラットフォームの周辺で事業をしている国内IT企業。開示理由は「クロスセル」</td><td><strong>最も高い</strong>。売却まで1か月〜3年。ただし額は非公表が多く、公表分は3,000万〜10億</td></tr>
+<tr><td><strong>型3 成長資本型</strong></td><td>インフラトップ、NAVICUS、フォーナイン、エッセンス、dely、yutori、Candle</td><td>普通に事業を伸ばし、数十名・売上数億まで来たところで「次の成長に大手の資本・顧客基盤が要る」と判断</td><td>上場企業からの打診、資金需要、IPOとの比較</td><td>同業・隣接の上場企業</td><td>低い（人を雇って数十名にする前提）。<strong>3〜4人案はここ</strong></td></tr>
+<tr><td><strong>型4 ロールアップに乗る型</strong></td><td>KESHIKI・BELLTREE（美容FC）、フォーナイン（買取FC）、TSR・フレームキャリア（SES）、gracemode・AILES（SNSマーケ）、ピソラ（飲食）</td><td>上場企業が「連続買収の対象領域」と公表している業種で、標準化された店舗・人員を積む</td><td>買い手側の買収サイクル（バイセルは5社200億、AB&amp;Cは同日2社）</td><td>BuySell・ゲオ・トレファク・コメ兵（リユース）、AB&amp;C（美容FC）、SHIFT（IT、EBITDA5倍）、ベクトル（マーケ）</td><td>低〜中。人と店を持つ。<strong>買い手と値付けが公表されているのが利点</strong></td></tr>
+</table>
+<div class="box note">
+<p><strong>メンタリティとして共通していたこと（本人の言葉から、複数事例に現れたもののみ）</strong></p>
+<ul>
+<li>金額より「買い手のトップと直接話せるか・文化が合うか」で相手を選んだ（スマートキャンプ・トリコ・foufou・GOOD VIBES ONLY・ライフハック・エッセンス・Matka・BIQREA・moffu）。</li>
+<li>「IPOかM&amp;Aか」を<strong>成長手段の比較</strong>として決めている（スマートキャンプ・Candle・dely・インフラトップ）。売却は「諦め」ではない（Aslab）。</li>
+<li>売却後もほとんどが残る（代表続投・取締役・株主・入社）。「売って終わり」の例はごく少数（GOOD VIBES ONLY、Aslab、川崎氏）。</li>
+<li>市場は「客の目的」から選ぶ。formrun「世界の10億サイト全部に問い合わせフォームがある」、Lea「LINE×〇〇」、塚本氏「大きな市場か／儲かっている会社が複数あるか／新興でも勝てるか」、ファクログ「No.1が狙える・競合が少ない・上昇トレンド」。</li>
+<li>属人性を嫌う（ファクログ「属人性はできるだけ排除」、formrun・Peing「エンジニア1人のリスク」、フォーナイン「部長職以上へ権限移譲」）。</li>
+<li>一度失敗・撤退している人が多い（キラメックスはクーポン撤退、インフラトップは塾から転換、delyはフードデリバリー失敗、トリコは共同創業解消、Candleは家庭教師派遣を断念）。</li>
+</ul>
+</div>
+
+<h2 id="s5">5. 買い手はなぜ買うか ― 開示理由の集計と、公表されている買収基準</h2>
+<h3>5-1. 開示理由の集計（C〜D領域19件、重複あり）</h3>
+<table>
+<tr><th>理由</th><th>件数</th><th>例</th></tr>
+<tr><td>クロスセル・既存事業との組み合わせ</td><td><strong>11</strong></td><td>ランサーズ×MENTA、INFLU×Lea、PR TIMES×Jooto、メルカリ×CARTUNE、マネーフォワード×BOXIL</td></tr>
+<tr><td>技術・開発力の獲得</td><td>6</td><td>京セラ×Rist、AVILEN×LangCore、DMM×Algoage</td></tr>
+<tr><td>ユーザー・コミュニティ基盤</td><td>4</td><td>メルカリ、ピクスタ、ジラフ、クラウドワークス</td></tr>
+<tr><td>自社で参入しにくい・時間の短縮</td><td>3</td><td>エイチーム「自社で容易に参入できない事業」、dely「5〜10年という時間を買う」</td></tr>
+<tr><td>理念の一致</td><td>3</td><td>クラスメソッド×Zenn、実業之日本社×Skeb</td></tr>
+<tr><td>売り手の1人体制の限界を補う</td><td>3</td><td>ジラフ、実業之日本社、ベーシック</td></tr>
+<tr><td>人材（アクハイヤー）</td><td>2</td><td>PR TIMES、エイチーム</td></tr>
+</table>
+<p>B・F・J領域でも同じで、買い手は「自社で作れないもの」を挙げています：若手・起業家人材（クルーズ×Candle、PR TIMES×NAVICUS）、SNS運用・0→1のノウハウ（ZOZO×yutori、ベクトル×gracemode）、特定業界特化（じげん×ドラピタ）、店舗網・仕入れ力（バイセル×フォーナイン）。</p>
+<h3>5-2. 公表されている買収基準（一次情報）</h3>
+<table>
+<tr><th>買い手</th><th>領域</th><th>基準の原文要旨</th><th>規模・倍率</th></tr>
+<tr><td>SHIFT</td><td>IT（テスト・SES・SaaS）</td><td>「売上や利益を買うのではなく技術やサービスを買う」。のれん償却後も営業利益プラスの企業のみ。社名・経営陣・人事制度は変えない</td><td><strong>EBITDA 5倍程度</strong>（6〜8倍を検討）。約2か月に1件</td></tr>
+<tr><td>ACROVE</td><td>ECブランドのロールアップ</td><td>「年商1億円以上／ストーリー性と差別化／固定ファン（メール・LINEリスト）」。1億未満でもファンが多ければ対象。商談月10〜20件→成約月1件</td><td>非公表</td></tr>
+<tr><td>forest</td><td>ECブランド（Amazon・楽天）</td><td>「数年間は継続的に売れるか」「トレンド依存度の低さ」「オーガニック流入」「forestの関与で成長余地」。8割で創業者残留</td><td>「利益の一定倍数を超えない」</td></tr>
+<tr><td>じげん</td><td>求人・不動産・車・旅行の比較メディア、人材派遣</td><td>「戦略的フィット／PMI実現可能性／財務的規律」。上場来35件、33件が100%取得</td><td>買収予算<strong>10億円〜</strong></td></tr>
+<tr><td>BuySell Technologies</td><td>リユース（買取）</td><td>「リユース事業領域を最優先」。既存強化→隣接（楽器・アパレル・絵画・ホビー）→新規。EV/EBITDA上限設定、連結初年度から利益貢献</td><td>5社で約200億（平均40億）。買収時売上2.7億〜48億</td></tr>
+<tr><td>トレジャー・ファクトリー／ゲオ／コメ兵</td><td>リユース</td><td>「専門性・地域の補完」「調達から販売までのシナジー」</td><td>非公表</td></tr>
+<tr><td>ラクスル</td><td>印刷・BtoB受発注</td><td>「顧客基盤を活用してレバレッジがかかる企業」「セグメント内トップ」</td><td>17件／5年</td></tr>
+<tr><td>GENDA</td><td>アミューズメント</td><td>Cash EPS向上、Net Debt/EBITDA上限3倍。2026年Q3でコア領域に集中</td><td>取得倍率3.6〜8.5倍</td></tr>
+<tr><td>買い手アンケート（TDB 2025-01）</td><td>全般</td><td>重視「金額の折り合い」79.7%、「財務状況」73.0%、「事業の成長性」65.7%</td><td>―</td></tr>
+<tr><td>仲介の「売れない会社」（ストライク）</td><td>全般</td><td>経営者個人の判断・人脈に依存、粉飾、名義株、口約束の取引、会社と個人資産の混同、未払い残業代、相場無視の価格</td><td>―</td></tr>
+</table>
+<h3>5-3. 需要側のデータ（誰が何を買っているか）</h3>
+<ul>
+<li>BATONZ：成約案件の業種は消費者向けサービス21%・小売16%・飲食15%。買収予算は300万〜1,000万円が最多36%。譲渡先は法人72%。</li>
+<li>TRANBI（個人の成約業種TOP3）：①コワーキング・レンタルスペース ②ECサイト・通販 ③Webサイト・Webサービス。</li>
+<li>海外（Acquire.com 2026-01）：SaaS中央値 <strong>利益3.9倍</strong>、売上1〜3倍、平均81日で成約、売り手の平均利益率71%、買い手は業歴3年以上を好む。Flippa 2025：SaaS利益倍率 平均2.7倍・上位25%は5.8倍、10〜50万ドル帯は約90日。</li>
+<li>日本（ラッコM&amp;A）：Webサービスの相場「月利益×24〜60か月」、実績平均は月利益17.8か月分。5,000万円以上は成約の0.09%。</li>
+</ul>
+
+<h2 id="s6">6. 市場の選び方 ― 事例から組んだ7つの軸</h2>
+<p>本人の言葉と買い手の基準を突き合わせて、「売れる事業を選ぶ軸」を7つに整理しました。<strong>1〜3が「市場」、4〜7が「作り方」</strong>です。</p>
+<table>
+<tr><th>#</th><th>軸</th><th>問い</th><th>根拠となった事例・基準</th></tr>
+<tr><td>1</td><td><strong>買い手が先に見えるか</strong></td><td>その領域を直近3年で買った上場企業・ロールアップが3社以上あるか。その会社の「対象領域」に入っているか</td><td>ファクログ→アイズ、ドラピタ→じげん、フォーナイン→バイセル、SNSマーケ→ベクトル、SES→SHIFT。開示理由の最多が「クロスセル」＝隣接しか買わない</td></tr>
+<tr><td>2</td><td><strong>既存プラットフォームの上の空白か</strong></td><td>Twitter／LINE／Notion／Amazon／BASE／Instagram の利用者が「無くて困っている」単機能があるか</td><td>Peing・bosyu（Twitter）、Lea（LINE）、Wraptas（Notion）、Zenn・Qiita（エンジニア）、Skeb（オタク）。1人で売却に届いた例は全てここ</td></tr>
+<tr><td>3</td><td><strong>狭い縦でNo.1が狙えるか</strong></td><td>「業界×用途」で切ったときに、上位が個人ブログや古いサイトしかないか</td><td>ファクログ「No.1が狙える・競合が少ない・上昇トレンド」、じげん「特定領域に特化」、塚本氏「新興でも勝てるか」</td></tr>
+<tr><td>4</td><td><strong>属人性を仕組みに移せるか</strong></td><td>自分が抜けても回る形（マニュアル・テンプレ・外注・自動化）に3年以内にできるか</td><td>ファクログ（マニュアル化・GitHub・Notion）、フォーナイン（権限移譲）、ストライク「経営者依存は売れない」</td></tr>
+<tr><td>5</td><td><strong>移転できる資産が積み上がるか</strong></td><td>顧客リスト・LINE友だち・フォロワー・ARR・許認可・コミュニティなど、買い手に「引き渡せるもの」が毎月増えるか</td><td>ACROVE「固定ファンのリスト」、COHINA（Instagram22万）、Skeb（100万人）、MENTA（ユーザー1.9万）、人材紹介の許可（株式譲渡で承継可）</td></tr>
+<tr><td>6</td><td><strong>トレンド依存が低いか</strong></td><td>3年後も同じ需要があるか。ブーム型（唐揚げ・食パン・NFT等）でないか</td><td>forest「数年売れ続ける・トレンド依存が低い」、CASH（競合参入前に9か月で売却＝逆にトレンド型は早く売る）</td></tr>
+<tr><td>7</td><td><strong>買い手が「自社で作れない」と言うものか</strong></td><td>大企業の内部では生まれにくいもの（若手の感性・コミュニティ・SNS運用・特定業界の泥臭い知見）か</td><td>エイチーム「自社で容易に参入できない」、クルーズ「新規事業は若手がやったほうがいい」、ZOZO「0→1のノウハウ」</td></tr>
+</table>
+<p class="src">ご依頼主の既存の判断軸（資金勝負にならない／大手が来ない／許認可に長期間かけない）は、軸1・3・6と矛盾しません。ただし「大手が来ない領域」は、そのまま「大手が買わない領域」にもなり得るので、<strong>「大手が自分ではやらないが、買うことはある領域」</strong>を狙う必要があります（軸7）。</p>
+
+<h2 id="s7">7. 何を作り込むか ― 売却時に見られる数字</h2>
+<table>
+<tr><th>見られるもの</th><th>水準の目安（事例・基準から）</th><th>出典</th></tr>
+<tr><td>利益の再現性</td><td>直近3年の営業利益が安定。中小の値付けは営業利益×2〜5年（純資産＋）。SHIFTはEBITDA5倍・のれん償却後黒字</td><td>BATONZ年買法、SHIFT IR</td></tr>
+<tr><td>売上規模</td><td>ECロールアップは年商1億円が目安（ACROVE）。上場企業が買う店舗・サービスは売上数億〜（KESHIKI 9.2億、gracemode 8.6億、バイセル買収先2.7億〜）</td><td>ACROVE、各社開示</td></tr>
+<tr><td>継続収入（SaaS・サブスク）</td><td>ARR・チャーン。海外は利益3.9倍／年商1〜3倍。AI techはリリース11か月でARR1.9億</td><td>Acquire.com、クラウドワークス</td></tr>
+<tr><td>移転できる資産</td><td>メール・LINEリスト、フォロワー（COHINA 22万・yutori 80万）、登録ユーザー（Skeb 100万）、送客件数（BOXIL 月3万件）</td><td>各社開示</td></tr>
+<tr><td>属人性</td><td>オーナー不在で回る／マニュアル／外注体制／1顧客を売上の10〜15%以下に（Built to Sell）</td><td>ファクログ、Built to Sell</td></tr>
+<tr><td>財務の透明性</td><td>会社と個人資産の分離、口約束の取引を契約書に、未払い残業代なし、名義株なし</td><td>ストライク</td></tr>
+<tr><td>買い手リスト</td><td>複数の買い手と交渉（Built to Sell）。エッセンスはBATONZ登録1週間で10社。買い手の見送り理由77%は価格不一致（INITIAL）</td><td>BATONZ、INITIAL</td></tr>
+</table>
+
+<h2 id="s8">8. 「過去の実績領域から出すか、新しい分野か」への答え</h2>
+<div class="box ok">
+<p><strong>答え：過去の買収実績がある領域から出すべきで、新しい分野を切り開く必要はありません。</strong></p>
+<p>理由は事実として2つ。①買い手の開示理由の最多は「クロスセル」で、買い手は<strong>自社の隣接領域しか買っていない</strong>。前例のない分野には買い手がいない。②連続買い手は「対象領域」を公表している（SHIFT＝IT、バイセル＝リユース、じげん＝比較メディア・人材、ベクトル＝マーケ、ACROVE／forest＝ECブランド）。売る側はこの一覧から選べる。</p>
+<p>ただし「同じ商品」を作るのではなく、<strong>同じ買い手が買う領域の中で、まだ埋まっていない縦（業界×用途）</strong>を取る、が正しい読みです。ファクログは「比較メディア」という既存の型を「ファクタリング」という縦で取り、ドラピタは「求人メディア」を「運送業」で取っています。</p>
+</div>
+
+<h2 id="s9">9. 事業案 ― 一人法人でやる案（3案）</h2>
+<p>7つの軸に当て、ご依頼主の実績（EC・Amazon・BASE出店、転売の相場観、Coworkでのシステム開発、海外ブランド調査）から届く範囲で3案を出します。いずれも<strong>案であり、次の段階（venture-hypothesis）で「賭けてよい上限」と「いちばん危ない前提」を決めてから動きます</strong>。</p>
+
+<h3>S-A　ECセラー向けの単機能ツール（型2：プラットフォーム便乗）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>Amazon・楽天・BASE・Shopify等の出店者が「無くて困っている」1機能をWebツールで提供（例：複数モールの価格・在庫の自動改定、仕入れ判定、レビュー・問い合わせの自動返信、寝かせ在庫の相場アラート等）。ご依頼主自身が既に社内向けに作っているもの（価格自動改定 K-03、寝かせ在庫管理、VANGUARD自動更新）を社外向けに切り出す発想</td></tr>
+<tr><td>なぜ売れるか（軸）</td><td>軸2（プラットフォームの上の空白）、軸5（有料ユーザー＝ARR、セラーのリスト）、軸7（大企業の内部からは出にくい「セラーの現場の知見」）</td></tr>
+<tr><td>誰が買うか</td><td>Hamee（ネクストエンジン）、ACROVE・いつも・upstart等のEC支援・運営代行、EC決済・カート事業者（BASE・GMO・Shopifyパートナー）、EC物流（オープンロジ等）。いずれも「セラーとの接点＝クロスセル先」を持つ</td></tr>
+<tr><td>過去の型</td><td>Lea（LINE上EC→INFLU）、Wraptas（Notion→ペライチ）、Jooto（→PR TIMES）、formrun（→ベーシック）。売却まで8か月〜3年</td></tr>
+<tr><td>作り込む数字</td><td>有料セラー数・MRR・チャーン・セラーのメールリスト。目安は海外で年商×1〜3倍、日本の相場観は「年商×2年分」（Wraptas氏）／「月利益×24〜60か月」（ラッコ）</td></tr>
+<tr><td>弱点・反論</td><td>ご依頼主自身の認識「デジタル商品はAIで誰でも作れて淘汰される」（2026-09-02）と衝突する。事例上の答えは、<strong>買い手はコードではなくユーザー・リスト・コミュニティを買っている</strong>（Peing・Skeb・MENTA・CARTUNE）ので、防御はコードではなく「セラーの蓄積データと関係」に置く。またプラットフォームの規約変更（Amazon PA-API廃止の前例）で死ぬリスクがある（死ぬ条件として管理）</td></tr>
+</table>
+
+<h3>S-B　業界特化の送客・比較メディア（型1：買い手先行）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>「送客1件の単価が高く、リードを買う上場企業がいる業界」で、比較・解説メディアを1本。候補業界の条件は ①成約単価が高い（買取・不用品回収・引越し・外壁塗装・法人向け金融・人材紹介・車買取・EC支援サービス） ②上位が個人ブログ・古いサイト ③その業界のリード買い手（じげん・アイズ・CARTA・ZUU・ネットマーケティング等）が直近3年に買収実績あり</td></tr>
+<tr><td>なぜ売れるか</td><td>軸1（買い手先行）、軸3（狭い縦でNo.1）、軸4（記事作成のマニュアル化・外注で属人性排除）</td></tr>
+<tr><td>誰が買うか</td><td>じげん（比較メディア35件買収）、アイズ（ファクログ）、Gunosy（Game8）、CARTA、ZUU、業界の事業会社（リードを内製したい上場企業）</td></tr>
+<tr><td>過去の型</td><td>ファクログ（1年3か月・約2億）、Founder（3年・6.2億）、ドラピタ（6年・じげん）、BOXIL（5年・20億）</td></tr>
+<tr><td>作り込む数字</td><td>月間送客件数・送客単価・営業利益（年買法で×2〜5年）。ファクログは営業利益2〜3年分で売却</td></tr>
+<tr><td>弱点・反論</td><td><strong>AI検索（Google AI Overview 等）による検索流入の減少</strong>。2024〜2026年に比較メディアの流入が減ったとする報道が複数あるが、業界横断の定量データは【未確認】。ファクログの売却（2025-09）はこの環境下でも成立しているが、2026年以降の再現性は事例が少ない。SEO一本足ではなく、LINE登録・メール・YouTube等の「自前の導線」を持つ設計が要る（軸5）</td></tr>
+</table>
+
+<h3>S-C　SNS起点の小さなブランド（型2〜3：ファン資産型）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>Instagram／TikTok で特定の層に深く刺さるアカウントを育て、その層向けのD2C商品を予約販売中心で売る（foufou＝予約販売・セールなし、COHINA＝小柄女性、yutori＝古着好き）。ご依頼主の関心（アメカジ・海外ブランド・時計・車）と、海外ブランド正規販売店の検討（drop-shipping／overseas-distributor）と接点がある</td></tr>
+<tr><td>なぜ売れるか</td><td>軸5（フォロワー・LINE・メールのリスト）、軸6（定番カテゴリならトレンド依存が低い）、軸7（大手に無い「世界観」）。ACROVEの3条件（年商1億・差別化ストーリー・固定ファン）にそのまま当たる</td></tr>
+<tr><td>誰が買うか</td><td>ACROVE・forest（ロールアップ）、ZOZO・サザビーリーグ・クラシコム・ストライプ（アパレル）、ジェイフロンティア（健康・美容）</td></tr>
+<tr><td>過去の型</td><td>foufou（1人・7年・3億）、COHINA（6年）、yutori（2年2か月・51%）、ECスタジオ（8年・12.7億）</td></tr>
+<tr><td>作り込む数字</td><td>年商1億、フォロワー・LINE友だち数、リピート率、粗利率（予約販売で在庫リスクを抑える）</td></tr>
+<tr><td>弱点・反論</td><td>在庫と為替（輸入なら円安）を抱える。到達に4〜7年と3案で最も長い。1人で年商1億に届いた例はfoufou（売上約4億、ただし7年）。SNS運用の才能依存が大きく、属人性を外しにくい（軸4に弱い）</td></tr>
+</table>
+
+<h2 id="s10">10. 事業案 ― 3〜4人でやる案（3案）</h2>
+<h3>T-A　買取店のFC・ロールアップ（型4：上場リユース企業が買う）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>ブランド品・貴金属・ホビー等の買取店を、標準化した運営（査定マニュアル・業者オークション連携・LINE集客）で複数店化。フォーナイン（買取WAKABA）は直営19＋FC152で上場バイセルへ。ご依頼主が保留中の「買取・リユース参入」「業者入札サービス Y-02」（kaitori-franchise）と直結</td></tr>
+<tr><td>なぜ売れるか</td><td>軸1（BuySell・ゲオ・トレファク・コメ兵が「リユース最優先」「隣接領域」を公表）、軸4（FC＝仕組み）、軸5（店舗網・仕入れ量・古物商許可は株式譲渡で承継）、軸6（リユース市場は15年連続拡大）</td></tr>
+<tr><td>誰が買うか</td><td>BuySell Technologies（5社200億、隣接＝楽器・アパレル・ホビー）、ゲオ、トレジャー・ファクトリー、コメ兵（法人オークション）。買収時売上は2.7億〜</td></tr>
+<tr><td>作り込む数字</td><td>店舗数より<strong>売上・利益</strong>（KESHIKIとBELLTREEの例）。買い手は「仕入れ力」を見る。古物商許可（約40日）は許認可条件に収まる</td></tr>
+<tr><td>弱点</td><td>店舗・人・在庫を持つ資本型。真贋・盗品リスク、金価格の変動。3〜4人では売上2.7億は遠く、FC化が前提。地域密着型（S-02）との境目が曖昧になるので、どちらの柱で扱うか要判断</td></tr>
+</table>
+<h3>T-B　SNS運用代行・ショート動画マーケ（型3〜4：ベクトル・PR TIMESが買う）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>中小企業・店舗向けのInstagram／TikTok運用代行と、インフルエンサー起点のPR。gracemode（14.92億）・AILES（12.5億）・NAVICUS・エッセンス（1人＋業務委託で3年）が売却</td></tr>
+<tr><td>なぜ売れるか</td><td>軸1（ベクトル・PR TIMES・ネオマーケが連続買収）、軸7（大手PR会社に無い若手のSNS感性）</td></tr>
+<tr><td>作り込む数字</td><td>継続契約社数・月額・営業利益（gracemodeは営業利益2.65億で約5.6倍）。人数は3〜7年で数十名が事例の中心</td></tr>
+<tr><td>弱点</td><td>労働集約で、ご依頼主の「時間を切り売りしない」「マーケティング業の倫理的な違和感」（2026-08-18）と衝突する可能性。AI動画生成で単価下落の可能性【推測】</td></tr>
+</table>
+<h3>T-C　AI導入・業務自動化の受託＋自社ツール（型3〜4：SHIFT・AVILEN・ココナラが買う）</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>何を</td><td>中小企業向けに生成AI・自動化を導入する受託（LangCore 16か月で4.05億、ライフハック3年、フレームキャリア3年）。受託で得た共通課題を自社ツール（S-A）に還流させる。ご依頼主の「AI×少人数の人件費優位」（2026-09-15）の切り口そのもの</td></tr>
+<tr><td>なぜ売れるか</td><td>軸1（SHIFTはEBITDA5倍で約2か月に1件、AVILEN・ココナラ・Branding Engineerが買収）、軸7（技術・開発力の獲得は開示理由の2位）</td></tr>
+<tr><td>作り込む数字</td><td>エンジニア人数・稼働率・継続顧客・EBITDA（SHIFT基準で5倍）。SESは「3年で数十名」が売却水準</td></tr>
+<tr><td>弱点</td><td>エンジニア採用が前提で、ご依頼主1人では成立しない。人材の流出＝価値の流出</td></tr>
+</table>
+
+<h2 id="s11">11. Claudeの推奨と、その理由</h2>
+<div class="box hl">
+<p><strong>一人法人：S-A（ECセラー向け単機能ツール）を第一候補、S-B（業界特化送客メディア）を第二候補。</strong></p>
+<ul>
+<li>S-Aを推す理由：①1人で売却まで届いた事例が集中する型2である ②ご依頼主が<strong>既にセラーとして課題を持ち、社内ツールを作っている</strong>（他の候補者には無い出発点） ③買い手が明確（Hamee・EC支援・カート・物流） ④在庫を持たず、地域密着型（S-02）と資本を取り合わない ⑤既存の判断軸（資金勝負にならない／大手が自分ではやらない）と合う。</li>
+<li>S-Bを第二にした理由：型1の再現性は高いが、AI検索の逆風が2026年時点で定量的に測れない。S-Aの集客導線として「セラー向けメディア」を兼ねる形なら両立できる。</li>
+<li>S-Cを外した理由：到達に最も時間がかかり、SNS運用の才能依存で属人性を外しにくい。ただし「服が好き」という動機があるなら、地域密着型と同じ「やりたい」枠で別に検討する価値はある。</li>
+</ul>
+<p><strong>3〜4人が組めるなら：T-A（買取FC・ロールアップ）を第一候補。</strong>理由は、買い手と値付けが最も明確に公表されている領域で、保留中のY-02と重なるため。ただし店舗・人・在庫を持つので、S-02（地域密着型）と同じ柱に置くかどうかを先に決める必要があります。</p>
+</div>
+<div class="box note">
+<p><strong>推奨に対する反論（自分で書いておきます）</strong></p>
+<ul>
+<li>S-Aは「AIで誰でも作れる」というご依頼主の懸念に正面から当たる。事例が示すのは「買い手はコードを買っていない」ことだが、それは2017〜2024年の事例であり、2026年以降にAIで模倣コストがさらに下がった環境での売却事例はまだ無い【未確認】。</li>
+<li>型2の売却額は非公表が多く、公表分の下限は約3,000万円（Snapmart）。「1億円」に届く保証はない。海外相場（利益3.9倍）で逆算すると、営業利益2,500万円が要る。</li>
+<li>本書の事例は「売れた人」だけで構成されている。同じ型で売れずに終わった人の数は分からない（ラッコの成約率34.3%が唯一の手がかり）。</li>
+</ul>
+</div>
+
+<h2 id="s12">12. 注意 ― この提案が外れる条件</h2>
+<ul>
+<li><strong>AI検索の逆風</strong>：S-B（送客メディア）はGoogleの検索結果の変化で流入が減る可能性。定量データは【未確認】。</li>
+<li><strong>プラットフォームの規約変更</strong>：S-A（セラー向けツール）はAmazon・楽天・BASEのAPI・規約に依存。AmazonはPA-APIを廃止した前例（2026-09-20の調査）。</li>
+<li><strong>買い手側の変化</strong>：GENDAは2026年Q3に北米M&amp;Aを一時停止し方針修正。買い手の買収意欲は景気・株価・金利で変わる（政策金利1.25%、2026-09）。</li>
+<li><strong>生存者バイアス</strong>：売れた事例だけが記事になる。成約率はラッコ34.3%以外は非公表。</li>
+<li><strong>売却時の費用・条件</strong>：大手仲介の最低手数料1,000万〜2,500万円、ロックアップ1〜3年、表明保証違反での返金請求（NauNau 3.9億）、株式譲渡の税率20.315%（前の資料6章）。</li>
+<li><strong>「1年で1億」は例外</strong>：約70件中、1年以内はPeing・Zenn・bosyu・Snapmart・CASH・NauNau・Wraptas・川崎氏の8件で、額が1億を超えて公表されているのはCASH・NauNauの2件のみ。中心は<strong>2〜5年</strong>。</li>
+</ul>
+
+<h2 id="s13">13. 未確認事項</h2>
+<ul>
+<li>個人開発SaaSで額と経緯を両方公表した日本事例（見つからず。note・Zenn・Qiita・X・ラッコ・BATONZを確認）。</li>
+<li>ACROVE・forest・IZUMOの個別買収先（創業者名付き）。</li>
+<li>GMO・CARTA・ベクトル・UUUM・Gunosy・ヒューマンHD等の「数値付きM&amp;A基準」（IRの定性記述のみ）。</li>
+<li>AI検索による比較メディアの流入減少の業界横断データ。</li>
+<li>ラクスルのEV/EBITDA倍率（第三者記事に3〜4倍台の記載、一次確認できず）。</li>
+<li>Fablic本人の楽天選択理由、Candle本人のM&amp;A BANKインタビュー（取得不可）。</li>
+<li>WebSearchの上限に達したため、F〜J領域の追加事例（飲食・介護・保育・自動車整備の若手売却）は未探索。</li>
+</ul>
+
+<h2 id="s14">14. 決めていただくこと</h2>
+<table>
+<tr><th>#</th><th>決めること</th><th>選択肢</th></tr>
+<tr><td>1</td><td>一人法人の第一候補</td><td>S-A（推奨）／S-B／S-C／別案を出し直す</td></tr>
+<tr><td>2</td><td>3〜4人案を今回の柱に含めるか</td><td>含める（T-A推奨）／一人法人案が固まるまで保留</td></tr>
+<tr><td>3</td><td>T-A（買取）をS-01（売却型）とS-02（地域密着型）のどちらの柱で扱うか</td><td>S-01／S-02／両方の候補に置く</td></tr>
+<tr><td>4</td><td>次の工程</td><td>選んだ案について venture-hypothesis の型で「賭けてよい上限（金額・期間）」を決め、「いちばん危ない前提」を1つ選んで作らずに確かめる。S-Aなら前提は「セラーがその機能に月額を払うか」で、確かめ方は既存セラーコミュニティでの事前登録テスト（推定）</td></tr>
+<tr><td>5</td><td>Gemini クロスレビュー</td><td>方向性を確定する前に15章の依頼文で実施（cross-review④「新規事業を進めるの確定」に該当）</td></tr>
+</table>
+
+<h2 id="s15">15. 付録：Gemini クロスレビュー用の依頼文（そのまま貼れる）</h2>
+<p class="src">貼る前に：Geminiの「アクティビティの保存（学習利用）」設定を確認してください。社名・金額など機密は含んでいません（公表情報のみ）。</p>
+<pre>あなたは日本のスモールM&amp;A（売却額数千万〜数億円）に詳しい批判的なレビュアーです。以下の「新規事業の選定方針」を、一次情報に基づいて批判してください。賛同ではなく、間違い・見落とし・反例を優先して挙げてください。
+
+【方針】
+一人法人（EC・Amazon・BASEの出店経験があり、社内ツールを自作できる）が、数年後の売却を前提に新規事業を選ぶ。
+直近10年（2016〜2026）の日本の売却事例約70件を調べた結果、次の結論を置いた。
+1. 1人で売却まで到達した事例は「既存プラットフォーム（Twitter・LINE・Notion・Amazon・Instagram）の上の単機能サービス」か「業界特化の送客メディア」に集中している（Peing・Skeb・MENTA・Wraptas・Lea・ファクログ等）。
+2. 買い手の開示理由の最多は「クロスセル」で、買い手は隣接領域しか買わない。よって「買い手が既に買収実績を持つ領域」から選ぶべきで、新分野を切り開く必要はない。
+3. 第一候補は「ECセラー向けの単機能ツール」（買い手候補：Hamee、EC支援・運営代行、カート・決済、EC物流）。第二候補は「業界特化の送客メディア」（買い手候補：じげん・アイズ等）。
+4. 値付けの目安は、中小は営業利益×2〜5年、海外の少人数SaaSは利益3.9倍・年商1〜3倍（Acquire.com 2026-01）。
+
+【批判してほしい点】
+A. 結論1〜2に反する事例・データはあるか（1人で店舗・物販を売却した公表事例、隣接でない買収の例）。
+B. 「ECセラー向けツール」は2026年時点でAIによる模倣コスト低下・プラットフォーム規約変更・既存大手（ネクストエンジン等）の存在で、売却価値が成立しにくいと言える根拠はあるか。
+C. 「業界特化の送客メディア」はAI検索の普及で流入が減っているという定量データはあるか（2024〜2026年）。
+D. 見落としている買い手候補や、売却しやすい別の領域はあるか。
+E. 上記の値付け目安に誤りはあるか。
+
+出典URLを必ず添え、推測は「推測」と書いてください。</pre>
+
+<h2 id="s16">16. 出典一覧（主要なもの。個別事例のURLは3章の元調査に準拠）</h2>
+<ul class="src">
+<li>買い手基準：SHIFT https://www.shiftinc.jp/qa_cat/ma/ ／ GENDA https://genda.jp/finance/ ／ じげん https://zigexn.co.jp/ma/ ／ BuySell https://buysell-technologies.com/strategy/ma/ ／ ラクスル https://corp.raksul.com/manda/ ／ ACROVE https://www.fastgrow.jp/articles/acrove-arai-03 ／ forest https://thebridge.jp/2025/10/forest-series-b-60-billion-yen-funding ／ TDB買い手調査 https://www.tdb.co.jp/report/economic/20250128-m-and-a/ ／ ストライク https://www.strike.co.jp/about_ma/sell_observe.html</li>
+<li>需要側：BATONZ https://batonz.jp/infographics ／ TRANBI https://www.tranbi.com/press/detail/107/ ／ ラッコ https://rakko.inc/news/ma2025/ 、https://rakkoma.com/media/web-service-selling/ ／ Acquire.com https://blog.acquire.com/acquire-com-biannual-acquisition-multiples-report-jan-2026/ ／ Flippa https://flippa.com/blog/2025-online-business-ma-insights-from-flippa/</li>
+<li>C領域：Peing https://thebridge.jp/2017/12/jiraffe-peing ／ Skeb https://techcrunchjapan.com/2021/02/19/skeb-buyout/ ／ MENTA https://macloud.jp/interviews/23 、https://www.strike.co.jp/ma_news/detail.html?id=20201008a ／ Wraptas https://note.com/tatsuaki_w/n/n55063d32976b 、https://nabettu.com/blog/10-years-indie-dev/ ／ Lea https://zenn.dev/yoshinani_dev/articles/559d5e59dd37b8 ／ ワラリー! https://note.com/rubys8arks/n/n91f8cb3fe9fb ／ formrun https://seleck.cc/1145 ／ Zenn https://classmethod.jp/news/20210201-zenn/ ／ Jooto https://thebridge.jp/2017/09/jooto-acquired-by-pr-times ／ Snapmart https://prtimes.jp/main/html/rd/p/000000017.000008963.html</li>
+<li>A・B領域：ファクログ https://note.com/katsuya_ohno/n/n1c5d0fb5b15a ／ Candle https://www.fastgrow.jp/articles/candle-kin ／ トラストバンク https://www.trustbank.co.jp/newsroom/news/info001/ ／ スマートキャンプ https://initial.inc/articles/6XcvWA0CbGmYPUQjRtTVl5 ／ yutori https://thebridge.jp/2020/08/yutori-zozo ／ トリコ https://note.com/tricot_inc/n/n0313ee2c5e5f ／ foufou https://www.fashionsnap.com/article/kurashicom-foufou/ ／ COHINA https://netshop.impress.co.jp/node/12901 ／ ECスタジオ https://prtimes.jp/main/html/rd/p/000000104.000005491.html ／ ドラピタ https://zigexn.co.jp/11988/ ／ dely https://note.com/yusukehorie/n/nfe959fc08dce</li>
+<li>D〜E領域：LangCore https://prtimes.jp/main/html/rd/p/000000011.000125194.html ／ AI tech https://crowdworks.co.jp/news/ky8dfxo_s/ ／ Almondo https://note.com/almondo_co/n/n91037832efd7 ／ CARTUNE https://www.businessinsider.jp/post-177755</li>
+<li>F〜J領域：インフラトップ https://www.fastgrow.jp/articles/infratop-oshima ／ キラメックス https://thebridge.jp/2016/02/techacademy-running-company-kiramex-is-acquired-by-united-600m-yen ／ フォーナイン https://zuuonline.com/archives/297159 、https://buysell-technologies.com/pressrelease/202206302820/ ／ gracemode https://www.nihon-ma.co.jp/news/20250414_6058-19/ ／ AILES https://www.nihon-ma.co.jp/news/20260421_6058-31/ ／ NAVICUS https://prtimes.jp/main/html/rd/p/000001351.000000112.html ／ KESHIKI https://prtimes.jp/main/html/rd/p/000000031.000040021.html ／ エッセンス https://batonz.jp/learn/19735/ ／ フレームキャリア https://batonz.jp/learn/19711/ ／ Aslab https://batonz.jp/learn/18725/ ／ ライフハック https://fundbook.co.jp/cases/interview/20260907-2/ ／ Matka https://ma-navigator.com/columns/matka ／ ニコラ https://note.com/k_fukushi_bakuri/n/n49f846985768 ／ BIQREA https://spicon.co.jp/case/beauty/wjjtanl45k/ ／ 美容室相場 https://ma-succeed.jp/content/knowledge/post-4717 ／ 人材紹介の許可承継 https://masouken.com/人材派遣・紹介会社のM&amp;A・買収・売却</li>
+<li>考え方：Built to Sell 要旨 https://sobrief.com/books/built-to-sell ／ 正田圭 https://ex-career.org/sakutto_baikyaku_1128/ ／ 塚本大地 https://forbesjapan.com/articles/detail/65529</li>
+</ul>
+</main>
+</body>
+</html>

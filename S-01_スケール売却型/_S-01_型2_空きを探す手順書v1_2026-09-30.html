@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>型2 PF便乗 空きを探す手順書 v1</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav a:hover{color:var(--accent)} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px;margin:0 0 4px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg);margin-top:2px} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+.tw.fit td{min-width:0}
+</style></head><body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">要約（1枚）</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 型2とは何か（図1）</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 空きを探す7つの探し先</a>
+<a href="#s5">5. やらないこと</a>
+<a href="#s6">6. 探し先の比較（図2）</a>
+<a href="#s7">7. 手順（毎月回す形）と土台の選び方（図3）</a>
+<a href="#s8">8. 数字（工数・合格の線）</a>
+<a href="#s9">9. 次の工程</a>
+<a href="#s10">10. 決めていただく事項・未確認事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>型2（プラットフォーム便乗）── 「空き」を探す手順書 v1</h1>
+<p class="meta">合同会社R.Y.S／新規事業探索 S-01／作成 2026-09-30／状態：<span class="tag warn">手順の提案・未承認</span>／前の資料：`_S-01_売却型_事業案カタログv1_4つの型と29案_2026-09-30.html`／保存先：C:\dev\Search-for-a-new-business\S-01_スケール売却型／確認日 2026-09-30<br>
+表記：「事実」＝事例・公開情報で裏付けのあるもの／「（提案）」＝Claudeの見方／【未確認】＝一次情報で確かめていないもの。</p>
+
+<h2 id="s0">要約（1枚）<small>型2は「売却をゴールに置く」で合っている。空きは勘ではなく、7つの探し先を毎月機械的に回して見つける</small></h2>
+<div class="grid">
+<div class="kpi"><b>型2の位置づけ</b><span>2〜3年で売る前提の短期回転型。売却をゴールにするのは事例と合う</span></div>
+<div class="kpi"><b>相乗りの相手</b><span>ユーザー＝その土台の出店者・利用者。買い手＝土台の周辺企業（土台そのものは稀）</span></div>
+<div class="kpi"><b>探し先</b><span>7つ（アプリ一覧の差分／未解決の要望／低評価レビュー／新しい土台／法改正／買い手の動き／自社の手作業）</span></div>
+<div class="kpi"><b>回し方</b><span>月1回、Coworkで機械的に集めて「空きマップ」を更新。判断だけご依頼主</span></div>
+<div class="kpi"><b>合格の線（案を1つ選ぶ基準）</b><span>需要の証拠3件以上＋既存×か○＋土台が第三者を許容＋買い手候補1社以上</span></div>
+<div class="kpi"><b>次に決めること</b><span>手順の承認／最初に回す土台3つ／月次で回すか一度だけか</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>新規事業の2本柱を「①型2で作って売る」「②継続する事業」とし、まず①から1つ作る方針。優先はA（新規性）→B（買い手）。ただし「今どこが空いているか」を知る手がかりがまだ無い。</dd>
+<dt>課題</dt><dd>型2の成功者は、自分が使っていた土台の不便を偶然見つけている（Peing・Wraptas・Lea・Storemapper）。同じことを偶然に頼らず、繰り返し見つける手順が要る。</dd>
+<dt>提案</dt><dd>「空き」の信号は7か所に出る。①土台のアプリ一覧の差分（他の土台にあってここに無い機能）②公式フォーラム・Xの「できない・ほしい」③既存アプリの低評価レビュー④新しい土台・新API（公開直後は必ず空く）⑤法改正で全出店者に一斉発生する義務⑥周辺企業の買収・提携リリース⑦自社の手作業。これを月1回、Coworkで集計して「空きマップ」にする。</dd>
+<dt>未決</dt><dd>手順そのものの承認／最初に回す土台（Shopify・BASE・Amazon・LINE・Claudeコネクタ等から3つ）／月次で回すか。第10章。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>2本柱のうち、まず「相乗りして売る」を1つ作る。優先はA新規性→B買い手</small></h2>
+<div class="tw"><table>
+<tr><th>日付</th><th>ご依頼・決定</th><th>本書での扱い</th></tr>
+<tr><td>2026-09-30</td><td>型2は売却をゴールに進めるべきか、という確認</td><td>2章で回答（合っている、ただし条件つき）</td></tr>
+<tr><td>2026-09-30</td><td>「元あるサービスにプラスアルファを足して売却」をやりたい。あわせて継続できる事業も探し、2本柱にする。まず1個作る</td><td>本書は①型2の探し方。②継続事業はS-02と別に扱う</td></tr>
+<tr><td>2026-09-30</td><td>選び方はA（新規性）→B（買い手の厚み）の順</td><td>7章の手順で、Aで候補を出しBで絞る順にした</td></tr>
+<tr><td>2026-09-30</td><td>「どこが空いているか・需要があるのに無いか」を探す術を考えてほしい（今は手がかりを持っていない）</td><td>本書の主題（4〜7章）</td></tr>
+</table></div>
+
+<h2 id="s2">2. 型2とは何か<small>土台の出店者が困っている1機能を作り、土台の「周辺企業」に売る。土台そのものに売る例は少ない</small></h2>
+<p class="lead2"><b>要点：</b>「BASEにプラスアルファを足してBASEに売る」ではなく、「BASE等の出店者が困っている1機能を作り、それを欲しがる周辺企業に売る」が実態。</p>
+<figure><figcaption>図1　型2の流れ：土台の利用者の困りごとを1機能で埋め、急増したところで周辺企業へ売る<small>上段＝当社がやること、下段＝相手。実例はv1・v2の事例台帳</small></figcaption>
+<svg viewBox="0 0 990 250" role="img" aria-label="型2のスイムレーン">
+<rect class="lane" x="90" y="20" width="890" height="95" rx="6"/><rect class="lane" x="90" y="130" width="890" height="95" rx="6"/>
+<text x="20" y="72" class="m">当社</text><text x="20" y="182" class="m">相手</text>
+<rect class="box" x="110" y="45" width="150" height="46" rx="4"/><text x="185" y="64" text-anchor="middle">土台を選ぶ</text><text x="185" y="80" text-anchor="middle" class="m">第三者OK・利用者多い</text>
+<rect class="box" x="290" y="45" width="150" height="46" rx="4"/><text x="365" y="64" text-anchor="middle">空きを探す</text><text x="365" y="80" text-anchor="middle" class="m">7つの探し先（4章）</text>
+<rect class="box" x="470" y="45" width="150" height="46" rx="4"/><text x="545" y="64" text-anchor="middle">1機能を作る</text><text x="545" y="80" text-anchor="middle" class="m">API／アプリ／拡張</text>
+<rect class="box" x="650" y="45" width="150" height="46" rx="4"/><text x="725" y="64" text-anchor="middle">有料化・自動化</text><text x="725" y="80" text-anchor="middle" class="m">MRR・リスト・SOP</text>
+<rect class="us" x="830" y="45" width="130" height="46" rx="4"/><text x="895" y="64" text-anchor="middle" class="w">売る</text><text x="895" y="80" text-anchor="middle" class="w">2〜3年・急増時</text>
+<rect class="box" x="110" y="155" width="150" height="46" rx="4"/><text x="185" y="174" text-anchor="middle">土台（PF）</text><text x="185" y="190" text-anchor="middle" class="m">Shopify・BASE・LINE等</text>
+<rect class="box" x="290" y="155" width="150" height="46" rx="4"/><text x="365" y="174" text-anchor="middle">出店者・利用者</text><text x="365" y="190" text-anchor="middle" class="m">「できない」と言う人</text>
+<rect class="box" x="470" y="155" width="150" height="46" rx="4"/><text x="545" y="174" text-anchor="middle">使う・払う</text><text x="545" y="190" text-anchor="middle" class="m">月額・買い切り</text>
+<rect class="box" x="650" y="155" width="150" height="46" rx="4"/><text x="725" y="174" text-anchor="middle">周辺企業が気づく</text><text x="725" y="190" text-anchor="middle" class="m">クロスセル先を探す</text>
+<rect class="box" x="830" y="155" width="130" height="46" rx="4"/><text x="895" y="174" text-anchor="middle">買う</text><text x="895" y="190" text-anchor="middle" class="m">ペライチ・INFLU等</text>
+<path class="ln" d="M260 68 L290 68 M440 68 L470 68 M620 68 L650 68 M800 68 L830 68" stroke-width="1.5"/>
+</svg></figure>
+<div class="tw"><table>
+<tr><th>事例</th><th>土台</th><th>足した1機能</th><th>使った人</th><th>買った会社（土台との関係）</th></tr>
+<tr><td class="key">Lea</td><td>LINE</td><td>LINE上でECを作れる</td><td>LINEで物を売りたい個人・店</td><td>INFLU（LINEマーケの会社。LINE本体ではない）</td></tr>
+<tr><td class="key">Wraptas</td><td>Notion</td><td>NotionのページをWebサイトにする</td><td>Notionで文書を書く人</td><td>ペライチ（ホームページ作成の会社。Notion本体ではない）</td></tr>
+<tr><td class="key">Peing</td><td>Twitter</td><td>匿名で質問を受ける箱</td><td>Twitter利用者</td><td>ジラフ（Twitter周辺のサービス会社）</td></tr>
+<tr><td class="key">Order Tagger（米）</td><td>Shopify</td><td>注文に自動でタグ付け</td><td>Shopify出店者2,000ブランド</td><td>Shop Circle（Shopifyアプリを集める会社）</td></tr>
+<tr><td class="key">Storemapper（米）</td><td>Shopify</td><td>店舗地図の埋め込み</td><td>Shopify出店者</td><td>SureSwift（小さなSaaSを買う会社）</td></tr>
+<tr><td class="key">Skeb</td><td>Twitterのイラスト文化</td><td>有償リクエストの決済</td><td>絵師と依頼者100万人</td><td>実業之日本社（出版。コミュニティを買った）</td></tr>
+</table></div>
+<div class="card">
+<p><b>「型2は売却をゴールにする」で合っているか（回答）</b>：<b>合っています。ただし理由を正しく持つ必要があります。</b>事実として、型2は土台の規約・API変更で一夜に価値を失う（Reddit API有料化でApollo閉鎖、Amazon PA-API廃止、XO Capitalは「PF依存」を買わない）。だから長く持つ資産にはならず、<b>「急増した2〜3年目に売る」が最も合理的な出口</b>です。売った人の多くも「1人体制の限界」（Peing・Skeb・MENTA）か「土台依存の怖さ」（Tweet Hunter）を理由にしています。一方で、売却をゴールにするからこそ守る条件が3つあります。①最初から「誰が買うか」（周辺企業）を1社以上想定して作る、②MRR・利用者リスト・運用マニュアルを買い手に渡せる形で積む、③撤退条件（「○か月でMRR○万円未達なら止める」「規約変更で改修○時間超なら売却か撤退」）を先に置く。これは前資料v2の9章と同じです。</p>
+<p class="note">「継続できる事業」はこの型2とは別に、S-02（地域密着型）か型4（買い手が厚い業態）で探すのが、事例の分布に合っています。2本柱は「型2で短期に現金を作り、継続事業に回す」という順番になります（提案）。</p>
+</div>
+
+<h2 id="s3">3. 前提・制約<small>空きが見つかっても、その土台が第三者アプリを許していなければ作れない。土台の開放度を先に確かめる</small></h2>
+<p class="lead2"><b>なぜ先に読むか：</b>探し先を回す前に、土台ごとに「第三者が作って配れるか」「買い手候補がいるか」を押さえておく必要があるため。</p>
+<div class="tw fit"><table>
+<tr><th>土台</th><th>第三者が作って配れるか</th><th>利用者の規模（目安）</th><th>周辺の買い手候補</th><th>備考</th></tr>
+<tr><td class="key">Shopify</td><td class="st ok">可（App Store）</td><td>世界数百万店、日本語アプリは少ない</td><td>Shop Circle・SureSwift・国内パートナー</td><td>売却事例が最多。英語で作れば買い手が海外に広がる（軸9）</td></tr>
+<tr><td class="key">BASE</td><td class="st warn">API有・配布は【未確認】</td><td>開設数は公表値を要確認【未確認】</td><td>EC支援・決済会社</td><td>公式Appsは自社製が中心。第三者の掲載可否を先に確認</td></tr>
+<tr><td class="key">Amazon（セラー）</td><td class="st ok">可（Selling Partner Appstore・SP-API）</td><td>国内セラー数十万【未確認】</td><td>Hamee／NE、ACROVE、EC支援</td><td>PA-API廃止の前例。規約が厳しい</td></tr>
+<tr><td class="key">楽天RMS・Yahoo!</td><td class="st ok">可（RMSサービススクエア等）</td><td>国内店舗5万超【未確認】</td><td>同上</td><td>MCP化は個人の自作例のみ（カタログK2-5）</td></tr>
+<tr><td class="key">LINE（ミニアプリ・公式アカウント）</td><td class="st ok">可</td><td>国内最大の接点</td><td>INFLU（Leaを買収）、LINEマーケ各社</td><td>Leaの前例。飲食・美容・小売の店舗向けが厚い</td></tr>
+<tr><td class="key">Notion・Google Workspace</td><td class="st ok">可（連携・アドオン）</td><td>世界規模</td><td>ペライチ（Wraptasを買収）等</td><td>日本語圏の連携ツールはまだ薄い</td></tr>
+<tr><td class="key">Chrome拡張</td><td class="st ok">可（Web Store）</td><td>世界規模</td><td>OctoShop→Ibotta（7桁ドル）の前例</td><td>審査・規約変更で止まる例あり</td></tr>
+<tr><td class="key">Claude／ChatGPT のコネクタ・MCP</td><td class="st ok">可（新しい土台）</td><td>2025〜26年に急拡大</td><td>AI導入企業・EC支援（買い手は未形成）</td><td>「新しい土台の初期」＝Peing・Headlime型の空き。ただし変化が速い</td></tr>
+<tr><td class="key">TikTok Shop（日本2025-06）</td><td class="st ok">可（パートナーアプリ）</td><td>拡大中</td><td>AnyMind、NE</td><td>在庫連携は既に埋まった（K2-1）。周辺機能に空きが残る可能性</td></tr>
+</table></div>
+<p class="note">「第三者が作って配れるか」は各土台の開発者向けページで確定させる（手順の第1段）。ここでは事例と一般知識に基づく暫定で、【未確認】の箱は運用時に埋める。</p>
+
+<h2 id="s4">4. 空きを探す7つの探し先<small>成功者が偶然見つけた「不便」は、7か所に信号として残っている。信号を集めれば偶然に頼らずに済む</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>探し先</th><th>何を集めるか</th><th>「空き」の信号</th><th>元になった事例</th></tr>
+<tr><td>1</td><td class="key">アプリ一覧の差分</td><td>各土台のアプリ一覧（Shopify App Store・RMS・LINEミニアプリ・Chrome Web Store）をカテゴリ別に数える</td><td><b>他の土台にあるのに、ここには無い機能</b>（Shopifyに数十本、BASEにゼロ／英語版のみ）</td><td>Storemapper・Order Tagger</td></tr>
+<tr><td>2</td><td class="key">未解決の要望</td><td>公式フォーラム（Shopify Community・Amazonセラーフォーラム）、X・noteの「できない」「ほしい」「めんどう」</td><td><b>同じ困りごとが月に何度も出て、公式回答が「できません」</b></td><td>Peing・Lea</td></tr>
+<tr><td>3</td><td class="key">低評価レビュー</td><td>既存アプリの★1〜2レビュー（App Store・Chrome Web Store・アプリストア）</td><td><b>「〇〇ができれば」「遅い・高い」</b>という未解決の不満。競合の弱点が仕様になる</td><td>venture-hypothesis「競合の低評価を読む」</td></tr>
+<tr><td>4</td><td class="key">新しい土台・新API</td><td>開発者ブログ・変更履歴・新API公開（TikTok Shop、SP-API新機能、LINEミニアプリ、Claude／ChatGPTコネクタ）</td><td><b>公開から半年以内で、対応アプリが数本しかない</b>領域。空きは時間とともに埋まる</td><td>Peing（1か月）・Headlime（GPT-3直後）</td></tr>
+<tr><td>5</td><td class="key">法改正カレンダー</td><td>e-Gov・各省庁の施行予定（製品安全4法2025-12、景表法、特商法、インボイス、酒税、食品表示）</td><td><b>全出店者に一斉に発生する義務</b>で、土台の標準機能が未対応のもの</td><td>K2-2（製品安全4法の表示）</td></tr>
+<tr><td>6</td><td class="key">買い手の動き</td><td>土台周辺の上場企業・スタートアップの買収・提携・出資リリース（PR TIMES・適時開示）</td><td><b>彼らが「埋めたい穴」</b>を先に読む。買収した機能の隣が次に欲しい機能</td><td>INFLU→Lea、ペライチ→Wraptas、ランサーズ→MENTA</td></tr>
+<tr><td>7</td><td class="key">自社の手作業</td><td>ヴァンガード本店・寝かせ事業・BASE運用で、毎週手作業やスプレッドシートでやっていること</td><td><b>自分が客として困っていること</b>。需要の証拠が最初から1件ある</td><td>Storemapper・Baremetrics</td></tr>
+</table></div>
+
+<h2 id="s5">5. やらないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>需要の証明はしない：</b>この手順は「空きの候補」を出すまで。払うかどうかは KASETSU.md の検証で確かめる</li>
+<li><b>土台そのものへの売却は狙わない：</b>前例が少ない。買い手は周辺企業として探す</li>
+<li><b>スクレイピングで規約に触れない：</b>アプリ一覧・レビューの収集は公開ページと公式APIの範囲。Amazon等の規約で禁止された自動取得は行わない</li>
+<li><b>継続事業（②）はこの手順の対象外：</b>S-02 か型4で別に扱う</li>
+</ul>
+
+<h2 id="s6">6. 探し先の比較<small>証拠の強さでは「自社の手作業」と「法改正」が強く、広さでは「アプリ一覧の差分」が強い。全部を回して重なった所を取る</small></h2>
+<figure><figcaption>図2　証拠の強さと広さはトレードオフ。重なりを取るために7つ全部を回す<small>Claudeの評価（提案）。5＝強い／広い、1＝弱い／狭い</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="探し先の比較">
+<g class="grid"><line x1="260" y1="20" x2="260" y2="265"/><line x1="380" y1="20" x2="380" y2="265"/><line x1="500" y1="20" x2="500" y2="265"/><line x1="620" y1="20" x2="620" y2="265"/><line x1="740" y1="20" x2="740" y2="265"/><line x1="860" y1="20" x2="860" y2="265"/></g>
+<text class="m" x="260" y="282" text-anchor="middle">0</text><text class="m" x="380" y="282" text-anchor="middle">1</text><text class="m" x="500" y="282" text-anchor="middle">2</text><text class="m" x="620" y="282" text-anchor="middle">3</text><text class="m" x="740" y="282" text-anchor="middle">4</text><text class="m" x="860" y="282" text-anchor="middle">5</text>
+<text x="250" y="42" text-anchor="end">① アプリ一覧の差分</text><rect class="bar" x="260" y="30" width="240" height="9"/><rect class="bar2" x="260" y="41" width="480" height="9"/>
+<text x="250" y="77" text-anchor="end">② 未解決の要望</text><rect class="bar" x="260" y="65" width="480" height="9"/><rect class="bar2" x="260" y="76" width="360" height="9"/>
+<text x="250" y="112" text-anchor="end">③ 低評価レビュー</text><rect class="bar" x="260" y="100" width="480" height="9"/><rect class="bar2" x="260" y="111" width="240" height="9"/>
+<text x="250" y="147" text-anchor="end">④ 新しい土台・新API</text><rect class="bar" x="260" y="135" width="240" height="9"/><rect class="bar2" x="260" y="146" width="360" height="9"/>
+<text x="250" y="182" text-anchor="end">⑤ 法改正</text><rect class="bar" x="260" y="170" width="600" height="9"/><rect class="bar2" x="260" y="181" width="240" height="9"/>
+<text x="250" y="217" text-anchor="end">⑥ 買い手の動き</text><rect class="bar" x="260" y="205" width="360" height="9"/><rect class="bar2" x="260" y="216" width="240" height="9"/>
+<text x="250" y="252" text-anchor="end">⑦ 自社の手作業</text><rect class="bar" x="260" y="240" width="600" height="9"/><rect class="bar2" x="260" y="251" width="120" height="9"/>
+<rect class="bar" x="760" y="30" width="14" height="9"/><text class="m" x="780" y="39">需要の証拠の強さ</text>
+<rect class="bar2" x="760" y="46" width="14" height="9"/><text class="m" x="780" y="55">見つかる範囲の広さ</text>
+</svg></figure>
+<div class="tw"><table>
+<tr><th>探し先</th><th>判定</th><th class="num">証拠の強さ</th><th class="num">広さ</th><th>理由</th></tr>
+<tr><td class="key">⑤ 法改正</td><td class="st ok">最優先</td><td class="num">5</td><td class="num">2</td><td>義務は全員に発生し、期日が決まっている。需要を疑う余地が少ない。カタログで唯一「見当たらず」だったのもこの型</td></tr>
+<tr><td class="key">⑦ 自社の手作業</td><td class="st ok">最優先</td><td class="num">5</td><td class="num">1</td><td>需要の証拠が最初から1件（自分）ある。範囲は狭いが、外れにくい</td></tr>
+<tr><td class="key">② 未解決の要望</td><td class="st ok">優先</td><td class="num">4</td><td class="num">3</td><td>困っている人の言葉が直接取れる。件数を数えれば強さも測れる</td></tr>
+<tr><td class="key">③ 低評価レビュー</td><td class="st ok">優先</td><td class="num">4</td><td class="num">2</td><td>既存があることが前提なので新規性は低いが、勝ち筋が明確</td></tr>
+<tr><td class="key">⑥ 買い手の動き</td><td class="st warn">併用</td><td class="num">3</td><td class="num">2</td><td>需要ではなく出口の証拠。他の探し先で出た候補の「売れるか」を補強する</td></tr>
+<tr><td class="key">④ 新しい土台</td><td class="st warn">併用</td><td class="num">2</td><td class="num">3</td><td>空きは確実だが、需要が育つかは不明。速さが要る</td></tr>
+<tr><td class="key">① アプリ一覧の差分</td><td class="st warn">併用</td><td class="num">2</td><td class="num">4</td><td>最も広く候補が出るが「無い＝需要が無い」の可能性もある。②③で裏を取る</td></tr>
+</table></div>
+
+<h2 id="s7">7. 手順（毎月回す形）と土台の選び方<small>Coworkが集めて表にし、ご依頼主は「面白い」を選ぶだけにする。A新規性→B買い手の順で絞る</small></h2>
+<h3>7-1. 手順（月1回）</h3>
+<div class="tw"><table>
+<tr><th>段</th><th>誰が</th><th>何をする</th><th>出るもの</th><th>所要（目安）</th></tr>
+<tr><td>0</td><td>ご依頼主</td><td>回す土台を3つ選ぶ（3章の表から）。初回だけ</td><td>土台の一覧</td><td>10分</td></tr>
+<tr><td>1</td><td>Claude</td><td>3章の【未確認】を埋める：各土台の開発者ページで「第三者が作って配れるか」「審査・手数料・禁止事項」を確認</td><td>土台の開放度の表</td><td>1回</td></tr>
+<tr><td>2</td><td>Claude</td><td>探し先①〜⑥を土台ごとに回し、信号を1件1行で集める（何が・どこで・何件・URL）。⑦はご依頼主の運用フォルダ（VANGUARD・寝かせ・BASE）の手作業を棚卸し</td><td>信号台帳（.md、末尾追記のみ）</td><td>月2〜3時間</td></tr>
+<tr><td>3</td><td>Claude</td><td>信号を「困りごと」単位にまとめ、既存の有無（◎○×）と買い手候補を付けて「空きマップ」に</td><td>空きマップ（表）</td><td>同上</td></tr>
+<tr><td>4</td><td>ご依頼主</td><td>空きマップから面白いものを選ぶ。<b>A：既存が×か○のものを先に見る → B：買い手候補が1社以上あるもので絞る</b></td><td>候補3〜5</td><td>30分</td></tr>
+<tr><td>5</td><td>両者</td><td>候補ごとに KASETSU.md（賭けてよい上限→死ぬ条件→いちばん危ない前提「その機能に月額を払う人が○人いる」→事前登録ページで確かめる）</td><td>進む／止める</td><td>案ごと2〜4週</td></tr>
+</table></div>
+<h3>7-2. 土台の選び方（初回の3つ）</h3>
+<figure><figcaption>図3　右上（開放的で、まだ混んでいない）に入る土台から始める<small>横軸＝第三者アプリへの開放度、縦軸＝日本語圏の競合の少なさ。配置はClaudeの評価（提案）。塗りつぶし＝初回に回す候補</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="土台の位置取り">
+<rect class="lane" x="120" y="20" width="370" height="120"/><rect class="lane" x="500" y="20" width="370" height="120"/><rect class="lane" x="120" y="150" width="370" height="120"/><rect class="lane" x="500" y="150" width="370" height="120"/>
+<text class="m" x="130" y="36">競合は少ないが、閉じている</text><text class="m" x="510" y="36">開放的で、競合が少ない</text>
+<text class="m" x="130" y="166">閉じていて、混んでいる</text><text class="m" x="510" y="166">開放的だが、混んでいる</text>
+<rect class="cand" x="150" y="60" width="130" height="32" rx="4"/><text x="215" y="81" text-anchor="middle">BASE【未確認】</text>
+<rect class="cand" x="150" y="100" width="130" height="32" rx="4"/><text x="215" y="121" text-anchor="middle">メルカリShops</text>
+<rect class="us" x="530" y="55" width="160" height="32" rx="4"/><text class="w" x="610" y="76" text-anchor="middle">AIコネクタ（Claude等）</text>
+<rect class="us" x="700" y="55" width="150" height="32" rx="4"/><text class="w" x="775" y="76" text-anchor="middle">Shopify（日本語）</text>
+<rect class="us" x="530" y="98" width="160" height="32" rx="4"/><text class="w" x="610" y="119" text-anchor="middle">LINEミニアプリ（店舗）</text>
+<rect class="cand" x="700" y="98" width="150" height="32" rx="4"/><text x="775" y="119" text-anchor="middle">Notion／Google</text>
+<rect class="cand" x="530" y="190" width="150" height="32" rx="4"/><text x="605" y="211" text-anchor="middle">Amazon SP-API</text>
+<rect class="cand" x="700" y="190" width="150" height="32" rx="4"/><text x="775" y="211" text-anchor="middle">Chrome拡張</text>
+<rect class="cand" x="530" y="230" width="150" height="32" rx="4"/><text x="605" y="251" text-anchor="middle">楽天RMS</text>
+<rect class="cand" x="700" y="230" width="150" height="32" rx="4"/><text x="775" y="251" text-anchor="middle">TikTok Shop</text>
+<line class="ax" x1="120" y1="280" x2="870" y2="280"/><text class="m" x="495" y="296" text-anchor="middle">第三者への開放度 →（閉じている｜開放的）</text>
+<line class="ax" x1="110" y1="20" x2="110" y2="270"/><text class="m" x="20" y="150" transform="rotate(-90 20 150)" text-anchor="middle">競合の少なさ →（混んでいる｜少ない）</text>
+</svg></figure>
+<div class="pillars">
+<div class="pillar must"><h4>初回の土台①：Shopify（日本語アプリ）（提案）</h4><dl><dt>なぜ</dt><dd>売却事例が最も多い土台。英語圏に数千本あるのに日本語対応が薄い＝探し先①の差分がそのまま出る。買い手が海外に広がる</dd><dt>条件</dt><dd>英語UIも用意する（軸9）</dd></dl></div>
+<div class="pillar must"><h4>初回の土台②：LINEミニアプリ（店舗向け）（提案）</h4><dl><dt>なぜ</dt><dd>Lea→INFLUの前例。国内の店舗（飲食・美容・小売）は最も数が多く、S-02（地域密着）の知見と重なる</dd><dt>条件</dt><dd>既存の予約・会員系は混んでいる（K2-3）。周辺の穴を探す</dd></dl></div>
+<div class="pillar cond"><h4>初回の土台③：Claude／ChatGPT コネクタ・MCP（提案）</h4><dl><dt>なぜ</dt><dd>新しい土台の初期（探し先④）。楽天RMS・BASEのMCP化は個人の自作例しか無い（K2-5）</dd><dt>条件</dt><dd>変化が速い。買い手が未形成なので、⑥で買い手の動きを毎月見る</dd></dl></div>
+</div>
+<p class="note">BASEは「ご依頼主が出店している土台」なので探し先⑦との相性は最も良いが、第三者アプリの配布可否が【未確認】。手順の第1段で確認し、可なら初回の3つに入れ替える。</p>
+
+<h2 id="s8">8. 数字（工数・合格の線）<small>月2〜3時間のCowork稼働で回せる。案を1つ選ぶ合格の線は4条件</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>数字（提案）</th><th>根拠</th></tr>
+<tr><td class="key">月次の稼働</td><td>Claude 2〜3時間（収集・集計）＋ご依頼主30分（選ぶ）</td><td>探し先①〜⑥は検索と一覧取得で機械化できる</td></tr>
+<tr><td class="key">合格の線（候補を1つ選ぶ）</td><td>①需要の証拠3件以上（要望・レビュー・自社のいずれか）②既存が×か○ ③土台が第三者を許容 ④買い手候補1社以上</td><td>venture-hypothesis「客観的な証拠」、カタログ7章のA→B</td></tr>
+<tr><td class="key">売却の目安</td><td>実態営業利益×2〜4倍。海外の少人数SaaS中央値3.9倍</td><td>v2 3章</td></tr>
+<tr><td class="key">撤退条件（例）</td><td>公開○か月でMRR○万円未達／規約変更で改修○時間超／有料転換率○%未満（数値はご依頼主）</td><td>v2 9章</td></tr>
+</table></div>
+
+<h2 id="s9">9. 次の工程<small>手順を承認いただければ、第1段（土台の開放度の確認）から回し、初回の空きマップを出す</small></h2>
+<div class="tw"><table>
+<tr><th>段</th><th>誰が</th><th>何をする</th><th>出るもの</th></tr>
+<tr><td>①</td><td>ご依頼主</td><td>本手順の承認と、初回の土台3つの選択（第10章）</td><td>承認</td></tr>
+<tr><td>②</td><td>Claude</td><td>3章の【未確認】を埋める（BASE等の第三者配布可否・審査・手数料）</td><td>開放度の表（確定版）</td></tr>
+<tr><td>③</td><td>Claude</td><td>探し先①〜⑥を初回分だけ回し、⑦はご依頼主の運用フォルダを棚卸し</td><td>信号台帳＋空きマップv1</td></tr>
+<tr><td>④</td><td>ご依頼主</td><td>空きマップから候補3〜5を選ぶ（A→B）</td><td>候補</td></tr>
+<tr><td>⑤</td><td>両者</td><td>候補ごとにKASETSU.md。上限はご依頼主が決める</td><td>進む／止める</td></tr>
+</table></div>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>手順の承認と、最初の土台3つ</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢（★＝推奨）</th></tr>
+<tr><td>1</td><td class="key">この手順（7つの探し先・月1回・A→B）で進めるか</td><td>★進める／探し先を足す・減らす／別の探し方</td></tr>
+<tr><td>2</td><td class="key">初回に回す土台3つ</td><td>★Shopify（日本語）・LINEミニアプリ・Claude/ChatGPTコネクタ／BASE（配布可なら入替）／Amazon SP-API／その他</td></tr>
+<tr><td>3</td><td class="key">回し方</td><td>★月1回の定期（Coworkのスケジュールは持たない方針なので、チャットで「空きマップ更新」と指示いただく形）／一度だけ</td></tr>
+<tr><td>4</td><td class="key">探し先⑦の棚卸しに使う運用フォルダ</td><td>VANGUARD自動更新ツール・寝かせ在庫管理・BASE運用のどれを見てよいか</td></tr>
+<tr><td>5</td><td class="key">継続事業（②）の探し方</td><td>S-02の3資料を土台に別チャットで進める／型4（買い手が厚い業態）から選ぶ／後回し</td></tr>
+</table></div>
+<h3>未確認事項</h3>
+<ul>
+<li><b>BASEの第三者アプリ配布可否・審査・手数料：</b>開発者向けページで確定させる（手順の第1段）</li>
+<li><b>各土台の利用者数：</b>公表値を要確認</li>
+<li><b>レビュー・フォーラムの自動取得の規約：</b>土台ごとに利用規約を確認し、禁止なら手動で読む</li>
+</ul>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本（探し方）。信号台帳・空きマップは別ファイルに分ける</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>v1</td><td>2026-09-30</td><td>型2の位置づけ（売却ゴールの是非）、相乗りの実態（6事例）、7つの探し先、月次の手順、初回の土台3つの提案</td></tr>
+</table></div>
+<ul class="note">
+<li>事例：v1事例台帳（Peing・Skeb・MENTA・Wraptas・Lea）、v2 4-3（Storemapper・Order Tagger・Headlime・Tweet Hunter・Apollo・ACF）、v2 4-4（XO Capital「PF依存は買わない」）</li>
+<li>探し方の元：venture-hypothesis「競合の低評価レビュー・更新履歴・価格ページの変更を見る」、カタログv1 6章（K2-1〜K2-8の既存確認）</li>
+<li>土台の開放度：各土台の開発者向けページ（手順第1段で確定。本書は暫定）</li>
+</ul>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。</p>
+</main></div></body></html>

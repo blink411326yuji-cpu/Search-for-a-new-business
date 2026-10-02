@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S-03 AIで後発参入できる既存ビジネス — 調査報告と提案（5つの型・92案）</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+td.src{font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a class="s" href="#s4-1">4-1 中小企業のAI活用は2〜3割</a>
+<a class="s" href="#s4-2">4-2 3つの壁の事実</a>
+<a class="s" href="#s4-3">4-3 法律の線引き</a>
+<a class="s" href="#s4-4">4-4 地方の店舗型</a>
+<a class="s" href="#s4-5">4-5 自社事業と関連する領域</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較（5つの型）</a>
+<a href="#s7">7. 推奨と理由</a>
+<a href="#s8">8. 数字（公開料金の相場）</a>
+<a href="#s9">9. 次の工程と撤退条件</a>
+<a href="#s10">10. 決めていただく事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>AIで後発参入できる既存ビジネス<br><span style="font-size:17px;font-weight:normal">— 調査報告と提案（5つの型・92案。地方の店舗型の検証を含む）</span></h1>
+<p class="meta">作成日：2026-09-30　｜　状態：<b>案（未承認）</b>　｜　置き場所：<code>C:\dev\Search-for-a-new-business\S-03_AI後発参入\</code>　｜　対になる台帳：<code>_S-03_参入案カタログv1_5つの型_2026-09-30.html</code>（92案の1行1案）　｜　Gemini クロスレビュー：<b>未実施</b>（法律の線引き表は確定前に要確認）</p>
+
+<h2 id="s0">0. 要約<small>中小企業の6〜8割はまだAIを業務に使えていない。後発の当社が入れるのは「開発費」「専門職の人手」「現場のデジタル空白」という3つの壁が守ってきた既存ビジネスで、その中でも現場作業や物理工程を含むものが残りやすい。</small></h2>
+<div class="grid">
+<div class="kpi"><b>何を調べたか</b><span>①AIで後発参入できる既存ビジネスの洗い出し ②自社（物販・EC・物流）と関連が高いもの ③地方で店を構える型は儲かるか</span></div>
+<div class="kpi"><b>件数</b><span>92案を5つの型に整理（台帳版）。一次情報 約120件（条文・官庁・統計・公開料金）</span></div>
+<div class="kpi"><b>結論</b><span>生成AIを業務に使う中小企業は2〜3割（TDB 34.5%・小規模28.0%、中小機構20.4%）。空白は大きいが、埋まる速さも速い（2年で約2倍）</span></div>
+<div class="kpi"><b>推奨（提案）</b><span>型C（現場業種）と型D（自社関連）から3〜5案を選び、KASETSU.md で「顧客が自分でAIでやらないか」を最初に確かめる</span></div>
+<div class="kpi"><b>地方の店舗型</b><span>伸びているのは車・葬儀・高齢者関連。無人販売・キャンプ場・学習塾・美容室は飽和か減少の一次データあり。「地方は賃料が安い」を示す公表統計は無い</span></div>
+<div class="kpi"><b>次に決めること</b><span>第10章の6点（型と案の選択／地方店舗型の残し方／★印の扱い／古物商許可／賭けてよい上限／Gemini確認）</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>AIコーディングで業務システムを自作でき、文章・入力・翻訳の原価も下がった。従来は「システムを持つ会社」「専門職を抱える会社」しか入れなかった既存ビジネスに、3人以下の当社でも入れる余地が生まれている。</dd>
+<dt>課題</dt><dd>どの業種にその余地があるのか、法律で入れないものはどれか、地方で店を構える型は本当に成り立つのかが、感覚ではなく一次情報で整理されていなかった。</dd>
+<dt>分かったこと</dt><dd>①中小企業のAI活用は2〜3割で、未活用理由の1位は「活用する業務がイメージできていない」。②線引きは「税務書類・社保手続・官公署書類・登記・古物・家庭ごみ・有償送迎」が独占または許可制で、記帳・給与計算・清掃・軽貨物・空き家管理・発送代行などは資格不要。③地方の店舗型は、車依存（自動車関係費は町村で大都市の1.3倍）と高齢化（豊橋の65歳以上は2035年に31.5%）が需要側の裏付けで、人口減（2050年に▲18.2%）と商店街の衰退が向かい風。</dd>
+<dt>未決</dt><dd>92案のどれを深掘りするか。地方店舗型を候補に残すか。古物商許可を将来取るか。選んだ案に賭けてよい上限。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>4つのご依頼を、ソフトを売る形ではなく「事業・代行として参入する形」に限って調べた。</small></h2>
+<div class="tw"><table>
+<tr><th>ご依頼の言葉（要旨）</th><th>今回の扱い</th></tr>
+<tr><td>AI×〇〇で、現在存在しているビジネスに参入できるものを洗い出してほしい。以前はプログラマーや高額なシステム開発が要った分野、AIと縁の薄い分野で、AIによるシステム開発・導入で後発でも戦えるもの</td><td>「3つの壁」（開発費・専門職の人手・現場のデジタル空白）で分類し、型A〜Cとして92案中59案を台帳に並べた</td></tr>
+<tr><td>各カテゴリーの困りごとをAIで解決し、売上アップ・少人化・自動化で利益増が見込めるモデルを網羅的に</td><td>各案に「AIで変わる工程」（従来は人手だった部分）を1列で書いた。収益の試算は案出しの段階では行わない（K-002）</td></tr>
+<tr><td>自社事業と関連性の高いものも別途</td><td>型D（物販・EC・物流）15案。古物商許可が無いことによる線を第4-5節・台帳第6章で明示</td></tr>
+<tr><td>店を構えて何かを売る・する（洗車など）業態は儲かるのか。地方でやればうまくいくものもあるのでは</td><td>型E 18案。店舗数の推移・出店基準・地方の需要と人口の一次データで検証（第4-4節）</td></tr>
+</table></div>
+<h3>ご不在のため Claude が置いた解釈（違っていれば直します）</h3>
+<ul>
+<li><b>「参入」の形は2つ：</b>①その業種の事業者として自ら営む（AIは裏方） ②その業種の事業者にAI込みの代行・請負を売る。ソフトそのものを売る形（SaaS）は入れていない</li>
+<li><b>許認可：</b>取得に3か月以上かかるものは★印を付けて残した（外していない）</li>
+<li><b>古物商許可：</b>未保有を前提に「不可」と印を付けたが、解禁条件（許可取得）を書いて残した</li>
+<li><b>絞り込み：</b>行っていない。法律上できないものと、一次情報が飽和・減少を示すものにだけ✕の印を付けた。選ぶのは坂野様</li>
+</ul>
+
+<h2 id="s2">2. 調査の範囲と方法<small>5本の調査線で約120件の一次情報に当たった。市場規模の公的統計が無い業種（清掃・洗車・害虫など）は、事業者の公開料金と業界団体の数値で代えている。</small></h2>
+<div class="tw"><table>
+<tr><th>調査線</th><th>当たった先</th><th>残っている穴</th></tr>
+<tr><td class="key">壁1 開発費</td><td>IPA ソフトウェア開発分析データ集2022、開発会社の公表相場3社、運営型事業者26カテゴリの公式料金・e-Gov条文</td><td>ふるさと納税・民泊代行など料金非公開の事業者が多い</td></tr>
+<tr><td class="key">壁2 専門職</td><td>e-Gov現行条文（税理士法・社労士法・行政書士法・司法書士法・弁護士法・職安法・宅建業法）、国税庁・厚労省・法務省の公式Q&A・指針、代行18業務の公開料金</td><td>採用代行の各行為・賃金台帳作成・不動産図面の行政書士法該当性は公式見解【未確認】</td></tr>
+<tr><td class="key">壁3 現場業種</td><td>25業種の許認可（e-Gov・所管官庁）、公開料金、業界団体の実態調査（ビルメン・日整連・全ト協・オートキャンプ協会）</td><td>市場規模の公的統計が無い業種が多い。自治体条例（害虫・コインランドリー）は未確認</td></tr>
+<tr><td class="key">地方店舗型</td><td>家計調査2024、社人研 将来推計人口（豊橋市）、商店街実態調査（令和6年度）、日本不動産研究所 店舗賃料トレンド2026春、厚労省 衛生行政報告例、経産省 特サビ統計、上場FC本部のIR・加盟条件</td><td>中核市の店舗賃料統計が存在しない。FC本部の商圏人口基準は非公開が多い</td></tr>
+<tr><td class="key">自社関連</td><td>警察庁 古物営業法解釈基準（2024-08-14）、愛知県警Q&A、倉庫業法・貨物利用運送事業法・外為法・関税法・消費税法、EC代行・発送代行・越境代行の公開料金、経産省EC市場調査</td><td>流通段階在庫の古物該当性、所有権を移さない返品受託の扱いは【未確認】</td></tr>
+</table></div>
+<p class="note">AI活用率は総務省（通信利用動向調査・情報通信白書）、帝国データバンク（2026-03調査）、中小企業庁（2026年版白書）、中小機構（2026-03）の4系統で確認した。調査により母集団（企業規模）が異なるため、数値は並べて示し、1つに丸めていない。</p>
+
+<h2 id="s3">3. 前提・制約<small>この資料の判断は、当社の現状と、今回のご依頼の条件の中でだけ成り立つ。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>前提・条件</th><th>この資料での効き方</th></tr>
+<tr><td>①</td><td>従業員3人以下の法人。拠点は愛知県豊橋市（本店）と大阪市北区。人は雇う</td><td>「雇えば回る」業種を候補から外していない。地方○は豊橋を想定</td></tr>
+<tr><td>②</td><td>新品のみ扱い、古物商許可は未保有</td><td>中古品の売買・委託販売・買取を伴う案は「不可」印（解禁条件つき）</td></tr>
+<tr><td>③</td><td>AIで業務システムを自作でき、文章・入力・翻訳・下書きをAIで作れる</td><td>3つの壁が「当社にとっては壁でない」根拠。ただし競合も同じAIを使える（第7章の反論）</td></tr>
+<tr><td>④</td><td>ソフトを売る形（SaaS）ではなく、事業・代行として参入する</td><td>各案は「運営」「代行」「店舗」の形で書いた</td></tr>
+<tr><td>⑤</td><td>案出しの段階で収益の計算をしない（K-002）。「サービスが実在する＝お金が動いている」で足りる</td><td>各案に「今の担い手・料金」を付けた。利益の試算は無い</td></tr>
+<tr><td>⑥</td><td>案は広く出し、選ぶのは坂野様。落としてよいのは法律上できないものだけ</td><td>92案すべてを台帳に残し、✕も削除していない</td></tr>
+</table></div>
+<p class="note">外的要因：どの案も、為替（円安）・資源の供給途絶・金利上昇で経営が悪化しうる。この資料はそのリスクを排除した事業を探すものではない。</p>
+
+<h2 id="s4">4. 分かったこと<small>空白は大きいが埋まる速さも速い。線引きは「提出先・所有権・人の運送」で決まる。地方は車と高齢者の需要が厚く、人口と商店街が細る。</small></h2>
+
+<h3 id="s4-1">4-1 中小企業のAI活用は2〜3割。未活用の理由は「使う業務がイメージできない」</h3>
+<figure>
+<figcaption>図1　生成AIを業務に使う企業は全体34.5%、従業員5人以下では29.6%<small>帝国データバンク「生成AIに関する企業の動向調査（2026年3月）」1万312社、発表2026-05-14。「非常に活用」＋「やや活用」の合計（%）</small></figcaption>
+<svg viewBox="0 0 900 220" role="img" aria-label="規模別の生成AI活用率">
+<g class="m"><text x="200" y="14">0</text><text x="360" y="14">20%</text><text x="520" y="14">40%</text><text x="680" y="14">60%</text></g>
+<line class="ax" x1="200" y1="18" x2="200" y2="200"/>
+<line class="grid" x1="360" y1="18" x2="360" y2="200"/><line class="grid" x1="520" y1="18" x2="520" y2="200"/><line class="grid" x1="680" y1="18" x2="680" y2="200"/>
+<text x="190" y="40" text-anchor="end">従業員1,000人超</text><rect class="bar3" x="200" y="28" width="509" height="16"/><text x="715" y="40">63.6</text>
+<text x="190" y="68" text-anchor="end">大企業</text><rect class="bar3" x="200" y="56" width="372" height="16"/><text x="578" y="68">46.5</text>
+<text x="190" y="96" text-anchor="end">全体</text><rect class="bar" x="200" y="84" width="276" height="16"/><text x="482" y="96">34.5</text>
+<text x="190" y="124" text-anchor="end">中小企業</text><rect class="bar2" x="200" y="112" width="259" height="16"/><text x="465" y="124">32.4</text>
+<text x="190" y="152" text-anchor="end">従業員5人以下</text><rect class="bar2" x="200" y="140" width="237" height="16"/><text x="443" y="152">29.6</text>
+<text x="190" y="180" text-anchor="end">小規模企業</text><rect class="bar2" x="200" y="168" width="224" height="16"/><text x="430" y="180">28.0</text>
+<text x="200" y="212" class="m">参考：同社の2024年6月調査では全体17.3%（21か月で約2倍）</text>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>調査</th><th class="num">数値</th><th>母集団・注</th></tr>
+<tr><td class="key">帝国データバンク（2026-03調査）</td><td class="num">34.5%</td><td>1万312社。大企業46.5／中小32.4／小規模28.0。業界別：サービス47.8、金融38.6、不動産34.9、運輸・倉庫27.5、建設26.4。活用業務1位「文章の作成・要約・校正」45.1%</td></tr>
+<tr><td class="key">中小企業庁 2026年版白書（第2-2-87図）</td><td class="num">30.3%</td><td>省力化投資でAI活用に「取り組んだ」中小企業。情報通信71.7／小売31.1／卸27.9／運輸27.4／建設25.9／製造24.9／宿泊飲食22.9。未活用理由1位「活用する業務がイメージできていない」</td></tr>
+<tr><td class="key">中小機構（2025-11〜12調査）</td><td class="num">20.4%</td><td>n=1,647。AI導入率（全社的＋一部）。導入企業の82.6%が生成AI、導入部門1位は総務・管理68.3%</td></tr>
+<tr><td class="key">総務省 令和8年版情報通信白書</td><td class="num">86.4%</td><td>「何らかの業務で生成AIを利用」（常用雇用者100人以上の企業中心）。中小企業で活用方針ありは58.1%、大企業74.0%</td></tr>
+</table></div>
+<p>読み方：大きい会社はもう使っており、小さい会社ほど使えていない。当社が売り込む相手（小規模事業者）と、当社が競う相手（同じ小規模の同業）の両方がこの「未活用の7割」に入っている。だから後発でも差がつく。ただし2年で倍になる速さで埋まっている（TDB 17.3%→34.5%）。</p>
+
+<h3 id="s4-2">4-2 3つの壁は、数字で見ると「10か月・7.7人」「人件費そのまま」「DX取組25%」</h3>
+<div class="tw"><table>
+<tr><th>壁</th><th>事実</th><th>出典</th><th>当社にとっての意味</th></tr>
+<tr><td class="key">壁1 開発費</td><td>受託開発は中央値で工数7,395人時・工期10.1か月・月7.7人（IPA）。予約システム350〜1,000万円、マッチングサイト300〜2,000万円以上（開発会社公表）</td><td class="src">IPA分析データ集2022／Walkers／カスタメディア／SIA</td><td>運営に要る仕組み（予約・配車・請求・報告）を自作できるなら、この費用が参入障壁でなくなる</td></tr>
+<tr><td class="key">壁2 専門職の人手</td><td>代行料金は件数・分・人単価の従量制（記帳44〜110円/仕訳、電話代行 月1万円、翻訳20〜30円/文字、文字起こし200〜250円/分）。fondeskは2026-10に月1万→1.2万円へ値上げ</td><td class="src">各社公式料金／JTF</td><td>原価＝人件費の業務ほど、AIで原価が下がる。ただし顧客も同じ手段を持つ（内製化）</td></tr>
+<tr><td class="key">壁3 現場のデジタル空白</td><td>従業員20人以下のDX「取組＋検討」25.4%、建設業38.0%（中小機構2024）。リフォーム契約書の電子化8.8%。ビルメン「現場従業員が集まりにくい」88.5%</td><td class="src">中小機構／住宅リフォーム推進協議会／全国ビルメン協会／国交省</td><td>見積・配車・顧客対応・集客・事務をAIで持った新規事業者は、同業の小規模事業者に対して原価と速さで差をつけられる</td></tr>
+</table></div>
+
+<h3 id="s4-3">4-3 法律の線引きは「提出先・所有権・人の運送」で決まる（条文で確認）</h3>
+<p class="lead2">要点：<b>同じ「書類を作る」でも、官公署に出すものは士業の独占、民間同士の書類は誰でも可。</b>物は「他人の物を売る・預かる」で許可が要り、人は「有償で運ぶ」で許可が要る。この表は Gemini 未確認（第10章⑥）。</p>
+<div class="tw"><table>
+<tr><th>業務</th><th>誰でもできる範囲</th><th>資格・許可が要る範囲（条文）</th></tr>
+<tr><td class="key">記帳・経理</td><td>証憑整理、仕訳入力、試算表・決算書の作成</td><td>税務書類の作成・税務代理・税務相談（税理士法2条・52条、無償でも禁止）</td></tr>
+<tr><td class="key">給与</td><td>給与額の計算、明細作成</td><td>社保・労保の申請書等の作成・提出代行（社労士法27条）。賃金台帳の作成は触れ得る【未確認】</td></tr>
+<tr><td class="key">契約書</td><td>ひな形の選択・自社文書の整形</td><td>他人の権利義務書類を報酬で作成（行政書士法1条の3・19条）、事件性のある法律事務（弁護士法72条）</td></tr>
+<tr><td class="key">許認可・補助金</td><td>要件整理、必要書類の案内、事業計画への助言</td><td>官公署提出書類の作成（行政書士法19条）＝補助金申請書も</td></tr>
+<tr><td class="key">登記</td><td>—</td><td>法務局提出書類の作成・代理（司法書士法73条、報酬要件なし）</td></tr>
+<tr><td class="key">採用</td><td>求人票の文案、媒体運用、応募者連絡、日程調整</td><td>あっせん（職安法30条 許可・基準資産500万円×事業所数）、代行者が勧誘するスカウト（36条）。求職者情報を集める媒体は届出（43条の2）</td></tr>
+<tr><td class="key">不動産</td><td>物件データ入力、間取り図、写真加工</td><td>媒介・重要事項説明（宅建業法12条・35条）</td></tr>
+<tr><td class="key">医療・介護の請求</td><td>レセプト作成・点検の受託、介護の代理請求（国保連の制度あり）</td><td>医療のオンライン送信の事務代行者は医師会等の団体に限定（請求命令4条）</td></tr>
+<tr><td class="key">中古品・他人の物</td><td>自社が売った物を買主から買い戻す（返品）、新品を仕入れて貸す・売る</td><td>他人の物の委託販売・買取（古物営業法2条・3条）。消費者の手に渡った新品も古物（警察庁2024-08-14）</td></tr>
+<tr><td class="key">保管</td><td>賃貸借型のスペース貸し（レンタル収納）</td><td>寄託を受けて保管（倉庫業法3条 登録、2〜3か月）</td></tr>
+<tr><td class="key">運送</td><td>軽貨物（届出、即日）、運送責任を負わない取次</td><td>一般貨物（許可、3〜5か月、5両以上）、運送責任を負う利用運送（登録）、有償送迎（道路運送法78条）</td></tr>
+<tr><td class="key">廃棄物</td><td>清掃・整理の作業</td><td>家庭ごみの収集運搬（廃棄物処理法7条、市町村長の自由裁量・新規許可は事実上困難）</td></tr>
+<tr><td class="key">建設</td><td>請負代金500万円未満の工事、安全書類・見積・積算の作成</td><td>500万円以上の工事（建設業許可）、許可申請書類の作成（行政書士法19条）</td></tr>
+<tr><td class="key">広告</td><td>運用代行・投稿作成</td><td>ステマ規制の名宛人は広告主（代行は対象外だが、違反表示を作らない責任が契約に乗る）</td></tr>
+</table></div>
+
+<h3 id="s4-4">4-4 地方の店舗型：車と高齢者の需要は厚いが、人口と商店街は細り、「賃料が安い」は統計で裏付けられない</h3>
+<figure>
+<figcaption>図2　都市が小さいほど車に使い、外食と塾には使わない<small>総務省 家計調査2024年、二人以上の世帯、1世帯1か月あたり（円）。中都市＝人口15万以上100万未満の市（豊橋市はここ）、小都市B・町村＝人口5万未満</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="都市階級別の家計支出">
+<line class="ax" x1="90" y1="260" x2="760" y2="260"/><line class="ax" x1="90" y1="30" x2="90" y2="260"/>
+<g class="m"><text x="84" y="264" text-anchor="end">0</text><text x="84" y="191" text-anchor="end">1万</text><text x="84" y="117" text-anchor="end">2万</text><text x="84" y="44" text-anchor="end">3万</text></g>
+<line class="grid" x1="90" y1="187" x2="760" y2="187"/><line class="grid" x1="90" y1="113" x2="760" y2="113"/><line class="grid" x1="90" y1="40" x2="760" y2="40"/>
+<g>
+<rect class="bar" x="130" y="105" width="40" height="155"/><rect class="bar2" x="174" y="143" width="40" height="117"/><rect class="bar3" x="218" y="235" width="40" height="25"/>
+<text x="150" y="99" text-anchor="middle" class="m">21,183</text><text x="194" y="137" text-anchor="middle" class="m">15,978</text><text x="238" y="229" text-anchor="middle" class="m">3,471</text>
+<text x="194" y="280" text-anchor="middle">大都市</text>
+</g>
+<g>
+<rect class="bar" x="300" y="74" width="40" height="186"/><rect class="bar2" x="344" y="156" width="40" height="104"/><rect class="bar3" x="388" y="239" width="40" height="21"/>
+<text x="320" y="68" text-anchor="middle" class="m">25,368</text><text x="364" y="150" text-anchor="middle" class="m">14,241</text><text x="408" y="233" text-anchor="middle" class="m">2,819</text>
+<text x="364" y="280" text-anchor="middle">中都市（豊橋市）</text>
+</g>
+<g>
+<rect class="bar" x="470" y="73" width="40" height="187"/><rect class="bar2" x="514" y="166" width="40" height="94"/><rect class="bar3" x="558" y="241" width="40" height="19"/>
+<text x="490" y="67" text-anchor="middle" class="m">25,529</text><text x="534" y="160" text-anchor="middle" class="m">12,780</text><text x="578" y="235" text-anchor="middle" class="m">2,557</text>
+<text x="534" y="280" text-anchor="middle">小都市A</text>
+</g>
+<g>
+<rect class="bar" x="640" y="56" width="40" height="204"/><rect class="bar2" x="684" y="187" width="40" height="73"/><rect class="bar3" x="728" y="252" width="40" height="8"/>
+<text x="660" y="50" text-anchor="middle" class="m">27,859</text><text x="704" y="181" text-anchor="middle" class="m">9,899</text><text x="748" y="246" text-anchor="middle" class="m">1,118</text>
+<text x="704" y="280" text-anchor="middle">小都市B・町村</text>
+</g>
+<g><rect class="bar" x="790" y="60" width="14" height="14"/><text x="810" y="72">自動車等関係費</text>
+<rect class="bar2" x="790" y="86" width="14" height="14"/><text x="810" y="98">外食</text>
+<rect class="bar3" x="790" y="112" width="14" height="14"/><text x="810" y="124">補習教育</text></g>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>業態</th><th class="st">推移</th><th>一次情報（店舗数・市場）</th><th>地方での読み方</th></tr>
+<tr><td class="key">洗車・コーティング</td><td class="ok st">増加</td><td>KeePer LABO 47店（FY2015）→184店（2026-06）、平均単価16,757円。愛知の世帯当たり自家用車1.209台（大阪0.611・東京0.405）</td><td>車依存が強い地方ほど需要が厚い</td></tr>
+<tr><td class="key">自動車整備</td><td class="ok st">売上増</td><td>総整備売上6兆6,592億円（+6.4%）、事業場92,251（4年ぶり減）、専業1事業場あたり約4,485万円（計算）</td><td>担い手が減り需要は増（車両8,270万台）。認証と整備士が壁</td></tr>
+<tr><td class="key">葬儀</td><td class="ok st">増加</td><td>事業所1,997（2013）→3,006（2024）、件数423,503→502,921、1件単価1,413→1,214千円。死亡160.5万人（2024）</td><td>件数は増えるが単価は下がり、事業所も増えて競争は強まる</td></tr>
+<tr><td class="key">ドラッグストア</td><td class="ok st">増加</td><td>24,536店（+813）、売上10兆6,427億円（+6.1%）</td><td>大手チェーンの領域</td></tr>
+<tr><td class="key">24時間ジム</td><td class="ok st">増加</td><td>エニタイム1,235店（+62/年）、chocoZAP 2,005店。フィットネス会員数は2019年336万→2024年288万人</td><td>大手FCが地方まで先行。店は増え会員は減っている</td></tr>
+<tr><td class="key">コンビニ</td><td class="warn st">横ばい</td><td>55,322店（2017）→56,054店（2025）。セブンCタイプ 加盟金260万円・最低保証2,000万円/年</td><td>純増は止まっている</td></tr>
+<tr><td class="key">整骨院</td><td class="warn st">横ばい</td><td>施術所50,924（+8）。療養費3,855億円（H25）→2,759億円（R5）</td><td>店は増えず、保険収入は減っている</td></tr>
+<tr><td class="key">コインランドリー</td><td class="warn st">大手減</td><td>市場1,155億円（+0.9%）。WASHハウス583→563店（2024-12→2026-08）。標準出店3,150〜4,000万円</td><td>市場は微増だが大手FCの店は減少。資本の壁が大きい</td></tr>
+<tr><td class="key">学習塾</td><td class="ng st">受講生減</td><td>受講生1,470万人（2021）→1,415万人（2024）、事業所11,558→11,001。補習教育支出は町村で大都市の3分の1</td><td>地方ほど需要が薄い</td></tr>
+<tr><td class="key">美容室</td><td class="ng st">過剰</td><td>美容所274,070（毎年+1.5%）、1店あたり人口約489人</td><td>店が増え続けており、人口減の地方では1店あたりの客が減る</td></tr>
+<tr><td class="key">無人販売店</td><td class="ng st">縮小</td><td>無人餃子131店（2020年度末）→約1,400店（2023-07、TDB「飽和状態」）。雪松400超→219店（2024-11）</td><td>ブームは終わり、地方で閉店が続く</td></tr>
+<tr><td class="key">キャンプ場・グランピング</td><td class="ng st">供給過多</td><td>オートキャンプ場1,269→1,570か所（+24%）、稼働率16.3%。宿泊業の2025年退出267件、うち地方75.3%</td><td>協会自身が「施設が増えて1施設の集客が薄まった」と記載</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>地方の前提</th><th class="num">数値</th><th>出典</th></tr>
+<tr><td class="key">豊橋市の人口</td><td class="num">371,920（2020）→338,782（2035）→304,309（2050）</td><td class="src">社人研 令和5年推計。2050年は▲18.2%、15〜64歳は▲29.7%</td></tr>
+<tr><td class="key">豊橋市の65歳以上割合</td><td class="num">26.0%→31.5%→37.3%</td><td class="src">同上</td></tr>
+<tr><td class="key">商店街の空き店舗率</td><td class="num">11.30%</td><td class="src">中小企業庁 令和6年度商店街実態調査。「町・村」の商店街は80.8%が『衰退』</td></tr>
+<tr><td class="key">店舗賃料（1F・坪・月）</td><td class="num">銀座63,700／心斎橋27,400／名古屋・栄24,500円</td><td class="src">日本不動産研究所 店舗賃料トレンド2026春。<b>豊橋クラスの中核市の店舗賃料統計は存在しない【未確認】</b></td></tr>
+<tr><td class="key">開業費用</td><td class="num">中央値600万円・平均975万円</td><td class="src">日本公庫 2025年度新規開業実態調査。黒字基調67.0%</td></tr>
+</table></div>
+<p>つまり、ご想定の「地方なら固定費が安い」は公表統計では確かめられず（住居の家賃地代は町村で大都市の4分の1だが、これは家計の話で店舗賃料ではない）、確かめられたのは<b>車と高齢者に需要が寄ること</b>と、<b>人口と商店街が細ること</b>の2点である。地方で店を構えるなら、車関連（洗車・タイヤ・整備）と高齢者関連（配食・生活支援・葬儀）が需要側のデータと合う。</p>
+
+<h3 id="s4-5">4-5 自社事業と関連する領域：古物の線だけ越えられない。それ以外は実務経験がそのまま使える</h3>
+<div class="tw"><table>
+<tr><th>領域</th><th>事実</th><th>当社への意味</th></tr>
+<tr><td class="key">古物の線</td><td>「委託を受けて売買」も古物営業。小売店から一度でも消費者の手に渡った物品は未使用でも古物（警察庁解釈基準 2024-08-14）。自社が売った物を買主から直接買い戻すことだけは除外（2条2項1号）</td><td>フリマ出品代行・買取・他社返品品の再販は許可なしでは不可。自社商品の返品再販は可。メーカー等から仕入れた新品の販売・レンタル・卸は可</td></tr>
+<tr><td class="key">保管・発送</td><td>他人の物を預かって保管対価を得れば倉庫業登録（2〜3か月）。運送責任を負って宅配便を使えば第一種貨物利用運送の登録。公開単価：入庫30円/個、ラベル貼12〜30円/点、出荷205円/箱（テラロジ・e-fba）</td><td>発送代行は登録の要否を先に確認する必要がある。単価は低く、量で回す型</td></tr>
+<tr><td class="key">EC運営・登録代行</td><td>運営代行 月18万円〜（TRUE）〜50万円（ジャグー）、または売上の5〜20%。商品登録50〜500円/点、撮影400円/カット。いつもは契約14,000件</td><td>当社の実務（BASE・WooCommerce・Amazon）と自作システムがそのまま原価優位になる領域。競合は多い</td></tr>
+<tr><td class="key">越境・輸出</td><td>日→中2兆6,372億円、日→米3兆1,397億円（2024）。eBay代行手数料15%（ウルベイ）、Shopee代行 月3万円。該非判定は輸出者の責任（外為法48条）、輸出免税は許可書等の7年保存（消費税法7条）</td><td>転送事業の実務と重なる。輸出者としての義務（該非判定・書類保存）を仕組みに入れる</td></tr>
+<tr><td class="key">卸売</td><td>事業所348,889、開業率4.3%・廃業率5.2%（2016〜21）。一般の卸売に許認可は見当たらず（酒類・医薬品は別）。スーパーデリバリーは取引額の10〜15%</td><td>寝かせ転売で培った商品の目利きを、新品の卸に転用できる</td></tr>
+</table></div>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ。</small></h2>
+<ul>
+<li><b>収益の試算：</b>行っていない（K-002）。案を選んだ後に、選んだ案だけ行う</li>
+<li><b>市場規模の公的統計が無い業種：</b>ハウスクリーニング・洗車・害虫駆除・空き家管理などは事業者の公開料金と業界団体の数値で代えた</li>
+<li><b>法的な線の公式見解が無い点：</b>採用代行の各行為、賃金台帳の作成、不動産図面と行政書士法、流通段階在庫の古物該当性、所有権を移さない返品受託。いずれも【未確認】として台帳に残した</li>
+<li><b>自治体条例：</b>害虫駆除・コインランドリー・屋外広告業（豊橋市・大阪市）の条例上の届出は未確認</li>
+<li><b>地方の店舗賃料：</b>中核市の店舗賃料を示す公表統計は存在しない。実勢は物件情報で個別に見る必要がある</li>
+<li><b>FC本部の出店基準：</b>商圏人口の数値基準は大半が非公開。加盟せずに読める法定開示書面（JFA約50社）は今回未読</li>
+<li><b>情報商材・スクール型：</b>対象外とした（継続収益の型ではなく、特商法・景表法のトラブルが多い領域のため）</li>
+<li><b>Gemini クロスレビュー：</b>未実施。第4-3節の法律の線引き表は、確定前に確認が必要（貼り付け用の依頼文を同フォルダに置いた）</li>
+</ul>
+
+<h2 id="s6">6. 案の比較（5つの型）<small>「余地あり」の数は型A・C・Dで並ぶが、内製化されにくさと地方の需要データを重ねると、型C（現場業種）と型D（自社関連）が残る。</small></h2>
+<div class="tw"><table>
+<tr><th>型</th><th class="st">判定</th><th class="num">件数</th><th class="num">余地あり</th><th>理由</th></tr>
+<tr><td class="key">A　開発費の壁（運営型）</td><td class="warn st">条件付</td><td class="num">20</td><td class="num">7</td><td>空き家管理・レンタル収納・イベント事務局・建設書類代行など資格不要のものが残る。一方でプラットフォーム大手（配車・家事代行）や自治体営業（ふるさと納税）が条件になる案が多い</td></tr>
+<tr><td class="key">B　専門職の人手の壁（代行）</td><td class="warn st">条件付</td><td class="num">15</td><td class="num">4</td><td>士業独占で3案が不可。残りも翻訳・文字起こし・SNSは顧客がAIで内製できる。残るのは国保連請求・積算・物件入力・記帳下請けなど、業務知識と法定の型が要るもの</td></tr>
+<tr><td class="key">C　現場業種（AI裏方の事業者）</td><td class="ok st">推奨</td><td class="num">24</td><td class="num">7</td><td>許認可なしで始められる業種が多く、業界自身が人手不足とIT化の遅れを公表。地方の需要データ（車・高齢者・空き家）と合う。作業は雇用で増やせる</td></tr>
+<tr><td class="key">D　自社関連（物販・EC・物流）</td><td class="ok st">推奨</td><td class="num">15</td><td class="num">7</td><td>実務経験と自作システムがそのまま原価優位。古物の線（3案）だけ越えられない。競合は多いが、撮影・発送など物理工程を含めると内製化されにくい</td></tr>
+<tr><td class="key">E　地方の店舗型</td><td class="warn st">一部のみ</td><td class="num">18</td><td class="num">1</td><td>車関連は伸び、高齢者関連は需要増。無人販売・キャンプ場・学習塾・美容室は飽和・減少の一次データ。設備型は資本の壁が大きく、AIの効きが小さい</td></tr>
+</table></div>
+<figure>
+<figcaption>図3　「余地あり」は型A・C・Dが各7案、型Eは18案中1案<small>横軸＝案の件数。灰色＝全件、青＝所見「余地あり」（Claude評価）</small></figcaption>
+<svg viewBox="0 0 900 250" role="img" aria-label="型ごとの件数と余地ありの件数">
+<g class="m"><text x="300" y="14">0</text><text x="400" y="14">5</text><text x="500" y="14">10</text><text x="600" y="14">15</text><text x="700" y="14">20</text><text x="800" y="14">25</text></g>
+<line class="ax" x1="300" y1="18" x2="300" y2="232"/>
+<line class="grid" x1="400" y1="18" x2="400" y2="232"/><line class="grid" x1="500" y1="18" x2="500" y2="232"/><line class="grid" x1="600" y1="18" x2="600" y2="232"/><line class="grid" x1="700" y1="18" x2="700" y2="232"/><line class="grid" x1="800" y1="18" x2="800" y2="232"/>
+<text x="290" y="44" text-anchor="end">A 開発費の壁</text><rect class="bar3" x="300" y="28" width="400" height="10"/><rect class="bar" x="300" y="40" width="140" height="10"/><text x="706" y="38" class="m">20</text><text x="446" y="50" class="m">7</text>
+<text x="290" y="86" text-anchor="end">B 専門職の壁</text><rect class="bar3" x="300" y="70" width="300" height="10"/><rect class="bar" x="300" y="82" width="80" height="10"/><text x="606" y="80" class="m">15</text><text x="386" y="92" class="m">4</text>
+<text x="290" y="128" text-anchor="end">C 現場業種</text><rect class="bar3" x="300" y="112" width="480" height="10"/><rect class="bar" x="300" y="124" width="140" height="10"/><text x="786" y="122" class="m">24</text><text x="446" y="134" class="m">7</text>
+<text x="290" y="170" text-anchor="end">D 自社関連</text><rect class="bar3" x="300" y="154" width="300" height="10"/><rect class="bar" x="300" y="166" width="140" height="10"/><text x="606" y="164" class="m">15</text><text x="446" y="176" class="m">7</text>
+<text x="290" y="212" text-anchor="end">E 地方の店舗型</text><rect class="bar3" x="300" y="196" width="360" height="10"/><rect class="bar" x="300" y="208" width="20" height="10"/><text x="666" y="206" class="m">18</text><text x="326" y="218" class="m">1</text>
+</svg>
+</figure>
+
+<h2 id="s7">7. 推奨と理由<small>狙う場所は「顧客が自分でAIでやれない × 原価の大半が人件費・システム費」の象限。現場作業・物理工程・法定の型を含む代行と運営がここに入る。</small></h2>
+<figure>
+<figcaption>図4　当社が狙う象限は「内製されにくい × 人件費・システム費が原価の大半」<small>横軸＝顧客が自分でAIを使って済ませられるか。縦軸＝原価に占める人件費・システム費の割合。位置はClaude評価。括弧内は台帳のID</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="2×2の位置取り図">
+<line class="ax" x1="120" y1="20" x2="120" y2="270"/><line class="ax" x1="120" y1="270" x2="880" y2="270"/>
+<line class="grid" x1="500" y1="20" x2="500" y2="270"/><line class="grid" x1="120" y1="145" x2="880" y2="145"/>
+<text x="500" y="295" text-anchor="middle" class="m">← 顧客が自分でAIでやりにくい（現場・物理・法定の型が要る）　　　　　顧客が自分でAIでやれる →</text>
+<text x="110" y="40" text-anchor="end" class="m">人件費・</text><text x="110" y="56" text-anchor="end" class="m">システム費</text><text x="110" y="72" text-anchor="end" class="m">が大 ↑</text>
+<text x="110" y="250" text-anchor="end" class="m">小 ↓</text>
+<rect class="us" x="140" y="34" width="340" height="96" rx="6"/>
+<text x="310" y="58" text-anchor="middle" class="w" style="font-size:13px">当社の狙い：現場・物理・法定の型を含む代行と運営</text>
+<text x="310" y="80" text-anchor="middle" class="w">定期清掃（現-02）／軽貨物（現-03）／空き家管理（開-12）</text>
+<text x="310" y="100" text-anchor="middle" class="w">発送・登録代行（自-02・04）／国保連請求（職-13）</text>
+<text x="310" y="120" text-anchor="middle" class="w">積算（職-11）／建設書類（開-13）／ふるさと納税運営（開-01）</text>
+<rect class="cand" x="520" y="34" width="340" height="96" rx="6"/>
+<text x="690" y="66" text-anchor="middle">文章・翻訳・文字起こし・SNS投稿の代行</text>
+<text x="690" y="88" text-anchor="middle" class="m">（職-07〜09・14）顧客がAIで済ませ、価格が下がる</text>
+<rect class="cand" x="140" y="160" width="340" height="96" rx="6"/>
+<text x="310" y="196" text-anchor="middle">設備型：コインランドリー・洗車機・駐車場・ジム</text>
+<text x="310" y="218" text-anchor="middle" class="m">（地-04・06、開-05）AIの効きが小さく資本勝負</text>
+<rect class="cand" x="520" y="160" width="340" height="96" rx="6"/>
+<text x="690" y="196" text-anchor="middle">誰でも作れる物販・情報販売</text>
+<text x="690" y="218" text-anchor="middle" class="m">壁がなく、広告の入札で決まる</text>
+</svg>
+</figure>
+<h3>推奨（提案）：型Cと型Dから3〜5案を選び、最初に「内製化されないか」を確かめる</h3>
+<div class="pillars">
+<div class="pillar must"><h4>柱1　AI×現場の代行・運営（型C）</h4><dl><dt>何をする</dt><dd>定期清掃・草刈り／空き家管理・軽貨物・高齢者の生活支援のいずれかを、見積〜配車〜報告〜請求をAIで持った事業者として始める</dd><dt>成立する条件</dt><dd>作業者を雇える。月額・定期契約（B2B・管理会社・自治体）を取れる</dd><dt>守り方（提案）</dt><dd>単発の個人客ではなく継続契約を主にし、地域（豊橋）で密度を上げる</dd></dl></div>
+<div class="pillar must"><h4>柱2　AI×ECの裏方（型D）</h4><dl><dt>何をする</dt><dd>運営代行・商品登録・越境出品・発送代行を、自作システム＋撮影・梱包の物理工程込みで提供する</dd><dt>成立する条件</dt><dd>自社の実務を「他社にも売れる型」に整えられる。倉庫業・利用運送の登録要否を先に確認</dd><dt>守り方（提案）</dt><dd>文章生成だけの部分は内製化されるので、撮影・検品・発送を必ず含める</dd></dl></div>
+<div class="pillar cond"><h4>柱3　AI×法定の型がある事務代行（型A・B）</h4><dl><dt>何をする</dt><dd>国保連請求・建設の安全書類／積算・記帳下請け・物件入力のように、業務知識と法定の型が要る事務を請け負う</dd><dt>成立する条件</dt><dd>第4-3節の線を守る設計（税務・社保・官公署書類に踏み込まない）</dd><dt>守り方（提案）</dt><dd>士業と提携し、独占範囲は士業へ回す。Gemini確認の後に着手</dd></dl></div>
+<div class="pillar cond"><h4>柱4　地方の店舗は「車と高齢者」に限る（型E）</h4><dl><dt>何をする</dt><dd>洗車・タイヤ保管・配食・生活支援のように、地方の家計が使っている領域だけ店舗を検討する</dd><dt>成立する条件</dt><dd>ロードサイド物件。人口減（2050年▲18%）を織り込んだ商圏</dd><dt>守り方（提案）</dt><dd>店舗単独ではなく、柱1の訪問サービスと組み合わせて固定費を分担する</dd></dl></div>
+</div>
+<h3>反論（自分で書く）</h3>
+<ul>
+<li><b>競合も同じAIを使える。</b>価格優位は一時的で、TDBの活用率は21か月で約2倍。優位を残すのは、AIそのものではなく「先に取った継続契約・地域密度・現場の段取り・データ」である</li>
+<li><b>「余地あり」は一次情報が入口を塞いでいないという意味で、儲かるという意味ではない。</b>収益は選んだ案だけ次の段階で見る（K-002）</li>
+<li><b>現場業種は労働集約で、人が採れなければ回らない。</b>ビルメン自身が「集まりにくい」88.5%。雇用の前提が崩れれば柱1は成立しない</li>
+<li><b>法律の線は条文で確認したが、公式見解が無い点が5つ残る。</b>特に採用代行・給与計算・返品受託は着手前にGemini確認と専門家確認が要る</li>
+<li><b>地方店舗型の「賃料が安い」は確認できていない。</b>裏付けが無いまま店舗投資を前提にしない</li>
+</ul>
+
+<h2 id="s8">8. 数字（公開料金の相場）<small>収益の試算はしない。代わりに「今その仕事にいくら払われているか」の公開値を並べた。値付けの起点に使う。</small></h2>
+<div class="tw"><table>
+<tr><th>業務</th><th class="num">公開料金の例</th><th>出典（事業者）</th></tr>
+<tr><td class="key">記帳代行</td><td class="num">44〜110円/仕訳</td><td class="src">記帳代行ドットコム／会計ドットコム</td></tr>
+<tr><td class="key">給与計算代行</td><td class="num">5,000円/回＋500円/名</td><td class="src">FKJ</td></tr>
+<tr><td class="key">電話代行</td><td class="num">月10,000〜12,000円（50件まで）</td><td class="src">fondesk（2026-10改定）／CUBE</td></tr>
+<tr><td class="key">翻訳</td><td class="num">5〜9円/文字（AI併用）／20〜30円/文字（JTF目安）</td><td class="src">Gengo／日本翻訳連盟</td></tr>
+<tr><td class="key">文字起こし</td><td class="num">200〜250円/分</td><td class="src">文字起こし専門com／東京反訳</td></tr>
+<tr><td class="key">物件情報入力・間取り図</td><td class="num">250円/件・100〜390円/枚</td><td class="src">ミュールズ</td></tr>
+<tr><td class="key">介護 国保連請求代行</td><td class="num">月8,000円＋750円/利用者</td><td class="src">WITH介護</td></tr>
+<tr><td class="key">EC運営代行</td><td class="num">月18〜50万円、または売上の5〜20%</td><td class="src">TRUE／ジャグー／相場</td></tr>
+<tr><td class="key">商品登録・撮影</td><td class="num">50〜500円/点・400円/カット</td><td class="src">リクサポート／バーチャルイン</td></tr>
+<tr><td class="key">FBA納品・発送代行</td><td class="num">入庫30円/個、ラベル12〜30円/点、出荷205円/箱</td><td class="src">テラロジ／e-fba</td></tr>
+<tr><td class="key">エアコンクリーニング</td><td class="num">12,100〜15,400円/台</td><td class="src">おそうじ本舗／ダスキン</td></tr>
+<tr><td class="key">定期清掃（床）</td><td class="num">170〜190円/㎡（最低30,000円）</td><td class="src">冨士ファシリティーズ</td></tr>
+<tr><td class="key">軽貨物（20kmまで）</td><td class="num">5,500円</td><td class="src">赤帽愛知</td></tr>
+<tr><td class="key">草刈り</td><td class="num">1人1時間2,500〜3,000円</td><td class="src">空家・空地管理センター</td></tr>
+<tr><td class="key">空き家管理</td><td class="num">月5,500〜14,300円</td><td class="src">日本空き家サポート</td></tr>
+</table></div>
+<p class="note">開業費用の目安：日本公庫の2025年度調査で中央値600万円・平均975万円、1年目の黒字基調67.0%。売上歩合型の代行は、民泊15〜20%、レンタルスペース7.7%、ふるさと納税13.2%、eBay出品代行15%。</p>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>いちばん危ない前提は「AIで原価を下げた代行・運営は、顧客が自分でAIを使うようになっても需要が残る」こと。選んだ案ごとに、作らずに5社へ聞いて確かめる。</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td class="key">いちばん危ない前提</td><td>選んだ案の顧客は、AIが普及しても自分でやらず、当社に頼み続ける（内製化されない）</td></tr>
+<tr><td class="key">なぜ一番危ないか</td><td>未活用理由の1位が「活用する業務がイメージできていない」＝今は空白でも、イメージがつけば埋まる。活用率は21か月で約2倍。ここが崩れると型A・Bの多くが価格競争に落ちる</td></tr>
+<tr><td class="key">確かめ方</td><td>venture-hypothesis の型で、案ごとに既存の取引先・地元事業者5社に「今これをどうしているか／いくらなら頼むか」を聞く。作らない</td></tr>
+<tr><td class="key">費用・期限</td><td>0円／案を選んでから2週間</td></tr>
+<tr><td class="key">合格の線（提案）</td><td>5社のうち2社以上が価格を聞いてくる、または「自分ではやらない理由」を具体的に言う</td></tr>
+<tr><td class="key">不合格なら</td><td>その案は止め、物理工程（撮影・発送・現場作業）の比率が高い別案へ切り替える</td></tr>
+<tr><td class="key">先に決めること</td><td>案ごとに「賭けてよい上限（金額・期間）」を坂野様が決める。Claudeは提案しない</td></tr>
+</table></div>
+<figure>
+<figcaption>図5　案の選択から最初の判定まで約4週間、費用0円<small>週単位。第10章の回答が出てから開始。Gemini確認は法律の線引き表（4-3）を対象に1回</small></figcaption>
+<svg viewBox="0 0 960 230" role="img" aria-label="工程のガント図">
+<g class="m"><text x="290" y="16">第1週</text><text x="450" y="16">第2週</text><text x="610" y="16">第3週</text><text x="770" y="16">第4週</text></g>
+<line class="grid" x1="410" y1="22" x2="410" y2="205"/><line class="grid" x1="570" y1="22" x2="570" y2="205"/><line class="grid" x1="730" y1="22" x2="730" y2="205"/><line class="grid" x1="890" y1="22" x2="890" y2="205"/>
+<text x="240" y="44" text-anchor="end">① 第10章の6点をご判断・3〜5案を選ぶ</text><rect class="bar2" x="250" y="30" width="80" height="18" rx="3"/>
+<text x="240" y="78" text-anchor="end">② 法律の線引き表を Gemini で確認</text><rect class="bar4" x="330" y="64" width="80" height="18" rx="3"/>
+<text x="240" y="112" text-anchor="end">③ 案ごとに KASETSU.md（上限・死ぬ条件）</text><rect class="bar" x="410" y="98" width="100" height="18" rx="3"/>
+<text x="240" y="146" text-anchor="end">④ 5社に聞く（内製化されないかの検証）</text><rect class="bar" x="510" y="132" width="220" height="18" rx="3"/>
+<text x="240" y="180" text-anchor="end">⑤ 結果を受けて 進む／止める／変える</text><rect class="bar2" x="730" y="166" width="80" height="18" rx="3"/>
+<text x="240" y="205" text-anchor="end" class="m">⑥ 進む案だけ収益の試算・要件定義</text><rect class="bar3" x="810" y="191" width="80" height="14" rx="3"/>
+</svg>
+</figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>6点。★＝Claudeの推奨。「全部推奨どおり」でも、番号だけの指定でも進められる。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢</th><th>推奨と理由</th></tr>
+<tr><td>①</td><td>深掘りする型と案（3〜5案）</td><td>台帳92案から番号で指定</td><td>★型C・型Dの「余地あり」14案の中から。理由は第6・7章（内製化されにくく、地方の需要データと合い、自社の実務が使える）</td></tr>
+<tr><td>②</td><td>地方の店舗型（型E）の扱い</td><td>A 車・高齢者関連だけ残す／B 全部残す／C 外す</td><td>★A。飽和・減少の一次データがある業態（無人販売・キャンプ場・学習塾・美容室）は外し、洗車・タイヤ・配食・生活支援は柱1と組み合わせて残す</td></tr>
+<tr><td>③</td><td>★印（許認可3か月以上）の案を候補に残すか</td><td>A 残す／B 外す</td><td>★A。トラック引越し・倉庫業登録・特定整備は「後から取る」道があるため、外さず後回しにする</td></tr>
+<tr><td>④</td><td>古物商許可を取る計画を立てるか</td><td>A 立てる／B 当面立てない</td><td>推奨なし（坂野様の判断）。取れば自-05・自-06・自-12・開-16・現-06の買取部分が解禁される</td></tr>
+<tr><td>⑤</td><td>選んだ案に賭けてよい上限（金額・期間）</td><td>案ごとに金額と月数</td><td>推奨なし（venture-hypothesis の決まりでClaudeは提案しない）</td></tr>
+<tr><td>⑥</td><td>法律の線引き表（4-3）の Gemini 確認</td><td>A 案を選ぶ前に実施／B 案を選んだ後に実施</td><td>★A。線引きが変わると台帳の✕・△が動くため、選ぶ前に確認する。貼り付け用の依頼文を同フォルダに置いた</td></tr>
+</table></div>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本（対応する DECISIONS.md の決定はまだ無い）。承認後に D-番号を採り、本書と食い違ったら DECISIONS.md を正とする。</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>初版</td><td>2026-09-30</td><td>新規作成（案・未承認）。台帳版カタログv1（92案）と同時に提出。Gemini未実施</td></tr>
+</table></div>
+<h3>出典（一次情報。台帳に記載した各社の公式料金ページは社名で検索可能）</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>資料</th><th>URL</th></tr>
+<tr><td>1</td><td>帝国データバンク「生成AIに関する企業の動向調査（2026年3月）」2026-05-14／同2024-08-01</td><td class="src">https://www.tdb.co.jp/report/economic/20260514-genai/</td></tr>
+<tr><td>2</td><td>中小企業庁「2026年版中小企業白書」第2部第2章第2節（第2-2-87図）</td><td class="src">https://www.chusho.meti.go.jp/pamflet/hakusyo/2026/chusho/b2_2_2.html</td></tr>
+<tr><td>3</td><td>中小機構「中小企業のAI等の利活用に係る実態調査（2026年3月）」／「DX推進に関する調査（2024年）」</td><td class="src">https://www.smrj.go.jp/research_case/questionnaire/fbrion0000002pjw-att/202603_AI_point.pdf</td></tr>
+<tr><td>4</td><td>総務省「令和8年版情報通信白書」第Ⅰ部第2章／「令和7年通信利用動向調査」</td><td class="src">https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r08/pdf/n1210000.pdf</td></tr>
+<tr><td>5</td><td>IPA「ソフトウェア開発分析データ集2022」</td><td class="src">https://www.ipa.go.jp/digital/software-survey/metrics/metrics2022.html</td></tr>
+<tr><td>6a</td><td>e-Gov法令検索：士業法（税理士法・社労士法・行政書士法・司法書士法・弁護士法）、職業安定法、宅建業法、古物営業法</td><td class="src">https://laws.e-gov.go.jp/</td></tr>
+<tr><td>6b</td><td>e-Gov法令検索：倉庫業法、貨物自動車運送事業法、貨物利用運送事業法、廃棄物処理法、道路運送法、建設業法・同施行令</td><td class="src">同上</td></tr>
+<tr><td>6c</td><td>e-Gov法令検索：住宅宿泊事業法、動物愛護管理法、食品衛生法、消防法、航空法、農地法、特定商取引法</td><td class="src">同上</td></tr>
+<tr><td>7</td><td>警察庁「古物営業法の解釈基準」（令和6年8月14日 丙生企発第272号）／愛知県警 古物営業Q&A</td><td class="src">https://www.npa.go.jp/laws/notification/seian/seiki/2024kobutsukaisyaku.pdf ／ https://www.pref.aichi.jp/police/shinsei/sonota/qanda.html</td></tr>
+<tr><td>8a</td><td>国税庁「税理士制度のQ&A」／法務省 弁護士法72条 指針（2026-08-21）</td><td class="src">https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/02.htm ／ https://www.moj.go.jp/content/001469040.pdf</td></tr>
+<tr><td>8b</td><td>厚労省「募集・求人業務取扱要領」「令和4年改正職業安定法Q&A」</td><td class="src">https://www.mhlw.go.jp/content/11600000/001497522.pdf ／ https://www.mhlw.go.jp/content/001250191.pdf</td></tr>
+<tr><td>9a</td><td>国交省：一般貨物 標準処理期間（関東運輸局）／倉庫業 標準処理期間</td><td class="src">https://wwwtb.mlit.go.jp/kanto/content/000263003.pdf ／ https://www.mlit.go.jp/common/001215005.pdf</td></tr>
+<tr><td>9b</td><td>観光庁 住宅宿泊管理業 登録要件／NASVA 貨物軽自動車安全管理者講習</td><td class="src">https://www.mlit.go.jp/kankocho/minpaku/business/acting/registration.html ／ https://www.nasva.go.jp/fusegu/kamotsu_kousyu.html</td></tr>
+<tr><td>10</td><td>環境省 一般廃棄物 通知（環廃対213号）・Q&A／全葬連 資料（消費者委員会）／厚労省 建築物清掃業登録</td><td class="src">https://www.env.go.jp/hourei/11/000478.html ／ https://www.cao.go.jp/consumer/history/04/kabusoshiki/other/meeting5/doc/170428_shiryou5_1.pdf</td></tr>
+<tr><td>11</td><td>総務省 家計調査2024（都市階級別）／住宅・土地統計調査2023／社人研 地域別将来推計人口（令和5年推計・愛知県）</td><td class="src">https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040247064&fileKind=0 ／ https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/3kekka/Municipalities/23.xlsx</td></tr>
+<tr><td>12a</td><td>中小企業庁「令和6年度商店街実態調査」</td><td class="src">https://www.syoutengai.or.jp/data/250617shoutengai01.pdf</td></tr>
+<tr><td>12b</td><td>日本不動産研究所「店舗賃料トレンド［2026春］」／自動車検査登録情報協会 世帯当たり普及台数（2025-03）</td><td class="src">https://www.reinet.or.jp/wp-content/uploads/2026/03/Retail-Rent-Trends_spring-2026.pdf ／ https://www.airia.or.jp/publish/file/kenbetsu2025.pdf</td></tr>
+<tr><td>13a</td><td>経産省 特定サービス産業動態統計（葬儀業・学習塾・フィットネスクラブ）／令和6年度電子商取引市場調査</td><td class="src">https://www.meti.go.jp/statistics/tyo/tokusabido/result/result_1.html ／ https://www.meti.go.jp/policy/it_policy/statistics/outlook/250826_kohyoshiryo.pdf</td></tr>
+<tr><td>13b</td><td>厚労省 衛生行政報告例（美容所・理容所／柔道整復施術所）</td><td class="src">https://www.mhlw.go.jp/toukei/saikin/hw/eisei_houkoku/23/dl/kekka3.pdf ／ https://www.mhlw.go.jp/toukei/saikin/hw/eisei/24/dl/kekka3.pdf</td></tr>
+<tr><td>14</td><td>上場企業IR・FC条件（KeePer技研・Fast Fitness Japan・RIZAP・WASHハウス・パーク24・ティア・神戸物産・ワークマン・セブン）</td><td class="src">各社IR・加盟店募集ページ</td></tr>
+<tr><td>15a</td><td>帝国データバンク：無人餃子店（2023-09-15）／宿泊業の倒産（2026-02-06）</td><td class="src">https://prtimes.jp/main/html/rd/p/000000740.000043465.html ／ https://www.tdb.co.jp/report/industry/20260206-hotel25y/</td></tr>
+<tr><td>15b</td><td>矢野経済研究所：コインランドリー市場（2026-04-13）、メディカル給食・在宅配食（2025-07-25）</td><td class="src">https://www.yano.co.jp/press-release/show/press_id/4101 ／ https://www.yano.co.jp/press-release/show/press_id/3857</td></tr>
+<tr><td>16a</td><td>全国ビルメンテナンス協会 実態調査（年鑑2026）／日本オートキャンプ協会「オートキャンプ白書2026」</td><td class="src">https://www.j-bma.or.jp/data/115554 ／ https://www.autocamp.or.jp/post-22088/</td></tr>
+<tr><td>16b</td><td>日整連「令和7年度自動車特定整備業実態調査」／全日本トラック協会／日本翻訳連盟</td><td class="src">https://www.jaspa.or.jp/Portals/0/resources/jaspahp/member/data/pdf/R07jittaityousa.pdf ／ https://www.jtf.jp/tips/price</td></tr>
+<tr><td>17</td><td>日本公庫「2025年度新規開業実態調査」2025-12-05</td><td class="src">https://www.jfc.go.jp/n/findings/pdf/kaigyo_251205_1.pdf</td></tr>
+<tr><td>18</td><td>企業の公式料金ページ（台帳の各行に社名で記載）</td><td class="src">各社公式サイト（社名で検索可能）</td></tr>
+</table></div>
+<p class="note">台帳との関係：本書と台帳版カタログは「案」であり、DECISIONS.md への記帳は坂野様の承認後に行う。過去の探し方資料（v4〜v6・型2手順書）は削除せず残置する。</p>
+</main></div></body></html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>店舗型ビジネスの市場調査</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+a{color:var(--accent)}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+.src{font-size:13px} .src li{margin:3px 0}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<b>目次</b>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. 背景と調査の範囲</a>
+<a href="#s2">2. 仮説の検証</a>
+<a class="s" href="#s2-1">2-1 仮説の要素ごとの判定</a>
+<a class="s" href="#s2-2">2-2 商圏の広さ</a>
+<a class="s" href="#s2-3">2-3 豊橋市・大阪市の人口の見通し</a>
+<a href="#s3">3. 業態の調査</a>
+<a class="s" href="#s3-1">3-1 今伸びている業態</a>
+<a class="s" href="#s3-2">3-2 長く残っている業態</a>
+<a class="s" href="#s3-3">3-3 開業後の生存率</a>
+<a class="s" href="#s3-4">3-4 失速した業態</a>
+<a href="#s4">4. 本書で扱っていないこと</a>
+<a href="#s5">5. 立ち上げに必要な情報</a>
+<a class="s" href="#s5-1">5-1 そろえる情報の一覧</a>
+<a class="s" href="#s5-2">5-2 開業費用</a>
+<a class="s" href="#s5-3">5-3 融資</a>
+<a class="s" href="#s5-4">5-4 補助金</a>
+<a class="s" href="#s5-5">5-5 許認可</a>
+<a class="s" href="#s5-6">5-6 物件・人件費</a>
+<a class="s" href="#s5-7">5-7 商圏を調べる無料ツール</a>
+<a class="s" href="#s5-8">5-8 FC加盟と独立の違い</a>
+<a href="#s6">6. 未確認事項</a>
+<a href="#s7">7. 出典と変更履歴</a>
+</nav>
+<main>
+<h1>店舗型ビジネスの市場調査 ― 仮説の検証・伸びている業態・長く残る業態・立ち上げに必要な情報</h1>
+<p class="meta">作成日：2026-09-28／確認日：本書の数字・制度はすべて2026-09-28に確認／状態：調べごとの回答（事業性の判定・業態の推奨は含まない）／原本：本書／作業フォルダ：C:\dev\Search-for-a-new-business</p>
+<p class="note">表記の約束：【未確認】＝一次情報で確かめられなかったもの。「推測」＝調査結果からの読み取りで、統計が直接示している事実ではないもの。数字の時点は項目ごとに異なります。</p>
+
+<!-- 0 -->
+<h2 id="s0">0. 要約<small>「商圏の中だけが競合」はサービス業なら概ね正しい。ただし競合の数は業態で大きく違う</small></h2>
+<div class="grid">
+<div class="kpi"><b>仮説の判定</b><span>サービス業は概ね正しい／物販は条件付き</span></div>
+<div class="kpi"><b>近所の同業者の数</b><span>美容所27.8万軒＝コンビニの約5倍</span></div>
+<div class="kpi"><b>今伸びている業態（直近1年）</b><span>ピラティス等＋41%、カプセルトイ市場＋39%</span></div>
+<div class="kpi"><b>長く残っている業態</b><span>美容所は60年で3.1倍、銭湯は8割減</span></div>
+<div class="kpi"><b>失速した業態の共通点</b><span>小資本で開ける流行の単品は数年で飽和</span></div>
+<div class="kpi"><b>開業費用の相場（公庫2025年度）</b><span>平均975万円・中央値600万円</span></div>
+</div>
+<div class="card">
+<dl class="scr">
+<dt>状況</dt><dd>店舗型の新規事業を検討中です。ECは全国が競合になるが、店舗なら周辺だけが競合になり、相手が少ないという仮説をお持ちです。</dd>
+<dt>課題</dt><dd>仮説がどこまで事実で支えられるか、どの業態が伸びていて、どれが長く残っているか、立ち上げに何が要るかが未整理でした。</dd>
+<dt>分かったこと</dt><dd>美容室は約6割の人が自宅近くの店を選び、サービスはECに置き換わっていないため、「商圏の中だけが競合」はサービス業では概ね事実です。一方で、物販は書籍のように過半がネットに移った分野があり、どの業態にも全国チェーンが地方まで出店しています。「競合が少ない」は業態次第で、美容所はコンビニの約5倍あります。</dd>
+<dt>未決</dt><dd>業態と立地は未定です。豊橋市・大阪市北区での業態別の同業者数は、本書では調べていません（6章）。</dd>
+</dl>
+</div>
+
+<!-- 1 -->
+<h2 id="s1">1. 背景と調査の範囲<small>4つのご質問に、公的統計と上場企業・業界団体の公表値で答える</small></h2>
+<div class="tw"><table>
+<tr><th>ご質問</th><th>答えている章</th></tr>
+<tr><td class="key">仮説の検証</td><td>「店舗なら周辺だけが競合」「戦う競合が少ない」は合っているか → 2章</td></tr>
+<tr><td class="key">今盛んな業態</td><td>2023〜2026年に店舗数・市場が伸びている業態と、ブーム後に失速した業態 → 3-1、3-4</td></tr>
+<tr><td class="key">生き残っている業態</td><td>数十年単位で施設数が増えた業態・減った業態、開業後の生存率 → 3-2、3-3</td></tr>
+<tr><td class="key">立ち上げに必要な情報</td><td>開業費用・融資・補助金・許認可・物件・人件費・調べ方・FC → 5章</td></tr>
+</table></div>
+<p class="note">本書は調べごとへの回答です。どの業態をやるべきか、儲かるかの判定はしていません（4章）。</p>
+
+<!-- 2 -->
+<h2 id="s2">2. 仮説の検証<small>合っているのは「近所で選ばれる」部分。違うのは「相手は周辺の個人店だけ」という部分</small></h2>
+<p class="lead2"><b>なぜ先に読むか：</b>どの業態を選ぶかの前提になるためです。仮説のどこが事実で、どこに条件が付くかを先に押さえます。</p>
+
+<h3 id="s2-1">2-1 仮説の要素ごとの判定</h3>
+<div class="tw"><table>
+<tr><th>仮説の要素</th><th>判定</th><th>事実（数字）</th><th>時点</th></tr>
+<tr><td class="key">サービス業は周辺の店だけが競合</td><td class="ok st">合っている</td><td>美容室を使う人の約6割（女性61.7%・男性60.8%）が、よく行く店は「自宅近く」と回答。サービスは経産省のEC化率の対象外（サービス自体は店で提供される）</td><td class="num">2025上期／2024年</td></tr>
+<tr><td class="key">物販も周辺の店だけが競合</td><td class="warn st">条件付き</td><td>物販全体のEC化率は9.78%だが、書籍・映像・音楽は56.45%、家電・PCは43.03%。書店は24,237店→9,993店（−59%）</td><td class="num">2024年／1998→2026年</td></tr>
+<tr><td class="key">戦う競合が少ない</td><td class="warn st">条件付き</td><td>美容所は277,752軒でコンビニ（56,189店）の約4.9倍。飲食店は499,193事業所。商圏は狭くても、その中の同業者が多い業態がある。公庫も美容所について「競合激化」と記載</td><td class="num">2021〜2026年</td></tr>
+<tr><td class="key">相手は周辺の個人店だけ</td><td class="ng st">違う</td><td>chocoZAPは2,030店、店舗のうち地方都市が27.4%（2024年12月末）。ドラッグストアは24,536店で1年に813店増</td><td class="num">2026-08／2025年度</td></tr>
+<tr><td class="key">比べられるのは店の前だけ</td><td class="ng st">違う</td><td>店を探すとき「まずGoogleマップ」が6割以上（民間調査・首都圏550人）。美容室のネット予約は女性の59.2%</td><td class="num">2025年</td></tr>
+<tr><td class="key">補足：売上の上限</td><td class="st">補足</td><td>店の客は商圏の人口から来るため、人口が減ると売上の上限も下がる（一般的な考え方。公的な出典は【未確認】）。豊橋市は2050年に−18.2%の見通し（2-3）</td><td class="num">2023年推計</td></tr>
+</table></div>
+
+<figure>
+<figcaption>近所の同業者の数は業態で桁が違う：美容所はコンビニの約5倍<small>全国の店舗・施設数。時点が業態ごとに異なるため、比較は目安です（出典は7章）</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="業態別の全国店舗数">
+<g>
+<text x="160" y="33" text-anchor="end">飲食店</text><rect class="bar" x="170" y="20" width="599" height="18"/><text x="775" y="33">499,193（2021）</text>
+<text x="160" y="63" text-anchor="end">美容所</text><rect class="bar" x="170" y="50" width="333" height="18"/><text x="509" y="63">277,752（2025.3）</text>
+<text x="160" y="93" text-anchor="end">理容所</text><rect class="bar" x="170" y="80" width="130" height="18"/><text x="306" y="93">107,995（2025.3）</text>
+<text x="160" y="123" text-anchor="end">クリーニング（取次含む）</text><rect class="bar" x="170" y="110" width="84" height="18"/><text x="260" y="123">69,855（2025.3）</text>
+<text x="160" y="153" text-anchor="end">歯科診療所</text><rect class="bar" x="170" y="140" width="78" height="18"/><text x="254" y="153">65,035（2026.6）</text>
+<text x="160" y="183" text-anchor="end">薬局</text><rect class="bar" x="170" y="170" width="76" height="18"/><text x="252" y="183">63,203（2025.3）</text>
+<text x="160" y="213" text-anchor="end">コンビニ</text><rect class="bar2" x="170" y="200" width="67" height="18"/><text x="243" y="213">56,189（2026.8）基準</text>
+<text x="160" y="243" text-anchor="end">ドラッグストア</text><rect class="bar" x="170" y="230" width="29" height="18"/><text x="205" y="243">24,536（2025年度）</text>
+<text x="160" y="273" text-anchor="end">書店</text><rect class="bar" x="170" y="260" width="12" height="18"/><text x="188" y="273">9,928（2026.8）</text>
+</g>
+<line class="ax" x1="170" y1="12" x2="170" y2="285"/>
+</svg>
+</figure>
+
+<figure>
+<figcaption>物を売る店はECと競合する：書籍は56%がネット、食品は4.5%<small>物販のBtoC-EC化率（経済産業省、2024年）。サービス分野はEC化率の算出対象外</small></figcaption>
+<svg viewBox="0 0 900 250" role="img" aria-label="分野別EC化率">
+<text x="190" y="33" text-anchor="end">書籍・映像・音楽</text><rect class="bar" x="200" y="20" width="564" height="18"/><text x="770" y="33">56.45%</text>
+<text x="190" y="63" text-anchor="end">家電・PC</text><rect class="bar" x="200" y="50" width="430" height="18"/><text x="636" y="63">43.03%</text>
+<text x="190" y="93" text-anchor="end">生活雑貨・家具</text><rect class="bar" x="200" y="80" width="326" height="18"/><text x="532" y="93">32.58%</text>
+<text x="190" y="123" text-anchor="end">衣類・服装雑貨</text><rect class="bar" x="200" y="110" width="234" height="18"/><text x="440" y="123">23.38%</text>
+<text x="190" y="153" text-anchor="end">物販全体</text><rect class="bar2" x="200" y="140" width="98" height="18"/><text x="304" y="153">9.78%</text>
+<text x="190" y="183" text-anchor="end">化粧品・医薬品</text><rect class="bar" x="200" y="170" width="88" height="18"/><text x="294" y="183">8.82%</text>
+<text x="190" y="213" text-anchor="end">食品・飲料・酒類</text><rect class="bar" x="200" y="200" width="45" height="18"/><text x="251" y="213">4.52%</text>
+<line class="ax" x1="200" y1="12" x2="200" y2="228"/>
+</svg>
+</figure>
+
+<h3 id="s2-2">2-2 商圏の広さ</h3>
+<p class="lead2"><b>要点：</b>商圏は業態で大きく違います。ジムのように「成り立つのに4万人以上の人口が要る」業態もあります。</p>
+<div class="tw"><table>
+<tr><th>業態・区分</th><th>商圏の目安</th><th>出典</th></tr>
+<tr><td class="key">日用品の店</td><td>都市部は徒歩5〜10分、地方は車で15分くらいまで</td><td>中小機構 J-Net21</td></tr>
+<tr><td class="key">比べて選ぶ品（家具・家電）</td><td>電車・車で30分程度</td><td>中小機構 J-Net21</td></tr>
+<tr><td class="key">都市型コンビニ</td><td>商圏距離500m・商圏人口3,000人が標準</td><td>国交省資料（2019年）</td></tr>
+<tr><td class="key">スーパー・ドラッグストア</td><td>1〜2km</td><td>民間の解説（ゼンリン）</td></tr>
+<tr><td class="key">ロードサイドの飲食</td><td>3〜5km（車10〜15分）</td><td>民間の解説（ゼンリン）</td></tr>
+<tr><td class="key">chocoZAP</td><td>1〜2km圏に一定の人口があれば成立する小商圏モデル</td><td>アナリストレポート（2026-06）</td></tr>
+<tr><td class="key">施設が成り立つ人口規模</td><td>市町村にある確率が50%→80%になる人口：飲食店500人、喫茶店2,500→7,500人、フィットネスクラブ42,500→77,500人、百貨店275,000→375,000人</td><td>国交省（元データは2009年経済センサス等）</td></tr>
+</table></div>
+
+<h3 id="s2-3">2-3 豊橋市・大阪市の人口の見通し</h3>
+<p class="lead2"><b>要点：</b>豊橋市は2050年に約2割減の見通しです。大阪市全体も減りますが、北区は増える見通しです。</p>
+<div class="tw"><table>
+<tr><th>地域</th><th class="num">2020年（人）</th><th class="num">2035年（人）</th><th class="num">2050年（人）</th><th class="num">2020→2050</th></tr>
+<tr><td class="key">豊橋市</td><td class="num">371,920</td><td class="num">338,782</td><td class="num">304,309</td><td class="num">−18.2%</td></tr>
+<tr><td class="key">大阪市</td><td class="num">2,752,412</td><td class="num">2,650,440</td><td class="num">2,430,185</td><td class="num">−11.7%</td></tr>
+<tr><td class="key">大阪市北区</td><td class="num">139,376</td><td class="num">154,426</td><td class="num">151,919</td><td class="num">+9.0%</td></tr>
+</table></div>
+<p class="note">出典：国立社会保障・人口問題研究所「日本の地域別将来推計人口（令和5年推計）」</p>
+
+<!-- 3 -->
+<h2 id="s3">3. 業態の調査<small>伸びているのは省人化型と仕入れ型。60年増え続けたのは美容所</small></h2>
+
+<h3 id="s3-1">3-1 今伸びている業態</h3>
+<p class="lead2"><b>要点：</b>伸びている業態の中にも、倒産が増えているもの（ジム・リラクゼーション）があります。注意点の列も合わせて見てください。</p>
+<div class="tw"><table>
+<tr><th>業態</th><th>伸びを示す数字（時点）</th><th>許認可</th><th>注意点</th></tr>
+<tr><td class="key">24時間・小型ジム</td><td>施設数4,348→5,034（+15.8%、2024-08→2025-08）。chocoZAP 2,030店（2026-08）</td><td>許可制度は確認できず（推測）</td><td>フィットネスの倒産は2026年1-7月に23件（前年同期19件）。背景は限られた商圏での過剰出店</td></tr>
+<tr><td class="key">ピラティス等（ヨガ型）</td><td>1,334→1,877施設（+40.7%）。1年の新規開業348施設は業態別で最多</td><td>【未確認】</td><td>30坪で初期3,000万円という事例（コンサル会社のモデル）</td></tr>
+<tr><td class="key">パーソナルジム</td><td>2,368施設、1年の新規278施設（2025-08）</td><td>確認できず</td><td>参入障壁が低く倒産も発生（2026年1-7月に6件）</td></tr>
+<tr><td class="key">カプセルトイ専門店</td><td>市場1,410億→1,960億円（+39.0%、2024→2025年度）。専門店900店超</td><td>【未確認】</td><td>バンダイ公式専門店は国内300店（2026-09）</td></tr>
+<tr><td class="key">トレカ専門店</td><td>市場1,776億円（2021年度）→3,384億円（2025年度）、8年連続拡大</td><td>中古の買取は古物商許可</td><td>相場下落で開業約2か月で破産した例（2026-04、負債約2億円）</td></tr>
+<tr><td class="key">買取・リユース</td><td>リユース市場3兆2,628億円（2024年、+4.5%）で15年連続拡大。店舗販売は+8.2%。買取大吉1,400店（2025-07）</td><td>古物商許可</td><td>―</td></tr>
+<tr><td class="key">古着・総合リユース</td><td>2nd STREET国内880→931店（2025-03→2026-03）</td><td>古物商許可</td><td>―</td></tr>
+<tr><td class="key">リラクゼーション</td><td>市場3,798億円（2025年、+3.4%）、3年連続拡大</td><td>開業免許は不要。あん摩マッサージ等は国家資格</td><td>マッサージ業の倒産は2025年度108件で30年で最多</td></tr>
+<tr><td class="key">トランクルーム</td><td>市場約850億円（2024年）、14,860店</td><td>賃貸借方式なら不要。寄託方式は倉庫業法</td><td>数字は業界大手の自社調査</td></tr>
+<tr><td class="key">コインランドリー</td><td>16,693施設（2013年度）→約2万5,000店（業界誌の推計・時点不明）</td><td>保健所への開設届（自治体の要綱）</td><td>投資回収は「早ければ5年、平均10年ほど」との記事</td></tr>
+<tr><td class="key">プライベートサウナ</td><td>682施設（2026-08、サウナ情報サイト登録ベース）</td><td>公衆浴場営業許可＋建築・消防</td><td>新規開業のピークは2023年。初期費用2,000万〜5,000万円とされる</td></tr>
+<tr><td class="key">インバウンド向けの店</td><td>訪日客4,268万人（2025年、+15.8%）、旅行消費9兆4,549億円（うち買物代2兆5,541億円）</td><td>業態による</td><td>―</td></tr>
+<tr><td class="key">セルフ写真館</td><td>269店（2026-09、ポータルサイトの集計）</td><td>【未確認】</td><td>推移は【未確認】</td></tr>
+</table></div>
+
+<figure>
+<figcaption>直近1年の伸び：ピラティス等とカプセルトイが約4割増<small>指標が業態ごとに異なる（施設数・店舗数・市場規模）ため、伸び率の目安として見てください</small></figcaption>
+<svg viewBox="0 0 900 240" role="img" aria-label="業態別の直近1年の伸び率">
+<text x="240" y="33" text-anchor="end">ピラティス等（施設数）</text><rect class="bar" x="250" y="20" width="488" height="18"/><text x="744" y="33">+40.7%</text>
+<text x="240" y="63" text-anchor="end">カプセルトイ（市場規模）</text><rect class="bar" x="250" y="50" width="468" height="18"/><text x="724" y="63">+39.0%</text>
+<text x="240" y="93" text-anchor="end">24時間ジム（施設数）</text><rect class="bar" x="250" y="80" width="190" height="18"/><text x="446" y="93">+15.8%</text>
+<text x="240" y="123" text-anchor="end">トレカ（市場規模）</text><rect class="bar" x="250" y="110" width="143" height="18"/><text x="399" y="123">+11.9%</text>
+<text x="240" y="153" text-anchor="end">リユース店舗販売（市場）</text><rect class="bar" x="250" y="140" width="98" height="18"/><text x="354" y="153">+8.2%</text>
+<text x="240" y="183" text-anchor="end">2nd STREET（店舗数）</text><rect class="bar" x="250" y="170" width="70" height="18"/><text x="326" y="183">+5.8%</text>
+<text x="240" y="213" text-anchor="end">リラクゼーション（市場）</text><rect class="bar" x="250" y="200" width="41" height="18"/><text x="297" y="213">+3.4%</text>
+<line class="ax" x1="250" y1="12" x2="250" y2="228"/>
+</svg>
+</figure>
+
+<h3 id="s3-2">3-2 長く残っている業態</h3>
+<p class="lead2"><b>要点：</b>資格や許可が要る業態でも、減っているもの（理容所・クリーニング・歯科）があります。資格だけでは残れないことが数字に出ています。</p>
+<figure>
+<figcaption>60年で3倍に増えた美容所と、8割減った銭湯<small>施設数の増減率。起点の年は業態ごとに異なる（ラベルのかっこ内）。出典：厚労省 衛生行政報告例ほか</small></figcaption>
+<svg viewBox="0 0 900 215" role="img" aria-label="店舗業態の長期増減率">
+<line class="ax" x1="430" y1="10" x2="430" y2="200"/>
+<text x="200" y="33" text-anchor="end">美容所（1965→2024）</text><rect class="bar4" x="430" y="20" width="420" height="18"/><text x="856" y="33">+210%</text>
+<text x="200" y="63" text-anchor="end">理容所（1965→2024）</text><rect class="bar2" x="409" y="50" width="21" height="18"/><text x="403" y="63" text-anchor="end">−10%</text>
+<text x="200" y="93" text-anchor="end">一般酒販店（2015→2022）</text><rect class="bar2" x="368" y="80" width="62" height="18"/><text x="362" y="93" text-anchor="end">−31%</text>
+<text x="200" y="123" text-anchor="end">クリーニング（1997→2024）</text><rect class="bar2" x="315" y="110" width="115" height="18"/><text x="309" y="123" text-anchor="end">−57%</text>
+<text x="200" y="153" text-anchor="end">書店（1998→2026）</text><rect class="bar2" x="312" y="140" width="118" height="18"/><text x="306" y="153" text-anchor="end">−59%</text>
+<text x="200" y="183" text-anchor="end">銭湯（1977→2024）</text><rect class="bar2" x="262" y="170" width="168" height="18"/><text x="256" y="183" text-anchor="end">−84%</text>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>業態</th><th class="num">起点の数</th><th class="num">最新の数</th><th>補足</th></tr>
+<tr><td class="key">美容所</td><td class="num">89,616（1965）</td><td class="num">277,752（2025.3）</td><td>約60年ほぼ増え続け、前年度比も+1.3%</td></tr>
+<tr><td class="key">薬局</td><td class="num">―</td><td class="num">63,203（2025.3）</td><td>前年度比+0.6%</td></tr>
+<tr><td class="key">その他の公衆浴場（サウナ等）</td><td class="num">―</td><td class="num">20,938（2025.3）</td><td>前年度比+0.5%</td></tr>
+<tr><td class="key">旅館業</td><td class="num">―</td><td class="num">98,338（2025.3）</td><td>前年度比+5.2%</td></tr>
+<tr><td class="key">理容所</td><td class="num">120,420（1965）</td><td class="num">107,995（2025.3）</td><td>1984〜86年ごろ約14.5万がピーク</td></tr>
+<tr><td class="key">歯科診療所</td><td class="num">―</td><td class="num">66,378（2024.10）</td><td>1年で開設1,363・廃止1,748</td></tr>
+<tr><td class="key">一般酒販店</td><td class="num">46,068（2015年度）</td><td class="num">31,702（2022年度）</td><td>小売数量の最大シェアはスーパー（38.1%）</td></tr>
+<tr><td class="key">クリーニング（取次含む）</td><td class="num">164,225（1997年度）</td><td class="num">69,855（2025.3）</td><td>取次所を除くと19,379</td></tr>
+<tr><td class="key">書店</td><td class="num">24,237（1998年度）</td><td class="num">9,993（2026.3）</td><td>書店がない自治体は29.3%</td></tr>
+<tr><td class="key">一般公衆浴場（銭湯）</td><td class="num">16,866（1977）</td><td class="num">2,730（2025.3）</td><td>前年度比−4.1%</td></tr>
+</table></div>
+<p><b>業歴100年以上の「老舗企業」が多い業種</b>（帝国データバンク、2025年12月時点）：1位 貸事務所業1,552社、2位 清酒製造938社、3位 旅館795社、6位 酒小売704社、8位 呉服・服地小売646社。<br><span class="note">注意：これは「今残っている会社」を数えたもので、これから参入する会社が有利という意味ではありません。酒小売は老舗数6位ですが、業態全体では減っています。</span></p>
+<div class="card">
+<p><b>事実：</b>施設数が増えている美容所・薬局・その他の公衆浴場・旅館業は、いずれも許可か届出が必要で、美容所と薬局は国家資格者（美容師・薬剤師）が必要です。ただし資格が必要な理容所・歯科・クリーニングは減っています。書店と一般酒販店は、スーパー・コンビニ・ネットに売上を奪われて減りました。</p>
+<p><b>推測：</b>長く残る業態に共通しそうな点は、①その場でしか受けられない対人サービスや体験である、②来店の頻度が高い、③スーパーやネットで代わりが利かない、の3つです。</p>
+</div>
+
+<h3 id="s3-3">3-3 開業後の生存率・廃業率</h3>
+<p class="lead2"><b>要点：</b>よく聞く「10年後に6.3%しか残らない」は、公的統計では裏付けがありません。公的な数字では5年後に約8〜9割が残っています（ただし偏りあり）。</p>
+<div class="tw"><table>
+<tr><th>指標</th><th>数字</th><th>読むときの注意</th></tr>
+<tr><td class="key">公庫 新規開業パネル調査（2016年開業→2020年末）</td><td>5年間の累計廃業率8.9%。業種別：飲食・宿泊14.7%、小売13.2%、不動産12.1%、個人向けサービス5.8%、建設5.2%</td><td>公庫の融資審査を通った企業だけが対象。2020年はコロナの資金繰り支援で廃業が抑えられた可能性あり（論文自身の記載）</td></tr>
+<tr><td class="key">中小企業白書（2023年版）</td><td>起業から5年後の生存率80.7%</td><td>帝国データバンクのデータが元で、実際より高めに出ている可能性があると白書自身が注記</td></tr>
+<tr><td class="key">「10年後の生存率6.3%」</td><td>公的統計の裏付けなし</td><td>国立国会図書館のレファレンス回答</td></tr>
+<tr><td class="key">業種別の開業率・廃業率（2021年度）</td><td>開業率・廃業率とも最も高いのは宿泊・飲食サービス、次が生活関連サービス・娯楽</td><td>雇用保険ベースのため、従業員を雇っている事業所だけの数字</td></tr>
+<tr><td class="key">飲食店の倒産（2025年）</td><td>900件で過去最多。負債5,000万円未満が77.3%</td><td>負債1,000万円以上・法的整理のみの集計（帝国データバンク）</td></tr>
+</table></div>
+
+<h3 id="s3-4">3-4 失速した業態</h3>
+<p class="lead2"><b>要点：</b>ブームの業態は、需要が続いていても店の数が需要以上に増えると倒産が増えます。</p>
+<div class="tw"><table>
+<tr><th>業態</th><th>伸びた時期</th><th>その後</th></tr>
+<tr><td class="key">高級食パン</td><td>2019年ごろからブーム</td><td>パン製造小売の倒産は2023年度に37件で過去最多（東京商工リサーチ）</td></tr>
+<tr><td class="key">タピオカ</td><td>輸入量2,928t（2018年）→16,772t（2019年）。関連企業は1年で60社→125社</td><td>輸入量は2021年に2,641t（ピークの約16%）</td></tr>
+<tr><td class="key">唐揚げ専門店</td><td>コロナ禍で出店が増加</td><td>倒産は2023年に27件で過去最多（前年の約9倍）。2024年の倒産の9割超が資本金1,000万円未満</td></tr>
+<tr><td class="key">冷凍餃子の無人販売</td><td>131店（2020年）→1,282店（2022年）。小さな店なら開店資金100万円程度とされる</td><td>2023年度に飽和。最大手は400店超→219店（2024-11）</td></tr>
+<tr><td class="key">エステ・脱毛</td><td>―</td><td>倒産は2024年1-11月に99件で過去最多。市場は5年連続縮小（3,043億円、2024年度）。2025年8月に大手が負債260億円で倒産</td></tr>
+<tr><td class="key">マッサージ・整体</td><td>施術所は125,853（2022年）→127,749（2024年）と増加</td><td>倒産は2025年度108件で30年で最多。96%が資本金1,000万円未満</td></tr>
+<tr><td class="key">フィットネス</td><td>24時間ジムの施設数は1年で+15.8%</td><td>倒産は2026年1-7月に23件（前年同期19件）。chocoZAPの会員はピーク135万人→110万人（2025-11）、その後116.7万人（2026-06）</td></tr>
+<tr><td class="key">サウナ</td><td>新規登録施設は2023年の394がピーク</td><td>2018〜2024年に新設された848施設のうち38%は、情報サイト上の利用記録が一桁</td></tr>
+</table></div>
+<div class="card">
+<p><b>事実：</b>失速した業態は小資本で開けるものが目立ちます（無人餃子は開店資金100万円程度とされ、唐揚げ・マッサージの倒産は9割超が資本金1,000万円未満）。リラクゼーション市場は伸びているのに、マッサージ業の倒産は30年で最多です。</p>
+<p><b>推測：</b>ブームの始まりから倒産のピークまでは2〜4年ほどです（高級食パン2019年→2023年度、唐揚げはコロナ禍→2023年、の少数例からの読み取り）。</p>
+</div>
+
+<!-- 4 -->
+<h2 id="s4">4. 本書で扱っていないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>事業性の判定・業態の推奨</b>：調べごとへの回答のため、どれをやるべきかは判定していません</li>
+<li><b>豊橋市・大阪市北区での業態別の同業者数</b>：未調査。調べ方は5-7</li>
+<li><b>業態ごとの収支・開業費用の詳細</b>：未調査。全業種の相場のみ5-2に記載</li>
+<li><b>取得できなかった数字</b>：家電量販・CD店・米屋・たばこ屋の店舗数推移、個室サウナの閉店件数など（6章）</li>
+</ul>
+
+<!-- 5 -->
+<h2 id="s5">5. 立ち上げに必要な情報<small>開業費用の中央値は600万円。資金の約7割は借入で、許認可は業態で期間が大きく違う</small></h2>
+
+<h3 id="s5-1">5-1 そろえる情報の一覧</h3>
+<div class="tw"><table>
+<tr><th>そろえる情報</th><th>何を確かめるか</th><th>調べ先（本書の節）</th></tr>
+<tr><td class="key">商圏の人口と将来</td><td>店の周辺に何人住んでいて、10年後に増えるか減るか</td><td>jSTAT MAP・社人研の推計（5-7、2-3）</td></tr>
+<tr><td class="key">商圏の中の同業者</td><td>同じ業態・似た業態の店が何軒あるか、全国チェーンがいるか</td><td>RESAS「地域ビジネス環境分析」・Googleマップ（5-7）</td></tr>
+<tr><td class="key">許認可と資格者</td><td>許可・届出が要るか、何日かかるか、資格者を雇う必要があるか</td><td>保健所・警察署・税務署（5-5）</td></tr>
+<tr><td class="key">開業費用</td><td>内装・設備・保証金・運転資金の合計</td><td>公庫の調査・業者見積もり（5-2）</td></tr>
+<tr><td class="key">資金</td><td>自己資金・融資・補助金をどう組み合わせるか</td><td>公庫・制度融資・補助金（5-3、5-4）</td></tr>
+<tr><td class="key">物件</td><td>保証金・原状回復の特約・用途の制限</td><td>契約書・仲介会社（5-6）</td></tr>
+<tr><td class="key">人件費</td><td>最低賃金とシフトの人数</td><td>各労働局（5-6）</td></tr>
+<tr><td class="key">FCに入る場合</td><td>本部の開示書面・近くへの出店の条項</td><td>中小小売商業振興法・公取委指針（5-8）</td></tr>
+</table></div>
+
+<h3 id="s5-2">5-2 開業費用（日本政策金融公庫「2025年度 新規開業実態調査」）</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">数字</th><th>補足</th></tr>
+<tr><td class="key">開業費用 平均値</td><td class="num">975万円</td><td>長い目で見ると少額化の傾向</td></tr>
+<tr><td class="key">開業費用 中央値</td><td class="num">600万円</td><td>250万円未満が20.1%、250〜500万円未満が21.7%</td></tr>
+<tr><td class="key">黒字基調の割合</td><td class="num">67.0%</td><td>予想した月商を達成したのは58.7%</td></tr>
+<tr><td class="key">開業時の平均年齢</td><td class="num">43.9歳</td><td>調査開始以来最高</td></tr>
+</table></div>
+<figure>
+<figcaption>開業資金の約7割は借入：平均1,219万円のうち827万円<small>資金調達額の内訳（平均）。対象は公庫が融資した開業1年以内の企業</small></figcaption>
+<svg viewBox="0 0 900 130" role="img" aria-label="資金調達額の内訳">
+<rect class="bar" x="40" y="20" width="543" height="34"/><text class="w" x="52" y="42">金融機関等からの借入 827万円（67.9%）</text>
+<rect class="bar4" x="583" y="20" width="183" height="34"/><text class="w" x="591" y="42">自己資金 279万円</text>
+<rect class="bar3" x="766" y="20" width="35" height="34"/>
+<rect class="bar3" x="801" y="20" width="27" height="34" style="opacity:.75"/>
+<rect class="bar3" x="828" y="20" width="12" height="34" style="opacity:.5"/>
+<text class="m" x="40" y="80">残り（灰色）：配偶者・親・親戚 53万円／友人・知人 41万円／その他 19万円</text>
+<text class="m" x="40" y="104">業態別の参考：chocoZAPのFC 2,000万円〜（公式）／プライベートサウナ 2,000万〜5,000万円／無人餃子 100万円程度（いずれも各出典の記載）</text>
+</svg>
+</figure>
+
+<h3 id="s5-3">5-3 融資</h3>
+<p class="lead2"><b>要点：</b>公庫の制度は「事業開始後おおむね7年以内」が対象で、2025年2月設立の貴社は文言上この期間内です。その他の条件は窓口で確認が必要です。</p>
+<div class="tw"><table>
+<tr><th>制度</th><th class="num">限度額</th><th>主な条件</th><th>貴社への当てはめ</th></tr>
+<tr><td class="key">公庫 新規開業・スタートアップ支援資金</td><td class="num">7,200万円</td><td>新たに事業を始める方、または事業開始後おおむね7年以内。返済は設備20年・運転10年以内。自己資金要件の記載なし</td><td>期間は文言上対象</td></tr>
+<tr><td class="key">愛知県 創業等支援資金（創業）</td><td class="num">3,500万円</td><td>開業予定〜開業後5年以内。年1.4〜1.7%、保証料0.68%</td><td>期間は文言上対象。他の要件は要確認</td></tr>
+<tr><td class="key">豊橋市 創業支援資金</td><td class="num">2,500万円</td><td>市内で創業（開業後5年以内を含む）。年0.9〜1.2%、保証料補助あり</td><td>同上</td></tr>
+<tr><td class="key">大阪府 開業・スタートアップ応援資金</td><td class="num">3,500万円</td><td>年1.65%（地域支援ネットワーク型は1.45%）。開業前などは自己資金が必要資金の1/10以上</td><td>同上</td></tr>
+</table></div>
+
+<h3 id="s5-4">5-4 補助金</h3>
+<div class="tw"><table>
+<tr><th>補助金</th><th>判定</th><th>内容</th><th>理由</th></tr>
+<tr><td class="key">持続化補助金〈創業型〉第4回</td><td class="ng st">対象外</td><td>上限200万円・補助率2/3。受付2026-11-05〜12-15</td><td>要件は「開業日（設立年月日）が公募締切から過去1年以内」。2025-02-25設立のため文言上満たさない</td></tr>
+<tr><td class="key">持続化補助金〈一般型・通常枠〉第20回</td><td class="warn st">要確認</td><td>上限50万円（特例で加算あり）・補助率2/3。受付2026-11-05〜12-15</td><td>小規模事業者の要件などは公募要領で要確認</td></tr>
+<tr><td class="key">中小企業省力化投資補助金</td><td class="warn st">要確認</td><td>カタログ注文型は最大1,500万円（第8回は2026-09-18〜10-16）。一般型は最大1億円</td><td>対象は省力化の設備。内装や物件には使いにくいと考えられる（推測）</td></tr>
+</table></div>
+
+<h3 id="s5-5">5-5 主な許認可</h3>
+<p class="lead2"><b>要点：</b>期間が公表されているものは、いずれも3か月以内です。ただし美容所・クリーニング所・薬局は資格者を雇う必要があり、サウナ・旅館は建築と消防の手続きが加わります。</p>
+<div class="tw"><table>
+<tr><th>業態</th><th>必要な許認可・届出</th><th>窓口</th><th>期間の目安</th><th>資格者</th></tr>
+<tr><td class="key">飲食店</td><td>飲食店営業許可＋食品衛生責任者の設置</td><td>保健所</td><td>工事前に事前相談、開店2〜3週間前に申請（大阪市）</td><td>食品衛生責任者</td></tr>
+<tr><td class="key">美容所・理容所</td><td>開設届＋使用前の検査</td><td>保健所</td><td>【未確認】</td><td>美容師・理容師</td></tr>
+<tr><td class="key">クリーニング所</td><td>開設届（取次店は資格者不要）</td><td>保健所</td><td>【未確認】</td><td>クリーニング師</td></tr>
+<tr><td class="key">コインランドリー</td><td>開設届（自治体の指導要綱による）</td><td>保健所</td><td>【未確認】</td><td>―</td></tr>
+<tr><td class="key">買取・古着・中古トレカ</td><td>古物商許可</td><td>警察署</td><td>40日前後（愛知県警）、手数料19,000円</td><td>―</td></tr>
+<tr><td class="key">酒類の販売</td><td>酒類販売業免許</td><td>税務署</td><td>原則2か月以内</td><td>―</td></tr>
+<tr><td class="key">バー等</td><td>深夜0時以降の酒類提供は届出。接待を伴うなら風俗営業許可</td><td>警察署</td><td>届出は開業10日前まで（愛知県警）。許可は目安55日（長野県警の例）</td><td>―</td></tr>
+<tr><td class="key">サウナ（公衆浴場）</td><td>公衆浴場営業許可。建築の検査済証・消防法令適合通知書が必要</td><td>保健所</td><td>【未確認】</td><td>―</td></tr>
+<tr><td class="key">旅館業</td><td>営業許可（大阪市は建築計画などの届出が先）</td><td>保健所</td><td>【未確認】</td><td>―</td></tr>
+<tr><td class="key">薬局</td><td>薬局開設許可（6年ごとに更新）</td><td>自治体</td><td>【未確認】</td><td>薬剤師</td></tr>
+<tr><td class="key">整体・リラクゼーション</td><td>資格制度のない施術に許可制度はない。あん摩マッサージ指圧を無資格で業として行うと処罰対象</td><td>―</td><td>―</td><td>施術内容による</td></tr>
+<tr><td class="key">ジム</td><td>業としての許可制度は確認できず（推測）。特定商取引法の「特定継続的役務」の対象外</td><td>―</td><td>―</td><td>―</td></tr>
+<tr><td class="key">トランクルーム</td><td>賃貸借方式なら特別な免許は不要。寄託方式は倉庫業法の対象</td><td>―</td><td>―</td><td>―</td></tr>
+</table></div>
+
+<h3 id="s5-6">5-6 物件・人件費</h3>
+<ul>
+<li><b>敷金・保証金</b>：賃料の2〜12か月分が多い。礼金がある店舗賃貸は多くない（J-Net21）</li>
+<li><b>仲介手数料</b>：貸主・借主から受け取る合計で賃料1か月分×1.1以内（国交省告示）</li>
+<li><b>居抜きとスケルトン</b>：スケルトンは全面工事が必要、居抜きなら費用を抑えられる。原状回復は敷金から差し引かれることがあるため特約を確認（J-Net21）</li>
+<li><b>最低賃金 愛知県</b>：1,140円 → 1,195円（2026-10-01発効）</li>
+<li><b>最低賃金 大阪府</b>：1,177円 → 1,231円（2026-10-01発効）</li>
+</ul>
+
+<h3 id="s5-7">5-7 商圏を調べる無料ツール</h3>
+<ul>
+<li><b>jSTAT MAP（総務省統計局）</b>：地図上で範囲を決めて人口などを集計できる。無料、ログインなしでも一部使える</li>
+<li><b>RESAS（地域経済分析システム）</b>：提供は継続中（APIのみ終了）。2026-01-23に「地域ビジネス環境分析」が追加され、将来人口・業種別の事業所数・住民の消費を一括表示できる。登録不要・無料</li>
+<li><b>e-Stat</b>：国の統計表をCSVで取得できる</li>
+</ul>
+
+<h3 id="s5-8">5-8 FC加盟と独立の違い</h3>
+<ul>
+<li><b>中小小売商業振興法 第11条</b>：小売・飲食のFC本部は、契約前に事業の概要と契約条件を書面で渡して説明する義務がある。<b>ジム・美容などサービス業のFCはこの法律の対象外</b></li>
+<li><b>公正取引委員会 フランチャイズ・ガイドライン</b>（最終改正2021-04-28）：全業種が対象。予想売上の根拠、近くへの出店（ドミナント出店）の条項と計画などを開示することが望ましいとしている</li>
+<li><b>FCの規模</b>：1,291チェーン・254,478店（2024年度、JFA統計を業界紙経由で確認。JFAの一次資料は【未確認】）</li>
+</ul>
+
+<!-- 6 -->
+<h2 id="s6">6. 未確認事項<small>地域別の競合数と、一部の許認可の処理期間は未確認</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>項目</th><th>状態</th></tr>
+<tr><td class="num">1</td><td>豊橋市・大阪市北区での業態別の同業者数</td><td>未調査（RESASの地域ビジネス環境分析で業種別の事業所数を表示できると経産省が公表）</td></tr>
+<tr><td class="num">2</td><td>美容所・旅館業・公衆浴場・薬局・クリーニング所の標準処理期間</td><td>【未確認】各窓口のページに記載なし</td></tr>
+<tr><td class="num">3</td><td>ジム・カプセルトイ店・ピラティスの許認可が本当に不要か</td><td>【未確認】許可制度を確認できなかっただけで、不要と断定はしていない</td></tr>
+<tr><td class="num">4</td><td>JFA統計の一次資料、家電量販・CD店・米屋・たばこ屋の店舗数推移</td><td>【未確認】取得できず</td></tr>
+<tr><td class="num">5</td><td>セルフ写真館・コワーキング・推し活グッズ店の市場の数字</td><td>【未確認】一次情報なし</td></tr>
+<tr><td class="num">6</td><td>許認可・融資・補助金の内容を、お金や時間を使う判断に使う場合</td><td>その時点で所管窓口に確認し、法令部分は外部AI（Gemini）でも確認する</td></tr>
+</table></div>
+
+<!-- 7 -->
+<h2 id="s7">7. 出典と変更履歴<small>出典はすべて2026-09-28に開いて確認した</small></h2>
+<ul class="src">
+<li>厚生労働省 令和6年度衛生行政報告例（生活衛生・薬事）：<a href="https://www.mhlw.go.jp/toukei/saikin/hw/eisei_houkoku/24/dl/kekka3.pdf">kekka3.pdf</a>／<a href="https://www.mhlw.go.jp/toukei/saikin/hw/eisei_houkoku/24/dl/kekka4.pdf">kekka4.pdf</a>／<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00450027&amp;tstat=000001031469&amp;cycle=8&amp;tclass1=000001200300&amp;tclass2=000001200301&amp;tclass3=000001200302&amp;stat_infid=000040002913&amp;tclass4val=0">e-Stat 年次推移</a></li>
+<li>厚生労働省 医療施設（動態）調査：<a href="https://www.mhlw.go.jp/toukei/saikin/hw/iryosd/m26/is2606.html">2026年6月末</a>／<a href="https://www.mhlw.go.jp/toukei/saikin/hw/iryosd/24/dl/02sisetu06.pdf">令和6年</a></li>
+<li>コンビニ店舗数（JFA公表、流通ニュース経由）：<a href="https://www.ryutsuu.biz/sales/s092417.html">2026年8月</a></li>
+<li>令和3年経済センサス（愛知県の資料）：<a href="https://www.pref.aichi.jp/uploaded/attachment/531904.pdf">飲食店事業所数</a>／<a href="https://www.stat.go.jp/data/e-census/2021/kekka/pdf/oroshikouri_outline.pdf">卸売業・小売業の概要</a></li>
+<li>経済産業省 電子商取引に関する市場調査（2024年）：<a href="https://www.meti.go.jp/policy/it_policy/statistics/outlook/250826_kohyoshiryo.pdf">公表資料</a></li>
+<li>ホットペッパービューティーアカデミー 美容センサス：<a href="https://hba.beauty.hotpepper.jp/wp/wp-content/uploads/2025/06/census_hair_data_20260626-3.pdf">ヘア</a>／<a href="https://hba.beauty.hotpepper.jp/search/census/2025-1st-half/66959/">リラクゼーション</a></li>
+<li>日本出版インフラセンター 書店数：<a href="https://www.jpoksmaster.jp/Info/documents/top_transition.pdf">推移</a>／<a href="https://www.jpoksmaster.jp/Info/documents/top_registration.pdf">登録数</a>／<a href="https://www.nippon.com/ja/japan-data/h02808/">書店ゼロ自治体</a></li>
+<li>RIZAPグループ：<a href="https://www.rizapgroup.com/ir/management">IR</a>／<a href="https://www.fisco.co.jp/wordpress/wp-content/uploads/FISCO/rizap20260610.pdf">FISCOレポート</a>／<a href="https://news.mynavi.jp/article/20260819-4829352/">2026年8月の店舗数</a>／<a href="https://chocozap.jp/lp/franchise">FC</a></li>
+<li>ドラッグストア実態調査（JACDS、業界紙経由）：<a href="https://pnb.jiho.jp/article/228720">じほう</a>／<a href="https://www.yakuji.co.jp/entry138982.html">薬事日報</a></li>
+<li>商圏：<a href="https://j-net21.smrj.go.jp/startup/manual/list3/3-2-3.html">J-Net21</a>／<a href="https://www.hrr.mlit.go.jp/kensei/machisuma/r1_machisuma/sankou1_toshikyoku_191001.pdf">国交省（北陸）</a>／<a href="https://www.mlit.go.jp/common/001050896.pdf">国土のグランドデザイン2050参考資料</a>／<a href="https://www.zenrin-ms.co.jp/blog/articles/shouken-hanni/">ゼンリン</a>／<a href="https://prtimes.jp/main/html/rd/p/000000166.000041566.html">Googleマップ利用調査</a></li>
+<li>国立社会保障・人口問題研究所 地域別将来推計人口（令和5年推計）：<a href="https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/3kekka/suikei_kekka.xlsx">結果表</a></li>
+<li>矢野経済研究所 フィットネス：<a href="https://www.yano.co.jp/press-release/show/press_id/3651">2024年</a>／<a href="https://www.yano.co.jp/press-release/show/press_id/3992">2025年</a>／<a href="https://www.yano.co.jp/press-release/show/press_id/3764">エステ</a></li>
+<li>カプセルトイ：<a href="https://prtimes.jp/main/html/rd/p/000000001.000178228.html">日本カプセルトイ協会</a>／<a href="https://prtimes.jp/main/html/rd/p/000000484.000159118.html">バンダイ</a>　トレカ：<a href="https://www.toys.or.jp/pdf/2026/gangu_siryou_2015-2025.pdf">日本玩具協会</a></li>
+<li>リユース：<a href="https://www.recycle-tsushin.com/news/detail_11719.php">リサイクル通信</a>／<a href="https://www.geonet.co.jp/geo_wp/wp-content/uploads/2026/05/2681_20260508_presentation_4Q_J_4eb509.pdf">ゲオHD</a>　トランクルーム：<a href="https://www.quraz.com/info/pr/20250612.aspx">キュラーズ</a>　コインランドリー：<a href="https://www.jiji.com/jc/v8?id=202406laundry-team">時事</a>　サウナ：<a href="https://aqutpas.co.jp/japan-sauna-market-data-trends/">施設数</a>／<a href="https://aqutpas.co.jp/new-sauna-trends-2024-2/">新規施設</a></li>
+<li>インバウンド：<a href="https://www.jnto.go.jp/news/press/20260121_monthly.html">JNTO</a>／<a href="https://www.mlit.go.jp/kankocho/content/001992584.pdf">観光庁</a>　セルフ写真館：<a href="https://genica-photo.com/selfphoto-studios">ポータル集計</a></li>
+<li>倒産・失速：<a href="https://www.tdb.co.jp/report/industry/20260813-fitness26y1-7/">TDB フィットネス</a>／<a href="https://www.tsr-net.co.jp/data/detail/1201381_1527.html">TSR パン</a>／<a href="https://www.customs.go.jp/osaka/toukei/pdf/tokushu_202203.pdf">大阪税関 タピオカ</a>／<a href="https://www.tsr-net.co.jp/data/detail/1190200_1527.html">TSR タピオカ</a>／<a href="https://www.tdb.co.jp/report/industry/20250203_karaage/">TDB 唐揚げ</a>／<a href="https://www.tdb.co.jp/report/industry/q_bw2u131j/">TDB 無人餃子</a>／<a href="https://www.itmedia.co.jp/business/articles/2411/20/news051.html">ITmedia 雪松</a>／<a href="https://forbesjapan.com/articles/detail/66138">Forbes 無人餃子</a>／<a href="https://www.tsr-net.co.jp/data/detail/1200762_1527.html">TSR エステ</a>／<a href="https://www.tsr-net.co.jp/data/detail/1202754_1527.html">TSR マッサージ</a>／<a href="https://www.tdb.co.jp/report/bankruptcy/flash/5222/">TDB トレカ店破産</a>／<a href="https://www.businessinsider.jp/article/2511-rizap-interim-results/">chocoZAP会員</a>／<a href="https://www.tdb.co.jp/report/industry/20260113-insyokuten2025/">TDB 飲食店</a></li>
+<li>老舗・酒販：<a href="https://www.tdb.co.jp/report/economic/20260327_shinise2025/">TDB 老舗企業</a>／<a href="https://www.nta.go.jp/taxes/sake/shiori-gaikyo/kori/2024/pdf/all.pdf">国税庁 酒類小売業者の概況</a></li>
+<li>生存率：<a href="https://www.jfc.go.jp/n/findings/pdf/ronbun2202_01.pdf">公庫 新規開業パネル調査</a>／<a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/2023/chusho/b2_2_2.html">中小企業白書2023</a>／<a href="https://crd.ndl.go.jp/reference/entry/index.php?id=1000355744&amp;page=ref_view">国立国会図書館レファレンス</a></li>
+<li>開業費用・融資：<a href="https://www.jfc.go.jp/n/findings/pdf/kaigyo_251205_1.pdf">公庫 2025年度新規開業実態調査</a>／<a href="https://www.jfc.go.jp/n/finance/search/01_sinkikaigyou_m.html">新規開業・スタートアップ支援資金</a>／<a href="https://www.cgc-aichi.or.jp/guarantee/kanso-2/">愛知県</a>／<a href="https://www.city.toyohashi.lg.jp/7298.htm">豊橋市</a>／<a href="https://www.pref.osaka.lg.jp/o110080/kinyushien/kaigyo-sien/index.html">大阪府</a></li>
+<li>補助金：<a href="https://r6.jizokukahojokin.info/sogyo/doc/r6_koubover8_sogyo4.pdf">持続化 創業型</a>／<a href="https://r6.jizokukahojokin.info/doc/r6_koubover8_ip20.pdf">持続化 一般型</a>／<a href="https://shoryokuka.smrj.go.jp/">省力化投資補助金</a></li>
+<li>許認可：<a href="https://www.city.osaka.lg.jp/kenko/page/0000537192.html">大阪市 飲食店</a>／<a href="https://www.city.toyohashi.lg.jp/6523.htm">豊橋市 飲食店</a>／<a href="https://www.city.osaka.lg.jp/kenko/page/0000006217.html">美容所</a>／<a href="https://www.city.osaka.lg.jp/kenko/page/0000103347.html">クリーニング所</a>／<a href="https://www.city.shizuoka.lg.jp/s3689/s003230.html">コインランドリー（静岡市）</a>／<a href="https://www.pref.aichi.jp/police/shinsei/sonota/kobutsu/kobutusyoukyokasinsei.html">古物商（愛知県警）</a>／<a href="https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/sake/annai/23600071.htm">酒類販売業免許</a>／<a href="https://www.pref.aichi.jp/police/shinsei/fuei/kyoka/hoan/shinyaeigyou.html">深夜酒類（愛知県警）</a>／<a href="https://www.pref.nagano.lg.jp/police/shinsei/shinsasyori/imdex.html">長野県警 標準処理期間</a>／<a href="https://www.city.osaka.lg.jp/kenko/page/0000006197.html">公衆浴場</a>／<a href="https://www.city.osaka.lg.jp/kenko/page/0000435704.html">旅館業</a>／<a href="https://www.city.osaka.lg.jp/kenko/page/0000269011.html">薬局</a>／<a href="https://www.mhlw.go.jp/topics/bukyoku/isei/i-anzen/hourei/061115-1a.html">厚労省 医業類似行為</a>／<a href="https://www.no-trouble.caa.go.jp/what/continuousservices/">消費者庁 特定継続的役務</a>／<a href="https://j-net21.smrj.go.jp/startup/guide/service/06003.html">J-Net21 リラク</a>／<a href="https://j-net21.smrj.go.jp/startup/guide/service/h023.html">J-Net21 トランクルーム</a></li>
+<li>物件・賃金・ツール・FC：<a href="https://j-net21.smrj.go.jp/startup/manual/list3/3-2-4.html">J-Net21 物件</a>／<a href="https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/content/001750143.pdf">国交省告示</a>／<a href="https://jsite.mhlw.go.jp/aichi-hellowork/newpage_01836.html">愛知労働局</a>／<a href="https://jsite.mhlw.go.jp/osaka-roudoukyoku/saichin2026kaisei.html">大阪労働局</a>／<a href="https://jstatmap.e-stat.go.jp/">jSTAT MAP</a>／<a href="https://www.chisou.go.jp/sousei/resas">RESAS</a>／<a href="https://www.meti.go.jp/press/2025/01/20260123002/20260123002.html">経産省 地域ビジネス環境分析</a>／<a href="https://www.chusho.meti.go.jp/shogyo/shogyo/franchise.html">中小企業庁 FC</a>／<a href="https://www.jftc.go.jp/dk/guideline/unyoukijun/franchise.html">公取委 FCガイドライン</a>／<a href="https://www.nikkankeizai.co.jp/publication/daily-news/backnumber/detail.php?id=4186">JFA統計（業界紙）</a></li>
+</ul>
+<div class="tw"><table>
+<tr><th>日付</th><th>内容</th></tr>
+<tr><td class="num">2026-09-28</td><td>作成</td></tr>
+</table></div>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。</p>
+</main>
+</div>
+</body>
+</html>

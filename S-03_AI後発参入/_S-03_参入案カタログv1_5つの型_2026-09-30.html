@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S-03 参入案カタログ v1 — AIで後発参入できる既存ビジネス（5つの型・台帳版）</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+.sub{display:block;color:var(--muted);font-size:12.5px;font-weight:normal}
+td.key.id{min-width:4.5em;white-space:nowrap}
+table.cat{font-size:12.5px;line-height:1.55;table-layout:fixed} table.cat td{padding:6px 8px;min-width:0} table.cat td.key.id{min-width:0}
+td.nm{min-width:11em;font-weight:600}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">0. 要約と読み方</a>
+<a href="#a">1. 型A　開発費の壁（システムを自作して運営型で入る）</a>
+<a href="#b">2. 型B　専門職の人手の壁（AI＋人の代行）</a>
+<a href="#c">3. 型C　現場業種（AIで裏方を自動化した事業者として入る）</a>
+<a href="#d">4. 型D　自社事業と関連が高いもの（物販・EC・物流）</a>
+<a href="#e">5. 型E　地方の店舗型（店を構える）</a>
+<a href="#x">6. 法律で入れないもの・扱い方</a>
+<a href="#src">7. 出典</a>
+</nav>
+<main>
+<h1>S-03 参入案カタログ v1<br><span style="font-size:17px;font-weight:normal">— AIで後発参入できる既存ビジネス（5つの型・92案・台帳版）</span></h1>
+<p class="meta">作成日：2026-09-30　｜　状態：<b>案・未承認</b>（絞り込みなし。選ぶのは坂野様）　｜　置き場所：<code>C:\dev\Search-for-a-new-business\S-03_AI後発参入\</code>　｜　対になる報告書：<code>_S-03_AIで後発参入できる既存ビジネス_調査報告_2026-09-30.html</code>（判断軸・事実・推奨はそちら）　｜　Gemini クロスレビュー：未実施</p>
+
+<h2 id="s0">0. 要約と読み方<small>92案を5つの型に分けて1行1案で並べた。落としたのは法律上できないものだけで、それも「不可」と印を付けて残している。</small></h2>
+<div class="grid">
+<div class="kpi"><b>件数</b><span>92案（型A 20／型B 15／型C 24／型D 15／型E 18）</span></div>
+<div class="kpi"><b>所見の内訳（Claude評価）</b><span>余地あり 26／条件付き 53／不可・飽和 13</span></div>
+<div class="kpi"><b>「余地あり」の分布</b><span>型A 7／型B 4／型C 7／型D 7／型E 1（型Eは店舗数の減少・飽和データが多い）</span></div>
+<div class="kpi"><b>法律で今は入れないもの</b><span>古物商許可が要る委託販売・買取、士業独占の書類作成、家庭ごみ回収、有償送迎（第6章）</span></div>
+<div class="kpi"><b>★印</b><span>取得に3か月以上かかる許認可が要る案（一般貨物 3〜5か月、倉庫業登録 2〜3か月 など）</span></div>
+<div class="kpi"><b>次にすること</b><span>坂野様が3〜5案を選ぶ → 選んだ案だけ KASETSU.md（仮説シート）へ</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>列の読み方</dt><dd>「今の担い手・料金」＝その仕事で実際にお金が動いている証拠（実在する事業者の公開料金）。「AIで変わる工程」＝従来は人が手でやっていて、後発の当社がAIで原価を下げられる部分。「許認可・法の線」＝条文で確認したもの。</dd>
+<dt>壁・地域</dt><dd>壁＝参入時に用意するお金の大きさの目安（小：数十万円まで／中：数百万円／大：1,000万円超。設備・在庫・車両・保証金など。Claudeの目安で、収益の試算ではない）。地域＝地方○（豊橋のような中核市で成り立つ）／都市○／全国（場所を問わない）。</dd>
+<dt>所見</dt><dd>✓余地あり＝一次情報上、後発でも入れる余地が見える／△条件付き＝許認可・資格者・資本・大手のいずれかが条件になる／✕不可・飽和＝法律上できない、または一次情報が飽和・減少を示す。所見はClaudeの評価であり、候補から外す判断は坂野様が行う。</dd>
+<dt>注意</dt><dd>数値・社名・条文は原文どおり。確認できなかったものは【未確認】。料金の税込・税抜は各社ページの表記のまま。</dd>
+</dl></div>
+
+<h2 id="a">1. 型A　開発費の壁<small>以前は数百万〜数千万円の受託開発で予約・管理・マッチングの仕組みを持たないと入れなかった運営型の事業。20案。</small></h2>
+<div class="tw"><table class="cat"><colgroup><col style="width:6%"><col style="width:19%"><col style="width:25%"><col style="width:19%"><col style="width:24%"><col style="width:7%"></colgroup>
+<tr><th>ID</th><th>案（誰に・何を）</th><th>今の担い手・料金の例</th><th>AIで変わる工程</th><th>許認可・法の線</th><th>所見</th></tr>
+<tr><td class="key id">開-01</td><td class="nm">ふるさと納税の中間事業者<span class="sub">自治体に、返礼品・寄附管理・受領証の事務を受託</span><span class="sub">壁：小〜中／地方○（自治体営業）</span></td><td>シフトプラス／さとふる（自治体向け）／本気モード。宝塚市の公開資料：さとふる委託料 寄附額の13.2%、システム使用料 月34,100円</td><td>複数ポータルの寄附データ取込、返礼品の発注・配送指示、受領証・ワンストップ特例の事務、費用管理</td><td>地方税法37条の2（総務大臣指定）、総務省告示：募集費用は寄附額の5割以下、ポイント付与ポータル経由の募集禁止（2025-10適用）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-02</td><td class="nm">民泊・貸別荘の運営代行<span class="sub">物件オーナーに、OTA掲載・多言語対応・清掃手配・法定事務を代行</span><span class="sub">壁：小／都市○・観光地○</span></td><td>Blue Seagull（メッセージ代行 月20,000円）、民泊管理バンク（完全代行 月69,800円）、相場「売上の15〜20%＋清掃」</td><td>多言語メッセージ、料金の自動設定、清掃手配、宿泊者名簿</td><td>住宅宿泊管理業の登録（住宅宿泊事業法22条、登録免許税9万円、業務管理者＝講習修了／実務2年／宅建士等）。標準処理期間【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-03</td><td class="nm">レンタルスペース・貸し会議室の無人運営<span class="sub">自社で借りた区画を時間貸し（またはオーナーから運営受託）</span><span class="sub">壁：中／都市○</span></td><td>LAND PLACE（運営代行 売上の7.7%、最低7,700円）、ふれあいサービス（月9,000円〜、初期18万円〜）</td><td>複数予約サイトの統合・重複防止、鍵（スマートロック）、清掃手配、レビュー対応</td><td>固有の許認可は一次情報で確認できず【未確認】。寄託を受けない＝倉庫業法の対象外</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-04</td><td class="nm">レンタル収納（賃貸借型）<span class="sub">空き店舗・空き地を区画に分けて月額で貸す。物は預からない</span><span class="sub">壁：中（物件・区画工事）／地方○</span></td><td>キュラーズ（月額例10,000円、初期12,700円）。日本倉庫協会：賃貸型は賃貸借契約で保管責任は利用者</td><td>空き区画の募集・契約・入退室・入金管理の自動化</td><td>賃貸借型は登録不要。寄託を受ける形は倉庫業登録（倉庫業法3条、標準処理期間2〜3か月★）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-05</td><td class="nm">月極・時間貸し駐車場のサブリース運営<span class="sub">地主に定額賃料を払い、募集・契約・入金・機器を自社で持つ</span><span class="sub">壁：中／地方○</span></td><td>タイムズ24（一括借上げ、機器・工事費は本部負担、賃料は非公開）、パーク24</td><td>空き募集、契約・入金・解約、地主への賃料計算</td><td>駐車場法12条：都市計画区域内で500㎡以上の有料路外駐車場は届出</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-06</td><td class="nm">軽貨物の配車元請け<span class="sub">荷主から受け、自社ドライバー＋外注に配車する</span><span class="sub">壁：小〜中／地方○・全国</span></td><td>ピックゴー（CBcloud、10万人規模）、ハコベル（28万人以上）。手数料率は非公開</td><td>受注→配車→ルート→完了証跡→請求。自社のルート作成アプリと同じ技術</td><td>自社車両は貨物軽自動車運送事業の届出（法36条、窓口で即日・無料）。他社を使って運送責任を負うと第一種貨物利用運送の登録（法3条）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-07</td><td class="nm">家事代行の元請け<span class="sub">自社スタッフ＋予約基盤で、定期の家事代行を提供</span><span class="sub">壁：小／都市○</span></td><td>タスカジ（1時間1,500円〜、個人間契約）、CaSy（1時間2,790円）</td><td>予約・日程・スタッフ配置・決済・レビュー</td><td>固有の許認可は確認できず。紹介の形態なら職業安定法30条</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-08</td><td class="nm">出張整備・出張車検の受付基盤<span class="sub">整備士ネットワークを束ね、事前確定価格で出張整備を受ける</span><span class="sub">壁：中／地方○（車依存）</span></td><td>Seibii（バッテリー交換9,900円〜、車検4,400円〜、事前に金額確定）</td><td>車種別の事前見積、整備士の稼働枠・訪問ルート、部品手配、記録簿</td><td>特定整備は認証（道路運送車両法78条）★。出張で認証不要の範囲は【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-09</td><td class="nm">訪問理美容の手配<span class="sub">高齢者施設・在宅に美容師を派遣する手配と記録</span><span class="sub">壁：小／地方○（高齢化）</span></td><td>個別事業者多数（料金例は今回未取得【未確認】）</td><td>施設ごとの巡回スケジュール、施術記録、請求</td><td>美容所以外で業を行えるのは疾病等・儀式・条例で定める場合のみ（美容師法施行令4条）。美容師の雇用または提携が前提</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-10</td><td class="nm">オンライン学習塾・家庭教師の運営<span class="sub">講師管理・授業予約・課金を自作LMSで回す</span><span class="sub">壁：小／全国</span></td><td>マナリンク（入会19,800円、月15,000〜25,000円、学生講師なし）</td><td>生徒×講師マッチング、教材・採点補助、月謝請求、講師への支払</td><td>特定商取引法41条（特定継続的役務：2か月超かつ5万円超）、概要書面・クーリングオフ・中途解約</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-11</td><td class="nm">地域の求人媒体の運営<span class="sub">地元の中小企業に求人掲載を売る（広告モデル）</span><span class="sub">壁：小／地方○</span></td><td>ジョブキタ（北海道）、ジョブアンテナ沖縄。掲載料は非公開</td><td>求人票の生成、応募管理、掲載課金</td><td>求職者情報を集めるなら特定募集情報等提供の届出（職業安定法43条の2、2022-10施行）、的確表示義務</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-12</td><td class="nm">空き家管理（巡回・通風・報告）<span class="sub">遠方の所有者に、月1回の巡回と写真報告を売る</span><span class="sub">壁：小／地方○○</span></td><td>日本空き家サポート（一戸建て 月5,500〜14,300円、マンション 月5,500円）、太陽ハウス（月9,900円）。空き家900万戸・13.8%（総務省2023）</td><td>巡回ルート、写真から異常判定、報告書の自動生成、修繕手配</td><td>賃貸住宅管理業の登録は200戸以上が対象（施行規則3条）。空き家管理はこれに当たらず、固有の許認可は確認できず</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-13</td><td class="nm">建設業向けの書類・事務代行<span class="sub">小規模建設業者に、安全書類・台帳・請求書を代行</span><span class="sub">壁：小／地方○（建設業者約48万）</span></td><td>建設事務代行センター（請求書1件2,000円）、Niarail 工事書類アシスト（時間単価2,000円〜）</td><td>書類テンプレートの自動生成、元請指定クラウドへの入力、請求書</td><td>元請へ出す安全書類・台帳は民間書類＝可。許可申請など官公署提出書類は行政書士法19条で不可</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-14</td><td class="nm">士業事務所向けの記帳下請け<span class="sub">税理士事務所から仕訳入力だけを受ける</span><span class="sub">壁：小／全国</span></td><td>ウェブゼイムジャパン（基本料 月15,000円＋1仕訳38円、初期10万円）、会計ドットコム（事務所向け110円/仕訳）</td><td>証憑OCR→仕訳候補→人が確認。事務所指定ソフトへの入力</td><td>記帳は可。税務書類の作成・税務相談は税理士法52条で不可（無償でも禁止）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-15</td><td class="nm">新品のサブスク型レンタル（家具・家電・ベビー用品）<span class="sub">新品を仕入れて月額で貸す</span><span class="sub">壁：大（在庫）／全国</span></td><td>subsclife（ドラム式洗濯乾燥機 月7,700円〜）、CLAS</td><td>個品管理、月額課金・最低期間・途中購入、配送回収</td><td>新品をメーカー等から仕入れて貸すなら古物商許可は不要（愛知県警Q&A）。中古を買い取って貸すと許可が必要</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-16</td><td class="nm">車の個人間売買サポート<span class="sub">出品受付・検査・名義変更代行・成約手数料</span><span class="sub">壁：中／地方○</span></td><td>カババ（アラカン・名古屋、成約時5.5万〜11万円、古物商許可を掲示）</td><td>査定・出品・代金管理・名義変更手配</td><td>委託売買は古物営業（古物営業法2条2項1号・3条）＝許可必須。当社は未保有</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">開-17</td><td class="nm">産直EC・飲食店向け仕入れ卸<span class="sub">生産者の農水産物を消費者・飲食店へ</span><span class="sub">壁：中／地方○（愛知の直売所販売額546億円）</span></td><td>食べチョク（販売手数料19.7%、ヤマト連携76円/配送）、八面六臂（配送500円/回、年会費4,980円で無料）</td><td>受注・産直伝票・生産者管理・仕分け</td><td>食品衛生法55条（魚介・食肉販売は許可）、57条（野菜果物・包装品は届出）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-18</td><td class="nm">イベント・セミナーの事務局代行<span class="sub">申込受付・入金照合・問い合わせ・当日受付</span><span class="sub">壁：小／都市○・全国</span></td><td>イベント・レンジャーズ（月98,000円〜、メール＋電話 348,000〜438,000円）、TKP事務局代行</td><td>申込フォーム・参加者DB・入金照合・問い合わせ返信</td><td>固有の許認可は確認できず</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">開-19</td><td class="nm">セルフ写真館・シェアサロン（予約制の無人店）<span class="sub">時間枠を売る店</span><span class="sub">壁：中／都市○</span></td><td>セルフォトスタジオ渋谷（30分3,300円）、LIVSNAP、GO TODAY SHAiRE SALON（月10,000円＋売上30%〜）</td><td>時間枠予約・決済・入退室・データ受け渡し・歩合計算</td><td>シェアサロンは美容所の届出（美容師法11条）。写真館は固有の許認可を確認できず</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">開-20</td><td class="nm">宅配クリーニングの取次（無店舗）<span class="sub">集荷して提携工場へ回す</span><span class="sub">壁：小／都市○</span></td><td>リネット（オプション＋1,290円/着ほか）</td><td>集荷予約・品目料金・工場振分・進捗追跡</td><td>クリーニング所を開設しない受取引渡し営業は届出（クリーニング業法5条2項）</td><td class="warn st">条件付</td></tr>
+</table></div>
+
+<h2 id="b">2. 型B　専門職の人手の壁<small>料金がそのまま人件費だった代行・BPO。AIで文章・入力・翻訳・下書きの原価が下がる。ただし「顧客が自分でAIを使う」内製化と、士業の独占範囲が壁。15案。</small></h2>
+<div class="tw"><table class="cat"><colgroup><col style="width:6%"><col style="width:19%"><col style="width:25%"><col style="width:19%"><col style="width:24%"><col style="width:7%"></colgroup>
+<tr><th>ID</th><th>案（誰に・何を）</th><th>今の担い手・料金の例</th><th>AIで変わる工程</th><th>許認可・法の線</th><th>所見</th></tr>
+<tr><td class="key id">職-01</td><td class="nm">記帳代行（税務なし）<span class="sub">小規模事業者に、証憑整理〜仕訳入力〜試算表</span><span class="sub">壁：小／全国</span></td><td>記帳代行ドットコム（50仕訳 月5,500円≒44円/仕訳）、メリービズ（月15〜20万円の例）、相場50〜100円/仕訳</td><td>証憑OCR、仕訳候補生成、人が確認</td><td>記帳は可。税務書類の作成・税務代理・税務相談は税理士法2条・52条で不可（無償でも禁止、罰則59条）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">職-02</td><td class="nm">給与計算代行（手続きなし）<span class="sub">給与額の計算・明細作成のみ</span><span class="sub">壁：小／全国</span></td><td>FKJ（基本5,000円/回＋500円/名）、ペガサス（4名以下 月15,000円）</td><td>勤怠集計→計算→明細</td><td>給与計算は社労士法27条の列挙外＝可。社保・労保の申請書等は不可。賃金台帳（労基法108条の帳簿）の作成は27条に触れ得る【公的見解未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-03</td><td class="nm">契約書のチェック・作成代行<span class="sub">他社の契約書を報酬を得て作る・審査する</span></td><td>弁護士（チェック5万円〜/通）、行政書士（契約書作成 平均39,406円）</td><td>—</td><td>他人の権利義務書類の作成は行政書士法1条の3・19条、事件性ある法律事務は弁護士法72条。法務省指針（2023-08／2026-08-21）はAIサービス提供者向け</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">職-04</td><td class="nm">許認可申請・補助金申請の書類作成代行<span class="sub">建設業許可・補助金の申請書を作る</span></td><td>行政書士（建設業許可 新規・知事 平均151,341円、補助金 着手金5.5万＋採択額11%）</td><td>—</td><td>官公署提出書類の作成は行政書士法19条で不可（罰則21条の2）。労働保険の助成金は社労士法27条</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">職-05</td><td class="nm">登記書類の作成代行</td><td>司法書士（会社設立登記 平均107,887円）</td><td>—</td><td>司法書士法73条（報酬要件なし）</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">職-06</td><td class="nm">採用事務代行（RPO。紹介・勧誘はしない）<span class="sub">求人票文案・媒体運用・応募者連絡・日程調整</span><span class="sub">壁：小／全国</span></td><td>マルゴト（月25万円、初期10万円）、CASTER BIZ recruiting（月25〜40万円）</td><td>求人票・スカウト文の生成、応募管理、日程調整の自動化</td><td>あっせんは有料職業紹介の許可（職安法30条）。代行者が自ら勧誘するスカウト送信は委託募集の許可（36条）等に当たり得る。事務代行の可否の厚労省見解は【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-07</td><td class="nm">電話代行・受付代行<span class="sub">中小企業の代表電話を受けてテキストで通知</span><span class="sub">壁：小／全国</span></td><td>fondesk（月10,000円→2026-10から12,000円）、CUBE電話代行（月10,000円/50コール）</td><td>受電→文字起こし→要約→通知。音声AIの一次応答</td><td>固有の許認可なし。個人情報保護法の委託先管理</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-08</td><td class="nm">翻訳・多言語対応（インバウンド問い合わせ含む）<span class="sub">壁：小／全国</span></td><td>JTF目安 日英20〜30円/文字、Gengo 5〜9円/文字、クリムゾン 10.6円〜</td><td>機械翻訳＋人の確認</td><td>許認可なし</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-09</td><td class="nm">文字起こし・議事録作成<span class="sub">壁：小／全国</span></td><td>文字起こし専門com（200〜300円/分）、東京反訳（250円/分〜）</td><td>自動文字起こし＋人の整文</td><td>許認可なし</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-10</td><td class="nm">不動産の物件入力・間取り図・写真加工<span class="sub">不動産会社に、ポータル掲載データの作成を代行</span><span class="sub">壁：小／全国</span></td><td>ミュールズ（物件入力 1件250円〜、間取図 100〜390円）</td><td>図面トレース、キャッチコピー、画像補正、ポータル別整形</td><td>媒介・重要事項説明は宅建業者・宅建士のみ（宅建業法12条・35条）。入力・図面は事務。行政書士法の「図面類」との関係は【未確認】</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">職-11</td><td class="nm">建設の積算・見積・安全書類の代行<span class="sub">図面から数量を拾い見積書を作る</span><span class="sub">壁：小／地方○（建設業者多い）</span></td><td>川崎積算事務所（500万円まで27,500円〜）、アイリサーチ（500万円まで40,000円）、SHODAISUPPORT（安全書類一式20,000円〜）</td><td>図面読取・数量拾い・単価当て・見積書生成</td><td>有資格者に限定する規定なし（建設業法20条は努力義務）。許可申請書類は行政書士法19条</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">職-12</td><td class="nm">クリニック向けレセプト点検・事務代行<span class="sub">壁：小（専門人材）／地方○</span></td><td>Remoba医療事務（月180,000円/30時間〜）、クラウドクリニック、レンタル事務長さん（月10万円〜）</td><td>算定漏れ・返戻の点検ルール、リコール、電話対応</td><td>受託は可（医療法15条の3の委託基準の対象外）。オンライン請求の「事務代行者」は医師会等の団体に限定（請求命令4条）＝送信は医療機関名義。要配慮個人情報</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-13</td><td class="nm">介護事業所向け 国保連請求・記録の代行<span class="sub">壁：小／地方○（介護事業所）</span></td><td>WITH介護（月8,000円/事業所＋750円/利用者）、北日本ケアサポート（基本20,000円＋500円/名、伝送2,000円）</td><td>実績→請求データ、返戻・過誤処理、記録整備</td><td>民間業者の代理請求は制度に明記（東京都国保連：代理人登録＋電子証明書）。要配慮個人情報</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">職-14</td><td class="nm">SNS運用・MEO運用代行<span class="sub">壁：小／全国</span></td><td>ConnectDesign（月33,000円〜）、GMOトライハッチ MEO（月33,000〜99,000円）、L'aide（月20,000円）</td><td>投稿・返信・口コミ返信の生成、順位監視</td><td>許認可なし。ステマ規制の名宛人は広告主（代行は対象外だが、違反表示を作らない責任が契約に乗る）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">職-15</td><td class="nm">動画編集・YouTube運用代行／予約受付コールセンター<span class="sub">壁：小／全国</span></td><td>AWANA（編集30,000円/本〜）、動画集客の海賊（月15万円〜）／テルシンク24（クリニック 月16,500円〜）</td><td>編集の自動化、音声AIの予約受付</td><td>許認可なし（著作権法・景表法、要配慮個人情報）</td><td class="warn st">条件付</td></tr>
+</table></div>
+<p class="note">型Bの「条件付」の多くは法律ではなく<b>内製化</b>が理由：翻訳・文字起こし・SNS投稿・電話の一次応答は、顧客自身がAIで済ませられる範囲が広がっている（TDBの活用率は2024-06の17.3%→2026-03の34.5%）。価格は下がり続ける前提で見る。</p>
+
+<h2 id="c">3. 型C　現場業種<small>AIと縁の薄い現場型の業種に、見積・配車・顧客対応・集客・事務をAIで自動化した「新しい事業者」として入る。許認可なしで始められるものが多く、地方に向く。24案。</small></h2>
+<div class="tw"><table class="cat"><colgroup><col style="width:6%"><col style="width:19%"><col style="width:25%"><col style="width:19%"><col style="width:24%"><col style="width:7%"></colgroup>
+<tr><th>ID</th><th>案（誰に・何を）</th><th>今の担い手・料金の例</th><th>AIで変わる工程</th><th>許認可・法の線</th><th>所見</th></tr>
+<tr><td class="key id">現-01</td><td class="nm">ハウスクリーニング・エアコンクリーニング<span class="sub">壁：小／地方○</span></td><td>おそうじ本舗（壁掛けエアコン12,100円/台）、ダスキン（15,400円、浴室22,000円）</td><td>写真からの見積、予約・ルート、集客（MEO・広告）、報告</td><td>国の許認可なし。建築物清掃業の登録は任意（建築物衛生法12条の2、厚労省「何ら制限を加えるものではありません」）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-02</td><td class="nm">店舗・ビル・事業所の定期清掃<span class="sub">月額契約で継続収益</span><span class="sub">壁：小／地方○・都市○</span></td><td>冨士ファシリティーズ（床洗浄170〜190円/㎡、最低30,000円）。業界推計約4.8兆円（全国ビルメン協会）</td><td>見積・シフト・巡回ルート・品質報告書</td><td>登録は任意（同上）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-03</td><td class="nm">軽貨物運送（スポット・チャーター・企業間配送）<span class="sub">壁：小〜中（車両）／地方○・全国</span></td><td>赤帽愛知（20kmまで5,500円、2時間貸切6,050円）。事業者89,102（R3）</td><td>配車・ルート（自社アプリ）・点呼記録・請求</td><td>届出（貨物自動車運送事業法36条、窓口5〜10分・無料）。2025-04〜 安全管理者講習（5時間・3,700円）と選任届出が必須</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-04</td><td class="nm">軽自動車での小口引越し<span class="sub">壁：小／都市○</span></td><td>赤帽愛知（引越基本14,300円）</td><td>見積・日程・ルート</td><td>軽自動車のみなら届出で可。トラックは一般貨物の許可（5両以上・標準3〜5か月★）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-05</td><td class="nm">トラック引越し・一般貨物<span class="sub">壁：大／—</span></td><td>サカイ引越センター等（個別見積）</td><td>—</td><td>一般貨物自動車運送事業の許可（3条）。5両以上・運行管理者・整備管理者・所要資金の常時確保、標準処理期間3〜5か月★、法令試験</td><td class="warn st">条件付★</td></tr>
+<tr><td class="key id">現-06</td><td class="nm">不用品回収・遺品整理（回収を伴う）</td><td>きずな屋（1R 40,000円〜）。無許可回収の相談2,231件（2021年度）</td><td>—</td><td>家庭ごみの収集運搬は市町村長の許可（廃棄物処理法7条）で「市町村長の自由裁量」、大阪市は30年以上新規許可を見送り。買取は古物営業法3条</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">現-07</td><td class="nm">草刈り・剪定・庭木・空き家の外回り管理<span class="sub">壁：小／地方○○</span></td><td>空家・空地管理センター（草刈り 1人1時間2,500〜3,000円）</td><td>地図面積・写真からの見積、巡回ルート、報告書</td><td>作業自体は許認可なし。剪定枝等を業として収集運搬すれば廃棄物処理法7条（処分は許可業者へ委託）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-08</td><td class="nm">外壁塗装・小規模リフォーム（500万円未満）<span class="sub">壁：中（職人・車両）／地方○</span></td><td>加藤塗装工業（屋上防水100㎡未満25〜50万円）。住宅工事の8割以上が500万円未満（国交省）</td><td>見積・図面・工程・集客・契約書（電子化率8.8%）</td><td>請負代金500万円未満は建設業許可不要（建設業法3条、施行令1条の2。分割契約は合算）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-09</td><td class="nm">害虫・害獣駆除<span class="sub">壁：小／地方○</span></td><td>ダスキン（ゴキブリ駆除1回27,500円〜、スズメバチ49,500円）</td><td>見積・予約・定期契約管理</td><td>害虫駆除は国の許認可なし（自治体条例は【未確認】）。害獣は鳥獣保護管理法9条の捕獲許可、農薬は農薬取締法24・25条</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-10</td><td class="nm">洗車・カーコーティング（店舗・出張）<span class="sub">壁：中（店舗）〜小（出張）／地方○（愛知の車保有1.209台/世帯）</span></td><td>KeePer LABO（手洗い3,230円〜、184店、平均単価16,757円、直営1店あたり売上は決算資料から計算で約9,000万円）</td><td>予約・顧客管理・再来促進・写真報告</td><td>許認可なし。自動洗車機は水質汚濁防止法の特定施設（届出）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-11</td><td class="nm">タイヤ交換・タイヤ保管<span class="sub">壁：中（倉庫）／地方○</span></td><td>オートバックス（保管4本 月1,100〜1,870円）</td><td>保管位置・予約・交換時期の自動案内</td><td>特定整備に当たらない範囲かは【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-12</td><td class="nm">家族葬（ホールを持つ／持たない）<span class="sub">壁：大（ホール）〜中（提携）／地方○</span></td><td>小さなお葬式（97,900〜603,900円）。死亡160.5万人（2024）、葬儀業事業所1,997→3,006（2013→2024）、1件単価1,413→1,214千円</td><td>24時間受付、見積、手配（火葬場・返礼品・料理）</td><td>「許可、認可、届け出など法的規制が全くなく」（全葬連）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-13</td><td class="nm">ペットホテル・トリミング・シッター<span class="sub">壁：中／地方○</span></td><td>ペテモ（ホテル1頭5,500円/泊）。第一種動物取扱業48,914事業所（R5）</td><td>予約・カルテ・写真報告・再来促進</td><td>第一種動物取扱業の登録（動物愛護管理法10条、責任者＝実務半年＋講習等、手数料15,000円、標準処理期間16日の例）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-14</td><td class="nm">配食・宅配弁当（高齢者向け）<span class="sub">壁：中（厨房）／地方○（豊橋の65歳以上は2035年に31.5%）</span></td><td>宅配クック123（普通食685円）。メディカル給食・在宅配食市場2兆4,096億円（矢野2024年度）</td><td>献立・注文・配達ルート・安否確認の記録</td><td>飲食店営業許可（食品衛生法55条・施行令35条、有効5年以上）、HACCP、食品衛生責任者</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-15</td><td class="nm">高齢者の生活支援（買い物代行・見守り・ごみ出し・付き添い）<span class="sub">壁：小／地方○○</span></td><td>ダスキンライフケア（1時間4,180〜5,500円、1回2時間以上）</td><td>予約・報告・家族への通知・スタッフ配置</td><td>保険外サービスに許認可なし（3省ガイドブック）。有償送迎は道路運送法78条で不可（実費のみ可）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">現-16</td><td class="nm">消防設備点検（有資格者を雇う）<span class="sub">壁：小／地方○</span></td><td>なかの消防サービス（消火器800円/本）、日消システムズ（300㎡未満1〜3万円/回、年2回）</td><td>点検スケジュール・報告書・更新案内</td><td>1,000㎡以上の特定防火対象物等は消防設備士・点検資格者が点検（消防法17条の3の3）。資格者の雇用が前提</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-17</td><td class="nm">空調・給排水の保守（フロン定期点検を含む）<span class="sub">壁：小／地方○</span></td><td>リョウテック（点検保守45,000円〜/年2回）</td><td>点検周期管理・報告</td><td>7.5kW以上の定期点検は「十分な知見を有する者」（フロン排出抑制法）、給水装置工事は指定制</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-18</td><td class="nm">屋根・雨どい・防水の点検補修<span class="sub">壁：中／地方○</span></td><td>加藤塗装工業（瓦屋根雨漏り10〜25万円）。点検商法の相談2,885件（2022年度）</td><td>ドローン・写真からの見積</td><td>500万円未満は建設業許可不要（現-08と同じ）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-19</td><td class="nm">看板・サイン製作・設置<span class="sub">壁：小〜中／地方○</span></td><td>CUVIC CITY（壁面看板36,300円〜）</td><td>デザイン生成・見積・施工手配</td><td>屋外広告業の登録（屋外広告物法9条＝条例。愛知県は30日・11,000円。豊橋市・大阪市の登録は【未確認】）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-20</td><td class="nm">ドローン農薬散布・点検<span class="sub">壁：中（機体・操縦者）／地方○</span></td><td>JDC（水稲2,750円〜/10a）。散布面積109.7万ha（2023年度）</td><td>飛行計画・申請書類・散布記録</td><td>航空法132条の85・86（許可承認、10開庁日前）、機体登録、農薬取締法</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-21</td><td class="nm">農作業受託<span class="sub">壁：大（機械）／地方○○</span></td><td>鳥取市標準料（耕起7,350円/10a、稲刈20,220円）。利用希望66.1%、理由「情報不足」35.6%</td><td>受注・機械配車・作業記録</td><td>農地法3条は権利移動が対象＝作業受託は対象外</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-22</td><td class="nm">除雪・凍結防止<span class="sub">愛知・大阪では需要が乏しい</span></td><td>S.W.A.T（札幌、シーズン24万円〜）</td><td>—</td><td>許認可なし</td><td class="ng st">対象外</td></tr>
+<tr><td class="key id">現-23</td><td class="nm">特殊清掃・ゴミ屋敷清掃（清掃のみ）<span class="sub">壁：小／地方○</span></td><td>マインド（緊急パック108,900円）。自宅で死亡した一人暮らし76,020体（2024）</td><td>見積・工程・報告</td><td>清掃自体は許認可なし。残置物の運搬は廃棄物処理法7条（許可業者へ委託）、買取は古物営業法</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">現-24</td><td class="nm">太陽光・蓄電池の点検保守<span class="sub">壁：小／地方○</span></td><td>関西電気保安協会（見積制）</td><td>点検周期・報告</td><td>工事は電気工事士＋電気工事業の登録。工事を伴わない点検に資格を課す規定は【未確認】</td><td class="warn st">条件付</td></tr>
+</table></div>
+<p class="note">型Cで「余地あり」とした根拠は、①国の許認可が要らない ②業界自身が人手不足・IT化の遅れを公表している（ビルメン「現場従業員が集まりにくい」88.5%、従業員20人以下のDX取組＋検討25.4%、建設業DX 38.0%）③地方で需要側の数字が厚い（車・高齢者・空き家）の3点。</p>
+
+<h2 id="d">4. 型D　自社事業と関連が高いもの<small>物販・EC・物流の実務と自作システムをそのまま武器にできる領域。古物商許可が無いことが唯一の大きな線。15案。</small></h2>
+<div class="tw"><table class="cat"><colgroup><col style="width:6%"><col style="width:19%"><col style="width:25%"><col style="width:19%"><col style="width:24%"><col style="width:7%"></colgroup>
+<tr><th>ID</th><th>案（誰に・何を）</th><th>今の担い手・料金の例</th><th>AIで変わる工程</th><th>許認可・法の線</th><th>所見</th></tr>
+<tr><td class="key id">自-01</td><td class="nm">EC運営代行（楽天・Amazon・Yahoo!）<span class="sub">メーカー・小売に、店舗運営を丸ごと受託</span><span class="sub">壁：小／全国</span></td><td>TRUE（月18万円〜、広告費の0〜20%）、ジャグー（月50万円〜）、いつも（14,000件、料金非公開）。相場 固定10〜50万円／成果5〜20%</td><td>商品ページ量産、レビュー返信、価格・在庫・セール設定、売上レポート</td><td>代行自体に許認可なし。店舗側は特商法11条・12条の6</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-02</td><td class="nm">商品登録・商品ページ制作・撮影の代行<span class="sub">壁：小／全国（撮影は拠点）</span></td><td>リクサポート（登録500〜50円/点）、商品登録ドットコム（100円/点〜）、バーチャルイン（撮影400円/カット）、ジャグー（Amazonページ10万円〜）</td><td>説明文生成、CSV変換、白抜き・背景合成、画像内テキスト</td><td>景表法（表示責任は出店者）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-03</td><td class="nm">越境EC出品代行（eBay・Shopee・Amazon US）<span class="sub">壁：小／全国</span></td><td>ウルベイ（代行15%）、ジェイノベーション Shopee（月30,000円）、WorldShopping BIZ（月5,500円）。越境EC 日→中2.6兆円・日→米3.1兆円（2024）</td><td>多言語翻訳、カテゴリ・属性マッピング、為替連動価格、バイヤー返信</td><td>該非判定（外為法48条）、輸出申告（関税法67条）、輸出免税の書類7年保存（消費税法7条）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-04</td><td class="nm">FBA納品代行・発送代行（新品）<span class="sub">壁：中（倉庫）／地方○（豊橋）</span></td><td>テラロジ（月9,800円、入庫30円/個、出荷205円/箱）、ウルロジ（1ピック20円〜）、e-fba（ラベル貼12円/点）、FBA代行センター（80〜100円/点）</td><td>入庫照合、納品プラン・ラベル、送り状生成、在庫報告</td><td>他人の物を預かって保管対価を得れば倉庫業登録（3条、2〜3か月★）。運送責任を負って宅配便を使えば第一種貨物利用運送の登録</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-05</td><td class="nm">フリマ出品代行（他人の物を預かって売る）</td><td>マカセル（手数料25〜50%、古物商許可を掲示）</td><td>—</td><td>委託売買は古物営業。消費者の手に一度渡った新品も「古物」（警察庁解釈基準 2024-08-14）＝許可必須。当社は未保有</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">自-06</td><td class="nm">法人在庫の買取・在庫処分の販売代行<span class="sub">壁：中〜大（在庫資金）／全国</span></td><td>shoichi（法人取引5,000社超）、キンブル（年5,000万点、古物商許可を掲示）</td><td>査定・SKU突合・出品データ変換</td><td>流通段階（メーカー→卸→小売）の未販売在庫が古物に当たらないとの明文は通達に無い【未確認】。実務は許可掲示が多い。法務確認が先</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-07</td><td class="nm">卸売（メーカーから仕入れて小売・EC事業者へ）<span class="sub">壁：中（在庫）／全国</span></td><td>スーパーデリバリー（取引額の10〜15%、年間流通238億円）、NETSEA（月25,000円）。卸売業 事業所348,889、開業率4.3%・廃業率5.2%</td><td>受発注・請求・在庫連携（自作システムの領域）</td><td>一般の卸売に許認可は見当たらない（酒類は酒税法9条の免許、医薬品は薬機法34条）</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-08</td><td class="nm">メーカー向けD2C立ち上げ・Amazonブランド登録・広告運用代行<span class="sub">壁：小／全国</span></td><td>ジャグー（広告代行 月5万円〜または広告費の15%〜）、いつも・そばに（非公開）。商標出願3,400円＋8,600円/区分</td><td>キーワード・入札調整、A+コンテンツ生成、ACoSレポート</td><td>商標法（ブランド登録は商標が前提）、特商法、景表法</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-09</td><td class="nm">価格改定の運用代行（ツール＋人）<span class="sub">壁：小／全国</span></td><td>プライスター（月5,280円）、マカド！（月4,980円、1万店舗超）、Amazon純正Automate Pricing（無料）</td><td>競合価格取得→ルール判定→改定</td><td>景表法（二重価格）、特商法11条</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-10</td><td class="nm">海外在住者向け購入代行・転送<span class="sub">壁：小〜中／全国</span></td><td>Buyee（500円/注文）、ZenMarket（500円/商品）、転送コム（50円〜、実重量制）</td><td>代理購入判定・多言語問合せ・送料計算・輸出インボイス</td><td>輸出免税（消費税法7条、書類7年保存）、該非判定</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-11</td><td class="nm">Amazon出品者向け アカウント健全性・違反対応サポート<span class="sub">壁：小／全国</span></td><td>アグザルファ、そばに（料金非公開）。AHR 200〜1,000＝健全</td><td>違反通知の分類、改善計画（POA）文案、指標監視</td><td>ステマ規制（広告主が名宛人）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-12</td><td class="nm">返品・返送品の検品・再梱包代行（所有権を移さない）<span class="sub">壁：中／地方○</span></td><td>返品くん（料金非公開）、Packy（発送1件200円）</td><td>返品理由分類、写真検品、再出品データ</td><td>EC事業者自身の返品再販は古物営業から除外（2条2項1号）。代行業者が返品品を買い取って再販すると古物。所有権を移さない受託処理の扱いは【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-13</td><td class="nm">ECサイト制作＋運営の一括請負（WooCommerce・Shopify）<span class="sub">壁：小／全国</span></td><td>act style（テンプレート19万円〜、オリジナル32万円〜）、Shopify（Basic 月3,650円〜）、構築相場50〜300万円</td><td>テーマ調整、規約・特商法ページ生成、保守監視</td><td>特商法11条・12条の6、景表法</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">自-14</td><td class="nm">モール出品データ作成＋在庫連携の受託（メーカー・卸向け）<span class="sub">壁：小／全国</span></td><td>ネクストエンジン（基本3,000円＋従量）、CROSS MALL・GoQSystem（料金取得不可【未確認】）</td><td>商品マスタ→モール別CSV、画像規格変換、在庫同期の例外処理</td><td>各モール規約・API規約</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">自-15</td><td class="nm">EC事業者向けカスタマーサポート代行／B2B輸出（海外バイヤー向け仕入れ代行）<span class="sub">壁：小／全国</span></td><td>おてがるサポート（月9,800円、超過590円/件）、秘書センター（月12,100円〜）／輸出は自-03・自-10と同じ法令</td><td>一次回答生成、FAQ化、注文照会連携／該非判定書の収集、インボイス生成</td><td>個人情報保護法／外為法・関税法・消費税法</td><td class="warn st">条件付</td></tr>
+</table></div>
+
+<h2 id="e">5. 型E　地方の店舗型<small>店を構える業態を、店舗数の推移と地方の需要データで見た。伸びているのは車・葬儀・高齢者・ドラッグストア、減っているのは無人販売・コインランドリー大手FC・学習塾の受講生。18案。</small></h2>
+<div class="tw"><table class="cat"><colgroup><col style="width:6%"><col style="width:19%"><col style="width:25%"><col style="width:19%"><col style="width:24%"><col style="width:7%"></colgroup>
+<tr><th>ID</th><th>案（業態）</th><th>店舗数・市場の一次情報</th><th>AIで変わる工程</th><th>許認可・出店条件</th><th>所見</th></tr>
+<tr><td class="key id">地-01</td><td class="nm">洗車・コーティング専門店（ロードサイド）<span class="sub">壁：大（店舗・設備）／地方○</span></td><td>KeePer LABO 47店（FY2015）→184店（2026-06）、来店809,831台、平均単価16,757円、FC募集解禁。愛知の世帯当たり自家用車1.209台（大阪0.611）</td><td>予約・顧客管理・再来促進</td><td>許認可なし（自動洗車機は水濁法届出）。出店基準は非公開【未確認】</td><td class="ok st">余地あり</td></tr>
+<tr><td class="key id">地-02</td><td class="nm">タイヤ交換・保管の郊外拠点<span class="sub">壁：中／地方○</span></td><td>オートバックス保管 月1,100〜1,870円/4本。自動車等関係費は町村で大都市の1.3倍（家計調査）</td><td>在庫位置・予約・時期案内</td><td>特定整備該当性【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-03</td><td class="nm">自動車整備（認証工場）<span class="sub">壁：大／地方○</span></td><td>事業場92,251（4年ぶり減）、総整備売上6兆6,592億円（+6.4%）、専業1事業場あたり約4,485万円（計算）</td><td>見積・入庫予約・記録簿・顧客通知</td><td>認証（78条）：2人以上・整備士が1/4以上・整備主任者★（期間未確認）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-04</td><td class="nm">コインランドリー<span class="sub">壁：大／地方○</span></td><td>市場1,155億円（+0.9%、矢野2025）、WASHハウス583→563店（2024-12→2026-08）、標準出店コスト3,150〜4,000万円</td><td>効きは小（既に無人）。稼働監視・集客</td><td>自治体要綱の開設届のみ</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-05</td><td class="nm">無人販売店（餃子・冷凍食品）<span class="sub">壁：中／—</span></td><td>無人餃子131店（2020年度末）→約1,400店（2023-07、TDB「飽和状態」）。雪松400超→219店（2022→2024-11）、2026年も地方で閉店継続</td><td>—</td><td>食品衛生法の届出・許可（品目による）</td><td class="ng st">飽和</td></tr>
+<tr><td class="key id">地-06</td><td class="nm">24時間ジム<span class="sub">壁：大／地方△（大手FCが先行）</span></td><td>エニタイム1,235店（+62/年）、chocoZAP 2,005店。フィットネス会員数は2019年336万→2024年288万人（調査対象企業）</td><td>入会・退会・機器点検・清掃管理</td><td>出店は「昼間人口・20〜40代人口」で判断（数値非公開）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-07</td><td class="nm">学習塾（対面）<span class="sub">壁：中／地方✕（需要が薄い）</span></td><td>受講生1,470万人（2021）→1,415万人（2024、▲3.7%）、事業所11,558→11,001。補習教育支出：大都市3,471円/月 vs 小都市B・町村1,118円。出生数686,061人（2024）</td><td>教材・採点・保護者連絡</td><td>特商法41条（特定継続的役務）</td><td class="ng st">飽和</td></tr>
+<tr><td class="key id">地-08</td><td class="nm">整骨院・接骨院<span class="sub">壁：中／地方△</span></td><td>施術所50,924（横ばい、+8）。柔道整復療養費3,855億円（H25）→2,759億円（R5）</td><td>予約・カルテ・レセプト</td><td>柔道整復師の雇用が前提</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-09</td><td class="nm">美容室・理容室<span class="sub">壁：中／—</span></td><td>美容所274,070（+1.5%/年、1店あたり人口約489人）、理容所110,297（▲1.9%）。理美容支出は町村で大都市の73%</td><td>予約・再来促進</td><td>美容所の届出（美容師法11条）、美容師の雇用</td><td class="ng st">飽和</td></tr>
+<tr><td class="key id">地-10</td><td class="nm">家族葬ホール<span class="sub">壁：大／地方○</span></td><td>死亡160.5万人（2024）、葬儀業事業所1,997→3,006（2013→2024）、件数423,503→502,921、1件単価1,413→1,214千円。ティア 単価897千円・150館超</td><td>24時間受付・見積・手配</td><td>法的規制なし（全葬連）。出店基準は【未確認】</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-11</td><td class="nm">コンビニFC<span class="sub">壁：中／地方○</span></td><td>店舗数55,322（2017）→56,054（2025）＝8年横ばい。セブンCタイプ：加盟金260万円、契約15年、最低保証2,000万円/年</td><td>発注・シフト（本部システム）</td><td>本部の加盟審査。商圏人口基準は非公開</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-12</td><td class="nm">ワークマンFC／業務スーパーFC<span class="sub">壁：大／—</span></td><td>ワークマン1,105店（個人契約のみ・法人不可・55歳未満の夫婦等）。業務スーパー1,144店（保証金1,000万円＋設備3,600万円〜、愛知は募集エリア外）</td><td>—</td><td>本部条件：ワークマンは法人不可、業務スーパーは愛知が募集外</td><td class="ng st">不可</td></tr>
+<tr><td class="key id">地-13</td><td class="nm">ドラッグストア<span class="sub">壁：大／—</span></td><td>売上10兆6,427億円（+6.1%）、24,536店（+813、2025年度）</td><td>—</td><td>大手チェーンの直営・FCが中心</td><td class="ng st">大手</td></tr>
+<tr><td class="key id">地-14</td><td class="nm">キャンプ場・グランピング・貸別荘<span class="sub">壁：大／地方△（供給増）</span></td><td>オートキャンプ場1,269（2019）→1,570（2025、+24%）、稼働率16.3%（施設数が2020年水準なら20.2%）。宿泊業の2025年退出267件、うち地方75.3%</td><td>予約・料金・清掃</td><td>旅館業法等（施設形態による）</td><td class="ng st">飽和</td></tr>
+<tr><td class="key id">地-15</td><td class="nm">農産物直売所<span class="sub">壁：中／地方○（豊橋は農業地帯）</span></td><td>販売額1兆1,344億円（+0.7%）、20,960事業体（1事業体約5,410万円、愛知は約9,750万円）</td><td>受発注・生産者精算・POS連携</td><td>食品衛生法（品目により許可・届出）</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-16</td><td class="nm">キッチンカー・移動販売<span class="sub">壁：中（車両）／地方○</span></td><td>2021-06改正で施設基準を全国統一（給水40L／80L／200Lで提供範囲）。東京都の営業許可件数は平成元年比約8倍</td><td>出店場所の予約・売上管理</td><td>飲食店営業許可・食品衛生責任者</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-17</td><td class="nm">高齢者向け配食（店舗厨房＋配達）<span class="sub">壁：中／地方○</span></td><td>メディカル給食・在宅配食2兆4,096億円（2024年度）。豊橋市65歳以上26.0%（2020）→31.5%（2035）→37.3%（2050）</td><td>献立・注文・配達ルート・安否記録</td><td>飲食店営業許可・HACCP</td><td class="warn st">条件付</td></tr>
+<tr><td class="key id">地-18</td><td class="nm">セルフ写真館・レンタルスペース・貸切サウナ・コインパーキング<span class="sub">壁：中〜大／地方△</span></td><td>サウナ愛好家人口1,648万人（前年比▲131万人）。タイムズ19,679→20,700件計画。地方採算の公開情報【未確認】</td><td>予約・入退室・決済</td><td>物件用途・消防による</td><td class="warn st">条件付</td></tr>
+</table></div>
+<p class="note">地方に関する共通の事実：豊橋市の人口は2020年371,920人→2050年304,309人（▲18.2%）、15〜64歳は▲29.7%。商店街の平均空き店舗率11.30%、「町・村」の商店街は80.8%が『衰退』と回答。都市階級が小さいほど自動車等関係費は多く（大都市21,183円→町村27,859円/月）、外食・補習教育・理美容の支出は少ない。<b>豊橋クラスの中核市の店舗賃料を示す公表統計は無く、「地方は賃料が安い」は今回の一次情報では裏付けられなかった</b>（主要都市のみ：銀座63,700／心斎橋27,400／名古屋・栄24,500円/坪・月）。</p>
+
+<h2 id="x">6. 法律で今は入れないもの・扱い方<small>「不可」は捨てるのではなく、解禁条件を書いて残す。</small></h2>
+<div class="tw"><table>
+<tr><th>対象</th><th>根拠</th><th>解禁の条件</th></tr>
+<tr><td class="key">他人の物を預かって売る・買い取る（自-05・自-06の一部・開-16・現-06の買取）</td><td>古物営業法2条2項1号・3条。消費者の手に渡った新品も古物（警察庁解釈基準 2024-08-14）</td><td>古物商許可の取得。取得計画を立てるかは坂野様の判断</td></tr>
+<tr><td class="key">税務書類・税務相談（職-01の外側）</td><td>税理士法2条・52条（無償でも禁止）</td><td>税理士との提携（記帳下請けの形にする）</td></tr>
+<tr><td class="key">社保・労保の申請書、賃金台帳（職-02の外側）</td><td>社労士法27条・2条1項1号〜2号</td><td>社労士との提携</td></tr>
+<tr><td class="key">他人の契約書・許認可申請・補助金申請の書類作成（職-03・04）</td><td>行政書士法1条の3・19条、弁護士法72条</td><td>行政書士・弁護士との提携。自社の書類作成の効率化には使える</td></tr>
+<tr><td class="key">登記書類（職-05）</td><td>司法書士法73条</td><td>司法書士との提携</td></tr>
+<tr><td class="key">あっせん・勧誘型スカウト（職-06の外側）</td><td>職業安定法30条・36条</td><td>有料職業紹介の許可（基準資産500万円×事業所数、現預金150万円）</td></tr>
+<tr><td class="key">家庭ごみの収集運搬（現-06）</td><td>廃棄物処理法7条（市町村長の自由裁量、新規許可は事実上困難）</td><td>許可業者との提携で「清掃・整理」だけを担う</td></tr>
+<tr><td class="key">有償送迎（現-15の外側）</td><td>道路運送法78条</td><td>実費のみ（燃料代・有料道路・駐車場）の形に限る</td></tr>
+<tr><td class="key">寄託型の保管、運送責任を負う配送手配（開-04・自-04・開-06）</td><td>倉庫業法3条（登録2〜3か月）、貨物利用運送事業法3条</td><td>賃貸借型・届出範囲で始め、必要になったら登録（★）</td></tr>
+</table></div>
+
+<h2 id="src">7. 出典<small>数値・社名・条文は各出典の原文どおり。URLは報告書の第11章に一覧。</small></h2>
+<ul>
+<li><b>法令：</b>e-Gov法令検索（古物営業法・税理士法・社会保険労務士法・行政書士法・司法書士法・弁護士法・職業安定法・宅地建物取引業法・倉庫業法・貨物自動車運送事業法・貨物利用運送事業法・廃棄物処理法・道路運送法・建設業法施行令・住宅宿泊事業法・動物愛護管理法・食品衛生法・消防法・航空法・農地法・特定商取引法）</li>
+<li><b>官庁・団体：</b>警察庁 古物営業法解釈基準（2024-08-14）、愛知県警Q&A、国税庁 税理士制度Q&A、厚労省 募集・求人業務取扱要領、法務省 弁護士法72条指針（2023-08・2026-08-21）、国交省（一般貨物 標準処理期間・倉庫業 手引き・住宅宿泊管理業）、環境省（一般廃棄物 通知）、全葬連、全国ビルメンテナンス協会、日整連、日本オートキャンプ協会、JFA、JACDS、全日本トラック協会</li>
+<li><b>統計：</b>総務省（家計調査2024、住宅・土地統計調査2023、通信利用動向調査）、社人研 地域別将来推計人口（令和5年推計）、経産省 特定サービス産業動態統計・電子商取引市場調査、厚労省 衛生行政報告例・人口動態統計、中小企業庁 商店街実態調査・中小企業白書2026、帝国データバンク（生成AI調査2026-03、無人餃子2023-09、後継者不在率2025、宿泊業2026-02）、中小機構 AI実態調査（2026-03）、矢野経済研究所、日本不動産研究所 店舗賃料トレンド2026春、自動車検査登録情報協会</li>
+<li><b>企業の公開料金・IR：</b>本文に社名で記載した各社の公式ページ（KeePer技研・Fast Fitness Japan・RIZAP・WASHハウス・パーク24・ティア・神戸物産・ワークマン・セブン‐イレブンの公開資料を含む）</li>
+</ul>
+<p class="note">本書は台帳版。判断軸・推奨・次の工程は報告書 `_S-03_AIで後発参入できる既存ビジネス_調査報告_2026-09-30.html` にある。承認された決定は DECISIONS.md を正とする。</p>
+</main></div></body></html>

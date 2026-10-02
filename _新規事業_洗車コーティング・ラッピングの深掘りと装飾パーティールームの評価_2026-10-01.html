@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>洗車・コーティング・カーラッピングの深掘りと、装飾パーティールームの評価 — 富裕層向けに成り立つか</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+td.src{font-size:12.5px;color:var(--muted)}
+table.wide td.num{white-space:normal;text-align:left}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a class="s" href="#s4-1">4-1 富裕層・高所得層の数</a>
+<a class="s" href="#s4-2">4-2 洗車・コーティングは儲かるか</a>
+<a class="s" href="#s4-3">4-3 豊橋の競合と需要</a>
+<a class="s" href="#s4-4">4-4 カーラッピング・PPF</a>
+<a class="s" href="#s4-5">4-5 集客：無料洗車→投稿型</a>
+<a class="s" href="#s4-6">4-6 装飾パーティールーム</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較</a>
+<a href="#s7">7. 推奨と理由</a>
+<a href="#s8">8. 数字</a>
+<a href="#s9">9. 次の工程と撤退条件</a>
+<a href="#s10">10. 決めていただく事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>洗車・コーティング・カーラッピングの深掘りと、装飾パーティールームの評価<br><span style="font-size:17px;font-weight:normal">— 富裕層・年収1,000万円以上の層に向けて成り立つか</span></h1>
+<p class="meta">作成日：2026-10-01　｜　状態：<b>案（未承認）</b>　｜　置き場所：<code>C:\dev\Search-for-a-new-business\</code>（ルート。案を選んだ後に専用フォルダと KASETSU.md を作る）　｜　Gemini クロスレビュー：<b>未実施</b>（法規制の節は確定前に要確認。依頼文を同フォルダに置いた）</p>
+
+<h2 id="s0">0. 要約<small>洗車・コーティングは「KeePerの本拠地・愛知で、豊橋店の隣に同じ型で出す」のが最も厳しい形。富裕層に向くのは、PPF・高級コーティング・ラッピングを納車時にディーラー経由で受ける「預かり工房型」で、東三河には専門店が無い。装飾パーティールームは無理ではないが、1室では柱にならない。</small></h2>
+<div class="grid">
+<div class="kpi"><b>何を調べたか</b><span>①洗車・コーティング専門店は儲かるか ②カーラッピング・PPFは儲かるか ③富裕層と一般層の線分け ④無料洗車→投稿型の集客 ⑤装飾パーティールームの事業性</span></div>
+<div class="kpi"><b>一次情報</b><span>約110件（KeePer技研IR・FC案内、施工店の公式料金、国交省・消費者庁・警察庁・JASRAC、国税庁・総務省・NRI・JAIA、スペースマーケット／Rebase IR ほか）</span></div>
+<div class="kpi"><b>儲かるかの事実</b><span>KeePer LABO直営1店の売上は約9,100万円／年（計算値）、事業の営業利益率15.5%。高級ディテイリングは1台19万〜58万円、PPFフルボディは77万〜195万円の公開料金</span></div>
+<div class="kpi"><b>富裕層の事実</b><span>富裕層以上165.3万世帯（全世帯の2〜3%）、給与1,000万円超320万人（6.2%、5年連続増）。豊橋市の1人当たり課税所得は376万円で全国393万円を下回る</span></div>
+<div class="kpi"><b>推奨（提案）</b><span>豊橋に「預かり工房」（PPF・高級コーティング・部分ラッピング）を置き、ディーラー・輸入車店からの納車時施工を軸にする。一般層向け洗車は出張か工房の空き時間で小さく</span></div>
+<div class="kpi"><b>次に決めること</b><span>第10章の7点（型・場所・賭けてよい上限・技術習得・無料洗車企画の形・パーティールームの扱い・Gemini確認）</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>やりたい事業として洗車・コーティング専門店とカーラッピングが挙がり、対象は富裕層・年収1,000万円以上の層。集客はInstagram・YouTubeで「無料で洗車して仕上がりを投稿する」案。別途、季節装飾のパーティールーム貸しも検討中。</dd>
+<dt>課題</dt><dd>儲かるのか、富裕層と一般層をどう分けるのか、無料洗車の集客は法的に問題ないか、豊橋で成り立つのかが、一次情報で整理されていなかった。</dd>
+<dt>分かったこと</dt><dd>①洗車単体は3,000〜4,000円で来店の3分の2を占めるが、利益はコーティング（2.5万〜15万円）と高額施工（19万〜195万円）が作る。②KeePer技研は愛知が本拠地で県内32店、豊橋店も既にある。③ラッピング・PPFの専門店は愛知7〜10店が全て名古屋圏で東三河は0。④店が自分のアカウントで仕上がりを投稿する行為はステマ規制の対象外だが、無料施工した客に投稿を頼むと「提供を受けて投稿」の表示が要り、自宅で有料契約を結ぶと訪問販売（8日間クーリング・オフ）になる。⑤パーティールームは1スペースの月間利用額が平均5.1万円（手数料30%控除前）で、同じ案は大阪市北区・天満に既にある。</dd>
+<dt>未決</dt><dd>どの型（FC・独立店・預かり工房・出張）で始めるか、場所、賭けてよい上限、技術習得の経路、パーティールームを進めるか。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>5つのご依頼を、今回のご要望だけを文字どおりに受け取って調べた。</small></h2>
+<div class="tw"><table>
+<tr><th>ご依頼の言葉（要旨）</th><th>今回の扱い</th></tr>
+<tr><td>富裕層・年収1,000万円以上向けのサービスをやりたい（相応のサービスなら払ってくれる）</td><td>4-1節で富裕層・高所得層の人数と地域差を一次情報で確認。各案を「富裕層に届くか」で評価</td></tr>
+<tr><td>カタログの「型Eの①（洗車・コーティング専門店）」「型Cの①」が気になる。カーラッピングも。儲かるのか</td><td>型E 地-01と、同じ洗車・コーティングの出張型である型C 現-10として扱った（型C 現-01はハウスクリーニングのため。もし現-01の意味でしたらお知らせください）。4-2〜4-4節</td></tr>
+<tr><td>ラッピングは富裕層、洗車・コーティングは一部富裕層＋一般層。線分けが要る</td><td>第7章で「価格×頻度」の2×2に置き、運営の型（店舗／工房／出張）で分ける案を提示</td></tr>
+<tr><td>集客はYouTube・Instagram。「無料で洗車させてください」→自宅で洗車→仕上がりを撮って投稿。より良い方法があれば提案</td><td>4-5節で国内外の実例と法規制（ステマ・肖像権・音楽・訪問販売）を確認し、第7章で集客の型を提案</td></tr>
+<tr><td>季節装飾したインスタ映えの部屋をパーティー・撮影に時間貸しする案の評価と改善点。無理なら無理と言ってほしい</td><td>4-6節・第6章・第7章。結論は「無理ではないが1室では柱にならない」。改善案を併記</td></tr>
+</table></div>
+
+<h2 id="s2">2. 調査の範囲と方法<small>IR・公式料金・官庁・業界団体を優先した。市場規模の公的統計が無い洗車・ラッピングは、上場企業のIRと施工店の公開料金で代えている。</small></h2>
+<div class="tw"><table>
+<tr><th>調査線</th><th>当たった先</th><th>残っている穴</th></tr>
+<tr><td class="key">洗車・コーティング</td><td>KeePer技研 2026年6月期 決算説明資料・有報・FC案内PDF（2026-03）・プロショップ制度、LABO公式料金、出張洗車4社、高級ディテイリング6社の公式料金、資源エネルギー庁 SS数、日本コーティング協会</td><td>KeePer FCの設備投資額・契約期間、1店あたり売上の公表値は無い（計算値で代替）</td></tr>
+<tr><td class="key">ラッピング・PPF</td><td>施工店12社の公式料金（東京・名古屋・大阪・京都・神戸）、3M／Avery／XPEL公式、認定講習の公開価格、XPEL認定店一覧、道路運送車両法12条・67条、細目告示178・195・198・218条、電子車検証の記載事項</td><td>1台あたりの材料使用量は国内公式記載なし（米国販売店の目安で代替）。ラッピングに関する官庁の明示見解なし</td></tr>
+<tr><td class="key">富裕層・需要</td><td>NRI（2023年推計）、国税庁 民間給与実態統計（令和6年分）、総務省 市町村税課税状況等の調（令和6年度）、JAIA 都道府県別登録、愛知県統計年鑑・豊橋市統計書、ディーラー公式店舗一覧</td><td>市町村別の高所得者数は総務省が公表していない（1人当たり課税所得で代替）</td></tr>
+<tr><td class="key">集客</td><td>YouTube登録者数（yutura）、本人インタビュー、KeePer IRの広告宣伝費、消費者庁 ステマ運用基準・Q&A、個人情報保護委員会、JASRAC、特商法ガイド、Google公式ヘルプ、総務省 メディア利用調査、Meta API仕様</td><td>「無料で洗車して撮影」を本人が明言した国内事例は見つからず。Think with Googleの来店データは取得不可</td></tr>
+<tr><td class="key">パーティールーム</td><td>スペースマーケット・Rebase の決算説明資料、両社の手数料ページ、掲載件数（梅田・豊橋）、季節装飾の実例4件、民法612条、消防庁用途区分、大阪市・豊橋市消防、国交省（建築・標準管理規約）、警察庁 風営法解釈運用基準、賃料（三鬼商事・LIFULL HOME'S）</td><td>プラットフォームの稼働率・予約件数は非公表。大阪市北区の貸店舗相場ページは取得不可</td></tr>
+</table></div>
+
+<h2 id="s3">3. 前提・制約<small>この資料の判断は、当社の現状と今回のご要望の条件の中でだけ成り立つ。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>前提・条件</th><th>この資料での効き方</th></tr>
+<tr><td>①</td><td>従業員3人以下の法人。拠点は豊橋市（本店）と大阪市北区。人は雇う</td><td>豊橋を主、大阪北区を従として需要・競合を見た。技術者の雇用・育成を前提に含めた</td></tr>
+<tr><td>②</td><td>対象は富裕層（NRIの定義＝純金融資産1億円以上）または年収1,000万円以上</td><td>各案を「この層に届く経路があるか」で評価。4-1節</td></tr>
+<tr><td>③</td><td>洗車・コーティング・ラッピングは中古品の売買を伴わない</td><td>古物商許可は関係しない。関係する規制は排水・景表法・訪問販売・保安基準</td></tr>
+<tr><td>④</td><td>集客はYouTube・Instagramを使う前提</td><td>4-5節で年代別の到達率と法規制を確認したうえで、他の経路（口コミ・提携）も並べた</td></tr>
+<tr><td>⑤</td><td>案を評価する段階。収益の試算は公開数値の計算値に限り「試算」と明記</td><td>第8章。利益の予測は行わず、1台の単価と施工時間、公開されている1店の売上だけを置いた</td></tr>
+</table></div>
+<p class="note">外的要因：自動車関連は為替・資材価格・金利の影響を受ける。輸入車の新規登録は2024年に愛知・大阪とも前年割れ、2025年は回復（JAIA）。この資料はそのリスクを排除した事業を探すものではない。</p>
+
+<h2 id="s4">4. 分かったこと<small>富裕層は増えているが豊橋の所得密度は全国平均以下。利益は洗車ではなく高額施工が作る。東三河にはラッピング・PPFの専門店が無い。無料洗車の集客は「自社アカウントで投稿・契約は店で」なら法的に通る。パーティールームは1室平均5.1万円／月。</small></h2>
+
+<h3 id="s4-1">4-1 富裕層・高所得層は増えているが、豊橋の所得密度は名古屋・大阪・全国平均を下回る</h3>
+<div class="tw"><table class="wide">
+<tr><th>指標</th><th class="num">数値</th><th>出典・注</th></tr>
+<tr><td class="key">富裕層＋超富裕層（1億円以上）</td><td class="num">165.3万世帯・469兆円</td><td class="src">NRI 2023年推計。2021年比+11.3%、全世帯の2〜3%、2005年以降最多</td></tr>
+<tr><td class="key">給与1,000万円超の給与所得者</td><td class="num">320.3万人（6.2%）</td><td class="src">国税庁 令和6年分。令和2年4.7%→6.2%で5年連続増。1,500万円超は89.7万人（1.7%）</td></tr>
+<tr><td class="key">課税標準額1,000万円超の住民税納税者</td><td class="num">128.1万人（2.24%）</td><td class="src">総務省 令和6年度 市町村税課税状況等の調（全国）。市町村別の内訳は非公表</td></tr>
+<tr><td class="key">1人当たり課税対象所得</td><td class="num">豊橋市 376万円／名古屋市 456万円／大阪市 394万円／全国 393万円</td><td class="src">同調（市町村別）から計算。豊橋市の所得割納税義務者172,115人</td></tr>
+<tr><td class="key">外国メーカー車の新規登録（2025年度）</td><td class="num">愛知 21,041台（全国3位）／大阪 16,790台</td><td class="src">JAIA 2025年度速報。愛知は前年度比104.1%。2024年暦年は愛知19,676台（▲10.5%）</td></tr>
+<tr><td class="key">豊橋市の乗用車保有</td><td class="num">235,959台（約1.52台/世帯）</td><td class="src">豊橋市統計書 令和6年版（令和6年3月末）。世帯数154,739（令和5年）との計算値</td></tr>
+<tr><td class="key">豊橋の輸入車正規ディーラー</td><td class="num">メルセデス・レクサス・BMW・VW・ボルボ・ジープ</td><td class="src">メルセデス（AMGパフォーマンスセンター併設）・レクサスは公式、他は二次情報。ポルシェは岡崎・名古屋のみ、アウディは【未確認】</td></tr>
+</table></div>
+<p>読み方：富裕層・高所得層は全国で増えており「払う人」は存在する。ただし豊橋市は1人当たり所得が名古屋より約80万円低く、富裕層向けの需要密度は名古屋・大阪より薄いと見るのが一次情報に沿う。一方で輸入車ディーラーは豊橋に揃っており、高額施工の入口（納車時）は地元にある。</p>
+
+<h3 id="s4-2">4-2 洗車・コーティングは、洗車で客を集めてコーティングで利益を出す型。KeePer LABO直営1店は約9,100万円／年</h3>
+<figure>
+<figcaption>図1　1台の単価は洗車3,960円から高額施工195万円まで、500倍の階段がある<small>Mサイズ・税込の公開料金。KeePer LABO公式FAQ、ポリッシュファクトリー（高級ディテイリングS〜XL）、ソフト99・PLATINUM NAGOYA（PPF）、EISUI・LAPPS（フルラッピング）。横軸1目盛＝30万円</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="施工メニュー別の単価の横棒">
+<g class="m"><text x="230" y="14">0</text><text x="330" y="14">30万</text><text x="430" y="14">60万</text><text x="530" y="14">90万</text><text x="630" y="14">120万</text><text x="730" y="14">150万</text><text x="830" y="14">180万</text></g>
+<line class="ax" x1="230" y1="18" x2="230" y2="282"/>
+<line class="grid" x1="330" y1="18" x2="330" y2="282"/><line class="grid" x1="430" y1="18" x2="430" y2="282"/><line class="grid" x1="530" y1="18" x2="530" y2="282"/><line class="grid" x1="630" y1="18" x2="630" y2="282"/><line class="grid" x1="730" y1="18" x2="730" y2="282"/><line class="grid" x1="830" y1="18" x2="830" y2="282"/>
+<text x="220" y="38" text-anchor="end">純水手洗い洗車（KeePer）</text><rect class="bar3" x="230" y="26" width="2" height="16"/><text x="238" y="38" class="m">3,960円・30分</text>
+<text x="220" y="66" text-anchor="end">クリスタルKeePer（1年）</text><rect class="bar3" x="230" y="54" width="8" height="16"/><text x="244" y="66" class="m">24,640円・2時間</text>
+<text x="220" y="94" text-anchor="end">ダイヤⅡKeePer（3年）</text><rect class="bar" x="230" y="82" width="27" height="16"/><text x="263" y="94" class="m">80,300円・3時間〜</text>
+<text x="220" y="122" text-anchor="end">EX KeePer（3年）</text><rect class="bar" x="230" y="110" width="50" height="16"/><text x="286" y="122" class="m">148,500円・6時間〜</text>
+<text x="220" y="150" text-anchor="end">高級ディテイリング（預かり1〜5日）</text><rect class="bar" x="293" y="138" width="130" height="16"/><text x="429" y="150" class="m">19万〜58万円</text>
+<text x="220" y="178" text-anchor="end">PPF フロントセット</text><rect class="bar2" x="303" y="166" width="147" height="16"/><text x="456" y="178" class="m">22万〜66万円</text>
+<text x="220" y="206" text-anchor="end">フルラッピング（2日〜3週間）</text><rect class="bar2" x="340" y="194" width="457" height="16"/><text x="803" y="206" class="m">33万〜170万円</text>
+<text x="220" y="234" text-anchor="end">PPF フルボディ</text><rect class="bar2" x="487" y="222" width="373" height="16"/><text x="866" y="234" class="m">77万〜</text>
+<text x="230" y="262" class="m">灰色＝一般層の価格帯、青＝一部富裕層、橙＝富裕層。PPFフルボディの上限は194.7万円（C&amp;C・LL+）で図の右端を超える</text>
+<text x="230" y="278" class="m">持続年数はKeePer公式の「目安」。全ページに「あらゆる実車状態での確認はしていない」の注記あり</text>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>KeePer技研の事実（2026年6月期）</th><th class="num">数値</th><th>読み方</th></tr>
+<tr><td class="key">キーパーLABO運営事業</td><td class="num">売上140.3億円・営業利益21.7億円（15.5%）</td><td>成長投資（TV番組・アプリ・人材）を除く参考値は約21%。直営売上135.6億円÷149〜150店＝<b>約9,100万円／店</b>（計算値）</td></tr>
+<tr><td class="key">来店と単価</td><td class="num">809,831台・平均16,757円</td><td>来店の67.2%が洗車。自浄性能コーティングの施工率14.6%。リピート率87%（会社資料）</td></tr>
+<tr><td class="key">コーティング施工台数</td><td class="num">166,016台</td><td>高級品（EX等）8.7%／中級品（ダイヤⅡ等）35.5%／一般品（クリスタル・フレッシュ）55.8%（計算）。高級品は年+8.4%で伸びている</td></tr>
+<tr><td class="key">新店投資</td><td class="num">直営20店に23.9億円</td><td>1店あたり約1.2億円（計算値、土地別）。既存店の全天候化は約2,000万円／店</td></tr>
+<tr><td class="key">FC条件（2026年3月案内）</td><td class="num">初期費用300万円＋ロイヤリティ月30万円（税別）</td><td>敷地100坪以上、開店時に1級資格者4名以上、2名を直営店で3〜6か月勤務、既存店から都市型3km／郊外型5km以上。設備投資額は【未確認】</td></tr>
+<tr><td class="key">広告宣伝</td><td class="num">年7.3〜8.3億円（売上の約3.5%）</td><td>TV番組提供3.6億円、全国TVCM、SUPER GTスポンサー。全国172〜189店の認知はこの規模の広告で作られている</td></tr>
+<tr><td class="key">技術者</td><td class="num">1,300人超、トレーニングセンター22〜25か所</td><td>資格は2級→上級→1級が最短3日・計6〜7万円／人（プロショップ制度の公開価格）</td></tr>
+</table></div>
+<p>読み方：洗車は30分3,960円で、来店の3分の2を占めるが単価が低い。利益は2〜6時間で2.5万〜15万円のコーティングが作る。KeePerの型は「洗車で集めてコーティングに上げる階段」で、店1つに約1.2億円と1級資格者4名が要る。小さな法人が同じ型で後発参入する場合、ブランド（年7〜8億円の広告）と技術者の人数が壁になる。</p>
+
+<h3 id="s4-3">4-3 豊橋にはKeePer LABO豊橋店と専門店5〜6店があり、SS併設の洗車は減少中。ラッピング・PPFの専門店は東三河に0</h3>
+<div class="tw"><table>
+<tr><th>供給・需要</th><th>事実</th><th>出典</th></tr>
+<tr><td class="key">KeePer LABO</td><td>愛知県内32店（本社は大府市）。<b>豊橋店あり</b>（下地町境田102-1）。豊川・田原・新城には無く、隣は蒲郡店・岡崎店・浜松店</td><td class="src">KeePer LABO 店舗一覧（2026-10-01）</td></tr>
+<tr><td class="key">キーパープロショップ（SS・整備工場）</td><td>全国6,524〜6,663店。豊橋市の洗車掲載14件のうちENEOSウイングのSSが4件</td><td class="src">KeePer公式・IR／マピオン電話帳</td></tr>
+<tr><td class="key">豊橋の洗車・コーティング専門店</td><td>カーコーティング・プロBOSS、豊橋カーコート、カービューティー豊橋、クリーン.ベース豊橋、スーパーセラコート山中、カープロジェクトクオリティー ほか（掲載14件中）</td><td class="src">マピオン電話帳「豊橋市の洗車・コイン洗車場」。iタウンページの件数は取得不可</td></tr>
+<tr><td class="key">ガソリンスタンド</td><td>全国27,009か所（令和6年度末、▲1.48%/年）。愛知県は1994年度比▲59.8%（3,146→1,266）</td><td class="src">資源エネルギー庁（2025-07／2025-10）</td></tr>
+<tr><td class="key">出張洗車</td><td>名古屋のSOXEN（3,000〜17,000円、名古屋市外＋3,000円）、車美ーくるみ（名古屋・岡崎、豊橋ルートは出張費無料）。豊橋拠点の出張洗車は佃屋（料金【未確認】）</td><td class="src">各社公式</td></tr>
+<tr><td class="key">ラッピング・PPF専門店</td><td>XPEL認定店は愛知7店、全て名古屋・豊田・春日井・日進。<b>豊橋・東三河は0</b>。紹介サイトCARLORも愛知10店・東三河0。豊橋の「カーフィルム」店は5店（ガレナビ）</td><td class="src">XPEL Japan 認定店一覧／CARLOR／ガレナビ</td></tr>
+<tr><td class="key">需要の入口</td><td>豊橋市 乗用車235,959台。輸入車ディーラー6ブランド（4-1節）。愛知の外国メーカー車登録は全国3位</td><td class="src">豊橋市統計書／JAIA</td></tr>
+</table></div>
+<p>読み方：一般層向けの洗車・コーティングは、豊橋にKeePerの直営圏と専門店が既にあり、供給は薄くない。薄いのは「ラッピング・PPF・高級ディテイリング」で、名古屋まで行かないと専門店が無い。富裕層向けという今回の狙いは、この空白と一致する。ただし4-1節のとおり所得密度が低いため、空白＝需要ありとは限らず、確かめる工程が要る（第9章）。</p>
+
+<h3 id="s4-4">4-4 カーラッピング・PPFは1台33万〜195万円、材料は1台15万〜25万円（試算）。色変更に登録手続は不要で、技術認定は2〜4日</h3>
+<div class="tw"><table>
+<tr><th>項目</th><th>事実</th><th>出典</th></tr>
+<tr><td class="key">フルラッピングの公開料金</td><td>EISUI（大阪）33万円〜／ウエラ名古屋60万円〜／PLATINUM NAGOYA 66万〜120万円／THE WRAP 65万〜75万円〜／LAPPS 65万〜170万円〜／RB WRAPS 80万〜97万円〜</td><td class="src">各社公式（税込表記は各社ページどおり）</td></tr>
+<tr><td class="key">部分ラッピング</td><td>ルーフ4万〜19.5万円、ボンネット4万〜14万円、ミラー1.5万〜7万円</td><td class="src">C&amp;C・ウエラ・THE WRAP・LAPPS・PLATINUM</td></tr>
+<tr><td class="key">PPF（保護フィルム）</td><td>フロントセット19万〜66万円、フルボディ77万〜194.7万円（ソフト99 66万〜99万円、PLATINUM 77万〜120万円、C&amp;C 77万〜194.7万円）</td><td class="src">各社公式</td></tr>
+<tr><td class="key">材料費</td><td>3M 2080ロール（1,524mm×22.8m）17.4万〜20.5万円、Avery SW900ロール（22.9m）11.8万〜15.1万円、3M PPFプロシリーズ200（914mm×30.5m）29.2万円。1台の使用量は小型15〜23m・中型23〜30m・大型30〜38m（米国販売店の目安、国内公式記載なし）</td><td class="src">medinet・イエローツールズ・ユーロポート・シザイーストア／Metro Restyling</td></tr>
+<tr><td class="key">施工日数・保証・耐久</td><td>日数：最短2日〜2〜3週間（店により）。施工保証6か月〜1年、フィルム保証：XPEL10年（認定店施工が条件）、3M 2080は垂直面で最大3年、Avery SW900は標準色10年（PDS）</td><td class="src">各社公式・メーカーPDS</td></tr>
+<tr><td class="key">技術認定</td><td>3M 3-Star 実技2日 20万円（税別）／XPEL公式ベーシック4日 40万円（税抜）／ソフト99のXPEL認定コース3日 30万円。日本カーラッピング協会（2017年設立）に検定の記載なし</td><td class="src">LAPPS・J-TRIM・ソフト99・XPEL Japan・JCWA</td></tr>
+<tr><td class="key">法規制</td><td>車検証の記載事項に「色」はなく、変更登録事由（道路運送車両法12条）・構造等変更検査の対象にも色は含まれない。窓は運転席より前方が可視光線透過率70%以上、前照灯は白色かつレンズ貼付で配光に著しい影響を与えないこと。鏡面・蛍光色を直接規制する条文は細目告示に無い</td><td class="src">道路運送車両法12条・67条、電子車検証ポータル、細目告示195・198・218条。ラッピングに関する官庁の明示見解は【未確認】</td></tr>
+<tr><td class="key">免責の実務</td><td>剥離時の塗装剥がれは補償対象外（アクティブガレージ）、再塗装車は剥離時に塗装が剥がれる可能性が高い（CSK）、3M・LAPPSも同旨</td><td class="src">各社公式FAQ</td></tr>
+<tr><td class="key">法人需要</td><td>営業車の広告ラッピング6万〜9万円（施工2時間、YMG1）、社用車フル約63万円（THE WRAP）、クルマラップは取引5,000社超・リース会社と取引</td><td class="src">各社公式</td></tr>
+</table></div>
+<p>読み方：ラッピング・PPFは1台の売上が大きく、材料費の比率が低い（試算：フルラッピング売価33万〜170万円に対して材料15万〜25万円）。壁は材料や許認可ではなく、①技術の実力（認定は2〜4日で取れるが、品質は実車の経験で決まる）②塗装損傷の責任（免責条項と保険）③一度きりの需要（色替えは再施工が無い）の3つ。PPFは納車時に需要が発生し、ディーラー経由の受注が実在する（北関東クリーン社「ディーラー様専門の出張PPF」累計58万台、グランツ「高級車ディーラーから多くの仕事」）。</p>
+
+<h3 id="s4-5">4-5 「無料で洗車して投稿」型は国内に近い実例があり効いている。ただし自社アカウントで投稿し、契約は店で結ぶ設計にしないと法規制に触れる</h3>
+<div class="tw"><table>
+<tr><th>実例</th><th class="num">登録者</th><th>本人が公表している効果</th></tr>
+<tr><td class="key">ワックスウォッシュ（宮崎市・洗車専門店）</td><td class="num">15.9万人</td><td>人気動画10本中7本が「他人の車を洗う」企画（ドロドロのハリアー278万回、親父のLEXUS 94万回）。「YouTubeでの発信は想像以上の反響…『自分の車も洗車してもらいたい』という問い合わせを今までにないほど」（本人ブログ2025-06）</td></tr>
+<tr><td class="key">ぬぬふぁくとりー（さいたま市・2店）</td><td class="num">18.3万人</td><td>「YouTubeから案件を多く頂けています」「全国から問い合わせ」（インタビュー2022-11）</td></tr>
+<tr><td class="key">BEAUTIFUL CARS（埼玉・直営1＋FC5）</td><td class="num">16.5万人</td><td>YouTube経由のEC流入 月約7,000件、EC売上が会社全体の約83%（2025-10）＝来店より物販に効いている</td></tr>
+<tr><td class="key">ながら洗車</td><td class="num">19.4万人</td><td>実店舗なし、洗車用品のEC・サブスク</td></tr>
+<tr><td class="key">KEICHANNEL（世田谷・ラッピング）／CARO世田谷（PPF）</td><td class="num">5.3万／3.9万人</td><td>施工事例の紹介が中心。ラッピング講習も実施</td></tr>
+<tr><td class="key">Dae's Detail（デトロイト）</td><td class="num">TikTok 23.8万人</td><td>通常業務を撮って投稿→「Clients were pouring in」→月約50台、2021年に店舗を購入（地元紙）</td></tr>
+</table></div>
+<p class="note">7件とも「無料で洗車させてください」と明言した公開情報は見つからなかった。効いているのは「他人の車のビフォーアフター」という形式であり、無料かどうかではない。</p>
+<div class="tw"><table>
+<tr><th>論点</th><th class="st">判定</th><th>条文・公式見解</th></tr>
+<tr><td class="key">店が自分のアカウントで仕上がりを投稿</td><td class="ok st">対象外</td><td>「事業者自身のSNSのアカウントを通じた表示」は事業者の表示と社会通念上明らか＝ステマ告示の対象外（運用基準 第3）</td></tr>
+<tr><td class="key">無料施工した客に投稿を頼む</td><td class="warn st">表示要</td><td>無償提供＋投稿依頼で自主的意思と認められない場合は事業者の表示（運用基準 第2(2)ア、Q&A Q5・Q19）。「〇〇から提供を受けて投稿」等を本文で明瞭に（Q11、動画は全体を通して表示 Q15）</td></tr>
+<tr><td class="key">口コミ投稿を条件に割引</td><td class="ok st">可</td><td>割引は可、「星5」を条件にすると違反（Q6）。自主的な投稿に「PR」は不要（Q21）</td></tr>
+<tr><td class="key">顔・自宅・ナンバーの映り込み</td><td class="warn st">同意要</td><td>顔が判別できる映像は個人情報（個人情報保護委員会 Q1-13）。肖像権は最判平成17年11月10日の受忍限度基準。背景から居場所が分かる（総務省）。ナンバー単体の公式見解は【未確認】＝実務は加工</td></tr>
+<tr><td class="key">動画の音楽</td><td class="warn st">条件付</td><td>JASRAC包括契約はYouTube・Instagram・TikTok等の著作権のみ。市販音源（著作隣接権）は別許諾、「商品・サービスを宣伝するもの」は広告目的の手続が別途（JASRAC）</td></tr>
+<tr><td class="key">自宅で有料施工の契約を結ぶ</td><td class="ng st">訪問販売</td><td>自宅で役務提供契約を締結すれば訪問販売（氏名等明示・書面交付・8日間クーリング・オフ）。無料洗車で来訪した際に別の有料施工を勧誘する形は「請求訪問販売」の除外に当たらない（消費者庁解説の「修理要請→別工事の勧誘」例と同構造）</td></tr>
+<tr><td class="key">SNSフォローだけを条件に無料</td><td class="ok st">対象外</td><td>購入の蓋然性が低い企画は取引付随性なし＝景品規制の対象外（消費者庁Q&A）</td></tr>
+</table></div>
+<figure>
+<figcaption>図2　40〜60代はYouTubeには7〜9割いるが、Instagramは3.5〜6.7割<small>総務省「令和6年度 情報通信メディアの利用時間と情報行動に関する調査」（2024年12月調査、13〜79歳1,800人）。年代別の利用率（%）</small></figcaption>
+<svg viewBox="0 0 900 240" role="img" aria-label="年代別のYouTube・Instagram利用率">
+<line class="ax" x1="90" y1="200" x2="760" y2="200"/><line class="ax" x1="90" y1="30" x2="90" y2="200"/>
+<g class="m"><text x="84" y="204" text-anchor="end">0</text><text x="84" y="124" text-anchor="end">50%</text><text x="84" y="44" text-anchor="end">100%</text></g>
+<line class="grid" x1="90" y1="120" x2="760" y2="120"/><line class="grid" x1="90" y1="40" x2="760" y2="40"/>
+<rect class="bar" x="170" y="53" width="50" height="147"/><rect class="bar2" x="226" y="93" width="50" height="107"/><text x="195" y="47" text-anchor="middle" class="m">91.8</text><text x="251" y="87" text-anchor="middle" class="m">67.0</text><text x="223" y="222" text-anchor="middle">40代</text>
+<rect class="bar" x="370" y="67" width="50" height="133"/><rect class="bar2" x="426" y="116" width="50" height="84"/><text x="395" y="61" text-anchor="middle" class="m">83.0</text><text x="451" y="110" text-anchor="middle" class="m">52.7</text><text x="423" y="222" text-anchor="middle">50代</text>
+<rect class="bar" x="570" y="86" width="50" height="114"/><rect class="bar2" x="626" y="144" width="50" height="56"/><text x="595" y="80" text-anchor="middle" class="m">71.2</text><text x="651" y="138" text-anchor="middle" class="m">34.7</text><text x="623" y="222" text-anchor="middle">60代</text>
+<g><rect class="bar" x="790" y="70" width="14" height="14"/><text x="810" y="82">YouTube</text><rect class="bar2" x="790" y="96" width="14" height="14"/><text x="810" y="108">Instagram</text></g>
+</svg>
+</figure>
+<p>集客経路の事実：Googleは公式に「クチコミ数が多く評価の高いビジネスは、ローカル検索結果のランキングが高くなります」と明記。Meta広告は住所ピンから最小1kmの半径指定が可能。国内の飲食店調査ではマップで検索した人の76%が来店（トライハッチ、n=1,090）、評価3.8以上を基準にする人49.6%（イクシアス、n=500）。ディーラー・リース会社経由の受注は4-4節のとおり実在する。</p>
+
+<h3 id="s4-6">4-6 装飾パーティールームは市場が伸びているが、1スペースの月間利用額は平均5.1万円。同じ案は大阪市北区・天満に既にある</h3>
+<div class="tw"><table class="wide">
+<tr><th>項目</th><th class="num">数値</th><th>出典・注</th></tr>
+<tr><td class="key">スペースマーケット GMV</td><td class="num">64.1億円（+14.6%）</td><td class="src">2025年12月期。月間利用スペース数131千SP。「4Qは繁忙期」</td></tr>
+<tr><td class="key">1スペースの月間利用額（GMV/SP）</td><td class="num">5.1万円</td><td class="src">2026年12月期2Q。ホスト受取はここから30%控除＝約3.6万円（計算）。ゲストは別途5%</td></tr>
+<tr><td class="key">インスタベース</td><td class="num">掲載46.4千件・利用総額74.4億円・平均単価4.4千円（▲2%）</td><td class="src">Rebase 2026年3月期。掲載1件あたり年約16万円（月1.3万円、計算）。時間制の手数料35%</td></tr>
+<tr><td class="key">季節性</td><td class="num">12月が最多、2月▲30%</td><td class="src">スペースマーケット「パーティー・飲み会は毎年12月が最も多く」。運営代行Crewtone（900室）：12月最高・2月▲30%・ハロウィン予約「10件にも満たない」</td></tr>
+<tr><td class="key">供給（梅田）</td><td class="num">パーティールーム490〜497件（インスタベース）・259件（スペースマーケット）、「インスタ映え」160件</td><td class="src">検索結果ページ。最低表示料金は¥110/時間〜</td></tr>
+<tr><td class="key">供給（豊橋）</td><td class="num">全用途44〜70件、立食パーティー向け9件</td><td class="src">同上。¥733〜4,620/時間</td></tr>
+<tr><td class="key">同じ案の実例（大阪）</td><td class="num">The Room söt.（北区天神橋）</td><td class="src">21㎡・定員6名・¥1,040〜2,657/時間・口コミ112件。「季節に合わせて装飾を変更」「デコレーション無料貸し出し」</td></tr>
+<tr><td class="key">同じ案の実例（他）</td><td class="num">popora天王寺／チェリッシュスタジオ（東京）</td><td class="src">ハロウィン・クリスマス装飾を表題に／11〜12月に10館へツリー設置、¥3,300〜4,400/時間</td></tr>
+<tr><td class="key">価格の目安</td><td class="num">パーティー1,500〜2,500円/時間</td><td class="src">スペースマーケット公式の料金設定ガイド</td></tr>
+<tr><td class="key">賃料</td><td class="num">豊橋 貸店舗50〜80㎡で月9.7万〜11万円／梅田オフィス18,674円/坪</td><td class="src">LIFULL HOME'S掲載例／三鬼商事（オフィスの値。店舗ではない）</td></tr>
+<tr><td class="key">初期費用の公開例</td><td class="num">内装218万〜300万円／2室1,040万円／初期50万円</td><td class="src">内装業者／融資モデル（固定費月68万円・稼働40%）／運営者談「年間利益150万円」（2021）</td></tr>
+</table></div>
+<figure>
+<figcaption>図3　1室の平均は月5.1万円の利用額、手数料を引くと3.6万円。豊橋の小さな貸店舗の賃料にも届かない<small>スペースマーケット 月間GMV/SP（2026年12月期2Q）、手数料30%、LIFULL HOME'S 豊橋市 貸店舗の掲載例（50〜80㎡）。試算</small></figcaption>
+<svg viewBox="0 0 900 190" role="img" aria-label="パーティールーム1室の月間利用額と賃料の比較">
+<g class="m"><text x="300" y="14">0</text><text x="450" y="14">3万</text><text x="600" y="14">6万</text><text x="750" y="14">9万</text><text x="900" y="14" text-anchor="end">12万</text></g>
+<line class="ax" x1="300" y1="18" x2="300" y2="172"/>
+<line class="grid" x1="450" y1="18" x2="450" y2="172"/><line class="grid" x1="600" y1="18" x2="600" y2="172"/><line class="grid" x1="750" y1="18" x2="750" y2="172"/>
+<text x="290" y="44" text-anchor="end">1スペースの月間利用額（平均）</text><rect class="bar3" x="300" y="30" width="255" height="18"/><text x="561" y="44" class="m">51,000円</text>
+<text x="290" y="84" text-anchor="end">手数料30%を引いたホスト受取</text><rect class="bar" x="300" y="70" width="179" height="18"/><text x="485" y="84" class="m">35,700円</text>
+<text x="290" y="124" text-anchor="end">豊橋 貸店舗の賃料例（49〜83㎡）</text><rect class="bar2" x="300" y="110" width="485" height="18"/><text x="791" y="124" class="m">97,000〜110,000円</text>
+<text x="300" y="162" class="m">装飾の入替・清掃・光熱費は含まない。上位スペース（口コミ400件級）の売上は非公開</text>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>法規制・契約</th><th class="st">判定</th><th>根拠</th></tr>
+<tr><td class="key">借りた部屋を時間貸しする</td><td class="warn st">承諾要</td><td>民法612条：賃貸人の承諾なく転貸できず、違反は解除事由。貸主の書面承諾が先</td></tr>
+<tr><td class="key">消防</td><td class="warn st">届出</td><td>飲食等を伴わないレンタルルームは（15）項（東京消防庁・新潟市の運用指針）。防火管理者は非特定用途で収容50人以上。使用開始届は7日前（大阪市・豊橋市）。用途により消防設備の追加あり</td></tr>
+<tr><td class="key">建築</td><td class="warn st">条件付</td><td>特殊建築物への用途変更で200㎡超は確認申請（平成30年改正）。200㎡以下でも建築基準法への適合は必要</td></tr>
+<tr><td class="key">旅館業・食品・酒</td><td class="ok st">対象外</td><td>宿泊させない・飲食物を提供しない・酒を販売しない場所貸しは、旅館業法・食品衛生法・酒税法の許可／免許の対象外（厚労省・食品衛生法4条・国税庁Q&A）</td></tr>
+<tr><td class="key">風営法</td><td class="warn st">線あり</td><td>「深夜に酒類を提供し、照明や音響の調整を反復継続」すると特定遊興飲食店営業の許可対象（警察庁 解釈運用基準の例示）。録音音楽を流す・設備を使わせるだけなら遊興に当たらない</td></tr>
+<tr><td class="key">住居専用マンション</td><td class="ng st">不可</td><td>標準管理規約12条「専ら住宅として使用」＝生活の本拠としての使用に限る（国交省コメント）</td></tr>
+<tr><td class="key">近隣・運営</td><td class="warn st">主要リスク</td><td>運営の4大トラブル＝鍵・騒音・備品破損・汚れ（スペースマーケット）。ゴミ放置の罰金設定が実務（SPICA大阪 33,000円）</td></tr>
+</table></div>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ。</small></h2>
+<ul>
+<li><b>利益の予測：</b>行っていない。第8章は公開料金と公開されている1店の売上の計算値だけ</li>
+<li><b>KeePer FCの設備投資額・契約期間、FC解禁の正式日付：</b>案内PDFに記載なし【未確認】</li>
+<li><b>ラッピング1台の材料使用量：</b>国内公式の記載なし。米国販売店の目安（60インチ幅）で代替した</li>
+<li><b>ラッピングに関する官庁の明示見解：</b>変更登録・保安基準の条文は確認したが、ラッピングを名指しした公式見解は無い</li>
+<li><b>豊橋の富裕層の人数：</b>市町村別の高所得者数は非公表。1人当たり課税所得と輸入車ディーラーの有無で代替</li>
+<li><b>豊橋のラッピング・PPFの需要量：</b>専門店が0であることは確認したが、需要があるかは未確認（第9章で確かめる）</li>
+<li><b>無料洗車→投稿型の効果の数値：</b>本人が明言した国内事例は無い。近い形式（他人の車のビフォーアフター）の効果のみ</li>
+<li><b>パーティールームの稼働率・予約件数：</b>両プラットフォームとも非公表。大阪市北区の貸店舗賃料は取得不可</li>
+<li><b>Gemini クロスレビュー：</b>未実施。訪問販売・ステマ・変更登録・保安基準・消防の用途・転貸の線は確定前に確認が必要</li>
+</ul>
+
+<h2 id="s6">6. 案の比較<small>車の4つの型と、パーティールームを同じ4要件で比べると、預かり工房型と出張型が残り、KeePer型の店舗は資本と技術者の壁、パーティールームは富裕層に届かない。</small></h2>
+<div class="tw"><table>
+<tr><th>案</th><th class="st">判定</th><th class="num">充足（/4）</th><th>理由</th></tr>
+<tr><td class="key">A　KeePer LABO のFC加盟</td><td class="warn st">条件付</td><td class="num">1.5</td><td>EXキーパーで富裕層に届き、ブランドと技術研修は揃う。だが豊橋店が既にあり3〜5kmの出店規制、100坪・1級資格者4名、設備投資は直営で約1.2億円規模。「後発でも入れる」より「本部の型に入る」案</td></tr>
+<tr><td class="key">B　独立のロードサイド店（洗車＋コーティング）</td><td class="warn st">条件付</td><td class="num">1</td><td>KeePerの本拠地・愛知で、ブランド無しに同じ階段（洗車→コーティング）で戦う形。供給は薄くない（4-3節）。資本も技術者も要る</td></tr>
+<tr><td class="key">C　預かり工房型（PPF・高級コーティング・部分ラッピング、ディーラー提携）</td><td class="ok st">推奨</td><td class="num">3</td><td>富裕層に直接届く（1台19万〜195万円）。東三河に専門店0。工房＋研修で始められる（数百万円規模、試算）。壁は技術品質・塗装損傷の責任・需要の確認</td></tr>
+<tr><td class="key">D　出張型（水なし・大阪のマンション駐車場、法人の社用車）</td><td class="ok st">小さく</td><td class="num">3.5</td><td>許認可なし、初期は車両と機材。富裕層にはタワーマンション・法人役員車で届きうる。単価は3,000〜17,000円で量が要る。KeePer FCは出張施工の売上按分を条件にしている＝本部も需要を認めている</td></tr>
+<tr><td class="key">E　装飾パーティールーム</td><td class="warn st">柱にならず</td><td class="num">2.5</td><td>許認可は軽く初期も小さいが、1室の平均は月5.1万円の利用額で賃料に届かない。富裕層向けではない。同じ案が天満に既にある。柱にするなら「複数室の運営代行」か「装飾を売る」側</td></tr>
+</table></div>
+<p class="note">4要件＝①富裕層・高所得層に届く経路がある ②豊橋で供給が薄い ③初期投資が1,000万円以下で始められる（試算） ④法規制・技術の壁が低い。△は0.5。Claudeの評価。</p>
+<figure>
+<figcaption>図4　預かり工房型と出張型が4要件のうち3以上を満たす<small>横軸＝満たす要件数（0〜4）。Claude評価</small></figcaption>
+<svg viewBox="0 0 900 230" role="img" aria-label="5案の比較横棒">
+<g class="m"><text x="300" y="14">0</text><text x="440" y="14">1</text><text x="580" y="14">2</text><text x="720" y="14">3</text><text x="860" y="14">4</text></g>
+<line class="ax" x1="300" y1="18" x2="300" y2="212"/>
+<line class="grid" x1="440" y1="18" x2="440" y2="212"/><line class="grid" x1="580" y1="18" x2="580" y2="212"/><line class="grid" x1="720" y1="18" x2="720" y2="212"/><line class="grid" x1="860" y1="18" x2="860" y2="212"/>
+<text x="290" y="44" text-anchor="end">A KeePer FC</text><rect class="bar3" x="300" y="30" width="210" height="18"/><text x="516" y="44">1.5</text>
+<text x="290" y="82" text-anchor="end">B 独立ロードサイド店</text><rect class="bar3" x="300" y="68" width="140" height="18"/><text x="446" y="82">1</text>
+<text x="290" y="120" text-anchor="end">C 預かり工房型</text><rect class="bar" x="300" y="106" width="420" height="18"/><text x="726" y="120">3</text>
+<text x="290" y="158" text-anchor="end">D 出張型</text><rect class="bar" x="300" y="144" width="490" height="18"/><text x="796" y="158">3.5</text>
+<text x="290" y="196" text-anchor="end">E 装飾パーティールーム</text><rect class="bar3" x="300" y="182" width="350" height="18"/><text x="656" y="196">2.5</text>
+</svg>
+</figure>
+
+<h2 id="s7">7. 推奨と理由<small>線分けは「客層」ではなく「単価×頻度」で引く。高単価・納車時の施工を工房で、低単価・高頻度の洗車を出張または工房の空き時間で受け、集客は自社アカウントの施工事例・Google口コミ・ディーラー提携の3本にする。</small></h2>
+<figure>
+<figcaption>図5　当社が狙う象限は「高単価 × 納車時・年1回」。洗車は入口、色替えラッピングは受注生産の受け皿<small>横軸＝1台の単価（公開料金）。縦軸＝同じ車が再び来る頻度。位置はClaude評価</small></figcaption>
+<svg viewBox="0 0 900 320" role="img" aria-label="単価と頻度の2×2">
+<line class="ax" x1="120" y1="20" x2="120" y2="270"/><line class="ax" x1="120" y1="270" x2="880" y2="270"/>
+<line class="grid" x1="500" y1="20" x2="500" y2="270"/><line class="grid" x1="120" y1="145" x2="880" y2="145"/>
+<text x="500" y="295" text-anchor="middle" class="m">← 1台の単価が低い（3,000円〜4万円）　　　　　　　　　　1台の単価が高い（8万円〜195万円） →</text>
+<text x="110" y="40" text-anchor="end" class="m">来る頻度</text><text x="110" y="56" text-anchor="end" class="m">高い ↑</text>
+<text x="110" y="250" text-anchor="end" class="m">低い ↓</text>
+<rect class="cand" x="140" y="34" width="340" height="96" rx="6"/>
+<text x="310" y="66" text-anchor="middle">手洗い洗車・クリスタル（1年）</text>
+<text x="310" y="88" text-anchor="middle" class="m">一般層の入口。KeePer・SS・専門店が既にある</text>
+<text x="310" y="110" text-anchor="middle" class="m">当社は出張か工房の空き時間で小さく</text>
+<rect class="us" x="520" y="34" width="340" height="96" rx="6"/>
+<text x="690" y="60" text-anchor="middle" class="w" style="font-size:13px">当社の狙い：高単価 × 納車時・年1回</text>
+<text x="690" y="82" text-anchor="middle" class="w">PPF（22万〜195万円）／EX級コーティング（15万円〜）</text>
+<text x="690" y="102" text-anchor="middle" class="w">高級ディテイリング（19万〜58万円）</text>
+<text x="690" y="121" text-anchor="middle" class="w" style="font-size:11px">入口＝ディーラー・輸入車店の納車時。東三河に専門店0</text>
+<rect class="cand" x="140" y="160" width="340" height="96" rx="6"/>
+<text x="310" y="196" text-anchor="middle">部分ラッピング（ルーフ・ミラー 1.5万〜20万円）</text>
+<text x="310" y="218" text-anchor="middle" class="m">工房の技術の練習台。法人の営業車ラッピング（6万〜9万円）も</text>
+<rect class="cand" x="520" y="160" width="340" height="96" rx="6"/>
+<text x="690" y="196" text-anchor="middle">フルラッピング（色替え 33万〜170万円）</text>
+<text x="690" y="218" text-anchor="middle" class="m">一度きりの受注生産。工房の受け皿として受けるが柱にしない</text>
+</svg>
+</figure>
+<h3>推奨（提案）：豊橋に「預かり工房」、集客は3本、無料洗車は「撮影協力モニター」に形を変える</h3>
+<div class="pillars">
+<div class="pillar must"><h4>柱1　預かり工房（PPF・高級コーティング・部分ラッピング）</h4><dl><dt>何をする</dt><dd>予約制・預かり型の工房を豊橋に置き、納車時のPPF・コーティング、高級車の磨き、ルーフ等の部分ラッピングを受ける</dd><dt>成立する条件</dt><dd>認定技術（3M 3-Star 2日・XPEL 4日）＋実車経験、塗装損傷の免責と保険、ディーラー・輸入車店からの紹介が取れること</dd><dt>守り方（提案）</dt><dd>XPEL等の認定店になり10年保証を出せる唯一の東三河店になる。施工証明書で中古車売却時の価値にもつなげる</dd></dl></div>
+<div class="pillar must"><h4>柱2　集客の3本（自社投稿・口コミ・提携）</h4><dl><dt>何をする</dt><dd>①施工事例を自社アカウントで投稿（ステマ対象外）②施工ごとにGoogle口コミを依頼（割引可・星指定不可）③ディーラー・輸入車店・板金塗装店への納車時施工の提携営業</dd><dt>成立する条件</dt><dd>40〜60代に届くのはYouTube（71〜92%）。Instagramは40代まで。Googleは口コミ数と評価で順位が決まる</dd><dt>守り方（提案）</dt><dd>高額施工は信頼で決まるため、長尺の施工動画（YouTube）と事例写真（Instagram）を分ける</dd></dl></div>
+<div class="pillar cond"><h4>柱3　無料洗車企画は「撮影協力モニター」型に</h4><dl><dt>何をする</dt><dd>「無料」ではなく「撮影協力で特別価格」とし、ドロドロ→ピカピカの差が大きい車を選ぶ（ワックスウォッシュの上位動画と同じ形式）。投稿は自社アカウントで</dd><dt>成立する条件</dt><dd>顔・ナンバー・自宅の同意書、音楽はライブラリ音源、有料契約は自宅で結ばずウェブか店で（訪問販売を避ける）</dd><dt>守り方（提案）</dt><dd>客に投稿を頼む場合は「提供を受けて投稿」を本文に明記させる</dd></dl></div>
+<div class="pillar cond"><h4>柱4　一般層向け洗車は出張で小さく始める</h4><dl><dt>何をする</dt><dd>水なし出張洗車（WoWash型 6,600〜11,000円）で大阪のマンション駐車場・法人の社用車を受け、工房の技術者の稼働を埋める</dd><dt>成立する条件</dt><dd>軽貨物の届出（即日）、機材一式、法人の定期契約</dd><dt>守り方（提案）</dt><dd>単価が低いので定期契約（月額）に限る。単発は工房への入口として扱う</dd></dl></div>
+</div>
+<h3>パーティールームへの所見と改善案</h3>
+<p>無理ではない。許認可は軽く、同じ案が天満で112件の口コミを集めている。ただし<b>1室では柱にならない</b>：1スペースの平均月間利用額5.1万円から手数料30%を引くと3.6万円で、豊橋の小さな貸店舗の賃料（9.7万〜11万円）にも届かない。梅田は供給500件・最低料金¥110/時間の価格競争下にある。改善案（提案）：①賃料を払わない場所（自社が既に借りている区画の一角）でやる ②平日昼＝撮影、週末夜＝パーティーで稼働を分ける ③「装飾」そのものを商品にする（出張デコレーション2万円〜の事業者が実在。部屋ではなく飾り付けを売るほうが資本が要らない）④酒の提供・照明音響の演出はしない（風営法の線）⑤転貸承諾と使用開始届を先に ⑥12月に集中し2月に落ちる季節性を前提に、12月の装飾を撮影用に転用する。</p>
+<h3>反論（自分で書く）</h3>
+<ul>
+<li><b>東三河に専門店が無いのは、需要が無いからかもしれない。</b>豊橋の所得密度は全国平均以下（4-1節）。名古屋の7店で足りている可能性がある。第9章の確認を通るまで工房に投資しない</li>
+<li><b>認定は2〜4日で取れるが、品質は取れない。</b>高級車の塗装を扱う責任は大きく、剥離時の塗装損傷は免責にしても評判は守れない。最初の1年は部分施工と法人車で経験を積む前提</li>
+<li><b>ディーラーが外注先を変える理由が要る。</b>既に名古屋の認定店や北関東クリーン社型の出張施工業者が入っている可能性がある。「地元で納車前に預かれる」が理由になるかを聞く</li>
+<li><b>KeePerは愛知のホームで、技術者の採用でも競合する。</b>1級資格者の給与水準で負ければ人が採れない</li>
+<li><b>YouTubeの成功例は物販で儲けている。</b>BEAUTIFUL CARSはEC売上83%。動画は来店より物販に効きやすく、地域の店の来店にはGoogle口コミと提携のほうが直結する</li>
+</ul>
+
+<h2 id="s8">8. 数字<small>利益の予測はしない。公開されている単価・時間・1店の売上・材料・研修費を並べた。</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th class="num">公開値</th><th>出典</th></tr>
+<tr><td class="key">手洗い洗車（M）</td><td class="num">3,960円・30分</td><td class="src">KeePer LABO公式</td></tr>
+<tr><td class="key">コーティング（M）</td><td class="num">24,640円（2時間）〜148,500円（6時間〜）</td><td class="src">KeePer LABO公式FAQ</td></tr>
+<tr><td class="key">高級ディテイリング</td><td class="num">19万〜58万円、預かり1泊2日〜4泊5日</td><td class="src">ポリッシュファクトリー／DETAIL WORKS</td></tr>
+<tr><td class="key">PPF フロント／フルボディ</td><td class="num">22万〜66万円／77万〜194.7万円</td><td class="src">ソフト99・PLATINUM NAGOYA・C&amp;C</td></tr>
+<tr><td class="key">フルラッピング／部分</td><td class="num">33万〜170万円／1.5万〜20万円</td><td class="src">EISUI〜LAPPS／各社</td></tr>
+<tr><td class="key">法人の営業車ラッピング</td><td class="num">6万〜9万円（2時間）</td><td class="src">YMG1</td></tr>
+<tr><td class="key">出張洗車</td><td class="num">3,000〜17,000円（名古屋）、法人3,000〜4,000円/台</td><td class="src">SOXEN／洗車デリバリー</td></tr>
+<tr><td class="key">材料（1台あたり試算）</td><td class="num">3M 2080 15万〜25万円、SW900 10万〜17万円</td><td class="src">ロール価格×使用量（米国目安）。試算</td></tr>
+<tr><td class="key">研修・認定</td><td class="num">KeePer 2級→1級 計6〜7万円／3M 3-Star 20万円／XPEL 40万円／JCA研磨 44万〜99万円</td><td class="src">各公式</td></tr>
+<tr><td class="key">KeePer LABO 直営1店</td><td class="num">売上 約9,100万円/年（計算値）、新店投資 約1.2億円</td><td class="src">2026年6月期 決算説明資料から計算</td></tr>
+<tr><td class="key">KeePer FC</td><td class="num">初期300万円＋月30万円（税別）、100坪、1級4名</td><td class="src">FC案内PDF（2026-03）</td></tr>
+<tr><td class="key">パーティールーム 1スペース</td><td class="num">月間利用額 平均5.1万円（手数料30%）</td><td class="src">スペースマーケット 2026年12月期2Q</td></tr>
+<tr><td class="key">パーティールーム 初期費用の公開例</td><td class="num">内装218万〜300万円／2室1,040万円（融資モデル）／初期50万円で年間利益150万円（運営者談）</td><td class="src">内装業者／コンサル／インタビュー</td></tr>
+<tr><td class="key">豊橋 貸店舗</td><td class="num">49〜83㎡で月9.7万〜11万円</td><td class="src">LIFULL HOME'S 掲載例</td></tr>
+</table></div>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>いちばん危ない前提は「東三河に、PPF・高級コーティング・ラッピングに10万円超を払う車主が、工房1つを食わせる数いる」こと。ディーラーに聞けば2週間・0円で確かめられる。</small></h2>
+<div class="tw"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td class="key">案が死ぬ条件（3つ・提案）</td><td>①豊橋の輸入車ディーラー・輸入車専門店が、納車時のPPF・コーティングを外注する余地がない（内製または名古屋の認定店で固定）②認定技術者を雇えず、自社で認定も取れない③塗装損傷の責任を保険でカバーできない</td></tr>
+<tr><td class="key">いちばん危ない前提</td><td>東三河に、10万円超の施工を払う車主が工房1つ分いる（名古屋へ行かずに地元で預ける）</td></tr>
+<tr><td class="key">なぜ一番危ないか</td><td>専門店0は「空白」とも「需要なし」とも読める。所得密度は全国平均以下。ここが崩れると工房への投資が無駄になる</td></tr>
+<tr><td class="key">確かめ方</td><td>豊橋の輸入車ディーラー5社（メルセデス・レクサス・BMW・VW・ボルボ）と輸入車専門店に「納車時のPPF・コーティングの外注先、月何台、地元で預かれる店が欲しいか」を聞く。作らない</td></tr>
+<tr><td class="key">費用・期限</td><td>0円／2週間</td></tr>
+<tr><td class="key">合格の線（提案）</td><td>5社のうち2社以上が「月の台数」を答え、外注先を変える・増やす意思を示す</td></tr>
+<tr><td class="key">不合格なら</td><td>豊橋の工房は止め、①名古屋圏で工房を探す ②出張型（大阪・法人車）だけを小さく回す、のどちらかへ</td></tr>
+<tr><td class="key">先に決めること</td><td>この案に賭けてよい上限（金額・期間）を坂野様が決める。Claudeは提案しない。決まったら KASETSU.md を作る</td></tr>
+</table></div>
+<figure>
+<figcaption>図6　上限の決定から最初の判定まで約4週間、費用0円<small>週単位。第10章の回答が出てから開始</small></figcaption>
+<svg viewBox="0 0 960 230" role="img" aria-label="工程のガント図">
+<g class="m"><text x="290" y="16">第1週</text><text x="450" y="16">第2週</text><text x="610" y="16">第3週</text><text x="770" y="16">第4週</text></g>
+<line class="grid" x1="410" y1="22" x2="410" y2="205"/><line class="grid" x1="570" y1="22" x2="570" y2="205"/><line class="grid" x1="730" y1="22" x2="730" y2="205"/><line class="grid" x1="890" y1="22" x2="890" y2="205"/>
+<text x="240" y="44" text-anchor="end">① 第10章の7点をご判断（上限を含む）</text><rect class="bar2" x="250" y="30" width="80" height="18" rx="3"/>
+<text x="240" y="78" text-anchor="end">② KASETSU.md 作成・法規制のGemini確認</text><rect class="bar4" x="330" y="64" width="80" height="18" rx="3"/>
+<text x="240" y="112" text-anchor="end">③ ディーラー5社・輸入車店に聞く</text><rect class="bar" x="410" y="98" width="220" height="18" rx="3"/>
+<text x="240" y="146" text-anchor="end">④ 並行：3M 3-Star（2日）の受講可否・日程</text><rect class="bar" x="490" y="132" width="140" height="18" rx="3"/>
+<text x="240" y="180" text-anchor="end">⑤ 結果を受けて 進む／止める／変える</text><rect class="bar2" x="650" y="166" width="80" height="18" rx="3"/>
+<text x="240" y="205" text-anchor="end" class="m">⑥ 進むなら物件・保険・収益試算</text><rect class="bar3" x="730" y="191" width="160" height="14" rx="3"/>
+</svg>
+</figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>7点。★＝Claudeの推奨。③は推奨なし。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢</th><th>推奨と理由</th></tr>
+<tr><td>①</td><td>始める型</td><td>A KeePer FC／B 独立ロードサイド店／C 預かり工房／D 出張型／C＋D</td><td>★C＋D。富裕層に直接届き東三河に空白があるのがC、許認可なしで技術者の稼働を埋めるのがD。A・Bは資本・技術者4名・KeePer豊橋店との競合が壁</td></tr>
+<tr><td>②</td><td>場所</td><td>A 豊橋（工房）＋大阪（出張）／B 大阪北区に工房／C 名古屋圏</td><td>★A。ただし第9章の確認が不合格なら C か D単独へ</td></tr>
+<tr><td>③</td><td>この案に賭けてよい上限（金額・期間）</td><td>金額と月数</td><td>推奨なし（venture-hypothesis の決まりでClaudeは提案しない）。決まり次第 KASETSU.md を作る</td></tr>
+<tr><td>④</td><td>技術習得の経路</td><td>A 3M 3-Star（2日20万円）／B XPEL公式（4日40万円）／C KeePer 1級（3日6〜7万円）／D JCA研磨講習（44万〜99万円）</td><td>★A＋C を先に（計27万円以内）。XPEL認定店（10年保証）を狙うなら次にB。研磨（D）は高級ディテイリングを柱にする場合だけ</td></tr>
+<tr><td>⑤</td><td>無料洗車→投稿企画</td><td>A 「撮影協力モニター」型で実施／B 無料のまま実施／C やらない</td><td>★A。契約は店かウェブで結び、同意書・ライブラリ音源・投稿は自社アカウント。Bは訪問販売と景表法の線に近づく</td></tr>
+<tr><td>⑥</td><td>装飾パーティールーム</td><td>A 見送り／B 賃料ゼロの区画で1室試す／C 装飾代行として試す</td><td>★A（柱にならない）。試すならCが資本が要らない</td></tr>
+<tr><td>⑦</td><td>法規制のGemini確認</td><td>A ③の前に実施／B 進むと決めてから</td><td>★A。訪問販売・ステマ・変更登録・保安基準・消防（15）項・転貸の6点。依頼文を同フォルダに置いた</td></tr>
+</table></div>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本（対応する DECISIONS.md の決定はまだ無い）。承認後に D-番号を採り、本書と食い違ったら DECISIONS.md を正とする。</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>初版</td><td>2026-10-01</td><td>新規作成（案・未承認）。Gemini未実施</td></tr>
+</table></div>
+<h3>出典（一次情報）</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>資料</th><th>URL</th></tr>
+<tr><td>1</td><td>KeePer技研 2026年6月期 決算説明資料（2026-08-17 訂正版）</td><td class="src">https://www2.jpx.co.jp/disc/60360/140120260817521996.pdf</td></tr>
+<tr><td>2a</td><td>KeePer技研「フランチャイズ店についてのご案内 2026年3月」／キーパープロショップ制度</td><td class="src">https://keepergiken.co.jp/docs/company/business/About_KeePer_LABO_FC_stores_v3.pdf ／ https://keepergiken.co.jp/business/proshop</td></tr>
+<tr><td>2b</td><td>KeePer LABO 公式料金（FAQ）・店舗一覧</td><td class="src">https://keeperlabo.jp/faq/ ／ https://keeperlabo.jp/shop/</td></tr>
+<tr><td>3a</td><td>高級ディテイリングの公式料金：ポリッシュファクトリー／DETAIL WORKS／匠／カーメイク斎藤／SPEED KANSAI</td><td class="src">https://polishfactory.jp/price_list/ ／ https://detailworks.jp/price/</td></tr>
+<tr><td>3b</td><td>出張洗車の公式料金：SOXEN／車美ーくるみ／WoWash／洗車デリバリー</td><td class="src">https://www.soxen.jp/service/ ／ https://car-wash-delivery.jp/corporate-use/</td></tr>
+<tr><td>4a</td><td>ラッピング・PPFの公式料金（東京・大阪）：THE WRAP／LAPPS／ソフト99オートサービス／EISUI／XP KYOTO／CSK WRAPS</td><td class="src">https://www.thewrap.jp/carwrapping-price/ ／ https://lapps.jp/price.html ／ https://soft99-as.co.jp/protectionfilm/ppf-menuplan/</td></tr>
+<tr><td>4b</td><td>同（名古屋・法人）：PLATINUM NAGOYA／ウエラ名古屋／C&amp;C／YMG1／クルマラップ</td><td class="src">https://platinum-nagoya.com/ ／ https://candc7.com/price/ ／ https://www.ymg1.jp/</td></tr>
+<tr><td>5a</td><td>材料：3M 2080公式／medinet／ユーロポート／シザイーストア／Avery SW900 PDS</td><td class="src">https://www.3mcompany.jp/3M/ja_JP/p/d/v101651155/ ／ https://medinet.jp/SHOP/351651/351652/list.html</td></tr>
+<tr><td>5b</td><td>認定：LAPPS・J-TRIM・ソフト99 講習／XPEL Japan 保証・トレーニング・認定店一覧</td><td class="src">https://lapps.jp/about_workshop/ ／ https://www.xpeljapan.com/help/warranty/ ／ https://www.xpeljapan.com/dealers/</td></tr>
+<tr><td>6a</td><td>法令（車）：道路運送車両法12条・67条／細目告示178・195・198・218条／電子車検証の記載事項</td><td class="src">https://laws.e-gov.go.jp/law/326AC0000000185 ／ https://www.mlit.go.jp/jidosha/content/S195.pdf ／ https://www.denshishakensho-portal.mlit.go.jp/user/about/</td></tr>
+<tr><td>6b</td><td>法令（排水）：水質汚濁防止法施行令 別表第一／豊橋市 特定施設設置届・除害施設</td><td class="src">https://www.env.go.jp/council/content/i_07/900428967.pdf ／ https://www.city.toyohashi.lg.jp/24848.htm</td></tr>
+<tr><td>7a</td><td>富裕層・所得：NRI（2025-02-13）／国税庁 令和6年分 民間給与実態統計</td><td class="src">https://www.nri.com/jp/news/newsrelease/files/000042177.pdf ／ https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan2024/pdf/R06_000.pdf</td></tr>
+<tr><td>7b</td><td>総務省 令和6年度 市町村税課税状況等の調／JAIA 2025年度速報・都道府県別</td><td class="src">https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/ichiran09_24.html ／ https://www.jaia-jp.org/cms/wp-content/uploads/2025FY_NewCarNews.pdf</td></tr>
+<tr><td>8</td><td>豊橋市統計書 令和6年版（自動車・世帯）／愛知県統計年鑑／資源エネルギー庁 給油所数（2025-07）</td><td class="src">https://www.city.toyohashi.lg.jp/secure/115892/60100.xlsx ／ https://www.enecho.meti.go.jp/category/resources_and_fuel/distribution/hinnkakuhou/250730.html</td></tr>
+<tr><td>9a</td><td>集客の実例：yutura（登録者数）／ワックスウォッシュ本人ブログ（2025-06-01）</td><td class="src">https://yutura.net/channel/42739/ ／ https://waxwash-autocare.com/blogs/sensha/waxwash</td></tr>
+<tr><td>9b</td><td>SoLaboインタビュー（ぬぬ）／futureshop記事（BEAUTIFUL CARS）／WXYZ・theGrio（Dae's Detail）</td><td class="src">https://so-labo.co.jp/customer/13506/ ／ https://www.future-shop.jp/magazine/beautifulcars-interview ／ https://www.wxyz.com/news/local-news/detroit-car-detailing-business-sees-success-after-going-viral</td></tr>
+<tr><td>10a</td><td>消費者庁 ステマ運用基準・Q&A／個人情報保護委員会 Q&A／JASRAC UGC</td><td class="src">https://www.caa.go.jp/policies/policy/representation/fair_labeling/faq/stealth_marketing/ ／ https://www.ppc.go.jp/personalinfo/faq/APPI_QA/ ／ https://www.jasrac.or.jp/users/internet/ugc/</td></tr>
+<tr><td>10b</td><td>特定商取引法ガイド（訪問販売・法解説）／景品類Q&A／内閣府 肖像権資料</td><td class="src">https://www.no-trouble.caa.go.jp/what/doortodoorsales/index.html ／ https://www.no-trouble.caa.go.jp/pdf/20160322ra06.pdf</td></tr>
+<tr><td>11</td><td>Google ビジネスプロフィール ヘルプ／総務省 メディア利用調査／Meta Marketing API／トライハッチ・イクシアス</td><td class="src">https://support.google.com/business/answer/7091?hl=ja ／ https://www.soumu.go.jp/main_content/001017159.pdf</td></tr>
+<tr><td>12a</td><td>スペースマーケット 2025年12月期・2026年12月期2Q 決算説明／手数料／料金ガイド</td><td class="src">https://finance-frontend-pc-dist.west.edge.storage-yahoo.jp/disclosure/20260814/20260814520844.pdf ／ https://academy.spacemarket.com/earnings/</td></tr>
+<tr><td>12b</td><td>Rebase 2026年3月期 決算説明／インスタベース手数料</td><td class="src">https://search.sbisec.co.jp/v2/popwin/info/home/seminar/home_seminar_briefing_260514_rebase.pdf ／ https://support.instabase.jp/hc/ja/articles/360026163271</td></tr>
+<tr><td>12c</td><td>Crewtone 月次動向／The Room söt.（インスタベース掲載）／チェリッシュスタジオ</td><td class="src">https://crewtone.jp/contents/trend2025/ ／ https://www.instabase.jp/space/4481576533 ／ https://cherish-studio.com/topic/information-5504/</td></tr>
+<tr><td>13a</td><td>民法612条／消防庁 用途区分表／東京消防庁 審査基準（(15)項）／大阪市消防局・豊橋市 使用開始届</td><td class="src">https://www.japaneselawtranslation.go.jp/ja/laws/view/3494 ／ https://www.tfd.metro.tokyo.lg.jp/content/000059885.pdf ／ https://www.city.osaka.lg.jp/shobo/page/0000194122.html</td></tr>
+<tr><td>13b</td><td>国交省 用途変更（平成30年改正）・標準管理規約12条／警察庁 風営法解釈運用基準（令和8年7月1日）／国税庁 酒類Q&A</td><td class="src">https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000097.html ／ https://www.npa.go.jp/laws/notification/seian/hoan/hoantsutatu2/R080701kaisiyaku.pdf</td></tr>
+<tr><td>14</td><td>賃料・費用：三鬼商事 大阪（2026-08）／LIFULL HOME'S 豊橋市 貸店舗／融資のアイラボ／tenponaiso.com／bizSPA</td><td class="src">https://www.e-miki.com/rent/osaka.html ／ https://www.homes.co.jp/chintai/tempo/aichi/toyohashi-city/list/</td></tr>
+</table></div>
+<p class="note">台帳との関係：本書は「案」であり、DECISIONS.md への記帳は坂野様の承認後に行う。進む案が決まったら専用フォルダと KASETSU.md（venture-hypothesis の型）を作る。</p>
+</main></div></body></html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>売却型と地域密着型の実態調査</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1f1f1f;--muted:#5c5c5c;--line:#d9d5cc;--card:#ffffff;--accent:#2d5f8a;--warn:#a33;--ok:#2f6b3a;--note:#eef2f6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#7fb2e0;--warn:#e07a7a;--ok:#7fc48e;--note:#23272c}}
+:root[data-theme="dark"]{--bg:#17181a;--fg:#e8e6e1;--muted:#a9a6a0;--line:#3a3b3f;--card:#1f2024;--accent:#7fb2e0;--warn:#e07a7a;--ok:#7fc48e;--note:#23272c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;line-height:1.75;font-size:15px}
+main{max-width:980px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.5rem;margin:0 0 4px;border-left:6px solid var(--accent);padding-left:12px}
+h2{font-size:1.2rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:1.02rem;margin:22px 0 8px;color:var(--accent)}
+p{margin:8px 0}
+.meta{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:16px 0}
+.toc a{display:block;color:var(--fg);text-decoration:none;padding:2px 0}
+.toc a:hover{color:var(--accent)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.box.note{background:var(--note)}
+.box.warn{border-left:5px solid var(--warn)}
+.box.ok{border-left:5px solid var(--ok)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.92rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--note);white-space:nowrap}
+.tag{display:inline-block;font-size:.78rem;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:var(--muted);margin-right:4px}
+.tag.un{border-color:var(--warn);color:var(--warn)}
+.tag.est{border-color:var(--accent);color:var(--accent)}
+.src{color:var(--muted);font-size:.85rem}
+a{color:var(--accent);word-break:break-all}
+ul{padding-left:1.3em}
+</style>
+</head>
+<body>
+<main>
+<h1>数年で会社を売却する起業家の実態 と 地域密着型「安定して稼げる」の検証</h1>
+<p class="meta">作成日 2026-09-29 ／ 作成：Claude（Cowork）／ 状態：調べごとへの回答（事業の推奨・可否判定は含まない）／ 出典の確認日はすべて 2026-09-29 ／ 作業フォルダ：C:\dev\Search-for-a-new-business ／ 前の資料：`_店舗型ビジネス_市場調査と立ち上げに必要な情報_2026-09-28.html`、`_店舗型ビジネス_長く続き外部ショックに強い業態の提案_2026-09-29.html`</p>
+<p class="src">表記の約束：【未確認】＝一次情報で確かめられなかったもの。【本人談】＝売り手本人の公表記事だけが出典のもの。「推測」＝Claudeの読み取り。「所感」＝Claudeの見方で事実ではない。</p>
+
+<div class="toc">
+<strong>目次</strong>
+<a href="#s0">0. 結論（先に読む）</a>
+<a href="#s1">1. 背景 ― ご依頼の整理と、前の資料との関係</a>
+<a href="#p1">第1部　数年で会社を1億円規模で売却する起業家の実態</a>
+<a href="#s2">　2. 市場の実態 ― どれくらい起きていて、いくらで売れているか</a>
+<a href="#s3">　3. 値段の付き方 ― 「1億円で売れる会社」の中身</a>
+<a href="#s4">　4. 実例 ― 創業1〜6年で売った人たち</a>
+<a href="#s5">　5. メンタリティと着眼点 ― 本人の言葉</a>
+<a href="#s6">　6. 買い手の論理と、売る側が見落とす費用</a>
+<a href="#s7">　7. 「1年で1億円」は本当にあるか</a>
+<a href="#p2">第2部　店舗・地域密着型「安定して稼げる」の検証</a>
+<a href="#s8">　8. 仮説の検証 ― 合っている部分と違う部分</a>
+<a href="#s9">　9. 焼肉を例にした数字</a>
+<a href="#s10">　10. 昔から成功し、今も成功している業態</a>
+<a href="#s11">　11. 地域密着で残る店の条件（専門家・経営者の言葉）</a>
+<a href="#s12">　12. 外的要因の注意書き（為替・原油・金利・賃金）</a>
+<a href="#s13">13. 未確認事項・この調査で分からないこと</a>
+<a href="#s14">14. 次に決めていただくこと</a>
+<a href="#s15">15. 出典一覧</a>
+</div>
+
+<h2 id="s0">0. 結論（先に読む）</h2>
+<div class="box warn">
+<p><strong>第1部：売却型（事実の要点）</strong></p>
+<ul>
+<li>日本のM&amp;Aは2025年度5,228件（帝国データバンク）で過去最多。ただし<strong>個人・小規模の売買の大半は数十万〜数百万円</strong>で、ラッコM&amp;A（サイト・YouTube・EC売買）では成約7,031件の平均が約70万円、5,000万円以上は0.09%。</li>
+<li>「1億円で売れる会社」は、年買法（純資産＋営業利益×2〜5年）で逆算すると<strong>営業利益2,000万〜5,000万円が3年続いている会社</strong>が目安。買い手が高く払うのは「社長がいなくても回る」「利益が再現する」「成長率が高い」の3点で、店舗（飲食）の倍率はEBITDAの3〜6倍、IT・SaaSは8〜15倍と<strong>業種で2〜3倍の差</strong>がある。</li>
+<li>「創業1年で1億円超」の公表事例は<strong>あるが、すべてWeb・アプリ系</strong>（比較メディア「ファクログ」1年3か月で約2億円【本人談】、即時買取アプリCASH 9か月で70億円、位置情報SNS NauNau 7か月で約10億円）。<strong>店舗・物販で「数年・1億円・本人インタビュー」がそろう公表事例は見つからず</strong>（調べた先：BATONZ・TRANBI・スピカ・ストライク・fundbook・Forbes・PR TIMES）。</li>
+<li>売った本人の言葉で共通するのは、①<strong>最初から売却を想定</strong>している ②事業選びは「No.1が狙える・競合が少ない・上昇トレンド」「儲かっている会社が既に複数ある市場」 ③<strong>属人性を排除</strong>（マニュアル化・外注） ④売り時は「短期間でバリューアップできる局面がなくなった時」。</li>
+<li>見落とされがちな費用：大手仲介の最低手数料は1,000万〜2,500万円（1億円の売却で2割超になり得る）、ロックアップ1〜3年（社長が残る条件）、表明保証違反で返金請求された実例（NauNau 3.9億円）。</li>
+</ul>
+<p><strong>第2部：地域密着型（事実の要点）</strong></p>
+<ul>
+<li>「美味しければ来る」は<strong>半分正しい</strong>。外食のリピート理由1位は「料理がおいしい」69.6%。しかし初訪で「期待どおり以上」だった人の87%のうち、<strong>強いリピート意向を持ったのは27%だけ</strong>。味は合格の前提で、差別化にはならない（ホットペッパーグルメ外食総研）。</li>
+<li>「安定して稼げる」は<strong>飲食全体では裏付けがない</strong>。宿泊・飲食の黒字企業割合は32.1%で全業種最低（TKC、2023年決算）、食堂・レストランの営業利益率は中央値で−4.5〜0.0%（日本公庫）。焼肉店の倒産は2年連続で過去最多（2025年度57件）。輸入牛肉が2020年比1.8倍なのにメニュー価格は約1割増しか上げられていない。</li>
+<li>一方で「<strong>店舗なら競合が周辺だけ</strong>」はサービス業では概ね正しい（前の資料）。<strong>安定しているのは飲食ではなくサービス・許認可・地主型</strong>：美容所60年増加、動物病院20年で+39%、葬儀+64%、自動車整備+10%、不動産仲介11年連続増、コインパーキング13年で2.3倍。</li>
+<li>飲食で残っている店の条件は、金融庁の着眼点で「FL比率60%以下・原価20〜35%・営業利益率10%・常連確保・経営者の直接関与」、専門家の言葉で「10〜15坪の小箱・家族経営・直接仕入れ・拡大しない」。</li>
+</ul>
+</div>
+<div class="box ok">
+<p><strong>Claudeの所感（事実と分けて読んでください）</strong></p>
+<ul>
+<li>「スケールして売る」と「地域で手堅く稼ぐ」は、<strong>買い手が値段を付ける仕組みが正反対</strong>です。売却型は「社長不要・再現性・成長率」で倍率が上がり、地域密着の飲食は「オーナーが現場に立つ・小箱・拡大しない」ことで残る。同じ会社で両方をやるなら、<strong>別法人・別ブランドに分ける</strong>前提で考えたほうが混ざりません。</li>
+<li>売却型を志向するなら、店舗・物販より<strong>Web・SaaS・メディア・アプリ側に倍率も事例も寄っている</strong>のが事実です。転売（物販）を売るなら、買い手はforest型のロールアップ（利益の一定倍数）で、属人性と在庫リスクで倍率は低めに出ます。</li>
+<li>地域密着で「安定」を取るなら、飲食を選ぶ理由が「好き・やりたい」であれば止めませんが、数字上は<strong>飲食は店舗業態の中で最も不安定な側</strong>です。安定を目的にするなら、サービス・許認可・地主型（前の資料で挙げた葬儀・自動車整備・トランクルーム・美容室・不動産仲介）のほうが条件に合います。</li>
+</ul>
+</div>
+
+<h2 id="s1">1. 背景 ― ご依頼の整理と、前の資料との関係</h2>
+<p>2026-09-29 に、新規事業を2本立てで考えたいと整理されました。①スケールする事業（売上が比例・反比例・急伸のどの型でもよい）、②店舗・地域密着型の手堅い事業。①では「1年で1億円規模で会社を売る人がどういうメンタリティ・着眼点で始め、どう売っているか」の実態、②では「地域で美味しければ来る＝安定して稼げる」という考えが正しいかの検証と、成功してきて今も成功している業態の調査を依頼されました。あわせて、前日までの「為替・外的要因の影響を全く受けない」という条件は外し（リスクのない事業はないため）、代わりに<strong>為替・ホルムズ海峡・金利上昇で経営が悪化しうる旨の注意書き</strong>を付けることになりました。</p>
+<p>前の2資料で、店舗数の推移・生存率・ブーム業態の失速・開業費用・許認可・外部ショックへの強さは既に調べています。本書は重複させず、<strong>新しく分かったこと</strong>（売却型の実態、飲食の利益構造、常連化の数字、焼肉の詳細、20年以上続く業態の追加分、金利・最低賃金の最新値）に絞っています。動物カフェは「調べた結果、条件に合わなかった案」として別資料に残しました。</p>
+
+<h2 id="p1" style="border-bottom:none;font-size:1.35rem;color:var(--accent)">第1部　数年で会社を1億円規模で売却する起業家の実態</h2>
+
+<h2 id="s2">2. 市場の実態 ― どれくらい起きていて、いくらで売れているか</h2>
+<table>
+<tr><th>統計</th><th>数字</th><th>読み方</th></tr>
+<tr><td>日本企業のM&amp;A件数（レコフ）</td><td>2024年 4,700件。2025年は通期5,000件超の見込み。2026年1〜6月 2,647件で最多更新</td><td>上場・大型を含む全体。件数は増え続けている</td></tr>
+<tr><td>帝国データバンク</td><td>2025年度 5,228件（+10.9%）、43兆334億円</td><td>同上</td></tr>
+<tr><td>事業承継・引継ぎ支援センター（公的）</td><td>令和6年度 第三者承継の成約2,132件（過去最高）。<strong>成約した譲渡企業の約7割が売上1億円以下</strong>（3,000万円以下36.1%、3,000万〜1億円31.9%）</td><td>小さい会社が売買される公的ルート</td></tr>
+<tr><td>BATONZ</td><td>利用者37万人、買い手の53%が個人。買収予算は300万円未満29%、300万〜1,000万円36%、5,000万〜1億円8%、1億円以上9%。成約先は法人72%・個人22%</td><td>1億円前後の買い手は法人が中心</td></tr>
+<tr><td>TRANBI</td><td>2025年3月期 成約529件（+54%）、掲載3,222件</td><td>成約率の分母は非公表</td></tr>
+<tr><td>ラッコM&amp;A（サイト・YouTube・EC）</td><td>2025年 成約1,578件・11.5億円。累計7,031件・49.4億円＝<strong>平均約70万円</strong>。価格帯は30万円未満45.4%、1,000万〜5,000万円2.35%、<strong>5,000万円以上0.09%</strong>。売主の85.7%が個人。成約率34.3%</td><td>個人の「事業売却」の実像。ほとんどは数十万円</td></tr>
+<tr><td>スタートアップのM&amp;A</td><td>2024年 178件（+32.8%）、2025年上半期 92件。EXITの88%がM&amp;A。グロース上場企業による買収は2021年66件→2025年227件</td><td>VCが入った会社。平均買収額は見つからず</td></tr>
+</table>
+<p class="src">出典：レコフ／MARR（記事タイトル値）、帝国データバンク、中小機構プレス、BATONZインフォグラフィック、TRANBIプレス、ラッコM&amp;Aデータページ、INITIAL、STARTUP DB。URLは15章。</p>
+
+<h2 id="s3">3. 値段の付き方 ― 「1億円で売れる会社」の中身</h2>
+<h3>3-1. 計算の型</h3>
+<table>
+<tr><th>方法</th><th>計算</th><th>使われる場面</th></tr>
+<tr><td>年買法（年倍法）</td><td>時価純資産 ＋ 営業利益 × 1〜5年（3年が多い）</td><td>中小企業の株式譲渡。年数は交渉で決まる</td></tr>
+<tr><td>EV/EBITDA倍率</td><td>営業利益＋減価償却費 × 倍率。中小は2〜10倍。<strong>IT・SaaS 8〜15倍、小売 4〜7倍、飲食 3〜6倍</strong></td><td>買い手が事業会社・投資会社のとき</td></tr>
+<tr><td>Webメディア・サイト</td><td>月間営業利益 × 12〜24か月。ラッコの成約1,050件の実績は<strong>月利益の17.8か月分</strong></td><td>個人のサイト売買</td></tr>
+</table>
+<p><span class="tag est">逆算</span> 純資産がほぼゼロの一人法人が「1億円」で売れるには、営業利益2,000万〜5,000万円（×5〜2年）。純資産3,000万円なら営業利益約2,300万円×3年。仲介会社が「1億円＝営業利益いくら」と明記した資料は見つからず、これはClaudeの逆算です。</p>
+<h3>3-2. 高くなる条件・安くなる条件</h3>
+<table>
+<tr><th>高くなる</th><th>安くなる・売れない</th></tr>
+<tr><td>直近3年の営業利益が安定／社長がいなくても回る（マニュアル・外注体制）／財務が透明／複数の買い手と競合させる／収益源・顧客が分散／買い手が「時間を買える」資産（許認可・顧客基盤・人材・SNSアカウント）／成長率</td><td>市場が縮小／利益が社長個人の能力・人脈に依存／1顧客・1媒体（特定ASP・上位数記事）に依存／社長不在で回らない／簿外債務・権利未整理／価格の期待がずれている（買い手の見送り理由の77%は価格の不一致）</td></tr>
+</table>
+
+<h2 id="s4">4. 実例 ― 創業1〜6年で売った人たち</h2>
+<table>
+<tr><th>会社・事業</th><th>業種</th><th>創業→売却</th><th>売却額</th><th>買い手</th><th>本人が語った動機・着眼点</th></tr>
+<tr><td>rimad「ファクログ」（大野克也氏、正社員ゼロ）</td><td>ファクタリング比較のSEOメディア</td><td>2024/6→2025/9（1年3か月）</td><td>約2億円【本人談】、営業利益2〜3年分</td><td>アイズ（東証グロース）</td><td>「創業期から」売却を想定。市場は「No.1が狙える・競合が少ない・上昇トレンド」で選ぶ。マニュアル化・外注で属人性を排除</td></tr>
+<tr><td>バンク「CASH」（光本勇介氏）</td><td>即時買取アプリ</td><td>2017/2→2017/11（9か月）</td><td>70億円</td><td>DMM.com</td><td>「競合参入の可能性」「中途半端な戦い方はしたくない」。1年後に5億円で買い戻し</td></tr>
+<tr><td>Suishow「NauNau」</td><td>位置情報SNS</td><td>アプリ公開2022/10→2023/5（7か月）</td><td>現金8.2億円＋株式（報道で計約10億円）</td><td>モバイルファクトリー</td><td>直前期は売上100万円・赤字。後に個人情報問題で減損、<strong>表明保証違反で3.9億円の返金請求・2.6億円の支払見送り</strong></td></tr>
+<tr><td>レモネード</td><td>インフルエンサーマーケ</td><td>2015→2018（3年）</td><td>5.02億円</td><td>UUUM</td><td>利益数百万円でもシナジー・人材獲得目的で評価</td></tr>
+<tr><td>ゲームエイト「Game8」</td><td>ゲーム攻略メディア</td><td>2014→2015/12（約2年）</td><td>3億円</td><td>Gunosy</td><td>―</td></tr>
+<tr><td>Founder運営者（30歳）</td><td>資金調達系ポータル（アフィリエイト）</td><td>運営3年→2018/1</td><td>6.2億円【本人談】、年利益の4〜5年分</td><td>東証上場企業</td><td>ユーザー起点の設計、上場企業からの被リンク、ブランディング</td></tr>
+<tr><td>サモエドカフェmoffu（薫田氏29歳）</td><td>動物カフェ（店舗）</td><td>2024/5開業→2026/6</td><td>非公表（5億円高い他社提示を断った）</td><td>ネクサイトキャピタル（投資会社）</td><td>動物の医療・資本力・社員の成長機会。額より買い手の質</td></tr>
+<tr><td>NINJAPAN「Abuild就活」</td><td>就活塾</td><td>2020→2024/10（4年）</td><td>非公表</td><td>ODKソリューションズ（上場）</td><td>市場が小さくIPOより「資金力・信頼・リソース」を得るM&amp;A</td></tr>
+<tr><td>REECH</td><td>インフルエンサーSaaS</td><td>2018→2022（4年）</td><td>非公表</td><td>クロス・マーケティングG</td><td>面談〜2か月で成約。ツールが完成していてロックアップなし</td></tr>
+<tr><td>OMAKASE</td><td>高級飲食の予約サイト</td><td>2017/4→2021/5（4年1か月）</td><td>非公表</td><td>GMOインターネット</td><td>―</td></tr>
+<tr><td>BATONZ事例：大きいサイズ婦人服EC 4店舗</td><td>楽天・Wowma出店EC</td><td>→2020/5</td><td>非公表</td><td>アパレルメーカー</td><td>送料値上げで利益率低下、「ダメージが少ないうちに早期撤退」。掲載→成約約3か月</td></tr>
+<tr><td>塚本大地氏（連続起業家）</td><td>IP・VTuberアプリ等 4件</td><td>2019〜2022に4件</td><td>IRIAM 150億円ほか非公表</td><td>バンダイナムコ、DeNA、DMM</td><td>参入基準「大きな市場か／利益の出ている会社が複数あるか／新興でも勝てるか／他が参入しないか」</td></tr>
+</table>
+<p><strong>見つからなかったもの</strong>：Amazonセラー・美容室・ジム・人材派遣で「創業数年・数千万〜1億円・本人インタビュー」がそろう公表事例（調べた先：BATONZ・TRANBI成約インタビュー、ストライク・fundbook成約事例、Forbes JAPAN、PR TIMES）。BATONZにはAmazon事業の売却案件は多数あるが額・売り手談は非公開。ラッコM&amp;Aの成約済みYouTubeチャンネル上位は420万〜440万円で、数千万円級は見当たらず。</p>
+<p class="src">物販の買い手側の参考：forest（Amazon・楽天ブランドのロールアップ）は2021年創業から4年で21〜22社を買収。買値は「利益の一定倍数を超えない」基準、買収後も創業者の80%が残留。</p>
+
+<h2 id="s5">5. メンタリティと着眼点 ― 本人の言葉</h2>
+<table>
+<tr><th>観点</th><th>本人・著者の言葉（要旨）</th></tr>
+<tr><td>いつから売却を考えたか</td><td>ファクログ大野氏「創業期から考えていた」「マーケット選定さえ間違えなければ大失敗はない」。CASH光本氏は「他の誰かに取られるのは悔しい」と9か月で売却。moffu薫田氏・NINJAPAN新井氏は「成長のための資本と信頼」を得る手段としてM&amp;Aを選んだ</td></tr>
+<tr><td>事業の選び方</td><td>大野氏「No.1が狙える／競合が少ない／上昇トレンド」。塚本氏「大きな市場か／利益の出ている会社が複数あるか／新興でも勝てるか／他が参入しないか」。正田圭『サクッと起業してサクッと売却する』「最初は真似でいい」</td></tr>
+<tr><td>何を作り込むか</td><td>『Built to Sell』（ジョン・ワリロウ）の要旨：オーナー不在で回る会社／サービスを専門化・標準化しカスタム案件を断る／1顧客を売上の10〜15%以下に／前払いで現金を先に／創業者以外の営業チーム／幹部の長期インセンティブ／買い手が投資できる3年計画／複数の買い手と交渉</td></tr>
+<tr><td>売り時</td><td>正田氏「成長の角度が鈍り、短期間でバリューアップできる局面がなくなったら売り時」。次の事業機会の探索に約2年</td></tr>
+<tr><td>注意</td><td>MAポート「早すぎる売却は『売却ありきで事業をしていた』と買い手に良い印象を与えない」</td></tr>
+</table>
+<div class="box note">
+<p><strong>所感：</strong>「1年で1億」の人たちは、個人の才能というより<strong>「買い手が既に決まっている市場」を最初に選んでいる</strong>点が共通します。比較メディアは上場のリード送客会社が買う、攻略サイトはメディア企業が買う、インフルエンサー事務所はUUUMが買う、という具合に「誰が・なぜ・いくらで買うか」が事業を始める前から見えている。これは「事業選定の段階で買い手の一覧を作る」という作業に置き換えられます。</p>
+</div>
+
+<h2 id="s6">6. 買い手の論理と、売る側が見落とす費用</h2>
+<h3>6-1. 誰が1億円前後の会社を買っているか</h3>
+<p>数百万〜数千万円は個人（BATONZ53%・ラッコ68.7%）。<strong>1億円前後は法人</strong>で、上場企業のロールアップ（forest、アイズ、Gunosy、UUUM、ODK）、グロース上場企業（2025年に145社が227件を買収）、事業会社の新規事業（DMM）、投資会社（ネクサイトキャピタル）。買い手の約90%がシナジー重視（INITIAL）。</p>
+<h3>6-2. 売る側の費用・条件</h3>
+<table>
+<tr><th>項目</th><th>事実</th></tr>
+<tr><td>仲介手数料</td><td>レーマン方式（5億円以下5%）だが最低手数料が重い：M&amp;Aキャピタルパートナーズ2,500万円、M&amp;A総研2,500万円、ストライク2,000万円、インテグループ1,500万円、オンデック1,000万円。着手金50〜200万円、中間金50〜200万円または成功報酬の10〜20%。<strong>1億円の売却で大手仲介を使うと手数料が2割超になり得る。</strong>プラットフォーム（BATONZ・ラッコ・TRANBI）は売り手無料が多い</td></tr>
+<tr><td>ロックアップ</td><td>売却後に社長が残る条件。1〜3年が相場で中小は2年が多い。違反時にアーンアウト（後払い対価）不支給の例</td></tr>
+<tr><td>表明保証</td><td>売り手が「事実と違いがない」と保証する条項。違反の実例：NauNau 3.9億円の返金請求</td></tr>
+<tr><td>税金</td><td>個人の株式譲渡は20.315%の分離課税。事業譲渡は法人に譲渡益が入り法人税等（実効税率約30%）＋資産に消費税10%、個人へ移すと役員報酬・配当でさらに課税</td></tr>
+<tr><td>生存者バイアス</td><td>ラッコの成約率は34.3%（掲載4か月超で受付終了62.4%）。事例記事のほとんどは仲介会社の「成約インタビュー」＝売れた人だけが記事になる</td></tr>
+</table>
+<p class="src">税制は年月日で変わります。実際に売却を検討する段では、税理士確認と cross-review（Gemini）を入れてください（本書は調べごとの段階なので依頼文は作っていません）。</p>
+
+<h2 id="s7">7. 「1年で1億円」は本当にあるか</h2>
+<p><strong>あります。ただし全てWeb・アプリ系です。</strong>ファクログ（SEO比較メディア、1年3か月・約2億円【本人談】）、CASH（アプリ、9か月・70億円）、NauNau（アプリ、7か月・約10億円、ただし直前期は売上100万円・赤字で後に減損・返金紛争）。店舗・物販での「1年で1億円」の公表事例は見つかりませんでした（調べた先は4章と同じ）。店舗で最速に近いのがmoffu（開業2年1か月、額は非公表）です。</p>
+
+<h2 id="p2" style="border-bottom:none;font-size:1.35rem;color:var(--accent)">第2部　店舗・地域密着型「安定して稼げる」の検証</h2>
+
+<h2 id="s8">8. 仮説の検証 ― 合っている部分と違う部分</h2>
+<p>ご提示の考え：「この地域で焼肉屋をやって、美味しかったら地域の人は来る。来る理由が明確なら安定して稼げる。それが店舗型の強み」。要素に分けて判定します。</p>
+<table>
+<tr><th>要素</th><th>判定</th><th>事実（数字）</th></tr>
+<tr><td>美味しければ地域の人は来る</td><td><strong>半分合っている</strong></td><td>外食のリピート理由1位「料理がおいしい」69.6%、外食利用の77.3%がリピート（外食総研2019、首都圏4,302人）。焼肉店に行く動機は「美味しい肉を食べたい」63.9%（J-Net21 2024、1,000人）。<strong>しかし</strong>初訪で「期待どおり以上」だった人87.0%のうち、強いリピート意向を持ったのは<strong>27.0%だけ</strong>（外食総研2024、9,606人）。「期待どおり」では常連化せず「期待を超える一点」が要る</td></tr>
+<tr><td>来る理由が明確なら安定して稼げる</td><td><strong>飲食では裏付けなし</strong></td><td>宿泊・飲食の黒字企業割合32.1%で全業種最低（TKC BAST 令和6年版、25.8万社）。食堂・レストランの売上高営業利益率は中央値−4.5〜0.0%、酒場−2.6〜1.7%（日本公庫 小企業の経営指標）。厚労省実態調査では一般食堂の従業員1人あたり純利益−6万円。<strong>売上は伸びている</strong>（JF 2026年7月 全体106.8%、焼肉108.2%）のに利益が出ない＝コストを転嫁できていない</td></tr>
+<tr><td>店舗型なら競合は周辺だけ</td><td>サービス業では概ね正しい／飲食は条件付き</td><td>前の資料の判定のとおり。加えて焼肉は「大手チェーンが大量仕入れと食べ放題で価格を吸収、個人店は利益圧迫」（帝国データバンク）。焼肉きんぐは石川県野々市の1号店から18年で350店（FC4割）、うどん・そばは店数−30%で市場+20%＝チェーンへ集約</td></tr>
+<tr><td>店舗型は安定（飲食以外）</td><td>業態を選べば合っている</td><td>10章の表。美容・葬儀・整備・動物病院・仲介・駐車場は20年以上増加</td></tr>
+</table>
+<div class="box note">
+<p><strong>まとめ（所感）</strong>：「地域で選ばれる」は正しく、「飲食が安定」は数字と合いません。安定しているのは「その場でしか受けられず、代わりが利かず、値上げできる」サービスと、許認可・資格・土地が壁になる業態です。飲食で安定を作っている店は、11章の条件（小箱・家族経営・直接仕入れ・拡大しない）をそろえた少数で、それは「安定業態」ではなく「安定させる運営」の話です。</p>
+</div>
+
+<h2 id="s9">9. 焼肉を例にした数字</h2>
+<table>
+<tr><th>項目</th><th>数字</th><th>出典</th></tr>
+<tr><td>事業所数</td><td>2021年 12,283事業所（愛知1,171）。2016年は約11,000台 <span class="tag un">比較は調査方式差あり</span></td><td>経済センサス活動調査</td></tr>
+<tr><td>市場規模</td><td>2025年見込み前年比102.7%、2022〜25年平均+4.4%、2022〜29年予測+2.1%/年。首位は物語コーポレーション。金額は有料資料で【未確認】</td><td>富士経済</td></tr>
+<tr><td>売上動向</td><td>2026年7月 焼肉108.2%（全体106.8%）</td><td>日本フードサービス協会</td></tr>
+<tr><td>倒産</td><td>2025年度57件で2年連続過去最多（2020〜22年度は20件未満）。資本金1,000万円未満89.4%、販売不振80.7%。負債1億円以上が28.1%＝中規模店にも波及</td><td>東京商工リサーチ／帝国データバンク</td></tr>
+<tr><td>原価</td><td>輸入牛肉は2020年比1.8倍、野菜1.2倍。原材料が約7割増に対し<strong>メニュー価格は約1割増</strong>。米国産トモバラ・豪州産ヒレの価格指数140。家計の牛肉購入数量は2022→25年で87.1%に減少</td><td>帝国データバンク／日本食肉流通センター</td></tr>
+<tr><td>大手</td><td>焼肉きんぐ350店（約4割FC）、牛角506店</td><td>フードリンクニュース</td></tr>
+<tr><td>倒産の背景（TDBの分析）</td><td>「コロナ禍のブーム参入者が十分に値上げできず」「大手が大量仕入れと食べ放題で価格を吸収」</td><td>帝国データバンク</td></tr>
+</table>
+<p>焼肉は「市場は伸びている・売上も伸びている・倒産も最多」という業態です。伸びの取り分は大手チェーンに寄っており、個人店は牛肉（輸入・為替）の原価上昇を価格に載せられていません。</p>
+
+<h2 id="s10">10. 昔から成功し、今も成功している業態</h2>
+<p>前の資料（美容所・葬儀・自動車整備・学習塾・トランクルーム・リユース等）に加えて、今回新たに調べた業態です。「20年以上前から存在し、店舗数か市場が維持・増加」を基準に並べ、飲食は条件を外したので含めています。</p>
+<table>
+<tr><th>業態</th><th>20年前→現在</th><th>市場・利益の動き</th><th>長寿・多店舗チェーン</th><th>地域の個人店</th><th>外的要因の注意（12章の記号）</th></tr>
+<tr><td>動物病院</td><td>9,245（2004）→<strong>12,846（2024、+39%）</strong></td><td>拡大</td><td>―</td><td>個人院が主流</td><td>賃</td></tr>
+<tr><td>不動産仲介</td><td>宅建業者 122,127（2005）→<strong>132,291（2025、+6.7%、11年連続増）</strong></td><td>拡大。個人業者は9.4%まで減り法人化</td><td>―</td><td>法人化進む</td><td>金</td></tr>
+<tr><td>コインパーキング</td><td>車室数 2007→2020年で<strong>約2.3倍</strong></td><td>拡大（2020年度はコロナで90%）</td><td>タイムズ首位</td><td>地主の小規模運営が主</td><td>金</td></tr>
+<tr><td>整骨院・接骨院</td><td>2010→2024年で<strong>+34%、50,924施設</strong></td><td>保険財源で頭打ち懸念。過当競争</td><td>―</td><td>個人開業が主流</td><td>賃</td></tr>
+<tr><td>ドラッグストア</td><td>23,723店（2024年度、+682）</td><td>売上初の10兆円（+9.0%）</td><td>ウエルシア・ツルハ</td><td>個人薬局は業態転換</td><td>為</td></tr>
+<tr><td>業務スーパー（FC）</td><td>2000年1号店→2021年900店→2025年1,000店目標</td><td>2025年10月期 最高益</td><td>神戸物産</td><td>FC加盟の地域事業者で成立</td><td>為・油</td></tr>
+<tr><td>ラーメン</td><td>主要50チェーン 6,305店（2025年末、初の6,000超）</td><td>市場 5,418億（2015）→<strong>8,855億円（2025年度、+63%）</strong>。ただし2025年の純利益は356→171億円に半減、増収店38.8%</td><td>幸楽苑・日高屋・一風堂</td><td>成立（倒産55件/2025年は個人店中心）</td><td>為・油・賃</td></tr>
+<tr><td>回転寿司</td><td>大手は拡大（スシロー2,813億円、くら寿司1,830億円）</td><td>寿司0.7兆円・+6.9%。魚が原価の40〜50%</td><td>スシロー（1984）、くら寿司（1977）</td><td>個人すし店は縮小（19,122事業所）</td><td>為・油</td></tr>
+<tr><td>パン屋</td><td>店舗数統計なし</td><td>倒産は2025年1〜10月15件（−40%）。<strong>黒字企業約70%</strong>（2016年度以来）、コメ高でパン食シフト</td><td>山崎系・アンデルセン</td><td>成立（黒字7割）</td><td>為・油</td></tr>
+<tr><td>焼肉</td><td>9章</td><td>市場+2〜4%/年、倒産最多</td><td>焼肉きんぐ・牛角</td><td>利益圧迫</td><td>為・油・金</td></tr>
+<tr><td>花屋</td><td>15,620（2014）→19,646（2016）</td><td>販売額は増</td><td>日比谷花壇・青山フラワーマーケット</td><td>個人店多数</td><td>油</td></tr>
+<tr><td>介護デイサービス</td><td>通所介護 34,107→38,127（2012→13）。訪問介護37,264（2024）</td><td>拡大後、報酬改定で選別。<strong>国が価格を決める</strong></td><td>ツクイ・ニチイ</td><td>小規模多数</td><td>賃（値上げ不可）</td></tr>
+<tr><td colspan="6" style="background:var(--note)"><strong>減っている（参考）</strong></td></tr>
+<tr><td>うどん・そば</td><td>32,511（2006）→22,621（2018、<strong>−30%</strong>）</td><td>市場は1兆633億→1兆2,792億円に拡大＝寡占化。個人店は約7割赤字</td><td>丸亀製麺</td><td>淘汰進行</td><td>為・油</td></tr>
+<tr><td>居酒屋</td><td>上場15社 5,557店→4,268店（2019→22、−23.1%）</td><td>倒産204件で飲食最多（2025）</td><td>串カツ田中は+15%（専門特化）</td><td>倒産最多業態</td><td>為・金・賃</td></tr>
+<tr><td>喫茶店</td><td>154,630（1981）→58,669（2021）</td><td>縮小継続。リピート率83.8%と最高なのに店数は減</td><td>コメダ・ドトール</td><td>減</td><td>油</td></tr>
+<tr><td>ガソリンスタンド</td><td>60,421（1994）→27,009（2024、−55%）</td><td>縮小</td><td>ENEOS系</td><td>過疎地で撤退</td><td>油</td></tr>
+<tr><td>歯科</td><td>66,378（2024、前年−440）。個人開設73.3%</td><td>減少局面入り</td><td>―</td><td>個人開業主流</td><td>賃（値上げ不可）</td></tr>
+<tr><td>保育</td><td>利用児童268万人（2025、−2.7万人）、充足率88.4%</td><td>待機児童2,254人で最少→供給過多へ</td><td>―</td><td>縮小局面</td><td>賃（値上げ不可）</td></tr>
+<tr><td>クリーニング</td><td>76,300→72,936（2023、−4.4%/年）</td><td>縮小</td><td>ホワイト急便</td><td>減</td><td>油</td></tr>
+</table>
+<p class="src">増加業態に共通するのは「その場でしか受けられない」「代わりが利かない」「価格を自分で決められる」「資格・許認可・土地が壁」。減少業態は「コンビニ・スーパー・チェーンに代替された」「国が価格を決める」「需要（子ども・車）が減る」のどれかです（推測を含む読み取り）。</p>
+
+<h2 id="s11">11. 地域密着で残る店の条件（専門家・経営者の言葉）</h2>
+<table>
+<tr><th>誰</th><th>言っていること（要旨）</th></tr>
+<tr><td>金融庁「飲食業 業種別支援の着眼点」（2023-03）</td><td>目標構成は<strong>FL比率（食材＋人件費）60%以下・原価率20〜35%・営業利益率10%</strong>。改善の着眼点として「常連客の確保と立地の活用」「経営者の直接関与度」を明記</td></tr>
+<tr><td>神山泉氏（㈱エフビー、ぐるなび通信）</td><td>大手がロボット・自動調理に投資する今こそ「個人店・小規模店が有利」。農家・漁港・卸と直接関係を作り規格外食材を安く仕入れる店主と、何もしない店主で「雲泥の差の原価率」。少数精鋭・多能工化、週休2日で人を保つ</td></tr>
+<tr><td>ジャスマック（葛和満博会長ほか）</td><td>成功は「店舗力70%・人間資本30%」。<strong>10〜15坪の小店なら売上の40%超がオーナー収入になり得る</strong></td></tr>
+<tr><td>鈴木孝博氏（経営コンサル）</td><td>「上位2〜3社と数百の小企業だけが儲かり、中規模が死の谷」→本物の味・<strong>拡大しない</strong></td></tr>
+<tr><td>太田和彦氏</td><td>「家族経営は働いた分が全員の取り分になる」</td></tr>
+<tr><td>ホットペッパーグルメ外食総研</td><td>「期待どおり」では27%しか常連化しない。味の合格点に加え、期待を超える一点（居心地・特定メニュー）が要る</td></tr>
+<tr><td>日本公庫総研（廃業の実態）</td><td>廃業企業は個人事業・赤字・飲食宿泊に偏る（廃業企業の23.6%が飲食・宿泊、赤字割合65.9%）。逆に言えば、黒字維持と資本の厚みが存続条件</td></tr>
+</table>
+<p>これらは<strong>「安定させる運営」の条件</strong>であり、業態そのものが安定という意味ではありません。またご依頼主が現場に立たない前提（従業員が運営）だと、「経営者の直接関与」「家族経営」の条件は満たせないことになります。</p>
+
+<h2 id="s12">12. 外的要因の注意書き（為替・原油・金利・賃金）</h2>
+<div class="box warn">
+<p><strong>注意書き：</strong>本書で挙げたどの業態も、次の4つのどれかで経営が悪化する可能性があります。10章の表の記号（為＝為替、油＝原油・エネルギー、金＝金利、賃＝賃金）は、その業態が主に受ける影響を示します。影響を「全く受けない」業態はありません。</p>
+</div>
+<table>
+<tr><th>要因</th><th>今の数字（事実）</th><th>主に効く業態</th></tr>
+<tr><td><strong>為替（円安）</strong></td><td>2025年平均155.98円/ドル（2020年1月は109円）。輸入牛肉は2020年比1.8倍。輸入物価は前年比+24.8%</td><td>輸入食材の比率が高い飲食（焼肉・回転寿司・ラーメン）、輸入商品の物販（ドラッグストア・業務スーパー）、部品輸入のある自動車整備（12.6%）</td></tr>
+<tr><td><strong>原油・エネルギー（ホルムズ海峡）</strong></td><td>2026年2月末にイランが事実上封鎖、6月解除、7月再封鎖。WTIは開戦前67ドル→9月に102ドル。日本は原油の93〜96%を中東・ホルムズに依存。企業向けの電力・ガス・水道は前年比+8.0%（家計向けは補助で−5.0%）</td><td>光熱費比率が高い業態（ラーメン・パン・浴場・クリーニング・コインランドリー）、配送・移動の多い業態、ガソリンスタンド</td></tr>
+<tr><td><strong>金利上昇</strong></td><td>日銀政策金利 2025年12月0.75%→<strong>2026年9月1.25%</strong>（約31年ぶり）。日本公庫の基準利率 無担保3.80〜5.40%（2026年9月）、特利F 2.90%（2026年1月2.30%）。中小企業の推定調達金利1.29%（2025年度、9年ぶり高水準）。<strong>小規模の宿泊・飲食は借入金依存度70%超</strong>（中小企業白書2025）</td><td>初期投資を借入で賄う業態全般。特に飲食・宿泊、会館を持つ葬儀、工場を持つ自動車整備、不動産を持つ駐車場・トランクルーム</td></tr>
+<tr><td><strong>最低賃金</strong></td><td>全国加重平均<strong>1,177円（2026年度、+56円・+5.0%）</strong>。愛知1,195円、大阪1,231円。2020年度902円から+30.5%。政府目標は2030年代前半に1,500円</td><td>人件費比率が高い業態（理容49.8%・施術所49.1%・学習塾45.9%・美容41.9%、介護・保育）。国が価格を決める介護・保育・歯科は転嫁できない</td></tr>
+</table>
+<p class="src">出典：日本経済新聞・モゲチェック（政策金利）、日本公庫利率表（ビュートピア転載）、東京商工リサーチ（調達金利）、中小企業白書2025、厚労省答申（最低賃金）、三菱UFJ銀行レポート2026-04-03、帝国データバンク（牛肉）、日本食肉流通センター。前の資料の3章に、企業向け物価・価格転嫁率・産業連関表ベースの依存比率があります。</p>
+
+<h2 id="s13">13. 未確認事項・この調査で分からないこと</h2>
+<ul>
+<li>店舗・物販で「創業数年・1億円前後・本人談」がそろう売却事例（見つからず）。BATONZのAmazon事業案件は額・売り手談が非公開。</li>
+<li>スタートアップM&amp;Aの平均買収額、サーチファンド・個人M&amp;Aの件数統計（見つからず）。</li>
+<li>「1億円で売れる会社＝営業利益いくら」を仲介会社が明記した資料（見つからず。3章はClaudeの逆算）。</li>
+<li>焼肉の市場規模の金額（富士経済・矢野は有料）、個人経営飲食店だけの開業後存続率、「売上の◯%が常連」という店側の構成データ、店舗家賃の公的統計（いずれも見つからず）。</li>
+<li>「3年で7割閉店」説は一次出典が確認できず（検証記事も「調査名・年度・対象数を示す記事がない」と結論）。公的な数字は5年後の生存率約8〜9割（ただし偏りあり）。</li>
+<li>レコフの2025年通年・2026年上半期の値は記事タイトルのみ確認（本文はrobots制限）。</li>
+<li>日本公庫の経営指標PDFに調査年次の明記なし。2025年度分は2026年8月掲載予定とサイトに記載。</li>
+</ul>
+<p>本書は調べごとの回答です。この結果を根拠にお金や時間を使う段（業態の決定、売却の実行）では、cross-review（Gemini）と、税務・許認可は legal-crosscheck の手順で確定してください。</p>
+
+<h2 id="s14">14. 次に決めていただくこと</h2>
+<p>調べごとはここまでです。次に進むには、以下をご判断ください（Claudeが決めることではありません）。</p>
+<table>
+<tr><th>#</th><th>決めること</th><th>選択肢と、Claudeが挙げる理由</th></tr>
+<tr><td>1</td><td>①スケール・売却型を、どの領域で探すか</td><td>A. Web・SaaS・メディア・アプリ側（倍率8〜15倍、事例が集中。ただし過去の探索で「AIで誰でも作れて差別化できない」という認識をお持ち）／B. 物販（転売）のロールアップ売却（forest型、倍率は低め、属人性・在庫が減点）／C. 店舗を複数店化してから売る（moffu型、飲食は倍率3〜6倍）。<strong>おすすめはA</strong>で、理由は「買い手が既に存在する市場」を先に選べるため。ただし過去の認識と矛盾するので、その点をどう整理するかも含めて</td></tr>
+<tr><td>2</td><td>②地域密着型を、飲食にするか、サービス・許認可型にするか</td><td>A. 飲食（焼肉等）：好き・やりたいが動機なら成立しうるが、数字上は最も不安定。11章の条件（小箱・直接関与）を自分が満たすかが鍵／B. サービス・許認可・地主型（前の資料の葬儀・自動車整備・トランクルーム・美容室・不動産仲介、本書の動物病院・駐車場）。<strong>「安定」を目的にするならB</strong></td></tr>
+<tr><td>3</td><td>①と②を同じ法人でやるか</td><td>売却型は「社長不要・再現性」、地域密着は「社長が現場」で、作り方が逆。<strong>別法人・別ブランドを推奨</strong>（売却時に切り出しやすい）</td></tr>
+<tr><td>4</td><td>深掘りする業態と、賭けてよい上限</td><td>業態が決まったら venture-hypothesis の型で、上限（金額・期間）→いちばん危ない前提→作らずに確かめる、の順で進める</td></tr>
+</table>
+
+<h2 id="s15">15. 出典一覧（主要なもの）</h2>
+<ul class="src">
+<li>M&amp;A件数：レコフ https://ma.kotora.jp/archives/rec-news/rec-news-239 ／ MARR https://www.marr.jp/menu/ma_statistics/ma_markettrend/entry/63779 、/entry/70900 ／ 帝国データバンク https://www.tdb.co.jp/report/economic/manda2025fy/ ／ 中小機構 https://www.smrj.go.jp/press/2025/f7mbjf000000dnpt-att/20250530_press01.pdf ／ BATONZ https://batonz.jp/infographics ／ TRANBI https://prtimes.jp/main/html/rd/p/000000249.000027440.html ／ ラッコM&amp;A https://rakkoma.com/data 、https://rakko.inc/news/analysis-1050/ ／ INITIAL https://initial.inc/articles/japan-startup-m&amp;a-2026 ／ STARTUP DB https://prtimes.jp/main/html/rd/p/000000373.000032589.html</li>
+<li>評価方法：BATONZ年買法 https://batonz.jp/learn/13474/ ／ M&amp;A総研 相場 https://masouken.com/M&amp;Aの相場価格 ／ メディア売買 https://www.ma-pmi-agent.co.jp/cmb/ma/column20250506.html ／ 売れない会社 https://base-one.jp/ma-unsellable-company-reasons/</li>
+<li>事例：ファクログ https://note.com/katsuya_ohno/n/n1c5d0fb5b15a 、https://prtimes.jp/main/html/rd/p/000000630.000005365.html ／ CASH https://thebridge.jp/2017/11/cash-running-company-bank-joined-dmm-group ／ NauNau https://www.tokyogeeks.com/news/20230531_16560/ 、https://gamebiz.jp/news/381043 ／ レモネード https://sogyotecho.jp/news/20180918uuum-lmnd/ ／ Game8 https://thebridge.jp/2015/12/game8-is-acquired-by-gunosy ／ Founder https://found-er.com/president-column/1/ ／ moffu https://spicon.co.jp/case/food/nksvuz0kw5e/ ／ NINJAPAN https://spicon.co.jp/case/other/ninjapan-odk/ ／ REECH https://macloud.jp/interviews/41 ／ OMAKASE・売却時期 https://www.maport.jp/news/exit_period/ ／ BATONZ婦人服EC https://batonz.jp/learn/6445/ ／ 塚本大地氏 https://forbesjapan.com/articles/detail/65529 ／ forest https://thebridge.jp/2025/10/forest-series-b-60-billion-yen-funding</li>
+<li>考え方：正田圭 要旨 https://ex-career.org/sakutto_baikyaku_1128/ ／ Built to Sell 要旨 https://sobrief.com/books/built-to-sell</li>
+<li>費用・税：最低手数料 https://mairoha.com/ ／ 手数料相場 https://masouken.com/M&amp;Aの手数料相場 ／ ロックアップ https://risonal.com/knowledge/column/ma-basics/lockup/ ／ 税 https://www.strike.co.jp/about_ma/tax_businesstransfer.html ／ TRANBI成約率 https://www.tranbi.com/ma-column/detail/?id=224</li>
+<li>飲食の利益：日本公庫 経営指標 https://www.jfc.go.jp/n/findings/pdf/sme_findings2_08c.pdf ／ TKC BAST https://www.tkc.jp/news/2024/20240529/ ／ 厚労省 一般食堂実態 https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/0000169249.pdf ／ JF月次 https://www.jfnet.or.jp/wp/wp-content/uploads/2026/08/getujidata-2026-7.pdf ／ 公庫総研 廃業の実態 https://www.jfc.go.jp/n/findings/pdf/tyousa_gttupou_2312.pdf ／ TDB飲食倒産2025 https://www.tdb.co.jp/report/industry/20260113-insyokuten2025/ ／ 3年7割説の検証 https://tenponaiso.com/haigyo-ritsu-guide/</li>
+<li>常連・来店理由：外食総研2019 https://www.hotpepper.jp/ggs/research/article/column/20191002 ／ 2024 https://www.hotpepper.jp/ggs/research/article/column/20240528 ／ MS&amp;Consulting https://www.msandc.co.jp/info/datacolumn/ms/case406 ／ J-Net21 焼肉 https://j-net21.smrj.go.jp/startup/research/restaurant/cons-yakiniku2.html</li>
+<li>焼肉：TSR https://www.tsr-net.co.jp/data/detail/1202707_1527.html ／ TDB https://www.tdb.co.jp/report/industry/20250401_yakiniku24fy/ 、https://www.tdb.co.jp/report/industry/20250902-yakiniku25y1-8/ ／ 富士経済 https://www2.fgn.jp/mpac/_data/1/?d=031001 ／ 日本食肉流通センター https://www.piif.jmtc.or.jp/wp-content/uploads/2026/04/05.pdf ／ フードリンク https://www.foodrink.co.jp/news/2025/04/1762137.html</li>
+<li>業態別：ラーメン https://www.tdb.co.jp/report/industry/20260701-ramen25fy/ ／ うどん・そば https://www.yamatomfg.com/info/udon-soba-strategy-1-reality/ ／ 居酒屋 https://www.tsr-net.co.jp/data/detail/1191445_1527.html ／ 喫茶 https://ajca.or.jp/pdf/data-jigyosho-jyugyoin2021.pdf ／ パン https://prtimes.jp/main/html/rd/p/000001201.000043465.html ／ 整骨院 https://seikotsulab.jp/data/seikotsuin-statistics/ ／ 保育 https://www.cfa.go.jp/policies/hoiku/torimatome/r7 ／ 歯科 https://www.mhlw.go.jp/toukei/saikin/hw/iryosd/24/dl/11gaikyou06.pdf ／ 動物病院 https://www.wepet.jp/knowledge/8838/ ／ GS https://www.paj.gr.jp/statis/faq/854 ／ 駐車場 https://www.mlit.go.jp/toshi/content/001494238.pdf ／ 宅建業者 https://www.mlit.go.jp/report/press/content/001913739.pdf ／ ドラッグストア https://news.nissyoku.co.jp/news/kwsk20250714052102839 ／ 業務スーパー https://www.itmedia.co.jp/business/articles/2102/26/news134.html ／ クリーニング https://www.zendora.jp/articles/ZEN-20241201-05-2</li>
+<li>残る店の条件：金融庁 https://www.fsa.go.jp/policy/chuukai/0330gyosyubetu_04.pdf ／ ぐるなび通信 https://pro.gnavi.co.jp/magazine/t_res/cat_2/a_4474/ ／ ジャスマック https://www.jasmac.co.jp/build/small-shop/</li>
+<li>外的要因：日経（政策金利） https://www.nikkei.com/article/DGXZQOUB166040W5A211C2000000/ ／ モゲチェック https://mogecheck.jp/articles/show/pnl6ZzOV4BDR2k5Ra7PY ／ 公庫利率 https://www.beautopia.jp/217738 ／ TSR調達金利 https://www.tsr-net.co.jp/data/detail/1203242_1527.html ／ 中小企業白書2025 https://www.chusho.meti.go.jp/pamflet/hakusyo/2025/chusho/b1_1_2.html ／ 最低賃金 https://hojyokin-portal.jp/columns/saitei_chingin ／ 三菱UFJ https://www.bk.mufg.jp/report/whatsnew/report_20260403.pdf ／ 人口推計 https://www.ipss.go.jp/pp-shicyoson/j/shicyoson23/1kouhyo/gaiyo.pdf ／ 休廃業 https://prtimes.jp/main/html/rd/p/000000025.000126976.html ／ 後継者 https://www.tdb.co.jp/report/economic/20251121-successor25y/ ／ 店舗賃料 https://www.reinet.or.jp/?p=35588</li>
+</ul>
+</main>
+</body>
+</html>

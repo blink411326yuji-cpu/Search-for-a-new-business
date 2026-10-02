@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>スケール売却型 最終提案 v2（Gemini対応・海外比較）</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav a:hover{color:var(--accent)} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px;margin:0 0 4px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg);margin-top:2px} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">要約（1枚）</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a href="#s4" class="s">Gemini13件の事実確認／国内追加（図1）／米国／欧州ほか</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較（図2）</a>
+<a href="#s7">7. 推奨と理由（図3）</a>
+<a href="#s8">8. 数字（値付け・到達の目安）</a>
+<a href="#s9">9. 次の工程と撤退条件（図4）</a>
+<a href="#s10">10. 決めていただく事項・未確認事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>スケール売却型 最終提案 v2 ── Geminiレビューの事実確認と海外比較を踏まえて</h1>
+<p class="meta">合同会社R.Y.S／新規事業探索 S-01／作成 2026-09-29／状態：<span class="tag warn">提案・未承認</span>（決めるのはご依頼主）／前版：`_S-01_スケール売却型_直近10年の売却事例と事業提案_2026-09-29.html`（v1。事例台帳・4つの型はv1が正本）／保存先：C:\dev\Search-for-a-new-business\S-01_スケール売却型／出典の確認日はすべて 2026-09-29<br>
+表記：【本人談】＝売り手本人の公表記事のみが出典／【推定】＝報道推定／【未確認】＝一次情報で確かめられず／「（提案）」＝Claudeの見方で事実ではない／Geminiの指摘は ○裏付けあり・△部分的に正しい・✕誤り で判定</p>
+
+<h2 id="s0">要約（1枚）<small>本命を「無人・遠隔運営の店舗を複数拠点化して拠点ごとに売る」へ変え、Web依存の2案は格下げ・除外する</small></h2>
+<div class="grid">
+<div class="kpi"><b>何を調べたか</b><span>Gemini13件の事実確認／国内30件追加／米国25件／他8か国</span></div>
+<div class="kpi"><b>Geminiの判定</b><span>採用5・条件付き採用6・不採用0（出典の誤り3件）</span></div>
+<div class="kpi"><b>国内の個人売却の実態</b><span>大半が30万〜600万円。1,000万円超は1件、1億円以上は0件</span></div>
+<div class="kpi"><b>推奨（一人法人）</b><span>本命 S-D 無人店舗の複数拠点化／並走 S-A′ ECセラー向けツール</span></div>
+<div class="kpi"><b>推奨（3〜4人）</b><span>T-A 買取店のFC・ロールアップ（v1と同じ）</span></div>
+<div class="kpi"><b>次に決めること</b><span>本命の確定→KASETSU.mdで賭けてよい上限を決める</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>v1では一人法人の本命を「ECセラー向け単機能ツール」、第二候補を「業界特化の送客メディア」とした。Geminiはこの2案を「プラットフォーム規約・検索アルゴリズムに依存する単一障害点」と批判し、無人店舗など実業のIT化を第一候補にすべきと述べた。ご依頼主からは、国内の網羅度の確認と海外の同種調査を求められた。</dd>
+<dt>課題</dt><dd>Geminiの指摘は方向としては筋が通るが、出典の取り違えがあり、そのまま採用できない。国内で「個人が店舗・物販を売った」実例がいくらで売れているか、海外では同じ型がどう売れているかを、一次情報で確かめる必要があった。</dd>
+<dt>分かったこと</dt><dd>国内の個人売却でおよそ1,000万円を超えた公表例は、レンタルスペース11拠点（総額6,050万円）の1件だけだが、上位3件はすべて「無人・省人で遠隔運営できる店舗」だった。Ahrefsの2026年6月データで日本の検索1位CTRはAI概要により−62.7%と確認できた。米国では単機能アプリも専門買い手に売れているが、売り手自身が依存を早期売却の理由に挙げ、買い手XO Capitalは「プラットフォーム・リスク大」を買わない条件にしている。</dd>
+<dt>未決</dt><dd>本命をS-Dにするか、S-A′を小さく持つか、S-DをS-01とS-02のどちらの柱で扱うか、追加の国内調査を回すか（第10章）。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>「数年後に売る」前提で新規事業を選ぶ。まず売却型（S-01）から着手し、地域密着型（S-02）は別軸で後から</small></h2>
+<div class="tw"><table>
+<tr><th>日付</th><th>出来事</th><th>記録</th></tr>
+<tr><td>2026-09-28〜29</td><td>店舗型の新規事業を検討。サモエドカフェ（動物カフェ）を調査した結果、条件に合わず見送り</td><td>R-0651</td></tr>
+<tr><td>2026-09-29</td><td>新規事業を「①スケールして売却できる事業」「②店舗・地域密着の手堅い事業」の2本立てに整理。まず①から</td><td>R-0652</td></tr>
+<tr><td>2026-09-29</td><td>直近10年の売却事例約70件を調査し、v1提案を提出（一人法人 S-A／S-B／S-C、3〜4人 T-A／T-B／T-C）。フォルダを S-01／S-02 に分割</td><td>R-0653</td></tr>
+<tr><td>2026-09-29</td><td>Gemini第1回レビュー（13件）を受領。海外（米・英・独・仏・蘭・北欧・豪・韓・中）の同種調査と、国内の網羅度確認を依頼された</td><td>本書</td></tr>
+</table></div>
+<p class="lead2"><b>ご依頼の条件：</b>資金は当面「ある程度出せる・融資を受ければいける」前提で情報を広く取る／一人法人が主、3〜4人が組める場合の案も併記／過去の実績領域から出せるか、新分野が必要かの判断を含める。</p>
+
+<h2 id="s2">2. 調査の範囲と方法<small>公表事例の主な探し先は当たったが、取引の大半は非公表なので「実際の取引」への網羅率は低い</small></h2>
+<div class="tw"><table>
+<tr><th>探し先</th><th>当たり方</th><th>残っている穴</th></tr>
+<tr><td class="key">上場企業の適時開示・PR TIMES</td><td>領域別に4回の検索（Web・SaaS・サービス・買い手）。各回とも検索上限に到達</td><td>個別IRの全文精査は未実施（数値付き買収基準はSHIFT・GENDA・じげん・バイセルの4社のみ）</td></tr>
+<tr><td class="key">仲介会社の成約インタビュー</td><td>スピカ・fundbook・ストライク・日本M&amp;Aセンター・M&amp;Aナビから創業7年以内を抽出</td><td>飲食・介護・保育・自動車整備の若手売却は未探索</td></tr>
+<tr><td class="key">TRANBI 成約インタビュー</td><td>全11ページ・約100件を全件確認</td><td>なし（額が「価格帯タグ」だけの案件が多い）</td></tr>
+<tr><td class="key">BATONZ 成約事例</td><td>1〜3ページ目＋個別検索</td><td>4ページ目以降は未確認</td></tr>
+<tr><td class="key">海外</td><td>Acquire.com・Flippa・Empire Flippers・FE International・Quiet Light・They Got Acquired・創業者ブログ、各国の公的統計とプラットフォーム</td><td>Tiny・Constellation等の最低利益額は非公開。韓国・中国の個人間売買統計は見つからず</td></tr>
+</table></div>
+<p>合計約130件（v1 約70件＋国内店舗・物販30件＋米国25件＋他国10件超）。海外調査は4つの独立した調査で行ったため、チャットを分ける必要はなかった。追加で調べる価値があるのは「飲食・介護・整備・保育の若手売却」と「BATONZ 4ページ目以降」の2つで、いずれも別チャットで独立に回せる。</p>
+
+<h2 id="s3">3. 前提・制約<small>値付けは国を越えて「利益の2〜4倍」が中心。1億円で売るには実態営業利益2,500万〜5,000万円が要る</small></h2>
+<p class="lead2"><b>なぜ先に読むか：</b>どの案を選んでも、この相場と判断軸の中でしか成立しないため。</p>
+<div class="tw"><table>
+<tr><th>前提</th><th>事実</th><th>出典</th></tr>
+<tr><td class="key">個人・スモールM&amp;Aの値付け</td><td>時価純資産＋<b>実態営業利益（経営者の人件費を差し引く）×1〜3年</b>。TRANBI成約116件の営業権は中央値1.9年分。ボリュームゾーンは100万〜1,000万円</td><td>TRANBI id=135／id=225</td></tr>
+<tr><td class="key">中小企業一般の値付け</td><td>時価純資産＋営業利益×2〜5年（3年が最多）。EV/EBITDAはIT・SaaS 8〜15倍、小売4〜7倍、飲食3〜6倍</td><td>BATONZ／M&amp;A総研</td></tr>
+<tr><td class="key">海外の少人数SaaS</td><td>Acquire.com中央値 利益3.9倍（2024・2025）／Flippa平均2.7倍（上位25%は5.8倍）／Empire Flippers 月利益23.9倍（年約2倍）。「2.85倍」はブログ（Startupa.ge）の二次値でFlippa公表値と不一致</td><td>各社レポート</td></tr>
+<tr><td class="key">売却までの年数</td><td>国内は2〜5年が中心。米国 Empire Flippers の平均事業年齢5.7年。1年未満は急成長型のみ</td><td>v1 4章／EF 2026</td></tr>
+<tr><td class="key">ご依頼主の判断軸（記録）</td><td>資金勝負にならない／大手が来ない／許認可に3か月〜半年かけない／営業も雇えばよい／「デジタル商品はAIで誰でも作れて淘汰される」という認識（2026-09-02）</td><td>LOG</td></tr>
+</table></div>
+
+<h2 id="s4">4. 分かったこと<small>Geminiの方向は事実と合うが出典に誤りが3件。個人の店舗売却は「件数は多いが額は小さく、大きいのは無人運営型」</small></h2>
+
+<h3>4-1. Geminiレビュー13件の事実確認</h3>
+<p class="lead2"><b>要点：</b>採用5・条件付き採用6・不採用0。cross-review の手順で1件残らず一次情報を確認した。</p>
+<div class="tw"><table>
+<tr><th>No</th><th>指摘（要旨）</th><th>判定</th><th>事実確認の要点</th><th>扱い</th></tr>
+<tr><td>0／3-7</td><td>Webツール・メディアより「実業×IT（無人店舗・BPO）」を第一候補に</td><td class="st warn">△部分的</td><td>1,000万円超の個人売却はレンタルスペース（無人・11拠点・6,050万円）のみ。「ソフトで効率化した実業の売却」は国内外で見つからず。方向は合うが天井は数千万円</td><td>条件付き採用（S-Dを本命に）</td></tr>
+<tr><td>2-1／3-2</td><td>買い手は隣接同業に限らず、個人・異業種の中小も有力</td><td class="st warn">△部分的</td><td>BATONZ買い手の53%が個人。異業種買収は実在するが額は100〜600万円。億級の買い手は隣接法人。引用元（ma-succeed）に該当事例なし、実際はBATONZ（非公表）</td><td>条件付き採用（数千万円以下は買い手を広げる）</td></tr>
+<tr><td>2-2</td><td>実態利益（役員報酬を差し引く）の定義が無い</td><td class="st ok">○裏付け</td><td>TRANBI id=135 に「事業主の報酬を人件費として調整」「営業権1〜3年分」と明記</td><td>採用（軸4に追加）</td></tr>
+<tr><td>3-1</td><td>「1人で売却に至った事例はWebに集中」は事実誤認。個人が店舗・物販を売る事例は極めて多い</td><td class="st warn">△部分的</td><td>件数は多いが、公表された1,000万円超は個人で1件、1億円以上は0件。Webは個人でも2.26億（MENTA）・10億（Skeb）。正しくは「1,000万円以上はWebと無人運営型店舗に集中」</td><td>条件付き採用（v1の記述を訂正）</td></tr>
+<tr><td>3-3</td><td>EC依存の単機能ツールは規約変更・API制限で一夜に崩壊するSPOF</td><td class="st ok">○裏付け</td><td>Apollo閉鎖（Reddit API有料化）、ACF掌握（WordPress.org）、PA-API廃止の前例。XO Capitalは「PF依存」を買わない条件に明記。一方でShopifyアプリ専門買い手が7桁ドルで買っている</td><td>採用（S-Aは短期回転型に作り直し）</td></tr>
+<tr><td>3-4</td><td>SEO依存メディアはAI検索で致命的に流入減。Ahrefs 2026年8月：日本の1位CTR −62.7%・実測9.0%</td><td class="st ok">○裏付け</td><td>Ahrefs公式（2026-07-21公開・6月データ）：情報収集型の1位CTR −62.7%・実測9.0%（AI概要なし31.7%）。発表は7月。米国Fin vs Finは流入半減・15%減額</td><td>採用（S-Bを除外）</td></tr>
+<tr><td>3-5</td><td>値付けは「実態営業利益1〜3年」、Micro-SaaSは2.85倍。v1の「2〜5年」「3.9倍」は乖離</td><td class="st warn">△部分的</td><td>1〜3年は個人向け（TRANBI id=135）、2〜5年は中小一般（id=117）で規模により使い分け。2.85倍はブログ値でFlippa公開値（2.7倍）と不一致。3.9倍はAcquire.com一次資料で確認</td><td>条件付き採用（計画は×2〜4倍で引く）</td></tr>
+<tr><td>3-6</td><td>撤退ライン・見直し条件が無い</td><td class="st ok">○裏付け</td><td>v1に無い。venture-hypothesis の型で「賭けてよい上限」「合格の線」を先に決める</td><td>採用（9章）</td></tr>
+<tr><td>4／5</td><td>数字の検算対象なし／技術・セキュリティは指摘なし</td><td class="st ok">○</td><td>事実</td><td>KASETSU.md作成時に再レビュー</td></tr>
+<tr><td>6</td><td>約70件の抽出元リストが無く偏りを検証できない</td><td class="st ok">○裏付け</td><td>正当。2章に探し先と当たり方を明記した</td><td>採用</td></tr>
+</table></div>
+<p class="note">Geminiの出典の誤り：ma-succeed post-2293（実際はBATONZ 4892）／Ahrefs「8月」（実際は7月21日公開）／2.85倍（ブログの二次値）。指摘の方向は採用するが、数字は一次情報に置き換えた。</p>
+
+<h3>4-2. 国内の追加調査 ── 個人の店舗・物販売却30件</h3>
+<p class="lead2"><b>要点：</b>TRANBI約100件の全件確認。額が大きい順に「無人・省人で遠隔運営できる」「複数拠点」「集客の仕組みが評価された」が並ぶ。</p>
+<figure><figcaption>図1　個人・一人法人の店舗・物販売却は30万〜600万円に集中し、1,000万円超は無人運営型だけ<small>売却額が判明した26件の分布（TRANBI・BATONZ・M&amp;Aナビ、2016〜2026年成約）。非公表4件は除く</small></figcaption>
+<svg viewBox="0 0 900 190" role="img" aria-label="価格帯別の件数">
+<line class="ax" x1="230" y1="20" x2="230" y2="160"/>
+<g class="grid"><line x1="430" y1="20" x2="430" y2="160"/><line x1="630" y1="20" x2="630" y2="160"/><line x1="830" y1="20" x2="830" y2="160"/></g>
+<text x="222" y="42" text-anchor="end">300万円未満</text><rect class="bar" x="230" y="30" width="600" height="18"/><text x="838" y="44">13件</text>
+<text x="222" y="76" text-anchor="end">300万〜999万円</text><rect class="bar" x="230" y="64" width="415" height="18"/><text x="653" y="78">9件（英会話600万・唐揚げ店500万…）</text>
+<text x="222" y="110" text-anchor="end">1,000万〜4,999万円</text><rect class="bar2" x="230" y="98" width="138" height="18"/><text x="376" y="112">3件（インドアゴルフ3,500万・バー1,500万・スペース1拠点1,200万）</text>
+<text x="222" y="144" text-anchor="end">5,000万円以上</text><rect class="bar2" x="230" y="132" width="46" height="18"/><text x="284" y="146">1件（レンタルスペース11拠点 総額6,050万）　※1億円以上は0件</text>
+<text class="m" x="230" y="178">0</text><text class="m" x="430" y="178" text-anchor="middle">5件</text><text class="m" x="630" y="178" text-anchor="middle">10件</text><text class="m" x="830" y="178" text-anchor="middle">13件</text>
+</svg></figure>
+<div class="tw"><table>
+<tr><th>事業</th><th>創業→売却</th><th class="num">額（万円）</th><th>売り手→買い手</th><th>買い手が挙げた理由</th></tr>
+<tr><td class="key">レンタルスペース11拠点</td><td>2016→2023</td><td class="num">6,050</td><td>個人→個人中心</td><td>（売り手はHPで自社集客。運営ノウハウを商品化）</td></tr>
+<tr><td class="key">会員制インドアゴルフ</td><td>開業8か月→2023</td><td class="num">3,500</td><td>小規模法人→同業</td><td>SEO上位・LINE集客が評価。年間営業利益約500万</td></tr>
+<tr><td class="key">LGBTQ向けバー1店</td><td>2018→2023</td><td class="num">1,500</td><td>8店舗の法人→個人</td><td>―</td></tr>
+<tr><td class="key">英会話教室</td><td>―→2023</td><td class="num">600</td><td>個人→異業種（コイン販売）</td><td>英語で戦える経営者育成</td></tr>
+<tr><td class="key">唐揚げ・もつ煮店</td><td>―→2021</td><td class="num">500</td><td>個人→異業種（伝統工芸EC）</td><td>ゼロから開業より早く黒字化</td></tr>
+<tr><td class="key">レンタルスペース2拠点</td><td>2019→2023</td><td class="num">480</td><td>小規模法人→個人</td><td><b>無人運営が魅力</b>。直近利益2年分＋設備</td></tr>
+<tr><td class="key">FCセルフ脱毛サロン</td><td>2021→2023</td><td class="num">300帯</td><td>小規模法人→個人</td><td><b>無人運営店舗</b></td></tr>
+<tr><td class="key">認可外保育園</td><td>2019→2022</td><td class="num">273</td><td>個人→学校法人</td><td>東京進出</td></tr>
+<tr><td class="key">レンタルジム</td><td>―→2023</td><td class="num">100以下</td><td>個人→個人</td><td>低リスク・<b>自走型</b></td></tr>
+<tr><td class="key">貸会議室</td><td>―→2026</td><td class="num">55</td><td>―→法人（中小企業診断士）</td><td><b>買い手</b>が自作IoT（人感センサー・AI解析・遠隔エアコン）で再生</td></tr>
+</table></div>
+<p class="note">全30件の表は調査記録（v2元データ）にある。売り手が「自作システムで価値を上げた」と語る例は無く、自作IoTを語ったのは買い手側の1件。異業種買い手は実在するが額は100〜600万円。</p>
+
+<h3>4-3. 米国 ── 創業者本人が公表した売却25件と買い手の基準</h3>
+<p class="lead2"><b>要点：</b>米国も「利益2〜4倍・3〜5年」が中心。買い手が5層に分かれ、成約の半分〜85%が国境をまたぐ。</p>
+<div class="tw"><table>
+<tr><th>型</th><th>事例（創業→売却／額／買い手）</th><th>本人の言葉</th></tr>
+<tr><td class="key">SaaS（少人数）</td><td>Baremetrics（7年／$4M・ARR2.65倍／テックPE）、FeedbackPanda（2年／7桁／SureSwift）、Headlime（<b>9か月</b>／7桁／Conversion.ai）、ReferralHero（5年／SDE4倍／個人）</td><td>Storemapper「売りたくなる前から、売れる形で経営せよ」／ReferralHero「売却前にサポート要員を採用し創業者依存を下げた」</td></tr>
+<tr><td class="key">プラットフォーム依存アプリ</td><td>Order Tagger（Shopify、4年／7桁・ARR3〜4倍／Shop Circle）、Plug in Useful（Shopify、7年／7桁／SureSwift）、OctoShop（Chrome拡張／7桁／Ibotta）、Tweet Hunter（仏、1.5年／前払$2M＋アーンアウト／lempire）</td><td>Tweet Hunter「いつ殺されてもおかしくなかった」／Plug in Useful「表は売れと言わないが直感が売れと言う」</td></tr>
+<tr><td class="key">コンテンツ・メディア</td><td>Fin vs Fin（5年／7桁・EBITDA3倍／ファミリーオフィス）、Own The Yard（3年／$250k）、Milk Road（10か月／25万購読）</td><td>Fin vs Fin「Google更新で有機流入が半減、15%減額」「純資産の大半が事業に紐づくのは賢くない」</td></tr>
+<tr><td class="key">EC・実業</td><td>Necklow（枕EC、2年／$410k・EBITDA1.8倍／OpenStore）、Storage Squad（学生向け保管、6年／7桁）、Audience Ops（6年／高め6桁・25人）</td><td>Necklow「Amazonレビュー分析で市場の穴を特定」「現金が必要で成長が止まっているなら売れ」</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>買い手</th><th>買う</th><th>買わない・条件</th><th>倍率・規模</th></tr>
+<tr><td class="key">Tiny</td><td>業種不問、「本物の利益」、創業3年以上</td><td>転売しない。創業者が出口を選ぶ</td><td>$5M〜$300M、30日でクローズ</td></tr>
+<tr><td class="key">Constellation Software</td><td>B2B自社開発ソフト、継続収益・低解約・分散顧客</td><td>―（売上額で制限しない）</td><td>無期限保有</td></tr>
+<tr><td class="key">XO Capital</td><td>B2B SaaS、MRR $10k以上、顧客50以上、粗利80%以上</td><td><b>ライフタイム課金が売上の50%超／プラットフォーム・リスク大</b></td><td>約30日でクローズ</td></tr>
+<tr><td class="key">SureSwift Capital</td><td>元Shopifyアプリ・SaaS→現在は「安定業種でモダナイズ待ちの利益体質」（HVAC・製造まで）</td><td>―</td><td>非公表</td></tr>
+<tr><td class="key">FE International（買い手3類型）</td><td>個人：SDE2〜4倍・創業者は退出／PE：EV $5M超・2〜4年残留／戦略的：最低額なし</td><td>解約年7%超・顧客集中15%超・創業者依存は割引</td><td>ARR $1M未満はSDE2〜3倍</td></tr>
+<tr><td class="key">Acquire.com／Flippa／Empire Flippers</td><td>買い手50万超／週間アクティブ40万超／新規買い手2,208人/年</td><td>買い手が求めるもの：文書化された獲得経路、12か月予測できる売上、月次P&amp;L</td><td>中央値3.9倍／平均2.7倍／年約2倍。成約まで81〜102日</td></tr>
+</table></div>
+<p>実業の買い手側の制度：SBA 7(a)保証ローン FY2025 77,600件・$370億（平均約$477k）。検索ファンド（Stanford 2024）は累計681本、買収額中央値$14.4M・EBITDA $1.9M。税制はQSBS（IRC §1202、C法人株5年超で譲渡益$10Mまで非課税）。「洗車・HVACをソフトで効率化して売却額を公表した創業者事例」は見つからず。</p>
+
+<h3>4-4. 英国・ドイツ・フランス・オランダ・北欧・豪州・韓国・中国</h3>
+<div class="tw"><table>
+<tr><th>国</th><th>市場の構造（一次情報）</th><th>創業者事例</th></tr>
+<tr><td class="key">英国</td><td>BusinessesForSale.com 掲載約14,850件。買い手の31%が会社員、予算の大半が£15万未満、人気1位はEC・場所に縛られない事業（23%）。BADR税率10%→14%（2025-04）→18%（2026-04）</td><td>Makerpad（2019→2021、Zapier、ARR約$40万、5人）「VCに10億ドル企業を作るふりをして頼みたくなかった」</td></tr>
+<tr><td class="key">ドイツ</td><td>公的nexxt-change：新規掲載約7,800件/年・成立約950件/年で10年以上横ばい。DIHK 2025：<b>売り手1万人 vs 買い手4千人</b>。KfW：売却希望額平均€49.9万（年商の1.2倍）</td><td>FeedbackPanda（2年、SureSwift、社員0）「自分たちがいなくても回る会社として作った」</td></tr>
+<tr><td class="key">フランス</td><td>年最低75,000件の譲渡・承継。Bpifrance「Plan Transmission」（無利子ローン最大€8万）。税はPFU 30%</td><td>Marc Lou（ソロ開発者）：3本を$4,300〜$35,000で売却「評価額＝年換算売上×3」</td></tr>
+<tr><td class="key">オランダ</td><td>Brookz：€250万未満が取引の49%、平均EBITDA倍率5.0倍、<b>ソフト開発7.5倍・小売2.5倍</b>。成約期間6〜12か月が49%。IT/ソフトは1社に買い手9〜10人、小売はほぼ無し</td><td>Headlime（8か月、7桁）／Pixelstart（Web制作、5年、6桁、1人）「クライアントワークはスケールしない」</td></tr>
+<tr><td class="key">北欧</td><td>Bolagsplatsen（瑞）：登録買い手5万人超、累計成約1万件超。サービス業掲載+38%（代理店オーナーの引退）</td><td>WP Pusher（丁、6桁、買い手は年10%の個人借入で資金調達）</td></tr>
+<tr><td class="key">豪州</td><td>Bsale Q4-2025：掲載16,033件、<b>成約案件の平均約A$48.7万</b>、最多は飲食。A$50万未満は3〜6か月で成約</td><td>Front Digital（不動産向けマーケ代理店、$30万、利益率75%）「反復業務を全部自動化」</td></tr>
+<tr><td class="key">韓国</td><td>製造中小CEOの60歳以上比率14.1%（2012）→<b>44.8%（2024）</b>。2026年にM&amp;A型承継の特別法を推進。スタートアップ出口のM&amp;A比率は56.5%→38.0%に低下</td><td>元開発者が子ども靴下ECを4,000万ウォンで買収→半年で純利益約4,000万ウォン。SaaS個人売却の公表例は見つからず</td></tr>
+<tr><td class="key">中国・シンガポール</td><td>中国：2024年M&amp;A件数は減少、ハードテック買い手はA株上場企業77%。個人間売買統計は見つからず。シンガポール：掲載107件（カフェ・教育・保育）</td><td>見つからず</td></tr>
+</table></div>
+
+<h3>4-5. 日本との違いから言えること</h3>
+<div class="tw"><table>
+<tr><th>論点</th><th>米国・欧州</th><th>日本</th><th>ご依頼主への示唆（提案）</th></tr>
+<tr><td class="key">買い手の層</td><td>個人／マイクロファンド（MRR $10k台から）／永久保有型（Tiny等）／アグリゲーター／PE の5層</td><td>個人（数十万〜数百万円）と上場企業（億単位）の2層。中間層が薄い</td><td>数千万円帯は「個人が買える業態（無人店舗・EC）」か「海外の買い手に売れる形（英語・Stripe）」の二択</td></tr>
+<tr><td class="key">国境</td><td>Flippa成約の85%、Acquire.comの約50%が国外</td><td>ほぼ国内</td><td>英語対応なら買い手の母数が桁で違う</td></tr>
+<tr><td class="key">相場</td><td>SaaS利益2〜4倍、EC 1.4〜1.8倍、サービス1.2倍</td><td>個人は実態利益1〜3年、中小2〜5年、IT 3〜7年</td><td>どの国でも利益の2〜4倍が中心。1億円＝実態利益2,500万〜5,000万円</td></tr>
+<tr><td class="key">プラットフォーム依存</td><td>専門買い手がいて売れる。売り手は依存を早期売却の理由に挙げる</td><td>Lea・Wraptas・Peingは売れた。PA-API廃止の前例</td><td>依存型は「作って2〜3年で売る」短期回転の型</td></tr>
+<tr><td class="key">実業の買い手</td><td>SBAローン・検索ファンドで個人が数億円の実業を買える</td><td>個人買い手の予算は300万〜1,000万円が最多。検索ファンドは年9件</td><td>実業を売るなら「個人が現金か少額融資で買える規模」に拠点を分ける</td></tr>
+<tr><td class="key">承継ギャップ</td><td>ドイツ 売り手1万 vs 買い手4千。韓国 60歳以上CEO 44.8%</td><td>相談2.4万者 vs 成約2,132件</td><td>「売り物は増え、買い手は足りない」市場。買い手が欲しい形に合わせる</td></tr>
+</table></div>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>候補地の需要：</b>豊橋・大阪北区での無人店舗の稼働率・物件条件は未調査（S-Dの検証項目）</li>
+<li><b>国内の若手売却（飲食・介護・整備・保育）：</b>検索上限で未探索</li>
+<li><b>「ITで効率化した実業を売った」と売り手が語る事例：</b>国内外とも見つからず（買い手側の自作IoT事例が1件）</li>
+<li><b>Gemini指摘の異業種買収（水道工事→シェアハウス等）の額・年・当事者：</b>BATONZ記事に非公表</li>
+<li><b>Startupa.geの「2.85倍」の元データ：</b>Flippa公開ページに該当値なし</li>
+</ul>
+
+<h2 id="s6">6. 案の比較<small>「1人で届いた実績」「SPOFの低さ」「買い手の見えやすさ」で見ると、S-Dが最も揃い、S-Bは条件が崩れた</small></h2>
+<figure><figcaption>図2　公表事例の売却額の帯は、S-A′だけが億に届き、S-Dは数千万円で止まる<small>各案に対応する型の、額が公表された売却事例の最小〜最大（横軸は対数。国内事例が中心、S-A′は海外7桁ドルを含む）</small></figcaption>
+<svg viewBox="0 0 900 260" role="img" aria-label="案ごとの売却額の帯">
+<line class="ax" x1="200" y1="20" x2="200" y2="215"/>
+<g class="grid"><line x1="200" y1="215" x2="200" y2="20"/><line x1="340" y1="20" x2="340" y2="215"/><line x1="480" y1="20" x2="480" y2="215"/><line x1="620" y1="20" x2="620" y2="215"/><line x1="760" y1="20" x2="760" y2="215"/></g>
+<text class="m" x="200" y="235" text-anchor="middle">100万</text><text class="m" x="340" y="235" text-anchor="middle">1,000万</text><text class="m" x="480" y="235" text-anchor="middle">1億</text><text class="m" x="620" y="235" text-anchor="middle">10億</text><text class="m" x="760" y="235" text-anchor="middle">100億</text>
+<text x="192" y="44" text-anchor="end">S-D 無人店舗</text><rect class="us" x="228" y="32" width="149" height="18"/><text x="384" y="46">55万〜6,050万（1億以上0件）</text>
+<text x="192" y="82" text-anchor="end">S-A′ ECセラー向けツール</text><rect class="bar2" x="298" y="70" width="322" height="18"/><text x="627" y="84">3,000万（Snapmart）〜10億（Skeb）</text>
+<text x="192" y="120" text-anchor="end">S-B 送客メディア</text><rect class="bar3" x="425" y="108" width="147" height="18"/><text x="579" y="122">2億〜48億（ただしAI検索で前提が崩れた）</text>
+<text x="192" y="158" text-anchor="end">S-C SNS起点ブランド</text><rect class="bar3" x="432" y="146" width="128" height="18"/><text x="567" y="160">3億（foufou）〜38億【推定】</text>
+<text x="192" y="196" text-anchor="end">T-A 買取FC（3〜4人）</text><rect class="bar4" x="430" y="184" width="60" height="18"/><text x="497" y="198">3億（美容FC42店）〜非公表（買取171店→バイセル）</text>
+</svg></figure>
+<div class="tw"><table>
+<tr><th>案</th><th>判定</th><th class="num">1人で届いた公表例</th><th>天井の目安</th><th>理由</th></tr>
+<tr><td class="key">S-D 無人・遠隔運営店舗の複数拠点化</td><td class="st ok">本命</td><td class="num">1件（6,050万）</td><td>数千万円</td><td>SPOFが低い。個人買い手が最も買っている業態（TRANBI個人成約1位）。買い手が「無人運営」を理由に挙げた例4件。自作システムがそのまま属人性の排除になる</td></tr>
+<tr><td class="key">S-A′ ECセラー向けツール（作り直し版）</td><td class="st warn">並走</td><td class="num">複数（3,000万〜10億）</td><td>億に届く</td><td>1人で「億」に届いた公表例はこの型だけ。ただしSPOFが構造的に残り、ご依頼主の「AIで誰でも作れる」懸念も未解消。小さく試す枠</td></tr>
+<tr><td class="key">S-B 業界特化の送客メディア</td><td class="st ng">除外</td><td class="num">1件（約2億）</td><td>―</td><td>Ahrefs（2026-06）で日本の1位CTR −62.7%。米国Fin vs Finは流入半減・減額売却。SEO以外の自前導線を主にできる場合だけ再考</td></tr>
+<tr><td class="key">S-C SNS起点の小さなブランド</td><td class="st ng">外す</td><td class="num">1件（3億・7年）</td><td>億に届く</td><td>到達4〜7年で最も長い。SNS運用の才能依存で属人性を外しにくい。「服が好き」なら別枠で</td></tr>
+<tr><td class="key">T-A 買取店のFC・ロールアップ（3〜4人）</td><td class="st ok">本命（3〜4人）</td><td class="num">―</td><td>億に届く</td><td>買い手（BuySell・ゲオ・トレファク・コメ兵）が「リユース最優先」を公表。フォーナイン（買取171店）が上場バイセルに売却。保留中のY-02と重なる</td></tr>
+</table></div>
+
+<h2 id="s7">7. 推奨と理由<small>一人法人は S-D を本命、S-A′ を小さく並走。3〜4人なら T-A。位置取りで見ると S-D だけが「SPOFが低く、買い手が厚い」象限に入る</small></h2>
+<figure><figcaption>図3　S-Dだけが「外部の一手で死なず、買い手が厚い」象限に入る<small>横軸＝外部依存（プラットフォーム規約・検索アルゴリズム）の低さ、縦軸＝買い手の厚み（個人買い手が現金で買える・買収実績が多い）。配置はClaudeの提案</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="位置取りの2×2">
+<rect class="lane" x="120" y="20" width="370" height="120"/><rect class="lane" x="500" y="20" width="370" height="120"/><rect class="lane" x="120" y="150" width="370" height="120"/><rect class="lane" x="500" y="150" width="370" height="120"/>
+<text class="m" x="130" y="36">買い手は厚いが、外部依存が高い</text><text class="m" x="510" y="36">買い手が厚く、外部依存が低い</text>
+<text class="m" x="130" y="166">買い手が薄く、外部依存も高い</text><text class="m" x="510" y="166">外部依存は低いが、買い手が薄い</text>
+<rect class="cand" x="160" y="60" width="150" height="34" rx="4"/><text x="235" y="82" text-anchor="middle">S-A′ ECセラー向けツール</text>
+<rect class="cand" x="330" y="100" width="140" height="34" rx="4"/><text x="400" y="122" text-anchor="middle">S-B 送客メディア</text>
+<rect class="us" x="560" y="60" width="190" height="34" rx="4"/><text class="w" x="655" y="82" text-anchor="middle">S-D 無人店舗の複数拠点化</text>
+<rect class="cand" x="560" y="200" width="150" height="34" rx="4"/><text x="635" y="222" text-anchor="middle">T-A 買取FC（3〜4人）</text>
+<rect class="cand" x="330" y="200" width="140" height="34" rx="4"/><text x="400" y="222" text-anchor="middle">S-C SNSブランド</text>
+<line class="ax" x1="120" y1="280" x2="870" y2="280"/><text class="m" x="495" y="296" text-anchor="middle">外部依存の低さ →（高い｜低い）</text>
+<line class="ax" x1="110" y1="20" x2="110" y2="270"/><text class="m" x="20" y="150" transform="rotate(-90 20 150)" text-anchor="middle">買い手の厚み →（薄い｜厚い）</text>
+</svg></figure>
+
+<div class="pillars">
+<div class="pillar must"><h4>★本命 S-D　無人・遠隔運営の店舗を複数拠点化し、拠点ごとに売る</h4><dl>
+<dt>何をする</dt><dd>レンタルスペース・貸会議室・セルフ系サロン・インドアゴルフ・レンタルジム・トランクルームなど、スタッフ常駐なしで予約→決済→入退室→清掃手配→売上集計をシステムで回せる店舗を1拠点作り、運用システムを自作して標準化。同じ型で2拠点目以降を増やし、拠点ごと（または数拠点まとめて）売る</dd>
+<dt>成立する条件</dt><dd>拠点は個人買い手が現金か少額融資で買える規模（1拠点300万〜1,500万円）に収める／候補地に無人運営店舗の需要がある【未確認】／転貸可・用途適合の物件が取れる</dd>
+<dt>守り方（提案）</dt><dd>コードではなく「無人で回る証拠（月の自分の作業時間）・稼働率・運用マニュアル」を買い手に渡せる資産として積む。値付けは実態営業利益×1〜3年＋設備。売って作って繰り返す</dd>
+</dl></div>
+<div class="pillar cond"><h4>並走 S-A′　ECセラー向けツール（作り直し版・小さく試す枠）</h4><dl>
+<dt>何をする</dt><dd>v1のS-Aを、単一APIに依存しない設計（複数モールのCSV・公開データ・セラー入力）／価値をセラーの蓄積データと関係に置く／英語UI・Stripe決済で海外買い手を視野／撤退条件つき／2〜3年で売る短期回転型、に作り直す</dd>
+<dt>成立する条件</dt><dd>セラーが月額を払う【未確認】／依存先の規約変更で改修が膨らまない</dd>
+<dt>守り方（提案）</dt><dd>賭けてよい上限を小さく切る。1人で「億」に届いた公表例はこの型だけなので、上振れ枠として残す</dd>
+</dl></div>
+<div class="pillar cond"><h4>3〜4人なら T-A　買取店のFC・ロールアップ</h4><dl>
+<dt>何をする</dt><dd>ブランド品・貴金属・ホビー等の買取店を標準化した運営で複数店化し、上場リユース企業（BuySell・ゲオ・トレファク・コメ兵）へ</dd>
+<dt>成立する条件</dt><dd>3〜4人で売上2.7億（バイセル買収先の下限）に届くにはFC化が前提／真贋・盗品・金価格変動の管理</dd>
+<dt>守り方（提案）</dt><dd>S-Dで作る無人運用システムを「省人買取店」に転用できる可能性がある（推測）。S-02との境目を先に決める</dd>
+</dl></div>
+</div>
+
+<div class="card"><p><b>推奨に対する反論（自分で書く）</b></p>
+<ul>
+<li><b>S-Dの天井：</b>「数年で1億円」の前例は無い（1億円以上0件）。届くのは「合計数千万円を、売って作って繰り返す」形</li>
+<li><b>S-Dの競合：</b>セルフ脱毛・サウナのように小資本業態は数年で飽和した前例がある。金利上昇（政策金利1.25%、2026-09）で個人買い手の予算が縮む可能性</li>
+<li><b>S-A′：</b>2026年以降にAIで模倣コストがさらに下がった環境での売却事例はまだ無い【未確認】。海外相場（利益3.9倍）で逆算すると1億円には実態利益2,500万円が要る</li>
+<li><b>生存者バイアス：</b>本書の事例は売れた人だけ。成約率はラッコ34.3%以外は非公表</li>
+</ul></div>
+
+<h2 id="s8">8. 数字（値付け・到達の目安）<small>S-Dは1拠点あたり売値400万〜1,500万円、S-A′は実態利益×2〜4倍で計画する</small></h2>
+<div class="tw"><table>
+<tr><th>案</th><th>値付けの型</th><th class="num">倍率</th><th>到達の目安（試算）</th><th>根拠</th></tr>
+<tr><td class="key">S-D 無人店舗</td><td>時価純資産（設備）＋実態営業利益×年数</td><td class="num">1〜3年</td><td>1拠点の年間実態利益200万〜500万円なら売値400万〜1,500万円。11拠点で総額6,050万円の実例</td><td>TRANBI id=135／成約事例 id=156・144</td></tr>
+<tr><td class="key">S-A′ ECセラー向けツール</td><td>実態営業利益×倍率（海外は年商×1〜3倍も）</td><td class="num">2〜4倍</td><td>1億円で売るには実態営業利益2,500万〜5,000万円。国内の相場観「年商×2年分」（Wraptas氏）</td><td>Acquire.com／Flippa／TRANBI id=117</td></tr>
+<tr><td class="key">T-A 買取FC</td><td>営業利益×年数（上場買い手はEV/EBITDA上限設定）</td><td class="num">2〜5年</td><td>店舗数より売上・利益で決まる（美容FC42店・売上9.2億→3.0億円）</td><td>AB&amp;Company開示／BuySell IR</td></tr>
+</table></div>
+<p class="note">「試算」はClaudeの計算で事実ではない。実態営業利益は、ご依頼主自身の作業時間を時給換算して差し引いた値で置く（Gemini 2-2を採用）。</p>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>案を選んだら KASETSU.md で上限を決め、「いちばん危ない前提」を作らずに確かめる。撤退条件は先に数字で置く</small></h2>
+<div class="tw"><table>
+<tr><th>案</th><th>いちばん危ない前提（1つ）</th><th>作らずに確かめる方法</th><th>撤退条件の例（数値は仮・確定はご依頼主）</th></tr>
+<tr><td class="key">S-D</td><td>候補地で無人運営店舗に月○万円の需要がある</td><td>既存店の予約カレンダーを2週間観察して稼働率を実測。同業態の売り案件で利益を確認。転貸可物件を仲介に照会</td><td>開業6か月で稼働率○%未満／自分の作業が月○時間超が続く／○か月で物件が取れない</td></tr>
+<tr><td class="key">S-A′</td><td>セラーがその機能に月額を払う</td><td>セラーコミュニティで事前登録ページを出し、○人中○%が有料の意思表示をするか</td><td>公開○か月でMRR○万円未達／規約変更で改修○時間超／有料転換率○%未満</td></tr>
+<tr><td class="key">T-A</td><td>省人運用の買取店が大手の商圏で仕入れを取れる</td><td>候補地の買取店の来店数観察。業者オークション相場と買取価格の差を実測</td><td>1店目の月間買取○件未満が○か月／真贋事故○件／FC加盟希望が○か月でゼロ</td></tr>
+</table></div>
+<figure><figcaption>図4　次の工程は4段。Gemini2往復目は KASETSU.md の数値が揃った時点で「死ぬ条件3つ」に限定して行う<small>横軸は相対的な順序（週数は目安。確定はご依頼主）</small></figcaption>
+<svg viewBox="0 0 960 230" role="img" aria-label="次の工程のガント">
+<g class="grid"><line x1="250" y1="20" x2="250" y2="200"/><line x1="420" y1="20" x2="420" y2="200"/><line x1="590" y1="20" x2="590" y2="200"/><line x1="760" y1="20" x2="760" y2="200"/><line x1="930" y1="20" x2="930" y2="200"/></g>
+<text class="m" x="250" y="216" text-anchor="middle">第0週</text><text class="m" x="420" y="216" text-anchor="middle">第1週</text><text class="m" x="590" y="216" text-anchor="middle">第2〜3週</text><text class="m" x="760" y="216" text-anchor="middle">第4週</text><text class="m" x="930" y="216" text-anchor="middle">以降</text>
+<text x="240" y="48" text-anchor="end">① 案を選ぶ（第10章）</text><rect class="bar" x="250" y="34" width="120" height="20"/>
+<text x="240" y="88" text-anchor="end">② KASETSU.md：上限・死ぬ条件3つ</text><rect class="bar" x="380" y="74" width="120" height="20"/>
+<text x="240" y="128" text-anchor="end">③ Gemini 2往復目（死ぬ条件に限定）</text><rect class="bar2" x="510" y="114" width="90" height="20"/>
+<text x="240" y="168" text-anchor="end">④ 前提を確かめ→進む/止める/変える</text><rect class="bar4" x="610" y="154" width="300" height="20"/>
+</svg></figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>「全部推奨どおり」でも確定できる形で並べる</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>決めること</th><th>選択肢（★＝推奨）</th></tr>
+<tr><td>1</td><td class="key">一人法人の本命</td><td>★S-D（無人店舗の複数拠点化）／S-A′を本命に戻す／S-D＋S-A′の並走／別案を出し直す</td></tr>
+<tr><td>2</td><td class="key">S-A′を「小さく試す枠」として持つか</td><td>★持つ（上限を小さく切る）／持たない</td></tr>
+<tr><td>3</td><td class="key">S-DをS-01とS-02のどちらで扱うか</td><td>★S-01（「売るために作る」が目的）／S-02／両方の候補に置く</td></tr>
+<tr><td>4</td><td class="key">3〜4人案（T-A）を今回の柱に含めるか</td><td>含める／★一人法人案が固まるまで保留</td></tr>
+<tr><td>5</td><td class="key">追加の国内調査（飲食・介護・整備・保育の若手売却、BATONZ 4ページ目以降）</td><td>別チャットで回す／★今は不要（案が固まってから）</td></tr>
+<tr><td>6</td><td class="key">次の工程へ進むか</td><td>★選んだ案の KASETSU.md 作成へ（賭けてよい上限はご依頼主が決める）</td></tr>
+</table></div>
+<h3>未確認事項</h3>
+<ul>
+<li><b>候補地の稼働率・物件条件：</b>S-Dの検証項目として未調査</li>
+<li><b>「ITで効率化した実業を売った」事例：</b>国内外とも見つからず</li>
+<li><b>Startupa.ge「2.85倍」の元データ／Gemini指摘の異業種買収の額・当事者：</b>一次情報なし</li>
+<li><b>米国の買い手（Tiny・Constellation・SureSwift）の最低利益額：</b>サイト上に無し</li>
+<li><b>韓国・中国の個人間スモールM&amp;Aの成約統計：</b>見つからず</li>
+</ul>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書に正本の台帳はなく、本書が正本。DECISIONS.md に記帳した決定があればそちらを正とする</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td>v1</td><td>2026-09-29</td><td>直近10年の売却事例約70件、4つの型、7つの軸、S-A〜S-C／T-A〜T-Cの提案（別ファイル）</td></tr>
+<tr><td>v2</td><td>2026-09-29</td><td>Gemini第1回13件の事実確認、国内追加30件、米国25件、他8か国。本命をS-A→S-Dへ、S-Bを除外、軸を7→9に</td></tr>
+<tr><td>v2.1</td><td>2026-09-29</td><td>見せ方を readable-doc の型（左の固定目次・要約カード・SCR・主張文の見出し・図4点）に修正。数値・判断は変えていない</td></tr>
+</table></div>
+<h3>主要な出典（URLは調査記録に全件）</h3>
+<ul class="note">
+<li>Gemini指摘の確認：Ahrefs 2026-07-21 https://ahrefs.com/ja/blog/ai-overviews-reduce-clicks-june-2026/ ／ TRANBI id=135 https://www.tranbi.com/ma-column/detail/?id=135 ／ id=117 ／ id=225 ／ BATONZ 異業種事例 https://batonz.jp/learn/4892/ ／ Startupa.ge https://startupa.ge/blog/how-to-sell-micro-saas ／ Flippa SaaS倍率 https://flippa.com/blog/saas-multiples/</li>
+<li>国内の個人売却：TRANBI成約事例 https://www.tranbi.com/school/successful/ （id=156, 152, 151, 153, 96, 144, 150, 114, 145, 182 ほか）／ BATONZ 19189・18725・18804 ／ M&amp;Aナビ personalgym-ma ／ TRANBI 継キャリ白書 https://www.tranbi.com/press/detail/107/</li>
+<li>米国：Acquire.com 2025年報 https://blog.acquire.com/wp-content/uploads/2026/02/Acquire-Multiples-Report-2025.pdf ／ Flippa 2025 https://flippa.com/blog/2025-online-business-ma-insights-from-flippa/ ／ Empire Flippers 2026 https://info.empireflippers.com/hubfs/2026%20Lead%20Magnets/2026%20State%20of%20the%20Industry%20Report.pdf ／ Tiny https://www.tiny.com/ ／ Constellation https://www.csisoftware.com/acquisition-criteria/ ／ XO Capital https://www.xo.capital/ ／ FE International https://www.feinternational.com/blog/saas-valuation-multiples ／ Quiet Light https://quietlight.com/saas-companies-your-guide-to-valuation-multiples/ ／ Baremetrics https://baremetrics.com/blog/i-sold-baremetrics ／ Storemapper https://tylertringas.com/selling-my-bootstrapped-saas-business/ ／ They Got Acquired https://theygotacquired.com/ ／ SBA FY2025 https://legacy.sba.gov/article/2025/09/30/trump-sba-delivers-record-capital-small-businesses-fy25 ／ Stanford Search Fund 2024 ／ Apollo（TechCrunch 2023-06-08）／ ACF https://wordpress.org/news/2024/10/secure-custom-fields/</li>
+<li>欧州・豪・韓：BusinessesForSale.com 買い手調査（PR Newswire 2022）／ BADR https://brodies.com/insights/wills-and-estate-planning/business-asset-disposal-relief-badr-what-is-changing-on-6-april-2026/ ／ nexxt-change（連邦議会資料 21/7508）／ DIHK 2025 ／ KfW Nachfolge-Monitoring 2025 ／ Fusacq ／ Bpifrance Plan Transmission ／ Brookz Overname Barometer H2-2024・H2-2025 ／ Bolagsplatsen ／ Bsale Q4-2025 https://bsale.com.au/article-display/january-2026-australia-business-sales-market-report--bsale-q4,1983 ／ 韓国：亜洲経済 2025-12-31、韓国経済 2025-05-29、ニュースピム 2026-03-24 ／ Marc Lou https://newsletter.marclou.com/p/how-to-sell-your-micro-startup</li>
+</ul>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。</p>
+</main></div></body></html>

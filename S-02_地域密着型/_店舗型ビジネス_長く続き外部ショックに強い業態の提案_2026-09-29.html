@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>長く続く店舗業態の提案</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+a{color:var(--accent)}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .ax{stroke:var(--line)} svg .box{fill:var(--card);stroke:var(--line)} svg .cand{fill:var(--bg);stroke:var(--c2)} svg .us{fill:var(--c1)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+.src{font-size:13px} .src li{margin:3px 0}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<b>目次</b>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. ご依頼の前提の確認</a>
+<a href="#s2">2. 選ぶ基準</a>
+<a href="#s3">3. 外部ショックの現状</a>
+<a href="#s4">4. 候補の比較</a>
+<a class="s" href="#s4-1">4-1 長く続くか・参入の壁</a>
+<a class="s" href="#s4-2">4-2 外部ショックへの強さ</a>
+<a class="s" href="#s4-3">4-3 除外した業態</a>
+<a href="#s5">5. 本書で扱っていないこと</a>
+<a href="#s6">6. 参入の条件と費用</a>
+<a href="#s7">7. 推奨と参入の壁のつくり方</a>
+<a href="#s8">8. 決めていただく事項</a>
+<a href="#s9">9. 出典と変更履歴</a>
+</nav>
+<main>
+<h1>長く続き、物価高・円安・資源の途絶に強い店舗業態の提案</h1>
+<p class="meta">作成日：2026-09-29／確認日：本書の数字・制度はすべて2026-09-29に確認／状態：提案（未承認。どの業態を深掘りするかはご判断待ち）／前の資料：_店舗型ビジネス_市場調査と立ち上げに必要な情報_2026-09-28.html／作業フォルダ：C:\dev\Search-for-a-new-business</p>
+<p class="note">表記の約束：【未確認】＝一次情報で確かめられなかったもの。「推測」＝調査結果からの読み取り。「（提案）」＝Claudeの提案でご判断が必要なもの。「試算」＝公的統計から計算した値。</p>
+
+<!-- 0 -->
+<h2 id="s0">0. 要約<small>7つの基準すべてで大きな弱点がないのは葬儀（家族葬ホール）。次点は自動車整備とトランクルーム</small></h2>
+<div class="grid">
+<div class="kpi"><b>推奨（提案）</b><span>葬儀（小規模な家族葬ホール）</span></div>
+<div class="kpi"><b>次点（提案）</b><span>自動車整備（認証工場）／トランクルーム</span></div>
+<div class="kpi"><b>外すべき業態</b><span>飲食・公衆浴場/サウナ・医療/調剤/介護</span></div>
+<div class="kpi"><b>ホルムズ海峡</b><span>2026年2月に事実上封鎖→6月解除→7月に再封鎖</span></div>
+<div class="kpi"><b>物価高の中身</b><span>賃金も上昇。最低賃金は6年で+30.5%</span></div>
+<div class="kpi"><b>葬儀の需要の根拠</b><span>死亡数は2040年に最多の166.5万人、2070年も152.1万人の推計</span></div>
+</div>
+<div class="card">
+<dl class="scr">
+<dt>状況</dt><dd>流行の業態ではなく、20〜30年続いてきた業態で、物価高・円安・資源の途絶に強く、他社が入りにくい繁盛店をつくりたい、というご依頼です。ホルムズ海峡は2026年に実際に封鎖されています。</dd>
+<dt>課題</dt><dd>数十年続いた業態でも、理容（−24%）や質屋（−63%）のように減っているものが多くあります。また賃金が上がっているため、物価高の影響をまったく受けない業種はありません。</dd>
+<dt>提案</dt><dd>18業態を7つの基準で比べると、葬儀（家族葬ホール）だけが、長く続く・需要の根拠・為替・許認可のどれでも大きな弱点がありません。参入の壁が最も高いのは自動車整備、人の手がほぼ要らないのはトランクルームです（推測を含む）。</dd>
+<dt>未決</dt><dd>深掘りする業態、立地（豊橋市か大阪市北区か）、初期投資の上限。葬儀会館の初期費用は【未確認】です（8章）。</dd>
+</dl>
+</div>
+
+<!-- 1 -->
+<h2 id="s1">1. ご依頼の前提の確認<small>「流行は追わない」は事実と合う。「長く続いた業態なら安心」には条件が付く</small></h2>
+<div class="tw"><table>
+<tr><th>ご依頼の前提</th><th>判定</th><th>事実</th></tr>
+<tr><td class="key">流行の業態は今後伸びるか分からない</td><td class="ok st">合っている</td><td>唐揚げ・無人餃子・高級食パンなどは、ブームの数年後に倒産が過去最多になった（前の資料 3-4）</td></tr>
+<tr><td class="key">20〜30年生き残った業態なら今後も続く</td><td class="warn st">条件付き</td><td>数十年続いてきた理容（−24%）・お直し（−48%）・自転車店（−54%）・質屋（−63%）は減り続けている。「長く続いた」に加えて「今後の需要の根拠」が要る</td></tr>
+<tr><td class="key">他社が参入しようと思わない繁盛店</td><td class="warn st">条件付き</td><td>新しく入る会社が少ない業態は、市場が縮んでいることが多い（質屋は2025年に新規39件・廃業等80件。表具は大手がいないが事業所は−56%）。繁盛すれば参入は来る前提で、資本・人材・信用の壁がある業態を選ぶ必要がある</td></tr>
+<tr><td class="key">物価高の影響を受けにくい業種がある</td><td class="warn st">条件付き</td><td>仕入れが少ない業種でも人件費が上がる（最低賃金の全国平均 902円→1,177円、2020→2026年度）。差が出るのは「値上げできるか」「国が価格を決めていないか」「エネルギー・輸入への依存」</td></tr>
+<tr><td class="key">ホルムズ海峡の閉鎖に備える</td><td class="ok st">合っている</td><td>2026-02-28に事実上封鎖、6-17に解除、7-12に再封鎖。日本の原油のホルムズ依存は93.0%（2025年）</td></tr>
+</table></div>
+
+<!-- 2 -->
+<h2 id="s2">2. 選ぶ基準<small>「長く続く」「入りにくい」「ショックに強い」を7つの基準に分けて比べる</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>基準</th><th>何で測ったか</th></tr>
+<tr><td class="num">1</td><td class="key">20〜30年続いてきたか</td><td>事業所数・施設数の1990年代→2020年代の増減（総務省・厚労省・国交省ほか）</td></tr>
+<tr><td class="num">2</td><td class="key">今後の需要の根拠</td><td>国の将来推計（死亡数・子どもの数）や法律で決まった需要（車検）</td></tr>
+<tr><td class="num">3</td><td class="key">参入の壁</td><td>許認可・資格者・設備の要件、大手チェーンの有無（経済センサスの支店の割合）</td></tr>
+<tr><td class="num">4</td><td class="key">資源の途絶（ホルムズ）</td><td>生産額に占める電気・ガス・石油製品の比率（2020年産業連関表からの試算）</td></tr>
+<tr><td class="num">5</td><td class="key">為替（円安）</td><td>仕入れ・材料に含まれる輸入分の比率（同上）</td></tr>
+<tr><td class="num">6</td><td class="key">物価高（値上げできるか）</td><td>価格転嫁率（帝国データバンク）、国が価格を決めていないか、人件費の比率（日本政策金融公庫）</td></tr>
+<tr><td class="num">7</td><td class="key">ご条件との合致</td><td>許認可の取得が3か月以内か（取得に3か月〜半年かかるものは避けるご方針）</td></tr>
+</table></div>
+
+<!-- 3 -->
+<h2 id="s3">3. 外部ショックの現状<small>ホルムズ封鎖は現実に起きており、企業向けの電気・ガス代は上がっている</small></h2>
+<p class="lead2"><b>なぜ先に読むか：</b>どの業種が弱いかを判断する前提です。家計向けの電気代・ガソリン代は補助で抑えられていますが、企業向けは上がっています。</p>
+<div class="tw"><table>
+<tr><th>ショック</th><th>現状（事実）</th><th>時点</th></tr>
+<tr><td class="key">ホルムズ海峡</td><td>米国の対イラン攻撃を受け、イランが2026-02-28に事実上封鎖。6-17の米イ覚書で解除、7-12に事実上の再封鎖。WTIは9-10に102.48ドル（開戦前日は67.02ドル）</td><td class="num">2026-09-14</td></tr>
+<tr><td class="key">原油・LNGの依存</td><td>原油の中東依存94.0%・ホルムズ依存93.0%。LNGのホルムズ依存6.3%。石油備蓄は約241日分</td><td class="num">2025年／2026-03</td></tr>
+<tr><td class="key">電気・ガス代</td><td>企業向けの電力・都市ガス・水道の物価は前年比+8.0%。家計向けのエネルギーは補助で−5.0%。ガソリンは補助がなければ205.9円（実際は169.9円）</td><td class="num">2026-08／09</td></tr>
+<tr><td class="key">為替</td><td>ドル円 109.04円（2020-01）→159.57円（2026-08）。輸入物価は前年比+24.8%。円安が経営に「マイナス」は小売49.8%</td><td class="num">2026-08</td></tr>
+<tr><td class="key">値上げできるか</td><td>価格転嫁率は全体39.9%。飲食店28.7%、不動産25.9%、医療・福祉14.6%、娯楽サービス17.7%</td><td class="num">2026-07</td></tr>
+<tr><td class="key">賃金</td><td>最低賃金の全国平均は902円→1,177円（+30.5%、2020→2026年度）。春闘の賃上げ率は5.01%（2026年）</td><td class="num">2026-09</td></tr>
+<tr><td class="key">国が価格を決める業種</td><td>診療報酬の物価対応分は保険薬局に+0.01%。介護事業者・医療機関・調剤薬局の倒産がいずれも過去最多</td><td class="num">2025年度</td></tr>
+<tr><td class="key">倒産</td><td>物価高倒産は2026年上半期556件で最多。飲食店の倒産は同期473件で過去最多</td><td class="num">2026-07</td></tr>
+</table></div>
+
+<figure>
+<figcaption>ホルムズ封鎖に弱いのは浴場・宿泊・飲食。自動車整備・不動産仲介・美容は影響が小さい<small>生産額に占める電気・ガス・石油製品の比率（2020年産業連関表からの試算）。2020年は燃料が安かった年で、今の比率はこれより高いとみられる（推測）</small></figcaption>
+<svg viewBox="0 0 900 330" role="img" aria-label="業種別のエネルギー投入比率">
+<text x="200" y="33" text-anchor="end">浴場業（銭湯・サウナ）</text><rect class="bar2" x="210" y="20" width="528" height="18"/><text x="744" y="33">13.2%（別に水道5.2%）</text>
+<text x="200" y="63" text-anchor="end">宿泊業</text><rect class="bar2" x="210" y="50" width="240" height="18"/><text x="456" y="63">6.0%</text>
+<text x="200" y="93" text-anchor="end">飲食店</text><rect class="bar" x="210" y="80" width="144" height="18"/><text x="360" y="93">3.6%</text>
+<text x="200" y="123" text-anchor="end">理容業</text><rect class="bar" x="210" y="110" width="136" height="18"/><text x="352" y="123">3.4%</text>
+<text x="200" y="153" text-anchor="end">冠婚葬祭業（葬儀）</text><rect class="bar" x="210" y="140" width="136" height="18"/><text x="352" y="153">3.4%</text>
+<text x="200" y="183" text-anchor="end">洗濯業（クリーニング）</text><rect class="bar" x="210" y="170" width="128" height="18"/><text x="344" y="183">3.2%</text>
+<text x="200" y="213" text-anchor="end">教育訓練（学習塾を含む）</text><rect class="bar" x="210" y="200" width="100" height="18"/><text x="316" y="213">2.5%</text>
+<text x="200" y="243" text-anchor="end">美容業</text><rect class="bar" x="210" y="230" width="88" height="18"/><text x="304" y="243">2.2%</text>
+<text x="200" y="273" text-anchor="end">不動産仲介・管理</text><rect class="bar4" x="210" y="260" width="36" height="18"/><text x="252" y="273">0.9%</text>
+<text x="200" y="303" text-anchor="end">自動車整備</text><rect class="bar4" x="210" y="290" width="16" height="18"/><text x="232" y="303">0.4%</text>
+<line class="ax" x1="210" y1="12" x2="210" y2="318"/>
+</svg>
+</figure>
+
+<!-- 4 -->
+<h2 id="s4">4. 候補の比較<small>増えていて需要の根拠もある業態は、葬儀・自動車整備・美容の3つ</small></h2>
+
+<h3 id="s4-1">4-1 長く続くか・参入の壁</h3>
+<figure>
+<figcaption>20年以上で増えたのは葬儀・美容・自動車整備。質屋・自転車店・お直しは半分前後に減った<small>事業所数・施設数の増減率。起点は1996年が中心（葬儀は2001年、整備は1995年度）。統計の分け方が途中で変わっているため目安</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="業態別の長期増減率">
+<line class="ax" x1="560" y1="10" x2="560" y2="288"/>
+<text x="240" y="33" text-anchor="end">葬儀業（2001→2021）</text><rect class="bar4" x="560" y="20" width="254" height="18"/><text x="820" y="33">+64%</text>
+<text x="240" y="63" text-anchor="end">美容所（1996→2024）</text><rect class="bar4" x="560" y="50" width="165" height="18"/><text x="731" y="63">+41%</text>
+<text x="240" y="93" text-anchor="end">自動車整備（1995→2025）</text><rect class="bar4" x="560" y="80" width="39" height="18"/><text x="605" y="93">+10%</text>
+<text x="240" y="123" text-anchor="end">学習塾（1996→2021）</text><rect class="bar4" x="560" y="110" width="28" height="18"/><text x="594" y="123">+7%</text>
+<text x="240" y="153" text-anchor="end">不動産仲介（1996→2021）</text><rect class="bar2" x="535" y="140" width="25" height="18"/><text x="529" y="153" text-anchor="end">−6%</text>
+<text x="240" y="183" text-anchor="end">理容所（1996→2024）</text><rect class="bar2" x="463" y="170" width="97" height="18"/><text x="457" y="183" text-anchor="end">−24%</text>
+<text x="240" y="213" text-anchor="end">お直し（1996→2021）</text><rect class="bar2" x="369" y="200" width="191" height="18"/><text x="363" y="213" text-anchor="end">−48%</text>
+<text x="240" y="243" text-anchor="end">自転車店（1996→2021）</text><rect class="bar2" x="344" y="230" width="216" height="18"/><text x="338" y="243" text-anchor="end">−54%</text>
+<text x="240" y="273" text-anchor="end">質屋（1996→2021）</text><rect class="bar2" x="307" y="260" width="253" height="18"/><text x="301" y="273" text-anchor="end">−63%</text>
+</svg>
+</figure>
+<div class="tw"><table>
+<tr><th>業態</th><th>推移</th><th>今後の需要</th><th>参入の壁</th><th>大手の状況</th></tr>
+<tr><td class="key">葬儀（家族葬ホール）</td><td class="ok st">+64%</td><td>死亡数は2040年に166.5万人で最多、2070年も152.1万人（2025年実績158.9万人）</td><td>許認可は不要。会館の資本と地域の信用が壁（推測）</td><td>燦HD 267会館、ティア219店。事業所の51%が支店</td></tr>
+<tr><td class="key">自動車整備（認証工場）</td><td class="ok st">+10%</td><td>保有台数 7,010万→8,278万台（1996→2026）。車検は法律で義務。整備売上6.66兆円で4年連続増</td><td>運輸局の認証（整備士・工員・屋内作業場・機器）。開業2,500万〜1億円</td><td>ディーラーが工場の約18%</td></tr>
+<tr><td class="key">美容室</td><td class="ok st">+41%</td><td>【未確認】</td><td>保健所への届出＋美容師。参入は多い（27.8万軒）</td><td>支店8.5%（個人店が中心）</td></tr>
+<tr><td class="key">学習塾</td><td class="ok st">+7%</td><td>0〜14歳は2020→2040年で約24%減の推計</td><td>許認可なし</td><td>明光義塾1,660教室</td></tr>
+<tr><td class="key">トランクルーム</td><td class="ok st">市場3.3倍</td><td>【未確認】（市場は2008→2026年に285億→930億円、業界大手の自社調査）</td><td>賃貸借方式なら許認可なし</td><td>キュラーズが屋内型の21%</td></tr>
+<tr><td class="key">不動産仲介</td><td class="warn st">−6%</td><td>【未確認】</td><td>宅建業免許＋宅建士。ただし業者は13.2万</td><td>支店17%</td></tr>
+<tr><td class="key">ペットトリミング</td><td class="ok st">登録2倍</td><td>【未確認】（動物取扱業「保管」の登録 14,986→30,496、2007→2023）</td><td>動物取扱業の登録</td><td>【未確認】</td></tr>
+<tr><td class="key">整骨院・鍼灸院</td><td class="warn st">増→横ばい</td><td>【未確認】</td><td>国家資格者。マッサージ業の倒産は30年で最多（前の資料）</td><td>【未確認】</td></tr>
+<tr><td class="key">質屋</td><td class="ng st">−63%</td><td>金価格は6年で約3.7倍でも店は減少</td><td>公安委員会の許可（目安50日）と目利き</td><td>【未確認】</td></tr>
+<tr><td class="key">理容室</td><td class="ng st">−24%</td><td>【未確認】</td><td>保健所への届出＋理容師</td><td>QB HOUSE 568店</td></tr>
+<tr><td class="key">お直し・靴修理・時計修理</td><td class="ng st">減少</td><td>【未確認】</td><td>資格不要（技能が壁）</td><td>ミスターミニット249店</td></tr>
+<tr><td class="key">写真館・自転車店・畳</td><td class="ng st">−35〜−66%</td><td>【未確認】</td><td>資格不要</td><td>スタジオアリス407店ほか</td></tr>
+</table></div>
+
+<h3 id="s4-2">4-2 外部ショックへの強さ</h3>
+<p class="lead2"><b>要点：</b>エネルギー・為替・値上げの3つで大きな弱点がないのは、葬儀・美容・学習塾・不動産仲介・トランクルームです。自動車整備は部品の輸入分（12.6%）が弱点です。</p>
+<div class="tw"><table>
+<tr><th>業態</th><th>エネルギー</th><th>輸入（為替）</th><th>値上げできるか</th><th class="num">人件費比率</th></tr>
+<tr><td class="key">葬儀</td><td class="warn st">3.4%</td><td class="ok st">4.5%</td><td>価格は自由。ただし飲食・返礼品が総額の約26%で、食品の値上がりを受ける（推測）</td><td class="num">34.2%</td></tr>
+<tr><td class="key">自動車整備</td><td class="ok st">0.4%</td><td class="warn st">12.6%</td><td>価格は自由。値上げ交渉が難しいとの記載あり</td><td class="num">約29%</td></tr>
+<tr><td class="key">美容室</td><td class="ok st">2.2%</td><td class="ok st">6.1%</td><td>価格は自由（転嫁率の業種別データなし）</td><td class="num">41.9%</td></tr>
+<tr><td class="key">学習塾</td><td class="ok st">2.5%</td><td class="ok st">5.5%</td><td>価格は自由（同上）</td><td class="num">45.9%</td></tr>
+<tr><td class="key">不動産仲介</td><td class="ok st">0.9%</td><td class="ok st">3.3%</td><td>報酬の上限は法律で決まるが、賃料・価格に比例して増える。転嫁率は25.9%</td><td class="num">【未確認】</td></tr>
+<tr><td class="key">トランクルーム</td><td class="ok st">小さい</td><td class="ok st">小さい</td><td>価格は自由。無人で運営でき、賃金上昇の影響が小さい（いずれも推測）</td><td class="num">【未確認】</td></tr>
+<tr><td class="key">質屋</td><td class="ok st">小さい</td><td class="ok st">強い</td><td>円安・物価高で担保（金・ブランド品）の円での価値が上がる（推測）</td><td class="num">【未確認】</td></tr>
+<tr><td class="key">飲食店</td><td class="warn st">3.6%</td><td class="ng st">10.4%</td><td>転嫁率28.7%。倒産は過去最多。小麦の自給率16%</td><td class="num">32.9%</td></tr>
+<tr><td class="key">公衆浴場・サウナ</td><td class="ng st">13.2%</td><td class="ok st">6.1%</td><td>銭湯は料金の上限を知事が決める（愛知550円）</td><td class="num">48.9%</td></tr>
+<tr><td class="key">医療・調剤・介護</td><td class="ok st">0.4〜1.7%</td><td class="ng st">調剤17.3%</td><td>国が価格を決める。転嫁率14.6%、倒産が過去最多</td><td class="num">―</td></tr>
+</table></div>
+<p class="note">エネルギー・輸入の数値は2020年産業連関表からの試算です。輸入の数値は分類が粗く、美容・理容・洗濯・浴場は同じ6.1%、葬儀は「その他の対個人サービス」の4.5%です。人件費比率は日本政策金融公庫「小企業の経営指標調査」（2025年度、2026年8月公表）の平均です。</p>
+
+<figure>
+<figcaption>賃金の上昇に弱いのは理容・施術所・塾・美容。葬儀と自動車整備は3割前後<small>売上高に占める人件費の比率（日本政策金融公庫、2025年度調査）。最低賃金は6年で+30.5%上がっている</small></figcaption>
+<svg viewBox="0 0 900 240" role="img" aria-label="業種別の人件費比率">
+<text x="200" y="33" text-anchor="end">理容</text><rect class="bar2" x="210" y="20" width="498" height="18"/><text x="714" y="33">49.8%</text>
+<text x="200" y="63" text-anchor="end">施術所（整骨・鍼灸等）</text><rect class="bar2" x="210" y="50" width="491" height="18"/><text x="707" y="63">49.1%</text>
+<text x="200" y="93" text-anchor="end">学習塾</text><rect class="bar2" x="210" y="80" width="459" height="18"/><text x="675" y="93">45.9%</text>
+<text x="200" y="123" text-anchor="end">美容</text><rect class="bar2" x="210" y="110" width="419" height="18"/><text x="635" y="123">41.9%</text>
+<text x="200" y="153" text-anchor="end">葬儀</text><rect class="bar" x="210" y="140" width="342" height="18"/><text x="558" y="153">34.2%</text>
+<text x="200" y="183" text-anchor="end">一般飲食店</text><rect class="bar" x="210" y="170" width="329" height="18"/><text x="545" y="183">32.9%</text>
+<text x="200" y="213" text-anchor="end">自動車整備</text><rect class="bar" x="210" y="200" width="290" height="18"/><text x="506" y="213">約29%</text>
+<line class="ax" x1="210" y1="12" x2="210" y2="228"/>
+</svg>
+</figure>
+
+<h3 id="s4-3">4-3 除外した業態と理由</h3>
+<ul>
+<li><b>飲食店</b>：輸入依存10.4%・転嫁率28.7%で、倒産が過去最多（2026年上半期473件）。3つのショックすべてに弱い</li>
+<li><b>公衆浴場・サウナ・クリーニング・コインランドリー</b>：エネルギー比率が最も高い（浴場13.2%＋水道5.2%）。銭湯は料金の上限を知事が決める</li>
+<li><b>医療・調剤・介護</b>：国が価格を決めるため値上げできず、倒産が過去最多。診療所は営利法人が開設できない（医療法7条7項）</li>
+<li><b>質屋・理容・お直し・写真館・自転車店・畳</b>：ショックには強いものもあるが、業態そのものが20年以上減り続けている</li>
+<li><b>学習塾</b>：子どもの数が2040年までに約24%減る推計で、「今後の需要」に弱い</li>
+</ul>
+
+<!-- 5 -->
+<h2 id="s5">5. 本書で扱っていないこと<small>以降の章は、この範囲の中でだけ成り立つ</small></h2>
+<ul>
+<li><b>事業としての収支・採算の判定</b>：業態の比較までで、収支計画は作っていません</li>
+<li><b>豊橋市・大阪市北区での同業者の数と物件の相場</b>：未調査です</li>
+<li><b>葬儀会館・トランクルームの初期費用</b>：公的な目安が見つからず【未確認】です</li>
+<li><b>葬儀の単価の長期推移</b>：【未確認】。2026年の民間調査の値（6章）のみ載せています</li>
+</ul>
+
+<!-- 6 -->
+<h2 id="s6">6. 参入の条件と費用<small>葬儀とトランクルームは許認可が要らない。自動車整備は資格者と設備が壁</small></h2>
+<div class="tw"><table>
+<tr><th>業態</th><th>許認可</th><th>期間</th><th>資格者</th><th>初期費用の目安</th></tr>
+<tr><td class="key">葬儀</td><td>関連する法規制・許認可の制度なし（J-Net21）</td><td>―</td><td>不要</td><td>【未確認】（会館を持つかで大きく変わる）</td></tr>
+<tr><td class="key">自動車整備</td><td>地方運輸局長の認証（事業場ごと）</td><td>【未確認】</td><td>1級・2級整備士1名以上＋工員2名以上</td><td>2,500万〜1億円（J-Net21が専門学校の見解を引用）</td></tr>
+<tr><td class="key">トランクルーム</td><td>賃貸借方式なら不要。寄託方式は倉庫業の登録。コンテナは建築基準法の対象</td><td>―</td><td>不要</td><td>【未確認】</td></tr>
+<tr><td class="key">美容室</td><td>保健所への届出と検査</td><td>開業1週間前までに届出</td><td>美容師（2名以上なら管理美容師）</td><td>【未確認】</td></tr>
+<tr><td class="key">不動産仲介</td><td>宅建業免許（愛知県知事）</td><td>30〜50日</td><td>専任の宅建士（業務に就く5人に1人）</td><td>保証協会の分担金60万円（本店）＋手数料33,000円</td></tr>
+<tr><td class="key">質屋</td><td>質屋営業許可（公安委員会）</td><td>目安50日（群馬県警）</td><td>―</td><td>【未確認】</td></tr>
+</table></div>
+<p><b>葬儀の価格の現状</b>（鎌倉新書「第7回お葬式に関する全国調査」2026年、喪主経験者2,000人）：総額の平均は96.73万円で、前回（2024年）より約2.5万円増えました。内訳は基本料金72.02万円・飲食費11.67万円・返礼品13.03万円です。家族葬が47.0%で最も多い形です。<span class="note">民間企業の調査です。</span></p>
+
+<!-- 7 -->
+<h2 id="s7">7. 推奨と参入の壁のつくり方<small>第一候補は葬儀。壁が最も高いのは自動車整備だが、資格者の確保が最大の課題</small></h2>
+<figure>
+<figcaption>壁が高く、ショックにも強い場所にいるのは葬儀と自動車整備<small>横軸＝外部ショックへの強さ（エネルギー・為替・値上げできるか）、縦軸＝参入の壁。配置は4章の比較をもとにした（提案）。塗りつぶしが推奨</small></figcaption>
+<svg viewBox="0 0 900 350" role="img" aria-label="参入の壁と外部ショックへの強さの2軸図">
+<rect class="box" x="120" y="20" width="370" height="135"/>
+<rect class="box" x="490" y="20" width="370" height="135"/>
+<rect class="box" x="120" y="155" width="370" height="135"/>
+<rect class="box" x="490" y="155" width="370" height="135"/>
+<text class="m" x="130" y="38">壁は高いが、値上げできない</text>
+<text class="m" x="850" y="38" text-anchor="end">壁が高く、ショックに強い</text>
+<text class="m" x="130" y="282">ショックに弱く、入りやすい</text>
+<text class="m" x="850" y="282" text-anchor="end">ショックに強いが、入りやすい</text>
+<rect class="us" x="510" y="52" width="165" height="28" rx="4"/><text class="w" x="522" y="71">葬儀（家族葬ホール）</text>
+<rect class="cand" x="690" y="52" width="150" height="28" rx="4"/><text x="702" y="71">自動車整備</text>
+<rect class="cand" x="600" y="100" width="170" height="28" rx="4"/><text x="612" y="119">質屋（業態は縮小）</text>
+<rect class="cand" x="150" y="70" width="190" height="28" rx="4"/><text x="162" y="89">医療・調剤・介護</text>
+<rect class="cand" x="510" y="185" width="110" height="28" rx="4"/><text x="522" y="204">美容室</text>
+<rect class="cand" x="635" y="185" width="100" height="28" rx="4"/><text x="647" y="204">学習塾</text>
+<rect class="cand" x="510" y="228" width="130" height="28" rx="4"/><text x="522" y="247">不動産仲介</text>
+<rect class="cand" x="655" y="228" width="140" height="28" rx="4"/><text x="667" y="247">トランクルーム</text>
+<rect class="cand" x="150" y="185" width="90" height="28" rx="4"/><text x="162" y="204">飲食店</text>
+<rect class="cand" x="255" y="185" width="150" height="28" rx="4"/><text x="267" y="204">公衆浴場・サウナ</text>
+<rect class="cand" x="150" y="228" width="120" height="28" rx="4"/><text x="162" y="247">クリーニング</text>
+<text x="490" y="318" text-anchor="middle">外部ショックへの強さ →（弱い｜強い）</text>
+<text x="100" y="155" text-anchor="middle" transform="rotate(-90 100 155)">参入の壁 →（低い｜高い）</text>
+</svg>
+</figure>
+
+<div class="pillars">
+<div class="pillar must">
+<h4>★ 第一候補：葬儀（小規模な家族葬ホール）</h4>
+<dl>
+<dt>何をする</dt><dd>家族葬が中心の小さな会館を1か所持ち、地域の葬儀を受ける</dd>
+<dt>選ぶ理由</dt><dd>事業所は20年で+64%。死亡数は2070年まで今と同じ水準が続く推計。許認可が要らず、輸入依存4.5%、国が価格を決めない</dd>
+<dt>成立する条件</dt><dd>会館の初期費用を賄えること【未確認】。24時間の受付体制。大手の出店がある地域では差別化が要る</dd>
+<dt>壁のつくり方（提案）</dt><dd>病院・介護施設・寺院・自治会など、亡くなった直後に相談される先との関係を積み上げる。前払いを受け取る会員制度は割賦販売法の許可が要る可能性【要確認】</dd>
+</dl>
+</div>
+<div class="pillar cond">
+<h4>次点：自動車整備（認証工場）</h4>
+<dl>
+<dt>何をする</dt><dd>車検・定期点検・一般整備を行う認証工場を持つ</dd>
+<dt>選ぶ理由</dt><dd>車検は法律で義務づけられた需要。エネルギー比率0.4%で最も低い。認証・設備・資格者が要り、参入の壁が最も高い</dd>
+<dt>成立する条件</dt><dd>整備士を雇えること。整備業の撤退は人手不足などで295件と過去最多で、資格者の確保が最大の課題。初期2,500万〜1億円</dd>
+<dt>壁のつくり方（提案）</dt><dd>撤退する工場の顧客と整備士を引き継ぐ。車検の時期を管理して顧客を囲い込む</dd>
+</dl>
+</div>
+<div class="pillar cond">
+<h4>次点：トランクルーム</h4>
+<dl>
+<dt>何をする</dt><dd>住宅の多い地域に屋外コンテナ型または屋内型の収納スペースを置き、月額で貸す</dd>
+<dt>選ぶ理由</dt><dd>市場は18年で3.3倍。無人で運営でき、賃金・エネルギー・為替の影響が小さい（推測）</dd>
+<dt>成立する条件</dt><dd>許認可がなく誰でも入れるため、立地で勝つ必要がある。「繁盛店」をつくる型ではない</dd>
+<dt>壁のつくり方（提案）</dt><dd>競合が置ける土地が残っていない住宅密集地を先に押さえる</dd>
+</dl>
+</div>
+</div>
+<div class="card">
+<p><b>葬儀を第一候補にした理由：</b>ご依頼の条件は「長く続く」「他社が入りにくい」「3つのショックに強い」の3つです。自動車整備は壁とエネルギーでは葬儀を上回ります。ただし部品の輸入依存（12.6%）があり、整備士の確保が撤退の原因になっている業界です。「資格者は雇えばよい」という前提が最も成り立ちにくい業態です。葬儀は、資格者が要らず、許認可もなく（ご条件の期間の問題がない）、需要の根拠が2070年まで公的推計で示されている唯一の候補です。</p>
+<p><b>葬儀の弱点：</b>大手チェーンが増えています（事業所の51%が支店）。家族葬への移行で1件あたりの規模は小さくなっています。「他社が参入しようと思わない」理由は、24時間対応の負担と、死を扱う仕事への心理的な抵抗だと考えられます（推測）。統計の裏付けはありません。</p>
+</div>
+
+<!-- 8 -->
+<h2 id="s8">8. 決めていただく事項<small>深掘りする業態を1つ選んでいただくと、次は地域の競合と費用を調べられる</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>事項</th><th>選択肢</th><th>推奨</th></tr>
+<tr><td class="num">1</td><td class="key">深掘りする業態</td><td>葬儀／自動車整備／トランクルーム／その他（美容室など）</td><td>★葬儀（提案）</td></tr>
+<tr><td class="num">2</td><td class="key">立地</td><td>豊橋市／大阪市北区／両方を比べる</td><td>両方を比べる（提案）</td></tr>
+<tr><td class="num">3</td><td class="key">初期投資の上限</td><td>金額をご指定ください</td><td>―（ご判断）</td></tr>
+</table></div>
+<p class="note">未確定事項：葬儀会館・トランクルームの初期費用、自動車整備の認証の標準処理期間、美容室・不動産仲介の需要の将来推計、葬儀の単価の長期推移、葬儀の前払い会員制度と割賦販売法の関係（いずれも【未確認】）。許認可を根拠にお金や時間を使う段階では、所管窓口と外部AI（Gemini）でも確認します。</p>
+
+<!-- 9 -->
+<h2 id="s9">9. 出典と変更履歴<small>出典はすべて2026-09-29に開いて確認した</small></h2>
+<ul class="src">
+<li>ホルムズ・原油：<a href="https://journal.jogmec.go.jp/oilgas/info-reports/info-reports_02152.html">JOGMEC（2026-09-14）</a>／<a href="https://journal.jogmec.go.jp/content/300799351.pdf">JOGMEC（2026-03-16）</a>／<a href="https://www.meti.go.jp/shingikai/enecho/denryoku_gas/jisedai_kiban/pdf/005_07_00.pdf">経産省 審議会資料（依存度）</a>／<a href="https://www.cas.go.jp/jp/seisaku/chyutoujyousei/dai1/pdf/siryou4.pdf">内閣官房（備蓄）</a>／<a href="https://nenryo-teigakuhikisage.go.jp/current_graph.pdf">燃料油価格定額引下げ</a></li>
+<li>物価・為替：<a href="https://www.boj.or.jp/statistics/pi/cgpi_release/cgpi2608.pdf">日銀 企業物価指数 2026年8月</a>／<a href="https://www.stat.go.jp/data/cpi/sokuhou/tsuki/pdf/zenkoku.pdf">総務省 消費者物価指数</a>／<a href="https://www.stat-search.boj.or.jp/ssi/mtshtml/fm08_m_1.html">日銀 為替</a>／<a href="https://www.tsr-net.co.jp/data/detail/1202953_1527.html">TSR 円安の影響</a></li>
+<li>産業連関表（エネルギー・輸入の試算の元）：<a href="https://www.e-stat.go.jp/stat-search/files?page=1&amp;layout=datalist&amp;toukei=00200603&amp;tstat=000001218140&amp;cycle=0&amp;year=20200&amp;month=0&amp;tclass1val=0">2020年産業連関表</a></li>
+<li>価格転嫁・倒産：<a href="https://www.tdb.co.jp/report/economic/20260828-pricepass-on202607/">TDB 価格転嫁（2026年7月）</a>／<a href="https://www.tdb.co.jp/report/economic/20260707-inflationbankruptcy2606/">TDB 物価高倒産</a>／<a href="https://www.tdb.co.jp/report/industry/20260722-insyokuten2026fh/">TDB 飲食店倒産</a>／<a href="https://www.tdb.co.jp/report/economic/20260727-energyprice/">TDB エネルギー価格</a>／<a href="https://www.tdb.co.jp/report/bankruptcy/aggregation/20260708-bankruptcyh12026/">TDB 人手不足倒産</a></li>
+<li>賃金：<a href="https://www.mhlw.go.jp/stf/newpage_75950.html">厚労省 最低賃金（2026年度）</a>／<a href="https://www.cas.go.jp/jp/seisaku/atarashii_sihonsyugi/kaigi/dai21/shiryou3.pdf">内閣官房（過去の推移）</a>／<a href="https://www.jtuc-rengo.or.jp/activity/roudou/shuntou/2026/yokyu_kaito/kaito/press_no7_all.pdf">連合 2026春闘</a></li>
+<li>公定価格：<a href="https://www.mhlw.go.jp/content/12401000/001620952.pdf">診療報酬改定</a>／<a href="https://www.mhlw.go.jp/content/12404000/001675936.pdf">介護報酬改定</a>／<a href="https://www.tsr-net.co.jp/data/detail/1202283_1527.html">TSR 介護</a>／<a href="https://www.tsr-net.co.jp/data/detail/1202743_1527.html">TSR 医療機関</a>／<a href="https://www.tsr-net.co.jp/data/detail/1202286_1527.html">TSR 調剤薬局</a></li>
+<li>銭湯料金：<a href="https://www.pref.aichi.jp/press-release/nyuuyokuryoukinkaigikekka2026.html">愛知県</a>　食料：<a href="https://www.maff.go.jp/j/press/kanbo/anpo/attach/pdf/260807-1.pdf">農水省 食料自給率</a>　金価格：<a href="https://gold.tanaka.co.jp/commodity/souba/y-gold.php">田中貴金属</a>　質屋：<a href="https://www.npa.go.jp/publications/statistics/safetylife/R7kobutsushichiyagaikyo.pdf">警察庁</a></li>
+<li>事業所数：<a href="https://www.e-stat.go.jp/stat-search/file-download?statInfId=000000292646&amp;fileKind=0">事業所・企業統計（平成13年）</a>／<a href="https://www.e-stat.go.jp/stat-search/file-download?statInfId=000001129397&amp;fileKind=0">同（平成18年）</a>／<a href="https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040067884&amp;fileKind=0">経済センサス（令和3年）</a>／<a href="https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040032976&amp;fileKind=0">同 サービス関連（支店の割合）</a>／<a href="https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/eiseihoukoku_seiei14_6.pdf">厚労省 理美容所の推移</a>／<a href="https://www.mhlw.go.jp/toukei/saikin/hw/eisei_houkoku/24/dl/kekka3.pdf">厚労省 令和6年度</a></li>
+<li>需要：<a href="https://www.ipss.go.jp/pp-zenkoku/j/zenkoku2023/db_zenkoku2023/s_tables/1-8.xlsx">社人研 死亡数推計</a>／<a href="https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/geppo/nengai25/dl/gaikyouR7.pdf">厚労省 人口動態（2025年）</a>／<a href="https://www.airia.or.jp/publish/statistics/number.html">自動車検査登録情報協会</a>／<a href="https://www.jaspa.or.jp/Portals/0/resources/jaspahp/member/data/pdf/R07jittaityousa.pdf">日整連 実態調査</a>／<a href="https://wwwtb.mlit.go.jp/kyushu/content/000321849.pdf">九州運輸局 整備の現況</a>／<a href="https://www.quraz.com/company/market.aspx">キュラーズ 市場規模</a>／<a href="https://www.env.go.jp/nature/dobutsu/aigo/2_data/statistics/files/r05/2_1_1.pdf">環境省 動物取扱業</a></li>
+<li>原価・人件費：<a href="https://www.jfc.go.jp/n/findings/shihyou_kekka_m_index.html">日本政策金融公庫 小企業の経営指標調査</a></li>
+<li>大手：<a href="https://www.san-hd.co.jp/ir/individual/02/">燦HD</a>／<a href="https://www.tear.co.jp/company/ir/finance/highlight.html">ティア</a>／<a href="https://www.meikonet.co.jp/ja/ir/ir-news/auto_20251010572151/pdfFile.pdf">明光ネットワーク</a>／<a href="https://www.minit.co.jp/company/data/">ミスターミニット</a>／<a href="https://data.swcms.net/file/studio-alice/dam/jcr:26536a54-34a9-4560-9da4-c962741ca69f/140120260406598919.pdf">スタジオアリス</a>／<a href="https://daiwair.webcdn.stream.ne.jp/www11/daiwair/qlviewer/pdf/2504126571t5QYe1OZ5.pdf">キュービーネットHD</a></li>
+<li>許認可：<a href="https://j-net21.smrj.go.jp/startup/guide/service/h007.html">J-Net21 葬祭業</a>／<a href="https://wwwtb.mlit.go.jp/kinki/content/000246227.pdf">近畿運輸局 認証</a>／<a href="https://www.pref.aichi.jp/site/kensetsugyo-fudosangyo/menkyo-shinki.html">愛知県 宅建業免許</a>／<a href="https://www.kkr.mlit.go.jp/kensei/kensetsu/fudousanjyounado/torihikigyou/copy_of_takken.html">近畿地方整備局 保証協会</a>／<a href="https://www.police.pref.gunma.jp/28794.html">群馬県警 質屋</a>／<a href="https://j-net21.smrj.go.jp/startup/guide/service/h023.html">J-Net21 トランクルーム</a>／<a href="https://www.mlit.go.jp/jutakukentiku/build/jutakukentiku_house_tk_000058.html">国交省 コンテナ</a>／<a href="https://laws.e-gov.go.jp/api/1/lawdata/323AC0000000205">医療法</a></li>
+<li>葬儀の価格：<a href="https://prtimes.jp/main/html/rd/p/000000129.000009951.html">鎌倉新書 第7回お葬式に関する全国調査（2026年）</a></li>
+</ul>
+<div class="tw"><table>
+<tr><th>日付</th><th>内容</th></tr>
+<tr><td class="num">2026-09-29</td><td>作成</td></tr>
+</table></div>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。</p>
+</main>
+</div>
+</body>
+</html>
