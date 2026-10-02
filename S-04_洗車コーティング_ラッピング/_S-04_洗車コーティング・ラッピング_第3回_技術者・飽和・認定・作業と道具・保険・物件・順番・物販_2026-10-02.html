@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>車の預かり工房・出張型 第3回 — 技術者の確保・飽和リスク・認定の強さ・作業と道具の実像・保険の限界・物件の台数・柱の順番・物販の作り方</title>
+<style>
+:root{--bg:#fff;--fg:#1e1e1e;--muted:#666;--line:#e3e5ea;--th:#f3f4f6;--accent:#1f5fbf;--card:#f7f8fa;--warn:#fff4d6;--ok:#e6f4ea;--ng:#fdecea;--c1:#1f5fbf;--c2:#8a8f98;--c3:#2e9e5b;--c4:#d9822b;--lane:#eef2f8}
+@media(prefers-color-scheme:dark){:root{--bg:#161719;--fg:#e6e6e6;--muted:#9a9a9a;--line:#33353a;--th:#232428;--accent:#7ab0ff;--card:#1e1f23;--warn:#4a3f1e;--ok:#1f3a24;--ng:#4a2323;--c1:#7ab0ff;--c2:#7c8089;--c3:#5cc281;--c4:#f0a04b;--lane:#1b2230}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 "Segoe UI","Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;word-break:auto-phrase;line-break:strict}
+p,li,figcaption,dd{overflow-wrap:break-word}
+h1,h2,h3,th,figcaption,h2 small,.kpi span{text-wrap:balance}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr)}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:18px 14px;border-right:1px solid var(--line);font-size:13px}
+nav a{display:block;color:var(--fg);text-decoration:none;padding:3px 0} nav .s{padding-left:14px;color:var(--muted)}
+main{padding:28px 44px 90px;max-width:1080px}
+h1{font-size:24px} h2{font-size:19px;margin:48px 0 14px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.5}
+h2 small{display:block;font-size:15px;font-weight:normal;color:var(--fg)} h3{font-size:16px;margin:28px 0 6px}
+.lead2{margin:2px 0 10px;color:var(--muted);font-size:14px} .lead2 b{color:var(--fg)} .meta,.note{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:14px 0}
+.scr{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:0} .scr dt{font-weight:700;color:var(--accent)} .scr dd{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:14px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px} .kpi b{display:block;font-size:12px;color:var(--muted);font-weight:normal} .kpi span{font-size:16px;font-weight:600;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:8px 0 14px;font-size:14px}
+th,td{border:0;border-bottom:1px solid var(--line);padding:7px 10px;vertical-align:top;text-align:left}
+th{background:var(--th);white-space:nowrap;font-weight:600;border-bottom:2px solid var(--line)}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums} td.key{font-weight:600;min-width:9em} td.st{white-space:nowrap;font-weight:600} td{min-width:6em}
+td.ok.st::before{content:"✓ "} td.warn.st::before{content:"△ "} td.ng.st::before{content:"✕ "}
+.warn{background:var(--warn)} .ok{background:var(--ok)} .ng{background:var(--ng)} .tw{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);margin-right:4px}
+ul,ol{padding-left:22px;margin:6px 0} li{margin:5px 0} li b{font-weight:700}
+figure{margin:14px 0 22px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+figcaption{font-weight:600;margin:0 0 8px;font-size:14px} figcaption small{display:block;font-weight:normal;color:var(--muted);font-size:12px}
+svg{width:100%;height:auto;display:block;font-family:inherit} svg text{fill:var(--fg);font-size:12px} svg .m{fill:var(--muted);font-size:11px} svg .w{fill:#fff;font-weight:600}
+svg .lane{fill:var(--lane)} svg .box{fill:var(--card);stroke:var(--line)} svg .ln{stroke:var(--muted);fill:none} svg .ax{stroke:var(--line)} svg .grid{stroke:var(--line);stroke-dasharray:3 4}
+svg .bar{fill:var(--c1)} svg .bar2{fill:var(--c4)} svg .bar3{fill:var(--c2)} svg .bar4{fill:var(--c3)} svg .us{fill:var(--c1)} svg .cand{fill:var(--bg);stroke:var(--c2)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:12px 0}
+.pillar{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--card);border-top:4px solid var(--c1)} .pillar h4{margin:0 0 6px;font-size:15px}
+.pillar dl{margin:0;font-size:13.5px} .pillar dt{color:var(--muted);font-size:12px;margin-top:6px} .pillar dd{margin:0} .pillar.must{border-top-color:var(--c3)} .pillar.cond{border-top-color:var(--c4)}
+@media(max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.scr{grid-template-columns:1fr}}
+@media print{nav{display:none}.wrap{grid-template-columns:1fr}}
+/* 追加（既存の定義は変えない） */
+.sub{display:block;color:var(--muted);font-size:12.5px;font-weight:normal}
+td.key.id{min-width:4.5em;white-space:nowrap}
+td.src{font-size:12.5px;color:var(--muted);word-break:break-all;min-width:14em}
+table.cmp td{font-size:13.5px;line-height:1.6}
+td.ref{white-space:nowrap;font-size:12.5px;color:var(--muted);min-width:3.5em}
+svg .plan{fill:var(--lane);stroke:var(--c2)} svg .car{fill:var(--c2);opacity:.55} svg .carus{fill:var(--c1);opacity:.75}
+</style>
+</head>
+<body><div class="wrap">
+<nav><strong>目次</strong>
+<a href="#s0">0. 要約</a>
+<a href="#s1">1. 背景と依頼</a>
+<a href="#s2">2. 調査の範囲と方法</a>
+<a href="#s3">3. 前提・制約</a>
+<a href="#s4">4. 分かったこと</a>
+<a class="s" href="#s4-1">4-1 技術者は余っていない</a>
+<a class="s" href="#s4-2">4-2 飽和と価格の実態</a>
+<a class="s" href="#s4-3">4-3 認定の強さ・どれを取るか</a>
+<a class="s" href="#s4-4">4-4 洗車の実像と最先端</a>
+<a class="s" href="#s4-5">4-5 コーティング・ラッピング・PPFの実像</a>
+<a class="s" href="#s4-6">4-6 水なし洗車・出張・洗車場所</a>
+<a class="s" href="#s4-7">4-7 損傷例と保険の限界</a>
+<a class="s" href="#s4-8">4-8 物件の要件と台数</a>
+<a class="s" href="#s4-9">4-9 物販：誰が作るのか</a>
+<a class="s" href="#s4-10">4-10 紹介に頼らない戦略</a>
+<a href="#s5">5. 調べていないこと</a>
+<a href="#s6">6. 案の比較（工房の大きさ）</a>
+<a href="#s7">7. 推奨と理由</a>
+<a href="#s8">8. 数字</a>
+<a href="#s9">9. 次の工程と撤退条件</a>
+<a href="#s10">10. 決めていただく事項</a>
+<a href="#s11">11. 変更履歴と出典</a>
+</nav>
+<main>
+<h1>車の預かり工房・出張型 第3回<br><span style="font-size:17px;font-weight:normal">— 技術者の確保・飽和リスク・認定の強さ・作業と道具の実像・保険の限界・物件の台数・柱の順番・物販の作り方</span></h1>
+<p class="meta">作成日：2026-10-02　｜　状態：<b>調査報告（上限500万円・拠点A・物販の段階制は 2026-10-02 のご回答で確定／期間・住之江の除外・認定の組合せは未決）</b>　｜　置き場所：<code>C:\dev\Search-for-a-new-business\S-04_洗車コーティング_ラッピング\</code>　｜　前の資料：第1回（10-01、ルート直下）・第2回（10-02、本フォルダ）　｜　Gemini クロスレビュー：<b>未実施</b>（第3回用の依頼文を同フォルダに置いた）</p>
+
+<h2 id="s0">0. 要約<small>技術者は余っていない（整備・修理系の求人倍率は全職業の約4倍）。市場は店舗数が増えているが価格は下がっておらず、安い材料は入ってきている。認定は客を集める看板ではなく「保証・材料・データ」を得る手段。保険は偶然の事故だけを払い、施工の失敗は払わない。</small></h2>
+<div class="grid">
+<div class="kpi"><b>技術者</b><span>整備・修理系 有効求人倍率 4.04倍（2025年度）、整備士 5.46倍、平均年齢47.2歳。未経験可の求人が多く、経験者は取り合い</span></div>
+<div class="kpi"><b>飽和・価格</b><span>XPEL認定店 150（2022）→約200〜250（2026）。価格はKeePer＋5%（2025-04）・IIC値上げ（2025-08）で下落なし。中国製フィルムは欧米系の1/5〜1/10</span></div>
+<div class="kpi"><b>認定の強さ</b><span>みんカラ件数 KeePer 15万＞G'ZOX 5.9千＞Ceramic Pro 3千＞XPEL 1.9千＞STEK 600。Q&amp;A 54回答で「認定」を基準にした回答は0件</span></div>
+<div class="kpi"><b>保険の限界</b><span>払うのは偶然の事故（保管・作業・回送）だけ。仕上げ不良・剥離時の塗装剥がれ・色むらは約款で除外。全ては埋まらない</span></div>
+<div class="kpi"><b>物件</b><span>屋内作業（16〜30℃・無塵）が公式条件。作業2＋待機3で約56坪（推定）。保管10台を足すと約136坪で消防・建基法の閾値に近づく</span></div>
+<div class="kpi"><b>上限と拠点</b><span>上限500万円（金額のみ・期間は未決）。拠点A承認。「住之江は遠いので外す」と解釈（要確認）</span></div>
+</div>
+<div class="card"><dl class="scr">
+<dt>状況</dt><dd>第2回の推奨（拠点A・物販の段階制）を坂野様が承認し、上限を500万円と回答。残る疑問は「技術者は雇えるのか」「飽和して価格が下がらないか」「どの認定を取ればよいか」「作業と道具の実像」「保険で全部カバーできるか」「物件の台数」「柱の順番」「自社ブランドは誰が作るのか」「紹介に頼らずマージンを抜かれない戦略」。</dd>
+<dt>課題</dt><dd>この9つは「分からないまま進めると、採用・物件・認定でお金を使ってから気づく」種類の問いである。</dd>
+<dt>分かったこと</dt><dd>技術者は余っていない。現実解は「車業界経験者を未経験として採用し、メーカー講習（3〜4日）＋社内3〜6か月で基本施工、1年で現場」。市場は店舗数が増え続け（KeePer LABO 93→184店）、材料は安くなり（中国製TPU 1本2〜6万円）、首位メーカー自身が価格競争を10-Kに明記しているが、国内の表示価格はまだ下がっていない。認定で客は集まらず、集めるのは店（施工系YouTube最大4.38万人）。保険は偶然の事故に限られ、技術の失敗は約款と自己負担。</dd>
+<dt>提案</dt><dd>認定は「XPEL（PPF）＋3M 3-Star（ラッピング）＋G'ZOX登録（コーティング・無料）」の組合せ。技術者は車業界経験者2名を未経験採用し、半年は部分施工・モニター車で練習。物件は作業2＋待機3の約56坪（S案）から始め、保管は別物件で後回し。柱の順番は「検証→工房＋モニター→出張・業販→物販→保管」。価格ではなく「記録・保証・内装・納車前の段取り」で戦う。</dd>
+<dt>未決</dt><dd>上限の「期間」と「人件費を含むか」。住之江の除外（聞き取りの確認）。認定の組合せ。Geminiクロスチェック（依頼文は同フォルダ）。貼り付けられたGemini回答は発送代行（W2）の文書向けで、本件とは別案件。</dd>
+</dl></div>
+
+<h2 id="s1">1. 背景と依頼<small>2026-10-02 のご回答とご質問を文字どおり受け取り、17項目に分けた。</small></h2>
+<div class="tw"><table>
+<tr><th>#</th><th>ご依頼・ご回答（要旨）</th><th>答えた章</th></tr>
+<tr><td class="key id">a</td><td>技術者は雇えるのか。そんなに余っているのか</td><td>4-1</td></tr>
+<tr><td class="key id">b</td><td>カーラッピング自体が飽和し、原価率が低い状態から参入者が増えて価格が下がる可能性はないか。ブランド力（YouTube発信）で防ぐ認識</td><td>4-2／7</td></tr>
+<tr><td class="key id">c</td><td>技術は素材特性と下処理を学べば、複雑なケースバイケースではないと思う</td><td>4-5</td></tr>
+<tr><td class="key id">d</td><td>認定を取る意義。認定の有無で富裕層・利用者がどう判断するか。HPに書けば人が集まるのか。各認定の信頼度。複数あってどれをどうすればよいか判断できない</td><td>4-3／7</td></tr>
+<tr><td class="key id">e</td><td>技術者1名採用でもよいが、元ディーラーの人をチームに加えて一から学ぶ道もそんなに時間はかからないのでは</td><td>4-1／7</td></tr>
+<tr><td class="key id">f</td><td>洗車・ラッピング・コーティングを「どうやるのか」のイメージができていない。道具・最先端の方法・純水・タオルなどを埋めてほしい</td><td>4-4／4-5</td></tr>
+<tr><td class="key id">g</td><td>金額は500万円に収まれば助かる（上限の回答）</td><td>3／9／10</td></tr>
+<tr><td class="key id">h</td><td>拠点の第一候補は推奨どおりA。「住みの上」は遠いので外したい</td><td>3／10</td></tr>
+<tr><td class="key id">i</td><td>物販は段階制（推奨A）でよい。自社ブランドは実際どこが作るのか。自分のブランド力で製造会社とタッグを組む認識で合っているか</td><td>4-9</td></tr>
+<tr><td class="key id">j</td><td>保管＋月次メンテをやるなら何台分の物件か。屋内作業の認識で合っているか。規模別に推定で出してほしい</td><td>4-8／6</td></tr>
+<tr><td class="key id">k</td><td>複数の柱をどういう順番でやるか</td><td>7／9</td></tr>
+<tr><td class="key id">l</td><td>水なし洗車の具体的なやり方。洗車での差別化は基本的にできない認識で合っているか</td><td>4-6</td></tr>
+<tr><td class="key id">m</td><td>現在の最先端の洗車レベルを調査して報告</td><td>4-4</td></tr>
+<tr><td class="key id">n</td><td>「洗車してください」に対して、どこで洗車するかをどう提案すればよいか</td><td>4-6</td></tr>
+<tr><td class="key id">o</td><td>輸入車店の紹介からも取りたいが、知名度・ブランド力で勝負してマージンを抜かれない形にしたい。戦略を</td><td>4-10／7</td></tr>
+<tr><td class="key id">p</td><td>塗装損傷の損傷例を挙げ、全て保険でカバーできるのか説明してほしい</td><td>4-7</td></tr>
+<tr><td class="key id">q</td><td>Gemini回答文（発送代行W2の文書への指摘）が貼り付けられた</td><td>5（別案件として扱う）</td></tr>
+</table></div>
+
+<h2 id="s2">2. 調査の範囲と方法<small>5本の調査を並行し、官公庁統計・法令原文・損保の約款・メーカーの施工手順書・上場企業の10-K・当日のサイト表示を優先した。検索の上限に達した後半は公式URLへの直接アクセスで補った。</small></h2>
+<div class="tw"><table>
+<tr><th>調査</th><th>探し先</th><th>当たり方</th><th>残っている穴</th></tr>
+<tr><td class="key">労働市場・飽和</td><td>厚労省 職業安定業務統計・賃金構造基本統計、国交省 整備人材資料、Indeed、XPEL 10-K、KeePer IR、各社の価格告知、材料の販売店表示</td><td>倍率・賃金は一次統計の最新値。価格推移は当時の記事と現在ページの突合</td><td>Wayback（過去ページ）が遮断され店舗数・価格の年次比較は限定的</td></tr>
+<tr><td class="key">認定の強さ</td><td>みんカラ件数、Yahoo!知恵袋・価格.com 8スレッド、各ブランドの保証原文、KeePer決算短信、認定店一覧、施工店11店の表示観察、施工店YouTube</td><td>消費者調査が無いため代理指標を数えた</td><td>Instagram・Googleトレンド・YouTube検索件数（取得不可）</td></tr>
+<tr><td class="key">作業と道具</td><td>3M・Avery・XPEL・GYEON・CARPRO・Adam's・SOFT99・Optimum の公式手順書、KeePer公式、道具の国内販売店の当日価格</td><td>工程は公式記述の共通部分だけを採用</td><td>コイン洗車場の業者利用規約、スチームの公式手順</td></tr>
+<tr><td class="key">保険・物件</td><td>損保ジャパン約款原文、東京海上・三井住友・あいおい・日整連の公式、任意保険約款、e-Gov（消防法施行令・建築基準法・駐車場法・倉庫業法施行令・車両法施行規則）、国交省 標準駐車場条例</td><td>免責は約款の条文番号で引用</td><td>東京海上・三井住友の約款原文（取得不可）、コーティング業の引受可否</td></tr>
+<tr><td class="key">物販の作り方</td><td>受託製造7社の公式、実例企業の公式・インタビュー、PL法・家表法・化管法・安衛法・消防法の原文、消費者庁Q&amp;A、特許庁料金表</td><td>「誰が作るか」を型ごとに分けた</td><td>受託各社の費用、契約類型、Amazon危険物審査</td></tr>
+</table></div>
+
+<h2 id="s3">3. 前提・制約<small>この資料の判断は、承認済みの4本柱・拠点A・物販の段階制と、上限500万円の中でだけ成り立つ。第2回の2点を訂正した。</small></h2>
+<div class="tw"><table>
+<tr><th>区分</th><th>前提・制約</th><th>この資料への効き方</th></tr>
+<tr><td class="key">上限（坂野様）</td><td>金額は「500万円に収まれば助かる」。期間と、人件費を含むかは未回答</td><td>第8章で初期費用の公開値を並べ、500万円に何が入るかを示す。期間は第10章①で伺う</td></tr>
+<tr><td class="key">拠点（坂野様）</td><td>第一候補はA（周縁の準工業地域）。「住みの上はちょっと遠いので外したい」→ 住之江区と解釈（此花・西淀川・大正が残る）</td><td>第6章の物件案は此花・西淀川・大正で見る。解釈が違えば第10章②で訂正</td></tr>
+<tr><td class="key">物販（坂野様）</td><td>段階制（推奨A）でよい</td><td>4-9は「段階2（自社ブランド）を誰がどう作るか」に絞る</td></tr>
+<tr><td class="key">承認済み</td><td>4本柱（D-155）、拠点候補の順序（D-156）、撮影協力モニター型</td><td>柱の順番（第7・9章）はこの範囲で組む</td></tr>
+<tr><td class="key">訂正①（第2回 4-9）</td><td>Wellpool の最小ロット「10個〜」は現在の公式FAQでは確認できず、「1L以下なら300本、大容量なら5ケース」が現行の記載</td><td>小ロットの最小は THエンゼル「標準品は1本からの価格表」「数十個の極小ロット」に差し替え</td></tr>
+<tr><td class="key">訂正②（第2回 4-9）</td><td>化管法SDSの「小規模事業者も対象」は事業者間の譲渡の話。一般消費者向け製品は化管法・安衛法ともSDS・表示義務の除外（施行令第5条、安衛法57条ただし書）</td><td>消費者向けに売る限りSDSは不要。施工店へ卸すなら必要</td></tr>
+<tr><td class="key">台帳のルール</td><td>K-002（収益計算をしない）、K-003（探索段階で方向転換を指摘しない）、K-004（案の比較は同じ項目を揃える）</td><td>第8章は費用の公開値のみ。第6章は同じ項目で3案を比べる</td></tr>
+<tr><td class="key">別案件</td><td>貼り付けられたGemini回答は、発送代行（W2 代理型）の文書に対する指摘で、本件（車）の依頼文への回答ではない</td><td>本資料には織り込まない。確認できた法令点だけを第5章に記す</td></tr>
+</table></div>
+
+<h2 id="s4">4. 分かったこと<small>人は余っていない。市場は増えているが価格は下がっていない。認定は看板にならない。保険は偶然の事故しか払わない。物件は屋内で作業2＋待機3が最小。自社ブランドは受託製造会社が作る。</small></h2>
+
+<h3 id="s4-1">4-1 技術者は余っていない。現実解は「車業界経験者を未経験として採用し、講習＋社内3〜6か月」</h3>
+<div class="tw"><table class="cmp">
+<tr><th>指標（一次統計）</th><th>値</th><th>意味</th></tr>
+<tr><td class="key">有効求人倍率「機械整備・修理従事者」（厚労省 中分類）</td><td>2022年度 4.22／2023 4.21／2024 4.13／2025 4.04／2026年8月 3.87倍。職業計 1.10倍（2025年度）</td><td>求人1人に対し求職者は4分の1。2025年度は求人38,532人に求職9,527人</td></tr>
+<tr><td class="key">同「自動車整備士」「自動車板金塗装」（厚労省 job tag、令和7年度）</td><td>5.46倍／5.17倍</td><td>全職業の約5倍</td></tr>
+<tr><td class="key">国交省 整備要員（職業安定業務統計の引用）</td><td>有効求人倍率 H23 1.07 → R05 4.99。整備要員 399,770人、平均年齢47.2歳（H15 39.7歳）、整備学校入学者 12,394人（H15）→7,068人（R06）</td><td>人数は横ばい、高齢化、入口は半減。「約6割の事業者が不足を感じている」</td></tr>
+<tr><td class="key">賃金（令和7年 賃金構造基本統計）</td><td>自動車整備・修理従事者 月給33.9万円・賞与96.4万円（年収約504万円）。10〜99人規模は月給32.4万円・賞与70.8万円</td><td>経験者を引き抜くなら年収450〜500万円が相場</td></tr>
+<tr><td class="key">Indeed 大阪府（2026-10-02）</td><td>「PPF施工」75件以上、「カーラッピング施工」61件、「コーティング技術者」75件以上。未経験の提示 月給21〜30万円、経験者 36万円以上〜年俸600万円</td><td>店側は未経験可で募集しており、経験者は1.5〜2倍の提示</td></tr>
+<tr><td class="key">同 PPF専門の未経験募集</td><td>「プロテクションフィルム 施工 未経験」大阪府 6件（全てALNEX大阪店）</td><td>PPF専門の未経験枠は少ない＝自社で育てる前提</td></tr>
+</table></div>
+<figure>
+<figcaption>図1　整備・修理系の求人倍率は全職業の約4倍で、4年続いている<small>厚労省「職業安定業務統計」中分類「機械整備・修理従事者」有効求人倍率（パート含む常用・年度平均、2026年は8月分）。右端は全職業（2025年度）</small></figcaption>
+<svg viewBox="0 0 900 230" role="img" aria-label="求人倍率の推移">
+<g class="ax"><line x1="120" y1="20" x2="120" y2="190"/><line x1="120" y1="190" x2="860" y2="190"/></g>
+<g class="grid"><line x1="120" y1="56" x2="860" y2="56"/><line x1="120" y1="123" x2="860" y2="123"/></g>
+<text class="m" x="112" y="60" text-anchor="end">4.0倍</text><text class="m" x="112" y="127" text-anchor="end">2.0倍</text><text class="m" x="112" y="194" text-anchor="end">0</text>
+<rect class="bar" x="160" y="48" width="70" height="142"/><text x="195" y="42" text-anchor="middle">4.22</text><text class="m" x="195" y="212" text-anchor="middle">2022年度</text>
+<rect class="bar" x="270" y="49" width="70" height="141"/><text x="305" y="43" text-anchor="middle">4.21</text><text class="m" x="305" y="212" text-anchor="middle">2023</text>
+<rect class="bar" x="380" y="52" width="70" height="138"/><text x="415" y="46" text-anchor="middle">4.13</text><text class="m" x="415" y="212" text-anchor="middle">2024</text>
+<rect class="bar" x="490" y="55" width="70" height="135"/><text x="525" y="49" text-anchor="middle">4.04</text><text class="m" x="525" y="212" text-anchor="middle">2025</text>
+<rect class="bar" x="600" y="61" width="70" height="129"/><text x="635" y="55" text-anchor="middle">3.87</text><text class="m" x="635" y="212" text-anchor="middle">2026年8月</text>
+<rect class="bar3" x="750" y="153" width="70" height="37"/><text x="785" y="147" text-anchor="middle">1.10</text><text class="m" x="785" y="212" text-anchor="middle">全職業 2025</text>
+</svg>
+</figure>
+<div class="tw"><table class="cmp">
+<tr><th>育成の公開例</th><th>期間・条件（原文の要旨）</th></tr>
+<tr><td class="key">XP KYOTO（PPF）</td><td>研修「約3ヶ月」月給22万円→正社員25万〜54万円。インストーラーの段階制</td></tr>
+<tr><td class="key">KeePer技研</td><td>「4〜6ヶ月の研修プログラム」「4カ月で基本施工→洗車技術、6カ月で受注から施工まで」。社内検定2級・1級</td></tr>
+<tr><td class="key">近代社（広島・ラッピング）</td><td>「簡単なものなら3ヶ月ぐらいから、1年も経つとそれなりの現場を任される」</td></tr>
+<tr><td class="key">アクティブガレージ（東京）</td><td>「未経験者…大歓迎」、歓迎要件に「整備士」「車業界経験」。インターン最大3ヶ月</td></tr>
+<tr><td class="key">メーカー講習</td><td>XPEL 4日 44万円（税込）／ソフト99AS XPEL 3日 33万円・ラッピング3日 22万円／3M 3-Star 2日 16.5万円。受講だけで一人前になる期間は示されていない</td></tr>
+<tr><td class="key">元ディーラー・整備士の転身例</td><td>施工店は歓迎要件に明記しているが、本人の転身記事は見つからず【未確認】</td></tr>
+</table></div>
+<p><b>答え（a・e）：</b>経験者は余っていない。整備・修理系は全職業の4〜5倍の求人倍率が4年続き、整備士の平均年齢は47歳で入口は半減している。大阪のPPF・ラッピング求人は未経験可が多く、店は自分で育てている。坂野様の「元ディーラーの人と一から学ぶ」案は、施工店の採用実態（車業界経験者を歓迎・未経験から3〜6か月で基本施工・1年で現場）と合う。<b>ただし「そんなに時間はかからない」は半分だけ正しい。</b>基本施工までは3〜6か月だが、高級車のフルPPF・フルラッピングを1人で任せられる段階は各社とも1年前後と書いており、その間は部分施工・法人車・モニター車で経験を積む設計が要る（4-5）。</p>
+
+<h3 id="s4-2">4-2 飽和と価格：店舗数は増え、材料は安くなっているが、国内の表示価格はまだ下がっていない</h3>
+<div class="tw"><table class="cmp">
+<tr><th>観点</th><th>一次情報</th><th>読み方</th></tr>
+<tr><td class="key">店舗数の推移</td><td>XPEL認定店 2022-08「全国150以上」→2026-10 約200〜250（公式一覧の集計方法で差）。KeePer LABO 47店（2015/6）→93（2020/6）→156（2025/6）→184（2026/6）、中計は2031年に直営250＋FC250。KeePer PROSHOP 6,524〜6,663店（横ばい）。JCWA会員87</td><td>専門店も大手も増えている。PROSHOP（SS併設型）は頭打ち</td></tr>
+<tr><td class="key">価格の推移</td><td>KeePer 2025-04「約5%値上げ」（日経）、2026-06 再改定（施工店告知）。IIC 2025-08「原材料費等の高騰で改定」。ソフト99AS ラッピング 693,000円〜は2021年と同額。ザラップ 2023「55万円〜」→現在65万円〜</td><td>値下げは確認できず、2025年は値上げが2件。ソフト99ASのPPF新料金は別フィルム・別区分</td></tr>
+<tr><td class="key">材料の価格</td><td>3M 2080 1ロール 235,950円（税込）、Avery SW900 117,700円、STEK DYNOshield 1本 218,500〜230,000円（施工店価格）。中国製TPU PPF 1.52m×15m $139〜420/本（業者向け表示）</td><td>材料は欧米系の1/5〜1/10が流通。安いフィルムで黄変・白濁した事例を施工店が警告</td></tr>
+<tr><td class="key">首位メーカーの認識（XPEL 10-K FY2025）</td><td>競合は「Eastman（LLumar／SunTek）、numerous suppliers in Korea and China」。「lower-cost manufacturers … pressure on our profit margins」「more aggressive pricing policies」。一方で売上 $476.2M（+13.3%）、中国 +65.3%、粗利率 42.2%</td><td>価格競争は認めつつ、量は伸びている</td></tr>
+<tr><td class="key">大手の参入</td><td>KeePer：遮熱フィルム（2026-02）、ペイント・ウインドウリペア（2026-05）を全国LABOへ。トヨタ車体：アルファード Spacious Lounge に純正フルPPF（95万円）。オートバックス Smart+1（14店）でラッピング・ウィンドウフィルム</td><td>専門店の領域に大手が入っている</td></tr>
+<tr><td class="key">原価の構造</td><td>XPEL 粗利42.2%。KeePer FY2026/6 売上総利益率 49.8%、LABO事業 35.8%、「サービス売上原価労務費」がLABO売上の約42%。ソフト99AS「フルPPF 40時間（5日）前後」工賃7,380円×40時間＝295,200円＋材料</td><td>施工の原価は材料より労務。材料が安くなっても工賃の床は残る</td></tr>
+<tr><td class="key">市場規模</td><td>国内調査会社の「PPF・ラッピング・コーティング」単独の公表値は無し【未確認】。JCWA「年平均10%以上」（2021 PR）。Grand View（二次）日本PPF 2025 USD 22.7M→2033 USD 31.6M、CAGR 4.1%</td><td>国内の一次統計は存在しない</td></tr>
+</table></div>
+<p><b>答え（b）：</b>坂野様の懸念「原価率が低い→参入が増える→価格が下がる」のうち、「参入が増える」は事実（店舗数・大手の参入・安い材料）、「価格が下がる」はまだ観測されていない（2025年は値上げ）。<b>ただし材料の価格差（1/5〜1/10）は、安さで戦う店を必ず生む。</b>ブランド力で防ぐという方向は正しいが、認定やYouTubeだけでは防げない（4-3）。価格以外の差＝<b>内装・PPFの難所・保証書と記録・納車前の段取り・引取納車</b>を柱にし、「洗車・簡易コーティングの安さ」の土俵には入らないことが設計の核になる（第7章）。</p>
+
+<h3 id="s4-3">4-3 認定の強さ：客は認定で選んでいない。認定は「保証・材料・データ」を得る手段で、認知は店が作る</h3>
+<div class="tw"><table class="cmp">
+<tr><th>ブランド</th><th>認知の桁（みんカラ件数）</th><th>保証（公式）</th><th>認定店数（全国／大阪）</th><th>ディーラー・OEM</th><th>取得費</th></tr>
+<tr><td class="key">KeePer</td><td class="num">150,107</td><td>「耐久」表記（3年／6年）。純正採用版のみ「保証」（スバル・三菱 6年）</td><td class="num">6,524／300</td><td>スバル・三菱・ホンダの公式に名前。ボルボ・メルセデスも純正採用（決算短信）</td><td>会費なし。検定1〜3万円</td></tr>
+<tr><td class="key">G'ZOX（ソフト99）</td><td class="num">5,930</td><td>施工証明書（保証書ではない）。年1回メンテが条件</td><td class="num">認定58／10</td><td>記載なし【未確認】</td><td>登録無料。講習受講が必要</td></tr>
+<tr><td class="key">Ceramic Pro</td><td class="num">2,953</td><td>年数の公式記載なし【未確認】</td><td class="num">55／5</td><td>記載なし【未確認】</td><td>非公開・限定募集</td></tr>
+<tr><td class="key">XPEL</td><td class="num">1,857</td><td>10年。認定店施工が条件と明文化した唯一</td><td class="num">約215／19</td><td>海外：Rivian 純正。国内公式に名前なし</td><td>4日 44万円／ソフト99AS 3日 33万円</td></tr>
+<tr><td class="key">STEK</td><td class="num">597</td><td>日本公式10年・米国公式12年。施工ミス・剥離時の塗装損傷は除外</td><td class="num">74／0</td><td>記載なし【未確認】</td><td>無料〜22万円</td></tr>
+<tr><td class="key">FEYNLAB</td><td class="num">128</td><td>HEAL PLUS 7年（耐久）。認定ディテイラーのみ施工可</td><td class="num">62／3</td><td>—</td><td>非公開</td></tr>
+<tr><td class="key">3M（PPF）</td><td class="num">78</td><td>公式に年数なし。販売店表示「製品保証5年・施工保証12ヶ月」。認定は「お勧め」</td><td class="num">非公開【未確認】</td><td>記載なし【未確認】</td><td>3-Star 2日 16.5〜25万円</td></tr>
+</table></div>
+<figure>
+<figcaption>図2　消費者の認知はKeePerが桁違いで、PPFブランドはコーティング大手の1/10以下<small>みんカラ サイト内検索の表示件数（2026-10-02）。横軸は対数目盛。「認定」を判断基準に挙げたQ&amp;A回答は8スレッド54回答中0件</small></figcaption>
+<svg viewBox="0 0 900 250" role="img" aria-label="ブランド認知の代理指標">
+<g class="ax"><line x1="150" y1="15" x2="150" y2="215"/></g>
+<g class="grid"><line x1="290" y1="15" x2="290" y2="215"/><line x1="430" y1="15" x2="430" y2="215"/><line x1="570" y1="15" x2="570" y2="215"/><line x1="710" y1="15" x2="710" y2="215"/><line x1="850" y1="15" x2="850" y2="215"/></g>
+<text class="m" x="150" y="232" text-anchor="middle">10</text><text class="m" x="290" y="232" text-anchor="middle">100</text><text class="m" x="430" y="232" text-anchor="middle">1,000</text><text class="m" x="570" y="232" text-anchor="middle">1万</text><text class="m" x="710" y="232" text-anchor="middle">10万</text><text class="m" x="850" y="232" text-anchor="middle">100万件</text>
+<text x="140" y="34" text-anchor="end">KeePer</text><rect class="bar3" x="150" y="22" width="585" height="16"/><text x="743" y="35">150,107</text>
+<text x="140" y="62" text-anchor="end">G'ZOX</text><rect class="bar3" x="150" y="50" width="389" height="16"/><text x="547" y="63">5,930</text>
+<text x="140" y="90" text-anchor="end">Ceramic Pro</text><rect class="bar3" x="150" y="78" width="347" height="16"/><text x="505" y="91">2,953</text>
+<text x="140" y="118" text-anchor="end">XPEL</text><rect class="bar" x="150" y="106" width="318" height="16"/><text x="476" y="119">1,857</text>
+<text x="140" y="146" text-anchor="end">STEK</text><rect class="bar" x="150" y="134" width="249" height="16"/><text x="407" y="147">597</text>
+<text x="140" y="174" text-anchor="end">FEYNLAB</text><rect class="bar3" x="150" y="162" width="155" height="16"/><text x="313" y="175">128</text>
+<text x="140" y="202" text-anchor="end">3M PPF</text><rect class="bar" x="150" y="190" width="125" height="16"/><text x="283" y="203">78</text>
+</svg>
+</figure>
+<ul>
+<li><b>客はどう判断しているか：</b>知恵袋・価格.comの8スレッド54回答で、「認定店かどうか」を基準に挙げた回答は0件。回答者の軸は「技術者個人の腕」「研磨」「価格」。コーティングは質問に出た「キーパー」に答える形で社名が出るが、PPFスレッドではブランド名自体がほぼ出ない</li>
+<li><b>HPに書けば集まるか：</b>施工店11店のトップページを観察すると、ロゴを10個並べる店（ソフト99AS）と1ブランドに特化する店（スマート・カーサービス：XPEL・「保証10年」「4,000台超」・YouTube 4.38万人＝施工系で最大）に二極化。認定の呼び方も「認定施工店」「正規代理店」「正規販売店／DAP契約」「正規取扱」と店ごとに違い、<b>客が等級を読み分けられる体系になっていない</b></li>
+<li><b>ブランド側は認知を作っていない：</b>XPEL JAPAN公式YouTube 17人、STEK JAPAN 320人、Ceramic Pro Japan 277人。KeePer技研公式 2.74万人、soft99tv 3.97万人。消費者向けの認知は店が作っている</li>
+<li><b>ディーラー公式に名前が出るのはKeePerだけ：</b>スバル・三菱・ホンダの公式サイト、決算短信ではボルボ・メルセデスも純正採用。レクサスの純正PPF（ドアハンドル7,700円〜）はブランド名非表示</li>
+<li><b>答え（d）：</b>認定の有無で富裕層が店を選ぶ証拠は無い。認定が効くのは①客に出せる保証（XPEL 10年は認定店だけ）②材料の入手（G'ZOX・Ceramic Pro・FEYNLABは加盟店のみ）③プレカットデータ（XPEL DAP 約9万車種）④公式一覧への掲載、の4点。<b>どれをどうするか（提案）：PPF＝XPEL（認知・保証・DAPがそろう唯一）、ラッピング＝3M 3-Star（個人認定・ラッピングの定番材）、コーティング＝G'ZOX登録（無料・認知5.9千・証明書）、高級コーティング＝Ceramic Pro／FEYNLAB（総代理店が堺で近い）を後から。</b>STEKは大阪0件の空白だが認知600件で、カラーPPFを出すときの2本目。KeePer PROSHOPは一般層の認知は最大だがKeePer製品の使用が条件で、6,524店の1つになる</li>
+</ul>
+
+<h3 id="s4-4">4-4 洗車の実像：プロの手洗いは「触る前に落とす→2バケツで触る→化学的に剥がす→純水で流す→触らず乾かす」</h3>
+<p class="lead2">要点：<b>各社の公式手順はほぼ同じで、違いは道具と水の質。</b>「最先端」は特別な技ではなく、純水・泡プレウォッシュ・ブロワー乾燥・リンスレスといった「傷を付けない工夫」の積み重ねになっている。</p>
+<div class="tw"><table class="cmp">
+<tr><th>工程</th><th>目的（なぜやるか）</th><th>道具・薬剤</th><th>公式の数値・注意</th></tr>
+<tr><td class="key">0 ホイール・タイヤを先に</td><td>ブレーキダスト（鉄粉）をボディに戻さない</td><td>ホイール専用クリーナー・ブラシ・ミット（ボディと共用しない）</td><td>GYEON：鉄粉除去剤を「3〜4分」置き乾かさない。冷えた状態で</td></tr>
+<tr><td class="key">1 事前すすぎ＋泡（プレウォッシュ）</td><td>触る前に砂・大きな汚れを落とす＝洗車キズ予防の核心</td><td>高圧洗浄機、フォームキャノン（泡を噴く器具）</td><td>GYEON：泡を下から上へ「3〜4分」。Chemical Guys「道具が塗装に触れる前に」</td></tr>
+<tr><td class="key">2 2バケツ法</td><td>ミットに付いた砂を洗浄液に戻さない</td><td>シャンプー用と清水用のバケツ2つ、底にグリットガード（砂を沈める格子板）、ミット</td><td>上から下へ直線に、パネルごとに清水でミットを洗う（Adam's「パネルごと、または半パネルごと」）。CARPRO「シャンプーを乾かさない」</td></tr>
+<tr><td class="key">3 化学的に剥がす</td><td>洗っても落ちない固着物を除く</td><td>鉄粉除去剤（紫に反応）、粘土（クレイ）＋潤滑剤、タール除去剤</td><td>GYEON：鉄粉・タールは「3か月ごと」、タール剤は「1〜2分」</td></tr>
+<tr><td class="key">4 水垢・ウロコ</td><td>撥水を弱めるミネラルの固着を除く</td><td>ミネラル除去剤</td><td>KeePer「ミネラルオフ」50分〜・9,150〜14,300円</td></tr>
+<tr><td class="key">5 純水ですすぐ</td><td>乾いても水シミ（ミネラル）が残らない</td><td>純水器（イオン交換樹脂）またはRO（逆浸透膜）</td><td>水道水40〜100ppm→純水器出口0ppm（TDS計で確認）。樹脂寿命 1,800〜3,600L（水質で変わる）</td></tr>
+<tr><td class="key">6 触らずに乾かす</td><td>拭き取りの摩擦を減らす</td><td>電動ブロワー、ドライングタオル（ワッフル・ツイストループ）</td><td>Adam's：ブロワーなら「95%以上」を触らず乾燥。ホイール用タオルは塗装に使わない</td></tr>
+<tr><td class="key">7 細部・確認</td><td>縁・隙間の水を出す</td><td>エアガン、小タオル</td><td>KeePer工程名「水減らし→エアガン処理→拭き上げ→確認→引き渡し」</td></tr>
+<tr><td class="key">8 撥水のメンテ（任意）</td><td>洗車ごとに撥水を足す</td><td>セラミックディテーラー、ウェットコート</td><td>GYEON：WetCoat「パネルごとに2〜3回噴いてすぐ流す」</td></tr>
+</table></div>
+<ul>
+<li><b>所要時間・価格の基準：</b>KeePer LABO 純水手洗い洗車「25分〜」3,230〜6,000円、プレミアム「40分〜」4,610〜8,890円（税込）</li>
+<li><b>タオルの基準（販売店解説・二次）：</b>GSM＝生地1㎡の重さ。拭き上げ800〜1,200、コーティング拭き取り300〜420、ガラス250〜300。ワッフル＝水を速く広げる、ツイストループ＝最大吸水、プラッシュ＝長毛で仕上げ向き</li>
+<li><b>最先端（公式記述があるもの）：</b>①純水（TDS 0ppm）②泡プレウォッシュ（触らない工程を増やす）③電動ブロワー乾燥（BigBoi BlowR PRO 1,800W）④リンスレス（Optimum No Rinse：水2ガロン未満）⑤洗車ごとのセラミックメンテ ⑥AI外観検査（UVeye「Atlas Light」国内販売2022年、1,000万〜3,000万円＝ディーラー向け）⑦自律走行の洗車ロボット「FLIT」（約4分、ブラシ式、ディーラー向け）。<b>IDA（国際ディテイリング協会）はSOP「Exterior Wash Process」を公開しているが本文は会員資料【未確認】</b></li>
+<li><b>答え（f・m）：</b>当社の洗車は「KeePerと同じ工程を、同じ純水で、同じ時間でやる」ところが出発点で、ここに差は付かない。差が付くのは「記録（施工前後の写真・TDS値・使った薬剤）を客に渡す」「工房ならではの下地処理（鉄粉・ウロコ・磨き）まで一気通貫でやる」の2点（提案）</li>
+</ul>
+
+<h3 id="s4-5">4-5 コーティング・ラッピング・PPFの実像：型はメーカー手順書で決まっており、手の技術は台数で身につく</h3>
+<figure>
+<figcaption>図3　4つの施工は「洗う→剥がす→整える→貼る／塗る→待つ」の同じ骨格で、時間と環境の条件が違う<small>各段の数値はメーカー公式（3M・Avery・XPEL・GYEON・KeePer）。時間はKeePer実例とソフト99ASの公開値</small></figcaption>
+<svg viewBox="0 0 990 280" role="img" aria-label="4つの施工工程">
+<rect class="lane" x="0" y="20" width="990" height="56" rx="4"/><rect class="lane" x="0" y="84" width="990" height="56" rx="4"/><rect class="lane" x="0" y="148" width="990" height="56" rx="4"/><rect class="lane" x="0" y="212" width="990" height="56" rx="4"/>
+<text x="8" y="52" font-weight="600">洗車</text><text x="8" y="116" font-weight="600">コーティング</text><text x="8" y="180" font-weight="600">ラッピング</text><text x="8" y="244" font-weight="600">PPF</text>
+<rect class="box" x="110" y="28" width="94" height="40" rx="5"/><text x="157" y="46" text-anchor="middle">泡で浮かす</text><text class="m" x="157" y="61" text-anchor="middle">高圧・泡 3〜4分</text>
+<rect class="box" x="214" y="28" width="94" height="40" rx="5"/><text x="261" y="46" text-anchor="middle">2バケツ</text><text class="m" x="261" y="61" text-anchor="middle">上から下へ直線</text>
+<rect class="box" x="318" y="28" width="94" height="40" rx="5"/><text x="365" y="46" text-anchor="middle">鉄粉・ウロコ</text><text class="m" x="365" y="61" text-anchor="middle">3か月ごと</text>
+<rect class="box" x="422" y="28" width="94" height="40" rx="5"/><text x="469" y="46" text-anchor="middle">純水すすぎ</text><text class="m" x="469" y="61" text-anchor="middle">0ppm</text>
+<rect class="box" x="526" y="28" width="94" height="40" rx="5"/><text x="573" y="46" text-anchor="middle">ブロワー乾燥</text><text class="m" x="573" y="61" text-anchor="middle">25分〜</text>
+<rect class="box" x="110" y="92" width="94" height="40" rx="5"/><text x="157" y="110" text-anchor="middle">洗車・下処理</text><text class="m" x="157" y="125" text-anchor="middle">約1時間</text>
+<rect class="box" x="214" y="92" width="94" height="40" rx="5"/><text x="261" y="110" text-anchor="middle">磨き</text><text class="m" x="261" y="125" text-anchor="middle">DA／ロータリー</text>
+<rect class="box" x="318" y="92" width="94" height="40" rx="5"/><text x="365" y="110" text-anchor="middle">脱脂</text><text class="m" x="365" y="125" text-anchor="middle">IPAだけでは不足</text>
+<rect class="box" x="422" y="92" width="94" height="40" rx="5"/><text x="469" y="110" text-anchor="middle">塗布・拭き</text><text class="m" x="469" y="125" text-anchor="middle">2〜3時間</text>
+<rect class="box" x="526" y="92" width="94" height="40" rx="5"/><text x="573" y="110" text-anchor="middle">硬化</text><text class="m" x="573" y="125" text-anchor="middle">6h〜24h・2〜3週</text>
+<rect class="box" x="110" y="156" width="94" height="40" rx="5"/><text x="157" y="174" text-anchor="middle">洗浄・脱脂</text><text class="m" x="157" y="189" text-anchor="middle">IPA70%</text>
+<rect class="box" x="214" y="156" width="94" height="40" rx="5"/><text x="261" y="174" text-anchor="middle">脱着・裁断</text><text class="m" x="261" y="189" text-anchor="middle">30度刃</text>
+<rect class="box" x="318" y="156" width="94" height="40" rx="5"/><text x="365" y="174" text-anchor="middle">貼り（乾式）</text><text class="m" x="365" y="189" text-anchor="middle">40〜50℃で軟化</text>
+<rect class="box" x="422" y="156" width="94" height="40" rx="5"/><text x="469" y="174" text-anchor="middle">ポストヒート</text><text class="m" x="469" y="189" text-anchor="middle">80〜100℃</text>
+<rect class="box" x="526" y="156" width="94" height="40" rx="5"/><text x="573" y="174" text-anchor="middle">組付け</text><text class="m" x="573" y="189" text-anchor="middle">洗車は72h後</text>
+<rect class="box" x="110" y="220" width="94" height="40" rx="5"/><text x="157" y="238" text-anchor="middle">洗浄・粘土</text><text class="m" x="157" y="253" text-anchor="middle">最終拭き</text>
+<rect class="box" x="214" y="220" width="94" height="40" rx="5"/><text x="261" y="238" text-anchor="middle">プレカット</text><text class="m" x="261" y="253" text-anchor="middle">DAP 約9万車種</text>
+<rect class="box" x="318" y="220" width="94" height="40" rx="5"/><text x="365" y="238" text-anchor="middle">貼り（湿式）</text><text class="m" x="365" y="253" text-anchor="middle">スリップ液→タック液</text>
+<rect class="box" x="422" y="220" width="94" height="40" rx="5"/><text x="469" y="238" text-anchor="middle">スクイージー</text><text class="m" x="469" y="253" text-anchor="middle">15分で接着</text>
+<rect class="box" x="526" y="220" width="94" height="40" rx="5"/><text x="573" y="238" text-anchor="middle">乾燥</text><text class="m" x="573" y="253" text-anchor="middle">洗車は72h後</text>
+<rect class="box" x="660" y="28" width="320" height="40" rx="5"/><text x="820" y="46" text-anchor="middle">環境：屋外可（直射・高温パネルは不可）</text><text class="m" x="820" y="61" text-anchor="middle">道具：純水器・高圧・泡・バケツ×2・タオル</text>
+<rect class="box" x="660" y="92" width="320" height="40" rx="5"/><text x="820" y="110" text-anchor="middle">環境：屋内・10℃以上（G'ZOX）・雨を避ける</text><text class="m" x="820" y="125" text-anchor="middle">道具：ポリッシャー・照明・膜厚計・赤外線ヒーター</text>
+<rect class="box" x="660" y="156" width="320" height="40" rx="5"/><text x="820" y="174" text-anchor="middle">環境：屋内 16〜30℃（最適18〜24）・無塵</text><text class="m" x="820" y="189" text-anchor="middle">道具：ヒートガン・温度計・スクイージー・ナイフレス</text>
+<rect class="box" x="660" y="220" width="320" height="40" rx="5"/><text x="820" y="238" text-anchor="middle">環境：屋内 16〜30℃（最適21〜26）・無塵</text><text class="m" x="820" y="253" text-anchor="middle">道具：プロッター・溶液・スクイージー・照明</text>
+</svg>
+</figure>
+<div class="tw"><table class="cmp">
+<tr><th>施工</th><th>メーカー公式の条件（原文の要旨）</th><th>難しいところ（公式が注意している点）</th><th>楽になるもの</th></tr>
+<tr><td class="key">コーティング</td><td>KeePer EX実例：洗車・下処理1h→鏡面研磨→塗布→硬化6h（計6時間〜1日）。GYEON：水24時間・シャンプー14日禁止。Ceramic Pro：完全硬化2〜3週間</td><td>磨き（下地）が時間の大半。クリア層は40〜80μmで、磨きすぎると白く曇る</td><td>JCA検定（測色計で数値化）、膜厚計、検査用照明</td></tr>
+<tr><td class="key">ラッピング（3M・Avery）</td><td>施工16〜32℃（最適18〜24℃）、乾式、IPA70%で脱脂、軟化40〜50℃、ポストヒート80〜100℃、伸長は最大130%、洗車は72時間後</td><td>ドアハンドル・ミラー・バンパーの凹部（3Mが3分類で手順を指定）。伸ばしすぎ＝白化・浮き。塗り直し車は剥離時に剥がれやすい</td><td>ナイフレステープ、デジタル温度計、公開された手順書</td></tr>
+<tr><td class="key">PPF（3M・XPEL）</td><td>施工16〜30℃（最適21〜26℃）、湿式。スリップ液とタック液は毎日作る、接着15分、洗車は72時間後</td><td>ホコリ混入（無塵環境）、エッジ処理、溶液管理。フルボディは「40時間（5日）前後」</td><td>プレカット（XPEL DAP：塗装上でカッターを使わない）、1,600mm級プロッター</td></tr>
+</table></div>
+<ul>
+<li><b>公式の細かい数値（覚えておくもの）：</b>コーティング＝GYEONは塗布後「10〜30秒」で拭き取り・重ね塗りは1時間後、G'ZOXは10℃以下ならヒーター加熱、KeePer EXは6時間〜1日で納車。ラッピング＝3Mは軟化「40〜50℃」・ポストヒート「80〜95℃」、Averyは「95〜100℃」を施工後30〜45分以降かつ当日中、冷めたら再スクイージー、伸長「最大130%・通常115〜120%」、12時間は16℃以上に保つ。PPF＝3Mのスリップ液は「DI水32oz＋ベビーシャンプー1.5〜2.5ml」、タック液は「IPA99% 150ml＋水850ml」で毎日作る、接着まで15分、気泡は数日〜数週で消える</li>
+<li><b>覚える順（提案）：</b>①洗う・剥がす・脱脂（全施工に共通）②コーティングの塗布と硬化 ③PPFのプレカット施工（DAPで「切る・合わせる」が機械化されている）④ラッピングの凹部とポストヒート ⑤磨き（クリア層40〜80μmを削る工程で、最も失敗が高くつく）</li>
+</ul>
+<p><b>答え（c・f）：</b>坂野様の「素材特性と下処理を学べばケースバイケースではない」は、<b>型については正しい</b>（温度・脱脂・伸長・ポストヒート・溶液の濃度まで数値で公開されている）。<b>手については半分</b>で、凹部・エッジ・ホコリ・磨き量は車種ごとに変わり、公式手順書も「経験に長けた施工者を4-Starで認定する」と段階を分けている。プレカット（DAP）はPPFの「切る・合わせる」を機械に移すので、未経験から始める当社に最も効く投資になる。</p>
+<div class="tw"><table class="cmp">
+<tr><th>道具（当日表示・税込）</th><th>価格</th><th>用途</th></tr>
+<tr><td class="key">純水器 ピュアニッシュPro／高圧洗浄機 G-WASH Plus</td><td class="num">29,480円／29,480円</td><td>洗車の純水とプレウォッシュ（11月以降 各34,980円）</td></tr>
+<tr><td class="key">ポリッシャー RUPES BigFoot LHR15 Mark V／FLEX XFE7-15</td><td class="num">82,500円／84,300円</td><td>磨き（ダブルアクション）</td></tr>
+<tr><td class="key">照明 SCANGRIP アイマッチ4／STARMATCH</td><td class="num">25,300円／40,700円</td><td>磨きキズ・ゴミの検査光</td></tr>
+<tr><td class="key">膜厚計（鉄・非鉄両用）／PosiTector 200（樹脂対応）</td><td class="num">17,578円／【未確認】</td><td>磨きすぎの防止</td></tr>
+<tr><td class="key">赤外線ヒーター 2灯スタンド／カーボンクイックレイヤー（200V）</td><td class="num">219,800円／91,278円</td><td>コーティングの硬化促進</td></tr>
+<tr><td class="key">ヒートガン（シュタイネル）／放射温度計</td><td class="num">20,878円／5,828円</td><td>ラッピングの軟化・ポストヒート・温度管理</td></tr>
+<tr><td class="key">ナイフレステープ 3.5mm×50m／ラップグローブ・スクイージー・30度刃カッター</td><td class="num">5,336円／約1.1万円</td><td>刃を塗装に当てずに切る</td></tr>
+<tr><td class="key">プロッター グラフテック FC9000-160（1,626mm幅）／プレカットソフト Acc CUT</td><td class="num">1,518,000円（販売店）／月額42,900円</td><td>PPFロール幅1,524mmのプレカット。75cm機では幅が足りない</td></tr>
+<tr><td class="key">密閉ブース KeePerブース 1台用 4.6m×7.4m×3.7m</td><td class="num">252万円（税別）＋建築・設備で合計904万円の例</td><td>SS併設型の例。貸工場では既存の建屋に照明・空調・防塵床を入れる形（費用は物件次第【未確認】）</td></tr>
+</table></div>
+
+<h3 id="s4-6">4-6 水なし洗車・出張・洗車場所：やり方は単純で、差は付かない。差が付くのは「場所・時間・記録・工房への導線」</h3>
+<ul>
+<li><b>水なし（ウォーターレス）洗車の手順（メーカー公式）：</b>①30cm四方に1回スプレー（SOFT99フクピカ）②乾く前に柔らかいタオルで一方向に拭く③タオルは手のひら大に折り、面が汚れたら折り返す・取り替える④ボディは上から順に⑤仕上げ拭き。<b>限界（メーカー自身が明記）：</b>「泥や砂など汚れがひどい場合は軽く水洗いをしてから」「ボディの熱い時…ムラ」「洗車キズは通常の洗車方法に比べ、できやすい」「ガラス・レザー・ゴムには使えない」。リンスレス（Optimum No Rinse）は水2ガロン未満に1oz溶かし、1区画ずつ洗って乾いたタオルで拭く</li>
+<li><b>出張各社の方式と条件：</b>Mobility Box「水道設備がないマンション駐車場・会社駐車場・地下駐車場でも対応」外装60〜90分／SMILE WASH リンスレス約30分・純水スタンダード約90分（水道必須）／ダスキン 周囲60cm以上・雨天不可・固着汚れ不可・マット系ラッピング不可・最低11,000円／Dr.Car Wash（純水高圧）は「電源・水の使用が可能な場所」「側面1.5m・周囲3m以内に別の車なし」を客に求める。排水の扱いを明記した社は無し【未確認】</li>
+<li><b>答え（l）：</b>洗車単体の差別化は「基本的にできない」で合っている。各社の訴求語（純水・水道不要・サブスク・ディーラー品質）は同じ語彙で、「2バケツ」「写真記録」「時間指定」を公式に明記した国内業者は見つからなかった。差が付くとすれば運用面（場所・時間・記録）と、<b>出張業者が持たない「工房への導線」</b>（第2回4-6）</li>
+<li><b>答え（n）洗車場所の提案の仕方（提案）：</b>客に聞くのは「①水道と電源は使えるか ②平置きか機械式か ③管理組合・管理会社の承諾が取れるか ④周囲1.5mの余裕があるか」の4点。→ 4つ全部○なら「純水・高圧の出張」、水道が×なら「水なし方式」、承諾が×または機械式なら「引取納車で工房」、法人の敷地・ゴルフ場なら「定期契約」。路上は道路法43条・道交法76条3項・77条があるので提案しない。コイン洗車場の業者利用規約は今回確認できず【未確認】（店舗ごとの規約を当たる）</li>
+</ul>
+
+<h3 id="s4-7">4-7 損傷例と保険：保険が払うのは「偶然の事故」だけ。施工の失敗・剥離時の塗装剥がれ・色むらは約款で除外されており、全てはカバーできない</h3>
+<p class="lead2">要点：<b>「保険に入れば塗装損傷は大丈夫」ではない。</b>自動車管理者賠償責任保険は、預かった車が偶然の事故で壊れた・盗まれたときに時価を上限に払う保険で、技術の失敗は払わない。回送中に他人を傷つけた場合は別の保険が要る。</p>
+<div class="tw"><table class="cmp">
+<tr><th>分類</th><th>損傷例（実例・約款の例示）</th><th>保険</th><th>何で埋めるか</th></tr>
+<tr><td class="key">a 保管中の偶然の事故</td><td>夜間の盗難、台風でシャッターが煽られ損壊、隣家からの類焼、雪災、洪水で7台水没（支払545万円の事例）、係員がコンテナを倒す</td><td class="ok st">払う</td><td>自動車管理者賠償責任保険（時価が上限、免責5万円）。地震・噴火・洪水・津波は普通約款で免責→水災は特約（あいおい2018、日整連 水災特約）</td></tr>
+<tr><td class="key">b 作業中の偶然の事故</td><td>リフト昇降中の落下、工房内移動中の接触、ジャッキアップ中の転倒、ボンネット開閉、ワイパー操作でガラス破損、作業の不注意による火災、工具落下</td><td class="ok st">払う</td><td>同上。損保ジャパン約款第4条は「ジャッキ・リフト・ボンネット・ワイパー」を技術拙劣免責の例外として明記</td></tr>
+<tr><td class="key">c 施工品質に起因</td><td>過研磨でクリア層（40〜80μm）が曇る、剥離時の塗装剥がれ（再塗装車は特に）、エッジ浮き・ゴミ噛み、ムラ・白ボケ・色むら、作業箇所の凹凸、ヒートガンの焦げ</td><td class="ng st">払わない</td><td>約款第3条⑥「加工技術の拙劣または仕上げ不良」⑪「色むら」⑫「凹凸」⑧「自然の消耗」→施工店の約款（責任上限・剥離時免責・再塗装車の事前説明）＋自己負担の再施工</td></tr>
+<tr><td class="key">d 回送（引取納車）中の事故</td><td>回送中に歩行者と接触＝支払2,208万円、納車途中の追突、踏み間違い、飛び石でガラス割れ</td><td class="warn st">別の保険</td><td>預かり車の損壊は管理者賠償（施設外も対象）。<b>他人への対人・対物は対象外</b>→自賠責＋業者側の「整備受託自動車保険」（三井住友 3名 年62,220円の例）</td></tr>
+<tr><td class="key">e 出張先の事故</td><td>隣の車を傷つける、訪問先の物を壊す（花瓶の例）、薬剤で床・壁を汚す</td><td class="warn st">別の保険</td><td>施設賠償責任保険・請負業者賠償責任保険（作業対象物の特約）</td></tr>
+<tr><td class="key">f 引渡し後に見つかった傷</td><td>納車後に客が発見した傷・凹み</td><td class="ng st">払わない</td><td>約款第3条④「委託者に引き渡された後に発見された損壊」→引渡し時の記録（写真・膜厚・チェックシート）で線を引く</td></tr>
+</table></div>
+<ul>
+<li><b>客の任意保険は使えない：</b>損保ジャパン『THE クルマの保険』約款の用語定義は「自動車取扱業者 自動車修理業、駐車場業、給油業、<b>洗車業</b>、自動車販売業、陸送業、運転代行業等」で、対人・対物条項は「自動車取扱業者が業務として受託した契約自動車を使用または管理している間を除きます」。車両保険を払った保険会社は業者へ求償できる（代位の例外）。東京海上ダイレクト約款も同旨</li>
+<li><b>製品保証も施工ミスを含まない：</b>XPEL 10年＝「黄ばみ・ひび割れ・ふくれ・剥離」の材料欠陥、「不適切な保管・施工・取扱い」は除外。STEK（米国12年）は「improper installation」「剥離による塗装損傷」「再塗装車」を除外し、救済は「フィルムのみ（工賃・脱着・輸送は含まない）」。3M 2080 最長8年（垂直面）、スコッチガードPPF Pro 200 10年</li>
+<li><b>引受の条件：</b>保険料は「最高保管台数・面積・支払限度額・免責・特約・事故歴」で個別算出（代理店経由）。約款に「整備業の認証」を条件とする文言は無いが、コーティング・フィルム・洗車業を名指しで対象／除外した公式文言も無い【未確認】。三井住友の受託自動車保険特約は「整備作業以外の目的で受託した自動車は対象外」と明記＝コーティング目的の受託が対象か要照会</li>
+<li><b>答え（p）：</b>起こりうる損傷は上のa〜fの6分類。<b>保険でカバーできるのは a・b（偶然の事故）で、c（施工の失敗）と f（引渡し後）は払われず、d・e は別の保険が要る。</b>したがって「全て保険で」とは言えない。cを埋めるのは、約款（責任上限・剥離時の免責・再塗装車の事前説明）、引渡し前後の記録、練習台数、そして最初の1年は高級車のフルボディを受けない運用（提案）</li>
+</ul>
+
+<h3 id="s4-8">4-8 物件の要件と台数：屋内作業は正しい。最小は「作業2＋待機3＝約56坪」、保管10台を足すと約136坪で消防・建基法の閾値に近づく</h3>
+<div class="tw"><table class="cmp">
+<tr><th>要件</th><th>一次情報</th><th>当社への当てはめ</th></tr>
+<tr><td class="key">屋内作業（答え j）</td><td>3M 2080「18〜24℃（施工可16〜32℃）」乾式のみ、PPF「16〜30℃（最適21〜26℃）」湿式、Avery「10℃が絶対下限・最適21〜27℃・清浄で乾いた面が絶対条件」、「密閉された無塵の場所」。Ceramic Pro 硬化2〜3週間は雨を避ける。KeePerは施工後の雨OK</td><td class="ok st">正しい</td></tr>
+<tr><td class="key">作業ベイの寸法</td><td>認証基準（車両法施行規則 別表第四）：車両整備作業場「間口4m×奥行8m」、車両置場「3m×5.5m」。KeePerブース1台「4.6m×7.4m×高3.7m」。LIT DETAIL（門真）は「横1.8m×縦4.5m」の面発光LED・工場全体を温度管理</td><td>1台あたり作業32〜34㎡、天井3.7m</td></tr>
+<tr><td class="key">駐車区画</td><td>国交省 標準駐車場条例「幅2.3m×奥行5m」、3割は「2.5m×6m」、車路5.5m（両方向）、はり下2.1〜2.3m</td><td>待機・保管は1台 約22㎡（区画＋車路の持分）</td></tr>
+<tr><td class="key">消防法（施行令）</td><td>工場・作業場（12）項イ／自動車車庫（13）項イ：消火器 150㎡以上、自動火災報知設備 500㎡以上、泡消火設備等は修理・駐車部分が1階500㎡以上（2階以上200㎡）。用途は所轄消防が使用実態で判定</td><td>150㎡を超えたら消火器、500㎡未満なら自火報・泡消火は不要</td></tr>
+<tr><td class="key">建築基準法</td><td>自動車車庫150㎡以上は耐火・準耐火建築物（27条3項・別表第一（六））。200㎡超の用途変更は確認申請（6条・87条、工場⇄車庫は「類似の用途」でない）。準工業地域は面積制限なし</td><td>保管を足して「車庫」と見られると150㎡・200㎡の門が出る。工房のみならこの門は小さい</td></tr>
+<tr><td class="key">倉庫業法・駐車場法</td><td>倉庫業法施行令1条4号「他人の使用する自転車、自動車…の保管」は倉庫業の対象外。駐車場法は「一般公共の用に供される」路外駐車場が対象＝契約者だけの保管は対象外（推測）</td><td>保管サービスに倉庫業登録は不要（原文）</td></tr>
+<tr><td class="key">保管中の保険</td><td>自動車管理者賠償責任保険（盗難・火災は対象、地震・洪水は特約）。CORNES RESERVE「全車に賠償保険を付帯（地震・津波を除く）」、大阪・南港 166台、月99,000円〜（PR）／143,000円〜（公式）</td><td>保管の売りは「保険付き・空調・月次点検」</td></tr>
+</table></div>
+<figure>
+<figcaption>図4　最小構成（S案）は作業2ベイ＋待機3台＋プロッター・事務で約185㎡（56坪）<small>寸法は認証基準（4m×8m）・KeePerブース（4.6m×7.4m）・標準駐車場条例（2.5m×6m＋車路）から。配置と面積はClaudeの推定</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="工房レイアウトの概略">
+<rect class="plan" x="40" y="20" width="820" height="250" rx="4"/>
+<rect class="box" x="60" y="40" width="190" height="150" rx="4"/><rect class="carus" x="95" y="60" width="120" height="110" rx="14"/><text class="w" x="155" y="120" text-anchor="middle">PPF・ラッピング</text><text class="m" x="155" y="178" text-anchor="middle">ベイ1 約34㎡（4.6×7.4m）</text>
+<rect class="box" x="270" y="40" width="170" height="150" rx="4"/><rect class="carus" x="300" y="60" width="110" height="110" rx="14"/><text class="w" x="355" y="120" text-anchor="middle">洗車・磨き</text><text class="m" x="355" y="178" text-anchor="middle">ベイ2 約28㎡（排水・油水分離）</text>
+<rect class="box" x="460" y="40" width="380" height="96" rx="4"/><rect class="car" x="480" y="48" width="100" height="50" rx="10"/><rect class="car" x="600" y="48" width="100" height="50" rx="10"/><rect class="car" x="720" y="48" width="100" height="50" rx="10"/><text x="650" y="124" text-anchor="middle" font-weight="600">預かり待機 3台 約66㎡（2.5×6m＋車路）</text>
+<rect class="box" x="460" y="146" width="180" height="48" rx="4"/><text x="550" y="166" text-anchor="middle">プロッター・材料棚</text><text class="m" x="550" y="185" text-anchor="middle">約18㎡（1.6m幅機＋作業台）</text>
+<rect class="box" x="660" y="146" width="180" height="48" rx="4"/><text x="750" y="166" text-anchor="middle">事務・接客</text><text class="m" x="750" y="185" text-anchor="middle">約15㎡</text>
+<text class="m" x="60" y="215">車路・通路（余裕15%）</text>
+<text class="m" x="60" y="248">合計 約185㎡（56坪）。待機5台なら約230㎡（70坪）。保管10台を足すと約450㎡（136坪）、20台で約670㎡（200坪）</text>
+<text class="m" x="60" y="264">シャッター幅3m以上・天井3.7m・排水（油水分離槽）・200V電源・空調が条件</text>
+</svg>
+</figure>
+<ul>
+<li><b>答え（j）台数の推定：</b>最小＝作業ベイ2（PPF・ラッピング用1＋洗車・磨き用1）＋待機3台＝<b>約56坪</b>。これで「車6台分」（作業2＋待機3＋出入りの余地）。待機5台なら約70坪。<b>保管サービスを足す場合</b>は1台約22㎡で、10台＝＋約66坪（計約136坪）、20台＝計約200坪。保管10台の時点で延べ450㎡＝消防の自火報（500㎡）には届かないが、建基法の「自動車車庫150㎡以上は耐火・準耐火」「200㎡超の用途変更」が物件の構造次第で発生する（図面で要確認）</li>
+<li><b>推奨（提案）：</b>まずS案（約56坪）で工房を立ち上げ、保管は「別の貸ガレージを後から借りる」か「工房の次の物件で」にする。理由は①保管を同じ建物に入れると車庫用途の門（150㎡・200㎡）が開く ②保管の需要（北区のタワマン住民）は検証前 ③上限500万円の中で賃料の固定費を増やさない</li>
+<li><b>賃料の目安（第2回の相場表×坪数、計算値）：</b>S案56坪×4,000〜6,000円＝月22〜34万円。M案70坪＝月28〜42万円。保管込み136坪＝月54〜82万円</li>
+</ul>
+
+<h3 id="s4-9">4-9 物販：自社ブランドを作るのは受託製造会社で、「タッグを組む」型は実在するが入口ではない</h3>
+<div class="tw"><table class="cmp">
+<tr><th>型</th><th>誰が作る</th><th>誰が仕様を決める</th><th>費用・在庫・責任</th><th>実例（公式）</th></tr>
+<tr><td class="key">a OEM（自社仕様で受託製造）</td><td>受託製造会社（国内7社以上、下の一覧）</td><td>当社（開発、または既存品の微調整）</td><td>当社負担・初回前金・在庫は当社。PL法の「製造業者等」</td><td>日本コーティング（OEM供給元→自社ブランド化）</td></tr>
+<tr><td class="key">b PB（既製品にラベル）</td><td>受託製造会社の標準処方</td><td>製造会社（当社はラベル・容量）</td><td>小額・少量で開始可。責任はaと同じ</td><td>THエンゼル「標準品は1本からの価格表」、Wellpool「300本／5ケース」、クリスタルプロセス「20L×10ケース」</td></tr>
+<tr><td class="key">c 監修・コラボ（タッグ）</td><td>メーカーが製造・販売</td><td>メーカー＋監修者</td><td>費用・在庫はメーカー側。契約条件は非公開【未確認】</td><td>G-WASH Plus（グリーンライフ製・ビューティフルカーズ監修）、KeePer×SONAX。トップランは「インフルエンサーコラボ」を公式に募集</td></tr>
+<tr><td class="key">d 輸入（海外製を自社ブランドで）</td><td>海外メーカー</td><td>海外の既製品か指定仕様</td><td>輸入者が費用・在庫・PL（製造業者等）</td><td>POML（韓国製＋日本製）、SPLASH ADDICT タオル（Korea）、SPASHAN（HOBSTAR：輸入・製造・加工）</td></tr>
+</table></div>
+<ul>
+<li><b>答え（i）：</b>「自分のブランド力を使って製造会社とタッグを組む」は型c（監修・コラボ）で、<b>実例はある（G-WASH：ブランド側から電話で持ちかけ、メーカーが製造・販売）し、メーカー側がコラボ相手を募っている例もある（トップラン）。</b>ただしcは「発信力と販売実績」があって初めて成立する。入口は b（標準品に自社ラベル・数十本〜300本）→ a（自社仕様）の順で、どの型でも液体を作るのは受託製造会社。当社はEC物販が本業なので、b・aの「仕入れて売る」部分は既にできる</li>
+<li><b>流れ（受託側の公式）：</b>問い合わせ→ヒアリング→サンプル（Wellpool・タフリーは無償）→実車テスト・曝露試験→容器・ラベル→初回ロット（前金）→納品。最短約2週間（Wellpool）。費用は全社非公開＝見積が先</li>
+<li><b>責任の所在（原文）：</b>PL法2条3項＝自社名を表示した者は「製造業者等」（消費者庁Q&amp;A Q16・Q17：PBでも表示製造業者）。家表法＝界面活性剤主体のカーシャンプーは「合成洗剤」、表示者は製造業者・販売業者の「当事者で決める」。化管法・安衛法のSDS＝<b>一般消費者向け製品は除外</b>（施工店へ卸すなら必要）。消防法＝アルコール60%以上は第四類。商標＝出願3,400円＋8,600円×区分、登録32,900円×区分（10年）。Amazonブランド登録は出願中でも可。配送3社は引火性液体を不可、日本郵便はカーワックス・コーティング剤を航空危険物扱い→<b>処方を非引火性（水性・低アルコール）にすると配送・消防・モールの全部で効く</b></li>
+<li><b>PL保険：</b>中小企業PL保険制度（商工会議所）は「製造業だけでなく販売業…も加入対象」。保険料は非公開</li>
+</ul>
+
+<h3 id="s4-10">4-10 紹介に頼らない戦略：マージンが抜かれるのは「下請け」の形。目指すのは「客がディーラーに当社を指名する」形で、紹介料は払わない</h3>
+<div class="tw"><table class="cmp">
+<tr><th>案件の形</th><th>お金の流れ</th><th>当社の取り分</th><th>実例・証拠</th><th>当社の扱い（提案）</th></tr>
+<tr><td class="key">① 下請け</td><td>客→ディーラー（純正価格）→当社（下請け単価）</td><td>1台1.5万〜3万円（施工店ブログ）</td><td>純正コーティングの大半。THE WRAP「ディーラーは仲介者…割高になる傾向」</td><td class="warn st">実績作りだけ</td></tr>
+<tr><td class="key">② 紹介</td><td>客→当社（当社価格）。ディーラーへ紹介料</td><td>公開された紹介料率は見つからず【未確認】</td><td>TOP LINE「ディーラー紹介のXC90」</td><td class="warn st">払わない方針</td></tr>
+<tr><td class="key">③ 指名持ち込み</td><td>客→当社。客がディーラーに「納車前に当社へ」と頼む</td><td>全額</td><td>アペックス（宇都宮）、スマート・カーサービス「納車から施工期間の調整を代行」、客の声「ディーラー施工は保証書が無く売却時に困った」</td><td class="ok st">主戦場</td></tr>
+<tr><td class="key">④ 業販（専門店・中古車店）</td><td>専門店→当社（PPF・内装だけ外注）</td><td>工程単価（非公開）</td><td>58Detailing、P-Factory、Ledra（手数料10%）</td><td class="ok st">PPF・内装に限る</td></tr>
+</table></div>
+<p><b>答え（o）戦略（提案）：</b>①<b>価格を公開する</b>（ディーラー経由は不透明で割高、という事実を客が知っている：楽天Car「同等ランクで倍以上の価格差」）②<b>保証書と記録を売る</b>（XPEL 10年保証書・施工証明書・膜厚と写真の記録。「ディーラー施工は保証書が無くて売却時に困った」という客の声が実在）③<b>納車前の段取りを当社が代行する</b>（輸入車は納期が読みにくい→納車日程の調整・立会いを店が引き受ける。スマート・カーサービス型）④<b>指名検索を作る</b>（施工系YouTubeの最大は4.38万人で空いている。第2回の「自社投稿・口コミ」の柱）⑤ディーラーには「紹介料ではなく、納車前の面倒を減らす価値」で入る（ディーラーが社外持込を断る公式文言は見つからなかった【未確認】）⑥下請け単価の仕事は、最初の実績作りに限って受ける。<b>これで「マージンを抜かれない」形は③と④だけになる。</b></p>
+
+<h2 id="s5">5. 調べていないこと<small>以降の章は、この範囲の中でだけ成り立つ。貼り付けられたGemini回答は別案件として切り分けた。</small></h2>
+<ul>
+<li><b>過去ページの比較：</b>Wayback Machine が遮断されており、店舗数・価格の年次比較は当時の記事・告知で代替した。「値下げが無い」は確認できた範囲の話</li>
+<li><b>消費者の認知：</b>Instagram・Googleトレンド・YouTube検索件数は取得不可。みんカラ件数とQ&amp;Aのサンプルで代替した</li>
+<li><b>保険：</b>東京海上・三井住友の約款原文は取得できず、損保ジャパン約款と各社パンフで代替。コーティング・フィルム業の引受可否、受託自動車保険が「整備目的以外」を対象にするかは代理店への照会が要る</li>
+<li><b>物件：</b>図面を見ていない。構造（耐火・準耐火）・用途地域・排水・電源は物件ごとに未確認。台数と面積は推定</li>
+<li><b>物販：</b>受託各社の費用・契約類型、Amazonの危険物審査、楽天・メルカリShopsの禁止商材は取得不可</li>
+<li><b>コイン洗車場の業者利用規約、スチーム洗浄の公式手順、輸入車の納車待ち期間、紹介料率の公開例：</b>見つからず【未確認】</li>
+<li><b>利益の予測：</b>行っていない（K-002）。第8章は費用の公開値を並べただけ</li>
+<li><b>貼り付けられたGemini回答（発送代行W2）：</b>対象文書（W2の7-2・8・9章）が本チャットに無いため照合していない。文書なしで確認できる点は1つ：指摘No.3「代理（顕名）でも1件100円の手数料を取れば利用運送事業に該当するリスク」について、貨物利用運送事業法2条の原文は「利用運送」＝「運送事業者の行う運送…を利用してする貨物の運送」、第一種＝「他人の需要に応じ、有償で、利用運送を行う事業」。当社が運送契約の当事者（荷送人）にならず客の名で手配する「取次」がこれに当たるかは、条文だけでは決まらず、国交省の手引き・運輸局への照会（W2文書9章の検証2）で決める論点＝Geminiの【未確認】の付け方は妥当。残りの指摘（証拠PDF自動生成の費用、配送ラベルの映り込み、6分/件の作業時間、検算）は文書照合が要る</li>
+</ul>
+
+<h2 id="s6">6. 案の比較（工房の大きさ）<small>S案（約56坪）から始めるのが上限500万円と法規の門に合う。保管を同じ建物に入れるL案は、需要の検証前に賃料と車庫用途の門を抱える。</small></h2>
+<div class="tw"><table class="cmp">
+<tr><th>案（同じ項目で比べる）</th><th>判定</th><th>坪数・賃料（計算値）</th><th>保管台数</th><th>法規の門</th><th>理由</th></tr>
+<tr><td class="key">S 作業2＋待機3</td><td class="ok st">成立★</td><td>約56坪・月22〜34万円（4,000〜6,000円/坪）</td><td class="num">0</td><td>消火器（150㎡超）のみ。自火報・泡消火・耐火要件なし</td><td>上限500万円の中で固定費が最小。保管は後から別物件で足せる</td></tr>
+<tr><td class="key">M 作業2＋待機5</td><td class="warn st">条件付き</td><td>約70坪・月28〜42万円</td><td class="num">0</td><td>同上</td><td>待機が増える分だけ預かり件数の前提が要る（検証前）</td></tr>
+<tr><td class="key">L 作業2＋待機3＋保管10</td><td class="warn st">条件付き</td><td>約136坪・月54〜82万円</td><td class="num">10</td><td>車庫150㎡以上は耐火・準耐火、200㎡超は用途変更の確認申請</td><td>保管の需要は未検証。賃料が2倍で、法規の門が2つ開く</td></tr>
+<tr><td class="key">L2 保管20</td><td class="ng st">不成立（今は）</td><td>約200坪・月80〜120万円</td><td class="num">20</td><td>自火報（500㎡以上）、駐車部分1階500㎡以上なら泡消火設備</td><td>CORNES RESERVE（166台・月9.9万〜14.3万円）の縮小版を検証なしに持つ形</td></tr>
+</table></div>
+<figure>
+<figcaption>図5　工房の大きさはS案が最も高く、保管を同じ建物に入れる案ほど下がる<small>4軸（上限500万円との整合／法規の門の少なさ／検証前の需要に依存しない／拡張のしやすさ）を各 −1・0・＋1 で採点した合計。Claude評価</small></figcaption>
+<svg viewBox="0 0 900 200" role="img" aria-label="工房の大きさ案の比較">
+<g class="grid"><line x1="150" y1="20" x2="150" y2="175"/><line x1="750" y1="20" x2="750" y2="175"/></g>
+<line class="ax" x1="450" y1="20" x2="450" y2="175"/>
+<text class="m" x="150" y="192" text-anchor="middle">−4</text><text class="m" x="450" y="192" text-anchor="middle">0</text><text class="m" x="750" y="192" text-anchor="middle">＋4</text>
+<text x="10" y="42">S 56坪</text><rect class="us" x="450" y="30" width="300" height="16"/><text x="758" y="43">＋4</text>
+<text x="10" y="80">M 70坪</text><rect class="bar3" x="450" y="68" width="150" height="16"/><text x="608" y="81">＋2</text>
+<text x="10" y="118">L 136坪（保管10）</text><rect class="bar3" x="375" y="106" width="75" height="16"/><text x="345" y="119" text-anchor="end">−1</text>
+<text x="10" y="156">L2 200坪（保管20）</text><rect class="bar2" x="225" y="144" width="225" height="16"/><text x="195" y="157" text-anchor="end">−3</text>
+</svg>
+</figure>
+
+<h2 id="s7">7. 推奨と理由<small>価格の土俵に入らず「内装・PPFの難所・保証と記録・納車前の段取り」で富裕層を取る。柱の順番は「検証→工房＋モニター→出張・業販→物販→保管」。</small></h2>
+<figure>
+<figcaption>図6　当社が狙う象限は「価値で戦う × 富裕層」。KeePerと出張業者は価格×一般層、門真・東大阪の認定店は価値×混合層<small>横軸＝価格で戦うか価値（保証・記録・難所・段取り）で戦うか。縦軸＝主な客層。位置はClaude評価</small></figcaption>
+<svg viewBox="0 0 900 300" role="img" aria-label="戦い方の位置取り">
+<line class="ax" x1="80" y1="20" x2="80" y2="260"/><line class="ax" x1="80" y1="260" x2="860" y2="260"/>
+<line class="grid" x1="470" y1="20" x2="470" y2="260"/><line class="grid" x1="80" y1="140" x2="860" y2="140"/>
+<text class="m" x="470" y="282" text-anchor="middle">価格で戦う ←　　　　→ 価値（保証・記録・難所・段取り）で戦う</text>
+<text class="m" x="20" y="30">富裕層</text><text class="m" x="20" y="255">一般層</text>
+<rect class="cand" x="110" y="170" width="160" height="40" rx="6"/><text x="190" y="195" text-anchor="middle">KeePer LABO（184店）</text>
+<rect class="cand" x="290" y="210" width="160" height="40" rx="6"/><text x="370" y="235" text-anchor="middle">出張洗車 5社以上</text>
+<rect class="cand" x="110" y="90" width="200" height="40" rx="6"/><text x="210" y="115" text-anchor="middle">安い材料で安く貼る店（今後）</text>
+<rect class="cand" x="500" y="150" width="200" height="40" rx="6"/><text x="600" y="175" text-anchor="middle">門真・東大阪の認定店（混合層）</text>
+<rect class="us" x="520" y="40" width="320" height="60" rx="6"/><text class="w" x="680" y="65" text-anchor="middle">当社：内装・PPFの難所・保証書と記録</text><text class="w" x="680" y="86" text-anchor="middle" font-weight="normal">納車前の段取り代行・引取納車・指名検索</text>
+<rect class="cand" x="660" y="110" width="190" height="40" rx="6"/><text x="755" y="135" text-anchor="middle">スマート・カーサービス（東京）</text>
+</svg>
+</figure>
+<h3>柱の順番（答え k）と、各柱の具体化（提案）</h3>
+<div class="pillars">
+<div class="pillar must"><h4>順番0　検証（第1か月・0円）</h4><dl><dt>何をする</dt><dd>5社ヒアリング＋撮影協力モニター募集＋保険の引受照会。上限の「期間」を決める</dd><dt>成立する条件</dt><dd>合格の線（第9章）を超えること</dd><dt>守り方</dt><dd>合格まで講習・物件・採用に支出しない</dd></dl></div>
+<div class="pillar must"><h4>順番1　工房＋モニター（第2〜4か月）</h4><dl><dt>何をする</dt><dd>講習（XPEL 3日＋3M 3-Star 2日）、車業界経験者2名の採用、S案の物件、保険2本、HPと事例ページ。モニター車で練習しながら事例を作る</dd><dt>成立する条件</dt><dd>最初の半年は部分施工・内装・法人車・モニター車に限り、高級車のフルボディは受けない</dd><dt>守り方</dt><dd>約款（責任上限・剥離時免責・再塗装車の事前説明）と引渡し記録</dd></dl></div>
+<div class="pillar must"><h4>順番2　出張・引取納車＋業販（第4〜8か月）</h4><dl><dt>何をする</dt><dd>北区・中央区の客を4点確認で振り分け（純水高圧／水なし／引取納車）。中古輸入車店・ディーラー整備拠点へPPF・内装の業販、Ledra登録、法人の定期</dd><dt>成立する条件</dt><dd>従業員が運転し、受託自動車保険が「コーティング目的の受託」を対象にすること（要照会）</dd><dt>守り方</dt><dd>下請け単価の仕事は実績作りに限る</dd></dl></div>
+<div class="pillar cond"><h4>順番3　物販（第7〜12か月）</h4><dl><dt>何をする</dt><dd>段階0（動画で使う既製品の紹介）→段階1（既製品の小売）。段階2（PB→OEM、非引火性の処方）は視聴者と施工実績が付いてから</dd><dt>成立する条件</dt><dd>家表法の表示・PL保険・商標出願</dd><dt>守り方</dt><dd>最初から自社処方を作らない</dd></dl></div>
+<div class="pillar cond"><h4>順番4　保管＋月次メンテ（第10か月以降）</h4><dl><dt>何をする</dt><dd>北区のタワマン住民・2台目オーナーの需要をヒアリングで確認し、別物件（貸ガレージ）で小さく</dd><dt>成立する条件</dt><dd>保管中の保険（地震・水災特約）、車庫用途の法規（150㎡・200㎡）</dd><dt>守り方</dt><dd>工房と同じ建物に入れない</dd></dl></div>
+<div class="pillar cond"><h4>認定の組合せ（提案）</h4><dl><dt>何をする</dt><dd>PPF＝XPEL（認知・10年保証・DAP）、ラッピング＝3M 3-Star、コーティング＝G'ZOX登録（無料）。2年目にSTEK（カラーPPF）・Ceramic Pro／FEYNLAB（堺の総代理店）</dd><dt>成立する条件</dt><dd>認定は看板にならないと理解したうえで、保証・材料・データのために取る</dd><dt>守り方</dt><dd>HPでは認定ロゴより「保証書・記録・事例」を前に出す</dd></dl></div>
+</div>
+<h3>反論（自分で書く）</h3>
+<ul>
+<li><b>未経験2名で高級車を預かれるのか。</b>基本施工まで3〜6か月、現場を任せるまで1年という公開例に従えば、初年度は売上の柱になる高額施工を受けられない期間が長い。→ その間の仕事（内装・部分施工・法人車・出張）を柱2・3で先に作る。経験者1名を採れればこの期間は縮む</li>
+<li><b>価格は本当に下がらないのか。</b>確認できたのは2025年までの表示価格で、中国製材料の流入は始まったばかり。安い店が出れば一般層の価格は下がる。→ 当社は一般層の価格競争に入らない設計（図6）。ただし富裕層でも「同じXPELなら安い店」は起きる。差は保証書・記録・段取り・内装の組合せでしか作れない</li>
+<li><b>認定を軽く見すぎていないか。</b>認定で客は集まらないが、XPEL 10年保証とDAPは認定店にしか無い。→ 認定は取る。「取れば集まる」と期待しないだけ</li>
+<li><b>保険で埋まらない部分（施工の失敗）が最大のリスクではないか。</b>そのとおり。約款と練習台数と「初年度はフルボディを受けない」運用で埋める以外に方法が無い。これは技術者の形（第10章④）と直結する</li>
+<li><b>500万円で足りるのか。</b>初期投資（講習・道具・プロッター・物件初期・保険）の公開値は約250万円＋物件の初期費用【未確認】で、人件費を含めると超える（第8章）。→ 上限が「人件費込み」なら技術者は代表＋社員の自前になり、立ち上がりが遅くなる</li>
+</ul>
+
+<h2 id="s8">8. 数字<small>利益の予測はしない（K-002）。公開されている費用を並べ、上限500万円に何が入るかを計算値で示した。</small></h2>
+<div class="tw"><table class="cmp">
+<tr><th>項目</th><th>公開値（税込・税抜は出典どおり）</th><th>出典</th></tr>
+<tr><td class="key">講習</td><td>XPEL認定（ソフト99AS 3日）330,000円＋3M 3-Star ラッピング（2日）165,000円＝495,000円</td><td class="ref">4</td></tr>
+<tr><td class="key">道具（洗車・磨き・ラッピング）</td><td>純水器29,480＋高圧洗浄機29,480＋ポリッシャー82,500＋照明66,000＋膜厚計17,578＋赤外線ヒーター219,800＋ヒートガン2本41,756＋温度計5,828＋ナイフレステープ5,336＋小物約11,000＝約509,000円（計算値）</td><td class="ref">11</td></tr>
+<tr><td class="key">プロッター・ソフト</td><td>FC9000-160 1,518,000円（販売店表示）＋Acc CUT 月額42,900円</td><td class="ref">11</td></tr>
+<tr><td class="key">物件（S案56坪）</td><td>賃料 月22〜34万円（計算値）。保証金・内装（照明・空調・防塵床・油水分離槽）は【未確認】</td><td class="ref">2回報告</td></tr>
+<tr><td class="key">保険（年額の例）</td><td>自動車管理者賠償責任保険 約2万〜32万円（東京海上の契約例）／整備受託自動車保険 3名 62,220円（三井住友の例）・日整連 2名 55,220〜73,160円</td><td class="ref">12</td></tr>
+<tr><td class="key">人件費（月給）</td><td>未経験 21〜30万円、経験者 36万円以上〜年俸600万円。整備士の統計値 月33.9万円・賞与96.4万円</td><td class="ref">1〜3</td></tr>
+<tr><td class="key">初期投資の小計（計算値）</td><td>講習49.5万＋道具50.9万＋プロッター151.8万＝<b>約252万円</b>。＋物件の初期費用【未確認】＋保険初年度 約8〜40万円</td><td class="ref">計算</td></tr>
+<tr><td class="key">500万円との関係（計算値）</td><td>初期投資（約252万円＋物件初期）は収まる見込み。人件費は未経験1名でも年252万〜360万円で、<b>1年分を含めると超える</b></td><td class="ref">計算</td></tr>
+<tr><td class="key">材料（参考）</td><td>3M 2080 1ロール 235,950円、Avery SW900 117,700円、STEK DYNOshield 218,500〜230,000円、中国製TPU $139〜420/本</td><td class="ref">5</td></tr>
+<tr><td class="key">モニター価格の実例</td><td>中型40万／大型45万円（税抜、EISUI 3台）</td><td class="ref">2回報告</td></tr>
+<tr><td class="key">認定の維持費</td><td>年会費・最低購入額の公開は各社とも無し【未確認】</td><td class="ref">4</td></tr>
+</table></div>
+
+<h2 id="s9">9. 次の工程と撤退条件<small>いちばん危ない前提は変わらず「需要・導線」。上限は500万円と決まったので、期間を決め次第、承認点1（検証の計画）に入る。</small></h2>
+<div class="tw"><table>
+<tr><th>承認点1（検証の計画・案）</th><th>内容</th></tr>
+<tr><td class="key">確かめたい前提（1つ）</td><td>「大阪で、PPF・内装・高級コーティングに10万円超を払う車主と、納車前に外注したい輸入車店が、工房1つを食わせる数いる」</td></tr>
+<tr><td class="key">なぜ一番危ないか</td><td>技術（講習・採用）と保険（偶然の事故）はお金で手当てできると今回確認できた。需要だけは買えず、北区・西区の認定店の空白が「需要が無い」のか「工房が置けない」のか証拠が無い</td></tr>
+<tr><td class="key">確かめ方（作らない）</td><td>①輸入車ディーラーのサービス拠点・中古輸入車専門店5社に「納車前のPPF・コーティングの外注先、月何台、大阪市内で預かれる店が欲しいか」を聞く ②撮影協力モニター（掲載協力価格・台数限定）を募集し応募数を数える ③保険代理店に「コーティング・フィルム施工業」の引受可否と、受託自動車保険が施工目的の受託を対象にするかを照会</td></tr>
+<tr><td class="key">費用と期限</td><td>0円／4週</td></tr>
+<tr><td class="key">合格の線（提案）</td><td>5社のうち2社以上が月の台数を答え、外注先を増やす意思を示す。かつ10万円超メニューの有効応募3件以上。かつ保険2本の引受が可</td></tr>
+<tr><td class="key">不合格だった場合</td><td>工房は借りず、出張＋業販（Ledra・中古輸入車店）だけを小さく回す。または名古屋・豊橋で同じ確認をやり直す</td></tr>
+<tr><td class="key">使った額の累計</td><td>0円／上限500万円（期間は未決）</td></tr>
+</table></div>
+<figure>
+<figcaption>図7　12か月の順番：検証（0円）→工房＋モニター→出張・業販→物販→保管。支出は第2か月から<small>月単位。第2か月以降は承認点2の後、上限500万円の範囲で</small></figcaption>
+<svg viewBox="0 0 960 250" role="img" aria-label="12か月の工程表">
+<g class="grid"><line x1="250" y1="20" x2="250" y2="225"/><line x1="368" y1="20" x2="368" y2="225"/><line x1="486" y1="20" x2="486" y2="225"/><line x1="604" y1="20" x2="604" y2="225"/><line x1="722" y1="20" x2="722" y2="225"/><line x1="840" y1="20" x2="840" y2="225"/><line x1="958" y1="20" x2="958" y2="225"/></g>
+<text class="m" x="309" y="18" text-anchor="middle">1〜2か月</text><text class="m" x="427" y="18" text-anchor="middle">3〜4</text><text class="m" x="545" y="18" text-anchor="middle">5〜6</text><text class="m" x="663" y="18" text-anchor="middle">7〜8</text><text class="m" x="781" y="18" text-anchor="middle">9〜10</text><text class="m" x="899" y="18" text-anchor="middle">11〜12</text>
+<text x="10" y="42">0 検証（0円）・期間の決定</text><rect class="bar2" x="250" y="30" width="59" height="16"/>
+<text x="10" y="72">1 講習・採用・物件・保険・HP</text><rect class="bar" x="309" y="60" width="118" height="16"/>
+<text x="10" y="102">1 工房開業・モニター施工</text><rect class="bar" x="368" y="90" width="590" height="16"/>
+<text x="10" y="132">2 出張・引取納車（4点確認）</text><rect class="bar4" x="427" y="120" width="531" height="16"/>
+<text x="10" y="162">2 業販・Ledra・法人定期</text><rect class="bar4" x="486" y="150" width="472" height="16"/>
+<text x="10" y="192">3 物販 段階0→1</text><rect class="bar3" x="604" y="180" width="354" height="16"/>
+<text x="10" y="222">4 保管の需要確認→別物件</text><rect class="bar3" x="781" y="210" width="177" height="16"/>
+<text class="m" x="250" y="243">費用0円</text><text class="m" x="309" y="243">支出開始（上限500万円の範囲）</text>
+</svg>
+</figure>
+
+<h2 id="s10">10. 決めていただく事項・未確認事項<small>10点。★＝Claudeの推奨。①は推奨なし（上限はClaudeが提案しない）。</small></h2>
+<div class="tw"><table class="cmp">
+<tr><th>#</th><th>決めること</th><th>選択肢</th><th>推奨と理由</th></tr>
+<tr><td class="key id">①</td><td>上限500万円の「期間」と「範囲」</td><td>A 初期投資のみ（人件費は別枠）／B 人件費込み／期間：○か月</td><td>推奨なし。ただしAなら④は採用（2名）、Bなら④は自前（代表＋社員）になる。期間が決まれば KASETSU.md の「0」が埋まり、承認点1へ進める</td></tr>
+<tr><td class="key id">②</td><td>「住みの上」の解釈</td><td>A 住之江区のこと（此花・西淀川・大正に絞る）／B 別の地名</td><td>Aと解釈して進めた。違えばご指摘を</td></tr>
+<tr><td class="key id">③</td><td>認定の組合せ</td><td>A XPEL＋3M 3-Star＋G'ZOX登録／B XPEL＋STEK／C Aに KeePer PROSHOP を加える／D Ceramic Pro を初年度から</td><td>★A（計49.5万円）。認定で客は集まらないので、保証・材料・データが揃う最小の組合せ。CはKeePer製品が条件で6,524店の1つになる</td></tr>
+<tr><td class="key id">④</td><td>技術者の形</td><td>A 車業界経験者2名を未経験採用＋講習／B 経験者1名＋社内1名／C 代表＋社員で自前</td><td>★A（①がAのとき）。経験者は求人倍率4〜5倍で取り合い。坂野様の「元ディーラーの人と一から」はAに当たる。初年度はフルボディを受けない運用とセット</td></tr>
+<tr><td class="key id">⑤</td><td>工房の大きさ</td><td>A S案 約56坪／B M案 約70坪／C L案 136坪（保管10台込み）</td><td>★A。賃料22〜34万円で、消防・建基法の門が最小</td></tr>
+<tr><td class="key id">⑥</td><td>保管＋月次メンテ</td><td>A 後回し・別物件／B 最初から同じ建物で</td><td>★A。需要が未検証で、車庫用途の門（150㎡・200㎡）が開く</td></tr>
+<tr><td class="key id">⑦</td><td>出張・洗車の方式</td><td>A 4点確認で振り分け（純水高圧／水なし／引取納車）／B 水なしのみ／C 引取納車のみ</td><td>★A。洗車単体では差が付かないので、工房への導線として設計する</td></tr>
+<tr><td class="key id">⑧</td><td>損傷の責任の線</td><td>A 約款＋保険2本＋初年度はフルボディを受けない／B 保険だけ</td><td>★A。保険は偶然の事故しか払わない（4-7）</td></tr>
+<tr><td class="key id">⑨</td><td>貼り付けられたGemini回答（発送代行W2）の扱い</td><td>A 発送代行のチャットで照合する／B このチャットで warehousing フォルダを接続して照合する</td><td>★A。対象文書が本チャットに無い。第5章に確認できた1点だけ記した</td></tr>
+<tr><td class="key id">⑩</td><td>第3回のGeminiクロスチェック</td><td>A 今すぐ貼る／B ①が決まってから</td><td>★A。依頼文 <code>_貼り付け用_Gemini確認依頼_車事業第3回_2026-10-02.txt</code>。貼る前に「アクティビティの保存」の設定を確認</td></tr>
+</table></div>
+
+<h2 id="s11">11. 変更履歴と出典<small>本書が正本。承認済みの事項は DECISIONS.md（D-155〜D-157）に記帳し、本書と食い違ったら DECISIONS.md を正とする。</small></h2>
+<div class="tw"><table>
+<tr><th>版</th><th>日付</th><th>内容</th></tr>
+<tr><td class="key">初版</td><td>2026-10-02</td><td>新規作成。第2回の2点（Wellpool の最小ロット、化管法SDSの消費者向け除外）を訂正。Gemini未実施</td></tr>
+</table></div>
+<h3>出典（一次情報。確認日はすべて 2026-10-02。各行は代表URL。全URLは調査メモにあり）</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>資料</th><th>代表URL</th></tr>
+<tr><td class="key id">1</td><td>労働市場：厚労省 職業安定業務統計 長期時系列（第21表）／job tag（自動車整備士・板金塗装）／国交省 整備士の確保・育成資料</td><td class="src">https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040505332&amp;fileKind=0 ／ https://shigoto.mhlw.go.jp/User/Occupation/Detail/197 ／ https://www.mlit.go.jp/jidosha/content/001877732.pdf</td></tr>
+<tr><td class="key id">2</td><td>賃金：令和7年 賃金構造基本統計調査 職種別（e-Stat）</td><td class="src">https://www.e-stat.go.jp/stat-search/file-download?statInfId=000040421116&amp;fileKind=4</td></tr>
+<tr><td class="key id">3</td><td>求人・育成：Indeed 大阪府／XP KYOTO／KeePer技研（morejob記事・採用要項）／近代社／アクティブガレージ</td><td class="src">https://jp.indeed.com/ ／ https://www.xp-kyoto.com/recruit/ ／ https://morejob.co.jp/mirai/keeper-giken/</td></tr>
+<tr><td class="key id">4</td><td>講習・認定・保証：XPEL JAPAN／ソフト99AS 講習／3M 4-Star／STEK FAQ・保証／KeePer PROSHOP／G'ZOX／Ceramic Pro／FEYNLAB</td><td class="src">https://www.xpeljapan.com/xpel-business-partner/paint-protection-film-training/ ／ https://www.xpeljapan.com/help/warranty/ ／ https://www.3mcompany.jp/3M/ja_JP/car-personalization-jp/resources/about4star/</td></tr>
+<tr><td class="key id">5</td><td>市場・価格・材料：XPEL 10-K FY2025／KeePer 決算説明資料・中計／日経（値上げ）／IIC 料金改定／ソフト99AS 価格記事／europort（3M 2080・SW900）／STEKカート／Made-in-China 表示</td><td class="src">https://www.sec.gov/Archives/edgar/data/1767258/000176725826000014/xpel-20251231.htm ／ https://www2.jpx.co.jp/disc/60360/140120260817521996.pdf ／ https://europort.jp/products/carwrap-sheet/3m-2080</td></tr>
+<tr><td class="key id">6</td><td>認知の代理指標：みんカラ サイト内検索／知恵袋・価格.com 8スレッド／施工店11店のトップページ／施工店・ブランドのYouTube</td><td class="src">https://minkara.carview.co.jp/search/?q=XPEL ／ https://protection-film.com/</td></tr>
+<tr><td class="key id">7</td><td>純正採用・OEM：KeePer 決算短信（2026/6期Q3）／スバル・三菱 公式／XPEL Rivian プレス／LE VOLANT（LAPPS）</td><td class="src">https://www.daiwair.co.jp/td_download.cgi?c=6036&amp;i=3218202 ／ https://www.subaru.jp/accessory/bodycoat/ex-keeper/ ／ https://levolant.jp/2026/02/26/421386/</td></tr>
+<tr><td class="key id">8</td><td>洗車の工程：KeePer LABO 洗車／KeePer技研 100点ビデオ／GYEON How to wash／CARPRO Reset／Adam's／Chemical Guys／ピュアニッシュPro（純水）</td><td class="src">https://keeperlabo.jp/service/wash/ ／ https://gyeon360.co/how-to-wash-dry-my-car ／ https://www.beautifulcars.biz/c/purewatersystem/pro</td></tr>
+<tr><td class="key id">9</td><td>水なし・最先端：Optimum No Rinse／SOFT99 フクピカ・洗車ナビ／BigBoi／UVeye Atlas Light（ABA）／FLIT（ベストカー）／出張各社（Mobility Box・SMILE WASH・ダスキン・Dr.Car Wash・ARATTE）</td><td class="src">https://opticoat.com/products/optimum-no-rinse ／ https://soft99shop.com/i/00542 ／ https://mobility-box.com/faq/ ／ https://duskin-sm-business.com/car-wash/</td></tr>
+<tr><td class="key id">10</td><td>施工手順（メーカー）：3M Vehicle Color Change Instruction Bulletin／3M PPF Installation Guideline／3M 2080 Product Bulletin／Avery IB 1.19・IB4.08・SW900 PDS／XPEL DAP／KeePer EX施工密着（Car Watch）／GYEON Mohs EVO／G'ZOX classM／Ceramic Pro CARE</td><td class="src">https://multimedia.3m.com/mws/media/2419562O/application-vehicle-color-change-ra-pdf.pdf ／ https://multimedia.3m.com/mws/media/2356549O/3m-paint-protection-film-installation-guideline.pdf ／ https://car.watch.impress.co.jp/docs/news/1240823.html</td></tr>
+<tr><td class="key id">11</td><td>道具の価格：dtls.jp（RUPES・FLEX・SCANGRIP）／モノタロウ（膜厚計・ヒーター・ヒートガン・温度計）／harou.jp（ナイフレステープ）／cal-store／グラフテック FC9000／ユーロポート FC9000-160／KeePerブース（KeePer Times）</td><td class="src">https://www.dtls.jp/rupes-lhr15v ／ https://www.monotaro.com/g/05114136/ ／ https://europort.jp/products/plotter/fc9000-160</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>#</th><th>資料</th><th>代表URL</th></tr>
+<tr><td class="key id">12</td><td>保険（約款・公式）：損保ジャパン 賠償責任保険約款 自動車管理者特約条項／同『THE クルマの保険』約款／東京海上日動／東京海上ダイレクト 約款／三井住友海上 整備受託自動車保険特約／あいおい 2018 リリース／日整連 共済パンフ2026／自賠法3条</td><td class="src">https://www.sompo-japan.co.jp/-/media/SJNK/files/hinsurance/webyakkan/baishou1708_yakkan.pdf ／ https://cdms.jp/sjnk/stipulation/car/2026/pdf/the/the_001.pdf ／ https://www.zenkyosai.or.jp/pdf/SE2026.pdf</td></tr>
+<tr><td class="key id">13</td><td>損傷例・製品保証：保険相談Times（二次）／hac／Carapp／Nunufactory／Poright（二次）／XPEL・STEK・3M・Avery の保証原文</td><td class="src">https://hac-colors.com/contents/category/precautions/ ／ https://www.xpel.com/warranty-information ／ https://stekautomotive.com/support/warranty/paint-protection-film-dyno-series</td></tr>
+<tr><td class="key id">14</td><td>物件の法規（e-Gov原文）：車両法施行規則 別表第四／消防法施行令／消防庁 昭和50年通知 別表／建築基準法／倉庫業法施行令／駐車場法・施行令／国交省 標準駐車場条例／JIS Z 9110（岩崎電気）</td><td class="src">https://laws.e-gov.go.jp/law/326M50000800074 ／ https://laws.e-gov.go.jp/law/336CO0000000037 ／ https://laws.e-gov.go.jp/law/331CO0000000197 ／ https://www.mlit.go.jp/toshi/content/001362169.pdf</td></tr>
+<tr><td class="key id">15</td><td>物件の実例：ALNEX大阪店／LIT DETAIL／C2 Bisen.／CORNES RESERVE（PR TIMES・公式）／ティーエムオートサービス／グラフテック CE7000</td><td class="src">https://platinumshield.co.jp/news/6CCpFSwB ／ https://prtimes.jp/main/html/rd/p/000000053.000064033.html</td></tr>
+<tr><td class="key id">16</td><td>物販の作り方：クリスタルプロセス／タフリー／Wellpool／THエンゼル／マーサーロック／コムスタイル／S×OEM／Motor-Fan（監修インタビュー）／ビューティフルカーズ／トップラン／日本コーティング／nunufactory／AMMO NYC</td><td class="src">https://crystalprocess.co.jp/oem/ ／ https://wellpool.co.jp/strengths-flow/ ／ https://www.th-angel.com/ ／ https://motor-fan.jp/article/1433957/</td></tr>
+<tr><td class="key id">17</td><td>物販の法規：PL法2条3項／消費者庁 PL法Q&amp;A／家表法 FAQ・表示規程／化管法／安衛法／消防法（別表第一備考・規則）／毒劇法／化審法／景表法／特許庁 料金表／Amazon ブランド登録／ヤマト・佐川・日本郵便／中小企業PL保険制度</td><td class="src">https://laws.e-gov.go.jp/law/406AC0000000085 ／ https://www.caa.go.jp/policies/policy/consumer_safety/other/pl_qa.html ／ https://www.jpo.go.jp/system/process/tesuryo/hyou.html</td></tr>
+<tr><td class="key id">18</td><td>戦略の証拠：THE WRAP／楽天Car／スマート・カーサービス／スタートラスト／アペックス／TOP LINE／Ledra</td><td class="src">https://www.thewrap.jp/11029/ ／ https://protection-film.com/ ／ https://www.ledra.co.jp/for-btob</td></tr>
+<tr><td class="key id">19</td><td>別案件（Gemini回答の照合）：貨物利用運送事業法 2条（e-Gov原文）</td><td class="src">https://laws.e-gov.go.jp/law/401AC0000000082</td></tr>
+<tr><td class="key id">20</td><td>第1回（10-01）・第2回（10-02）報告書とその出典</td><td class="src"><code>C:\dev\Search-for-a-new-business\</code> 直下（第1回）／<code>S-04_洗車コーティング_ラッピング\</code>（第2回）</td></tr>
+</table></div>
+<p class="note">本書と DECISIONS.md が食い違ったら DECISIONS.md を正とする。数値は各出典の表示時点の値（税込・税抜は出典どおり）。「推定」「計算値」「Claude評価」と書いた数値は一次情報ではない。</p>
+</main></div></body></html>
